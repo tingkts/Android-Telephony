@@ -663,7 +663,5 @@ console:/ #
 
 
 
-<div style="text-align: right">Ref. module : Quectel EC25-E</div>
-<div style="text-align: right">Base on AOSP Andorid 9</div>
-<u><div style="text-align: right">http://androidxref.com/9.0.0_r3/</div></u>
+Ref. module of Quectel EC25-E, based on [AOSP Android 9](http://androidxref.com/9.0.0_r3/)
 
