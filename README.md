@@ -203,7 +203,7 @@ Android Telephony Framework
 
 ## Radio HIDL
 
-HIDL Interface of Radio
+[HIDL Interface of Radio](http://androidxref.com/9.0.0_r3/xref/hardware/interfaces/radio/)
 
 ```shell
 ting@ting-pc:~/aosp/android-9/hardware/interfaces/radio
@@ -222,9 +222,9 @@ drwxr-xr-x 1 ting 197121 0 十二月 25 17:53 config/
 drwxr-xr-x 1 ting 197121 0 十二月 25 17:53 deprecated/
 ```
 
-- IRadio
+- [IRadio](http://androidxref.com/9.0.0_r3/xref/hardware/interfaces/radio/)
 
-  IRadio is implemented by [libril](http://androidxref.com/9.0.0_r3/xref/hardware/ril/libril/)
+  [IRadio](http://androidxref.com/9.0.0_r3/xref/hardware/interfaces/radio/) is implemented by [libril](http://androidxref.com/9.0.0_r3/xref/hardware/ril/libril/)
 
   ```shell
   # e.g. java: android.hardware.radio.1.1.IRadio
@@ -258,9 +258,9 @@ drwxr-xr-x 1 ting 197121 0 十二月 25 17:53 deprecated/
   drwxr-xr-x 1 ting 197121    0 十二月 25 17:53 vts/
   ```
 
-- IRadioConfig
+- [IRadioConfig](http://androidxref.com/9.0.0_r3/xref/hardware/interfaces/radio/config/)
 
-  IRadioConfig is the optional implementation by modem vendor.
+  [IRadioConfig](http://androidxref.com/9.0.0_r3/xref/hardware/interfaces/radio/config/) is the optional implementation by modem vendor.
 
   ```
   ting@ting-pc:~/aosp/android-9/hardware/interfaces/radio/config
@@ -290,9 +290,9 @@ drwxr-xr-x 1 ting 197121 0 十二月 25 17:53 deprecated/
 
 ## RIL Daemon
 
-For Android versions prior to Android 8.0, RIL daemon use Socket to communicate with Anroid phone framework.
+◤ For Android versions prior to Android 8.0, RIL daemon use Socket to communicate with Anroid phone framework.
 
-On Android 8.0 or later versions, the communication interface between Android phone framework and ril-daemon service has been changed from socket to HIDL.
+◤ On Android 8.0 or later versions, the communication interface between Android phone framework and ril-daemon service has been changed from socket to HIDL.
 
 ```shell
 ting@ting-pc:~/aosp/android-9/hardware/ril$ ls -al
