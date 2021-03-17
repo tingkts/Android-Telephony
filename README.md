@@ -1,18 +1,64 @@
 
 ## Overview
 
-<img src="./RIL structure.PNG" alt="RIL structure" style="zoom:45%;" />
+<img src="./res/RIL structure.PNG" alt="RIL structure" style="zoom:45%;" />
 
 
 
 
 <br>
+<br>
+
+
+## Telephony App/Service
+
+[packages/services/Telephony](https://cs.android.com/android/platform/superproject/+/android-10.0.0_r30:packages/services/Telephony/;bpv=0)
+
+[packages/services/Telecomm](https://cs.android.com/android/platform/superproject/+/android-10.0.0_r30:packages/services/Telecomm/;bpv=0)
 
 
 
-## Telephony
+<br>
 
-Android Telephony Framework
+## Telephony Provider
+
+[packages/providers/TelephonyProvider](https://cs.android.com/android/platform/superproject/+/android-10.0.0_r30:packages/providers/TelephonyProvider/;bpv=0)
+
+<br>
+
+```
+// e.g. APN conf file, database
+
+imx8mp_evk:/ # system/etc/apn-conf.xml
+
+imx8mp_evk:/ # data/user_de/0/com.android.providers.telephony/databases
+$ ls -al
+total 1100
+drwxr-xr-x 1 ting 1049089      0 Mar 17 13:06 ./
+drwxr-xr-x 1 ting 1049089      0 Mar 17 13:06 ../
+-r--r--r-- 1 ting 1049089  20480 Mar 17 12:06 CarrierInformation.db
+-r--r--r-- 1 ting 1049089      0 Mar 17 12:06 CarrierInformation.db-journal
+-r--r--r-- 1 ting 1049089  57344 Mar 17 12:06 HbpcdLookup.db
+-r--r--r-- 1 ting 1049089      0 Mar 17 12:06 HbpcdLookup.db-journal
+-r--r--r-- 1 ting 1049089 229376 Mar 17 12:06 carrierIdentification.db
+-r--r--r-- 1 ting 1049089      0 Mar 17 12:06 carrierIdentification.db-journal
+-r--r--r-- 1 ting 1049089 118784 Mar 17 12:06 mmssms.db
+-r--r--r-- 1 ting 1049089      0 Mar 17 12:06 mmssms.db-journal
+-r--r--r-- 1 ting 1049089 696320 Mar 17 12:06 telephony.db
+-r--r--r-- 1 ting 1049089      0 Mar 17 12:06 telephony.db-journal
+
+```
+
+
+
+- [Android：一篇就够！全面&详细解析APN（涉及内容：GGSN，authtype，MVNO，pdp，Apns-conf，supl,hipri,dun）](https://blog.csdn.net/GentelmanTsao/article/details/103234535)
+
+
+<br>
+
+
+## Telephony Framework
+
 
 [frameworks/opt/telephony/](http://androidxref.com/9.0.0_r3/xref/frameworks/opt/telephony/) <br>
 [frameworks/base/telephony/](http://androidxref.com/9.0.0_r3/xref/frameworks/base/telephony/)
@@ -642,18 +688,7 @@ console:/ #
 
 ## Glossary
 
-```
-2G: 	GSM
-		GPRS
-		EDGE
-
-3G		:   WCDMA	384 Kbps
-(UMTS)		HDSPA	3.6 Mbps
-
-
- SIM : GSM
- UIM : CDMA
-```
+[Telephony 术语 缩写 Acronyms](https://blog.csdn.net/djialin0418/article/details/51127162)
 
 
 
@@ -663,5 +698,5 @@ console:/ #
 
 
 
-Ref. module of Quectel EC25-E, based on [AOSP Android 9](http://androidxref.com/9.0.0_r3/)
+Ref. module of Quectel EC25-E, based on [AOSP Android 9](http://androidxref.com/9.0.0_r3/) / [Android 10](https://cs.android.com/android/platform/superproject/+/android-10.0.0_r30:)
 
