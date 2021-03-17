@@ -691,6 +691,11 @@ console:/ #
 [Telephony 术语 缩写 Acronyms](https://blog.csdn.net/djialin0418/article/details/51127162)
 
 
+<br>
+
+## Appendix
+
+- 中華電信 mcc/mnc 466/92
 
 <br>
 <br>
