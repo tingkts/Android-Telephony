@@ -703,5 +703,5 @@ console:/ #
 
 
 
-Ref. module of Quectel EC25-E, based on [AOSP Android 9](http://androidxref.com/9.0.0_r3/) / [Android 10](https://cs.android.com/android/platform/superproject/+/android-10.0.0_r30:)
+Ref. module of [Quectel EC25-E](https://github.com/tingkts/Android-Telephony/blob/main/res/Quectel_WCDMA%26LTE_Linux_USB_Driver_User_Guide_V1.8.pdf), based on [AOSP Android 9](http://androidxref.com/9.0.0_r3/) / [Android 10](https://cs.android.com/android/platform/superproject/+/android-10.0.0_r30:)
 
