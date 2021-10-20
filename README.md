@@ -1,7 +1,7 @@
 
 ## Overview
 
-<img src="./res/RIL structure.PNG" alt="RIL structure" style="zoom:45%;" />
+<img src="./res/html/RIL structure.PNG" alt="RIL structure" style="zoom:45%;" />
 
 
 
@@ -251,7 +251,7 @@ drwxr-xr-x 1 ting 1049089      0 Mar 17 13:06 ../
 
 [HIDL Interface of Radio](http://androidxref.com/9.0.0_r3/xref/hardware/interfaces/radio/)
 
-```shell
+```console
 ting@ting-pc:~/aosp/android-9/hardware/interfaces/radio
 $ ls -al
 total 48
@@ -272,7 +272,7 @@ drwxr-xr-x 1 ting 197121 0 十二月 25 17:53 deprecated/
 
   [IRadio](http://androidxref.com/9.0.0_r3/xref/hardware/interfaces/radio/) is implemented by [libril](http://androidxref.com/9.0.0_r3/xref/hardware/ril/libril/)
 
-  ```shell
+  ```console
   # e.g. java: android.hardware.radio.1.1.IRadio
   # e.g. c/C++: android::hardware::radio::1.1::IRadio
 
@@ -340,7 +340,7 @@ drwxr-xr-x 1 ting 197121 0 十二月 25 17:53 deprecated/
 
 ◤ On Android 8.0 or later versions, the communication interface between Android phone framework and ril-daemon service has been changed from socket to HIDL.
 
-```shell
+```console
 ting@ting-pc:~/aosp/android-9/hardware/ril$ ls -al
 total 36
 drwxrwxr-x  7 ting ting 4096 Nov 12 21:23 ./
@@ -359,7 +359,7 @@ drwxrwxr-x  2 ting ting 4096 Nov 12 21:23 rild/               // RIL Daemon
 
   The RIL Daemon talks to the telephony services and dispatches "solicited commands" to the Vendor RIL.
 
-  ```shell
+  ```console
   ting@ting-pc:~/aosp/android-9/hardware/ril/rild$ ls -al
   total 40
   drwxrwxr-x 2 ting ting  4096 Nov 12 21:23 ./
@@ -372,7 +372,7 @@ drwxrwxr-x  2 ting ting 4096 Nov 12 21:23 rild/               // RIL Daemon
   -rw-rw-r-- 1 ting ting   198 Nov 12 21:23 rild.rc
   ```
 
-  ``` shell
+  ``` console
   ting@ting-pc:~/aosp/android-9/hardware/ril/rild$ cat rild.rc
   service vendor.ril-daemon /vendor/bin/hw/rild
       class main
@@ -413,7 +413,7 @@ drwxrwxr-x  2 ting ting 4096 Nov 12 21:23 rild/               // RIL Daemon
 
    Modem module vendor needs to implement this shared library that coding modem specific AT commands.
 
-   ```shell
+   ```console
    ting@ting-pc:~/aosp/android-9/hardware/ril/reference-ril
    $ ls -al
    total 198
@@ -487,7 +487,7 @@ drwxrwxr-x  2 ting ting 4096 Nov 12 21:23 rild/               // RIL Daemon
 
    The library of [rild](http://androidxref.com/9.0.0_r3/xref/hardware/ril/rild/) that implement Radio HIDL service, e.g. android::hardware::radio::V1_1::IRadio.
 
-   ```shell
+   ```console
    ting@ting-pc:~/aosp/android-9/hardware/ril/libril
    $ ls -al
    total 560
@@ -539,7 +539,7 @@ drwxrwxr-x  2 ting ting 4096 Nov 12 21:23 rild/               // RIL Daemon
 
 Usually it needs to stop ril daemon before testing AT command with modem module
 
-```shell
+```console
 
 setprop ctl.start vendor.ril-daemon
 
@@ -549,7 +549,7 @@ setprop ctl.stop vendor.ril-daemon
 
 ### Runtime @ device
 
-```shell
+```console
 console:/vendor # find | grep -w "rild"
 	./etc/init/rild.rc
 	./bin/hw/rild
@@ -607,13 +607,18 @@ console:/ # ps -A | grep -E -i "radio|ril"
     radio         5480  1259 3714564  95160 futex_wait_queue_me 0 S com.android.phone
 ```
 
+</br>
+
+&emsp;☛&ensp;[無線介面層 - 維基百科，自由的百科全書](https://zh.wikipedia.org/wiki/%E7%84%A1%E7%B7%9A%E4%BB%8B%E9%9D%A2%E5%B1%A4)
+
 <br>
+
 
 ## Modem Device Node, Driver Node
 
 - Take modem module Quectel EC25 for example, it's the USB serial device.
 
-```shell
+```console
 console:/ #  ls -l /dev/ttyUSB*
 
 	crw-rw---- 1 radio radio 188,   0 1970-01-01 00:00 /dev/ttyUSB0
@@ -661,7 +666,7 @@ ls -al /sys/bus/usb/drivers
 
 ## Use case of AT command
 
-```shell
+```console
 console:/ #
 
 	cat /dev/ttyUSB2 &
@@ -703,5 +708,16 @@ console:/ #
 
 
 
-Ref. module of [Quectel EC25-E](https://github.com/tingkts/Android-Telephony/blob/main/res/Quectel_WCDMA%26LTE_Linux_USB_Driver_User_Guide_V1.8.pdf), based on [AOSP Android 9](http://androidxref.com/9.0.0_r3/) / [Android 10](https://cs.android.com/android/platform/superproject/+/android-10.0.0_r30:)
+Ref. module of [Quectel EC25-E](https://github.com/tingkts/Android-Telephony/blob/main/res/html/Quectel_WCDMA%26LTE_Linux_USB_Driver_User_Guide_V1.8.pdf), based on [AOSP Android 9](http://androidxref.com/9.0.0_r3/) / [Android 10](https://cs.android.com/android/platform/superproject/+/android-10.0.0_r30:)
+
+
+
+</br>
+</br>
+
+----
+
+</br>
+
+Another porting case : &nbsp;[Fibocom FM150-AE](./Fibocom%20FM150-AE.md)
 

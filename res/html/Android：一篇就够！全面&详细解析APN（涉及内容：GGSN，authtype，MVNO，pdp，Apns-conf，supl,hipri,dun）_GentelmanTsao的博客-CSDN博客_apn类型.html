@@ -1,0 +1,2123 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <link rel="canonical" href="https://blog.csdn.net/GentelmanTsao/article/details/103234535"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="report" content='{"pid": "blog", "spm":"1001.2101"}'>
+    <meta name="referrer" content="always">
+    <meta http-equiv="Cache-Control" content="no-siteapp" /><link rel="alternate" media="handheld" href="#" />
+    <meta name="shenma-site-verification" content="5a59773ab8077d4a62bf469ab966a63b_1497598848">
+    <meta name="applicable-device" content="pc">
+    <link  href="https://g.csdnimg.cn/static/logo/favicon32.ico"  rel="shortcut icon" type="image/x-icon" />
+    <title>Android：一篇就够！全面&amp;详细解析APN（涉及内容：GGSN，authtype，MVNO，pdp，Apns-conf，supl,hipri,dun）_GentelmanTsao的博客-CSDN博客_apn类型</title>
+    <script>
+      (function(){ 
+        var el = document.createElement("script"); 
+        el.src = "https://s3a.pstatp.com/toutiao/push.js?1abfa13dfe74d72d41d83c86d240de427e7cac50c51ead53b2e79d40c7952a23ed7716d05b4a0f683a653eab3e214672511de2457e74e99286eb2c33f4428830"; 
+        el.id = "ttzz"; 
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(el, s);
+      })(window)
+    </script>
+        <meta name="keywords" content="apn类型">
+        <meta name="csdn-baidu-search"  content='{"autorun":true,"install":true,"keyword":"apn类型"}'>
+    <meta name="description" content="全面解析android APN此博文写作坚持以下理念:图胜于表，表胜于言;最好的解释是不用解释;1. APN的概念1.1 APN的定义Definition of Access Point NameIn the GPRS backbone, an Access Point Name (APN) is a reference to a GGSN. To support inter-PLM...">
+    <script src='//g.csdnimg.cn/tingyun/1.8.3/blog.js' type='text/javascript'></script>
+        <link rel="stylesheet" type="text/css" href="https://csdnimg.cn/release/blogv2/dist/pc/css/detail_enter-1715d0f47b.min.css">
+    <script type="application/ld+json">{"@context":"https://ziyuan.baidu.com/contexts/cambrian.jsonld","@id":"https://blog.csdn.net/GentelmanTsao/article/details/103234535","appid":"1638831770136827","pubDate":"2019-11-25T16:25:47","title":"Android：一篇就够！全面&amp;详细解析APN（涉及内容：GGSN，authtype，MVNO，pdp，Apns-conf，supl,hipri,dun）_GentelmanTsao的博客-CSDN博客_apn类型","upDate":"2019-11-25T16:25:47"}</script>
+        <link rel="stylesheet" type="text/css" href="https://csdnimg.cn/release/blogv2/dist/pc/themesSkin/skin-technology/skin-technology-a1f8f1d1b8.min.css">
+    <script src="https://csdnimg.cn/public/common/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var isCorporate = false;//注释删除enterprise
+        var username =  "GentelmanTsao";
+        var skinImg = "white";
+        var blog_address = "https://blog.csdn.net/GentelmanTsao";
+        var currentUserName = "";
+        var isOwner = false;
+        var loginUrl = "http://passport.csdn.net/account/login?from=https://blog.csdn.net/GentelmanTsao/article/details/103234535";
+        var blogUrl = "https://blog.csdn.net/";
+        var avatar = "https://profile.csdnimg.cn/A/8/C/3_gentelmantsao";
+        var articleTitle = "Android：一篇就够！全面&amp;详细解析APN（涉及内容：GGSN，authtype，MVNO，pdp，Apns-conf，supl,hipri,dun）";
+        var articleDesc = "全面解析android APN此博文写作坚持以下理念:图胜于表，表胜于言;最好的解释是不用解释;1. APN的概念1.1 APN的定义Definition of Access Point NameIn the GPRS backbone, an Access Point Name (APN) is a reference to a GGSN. To support inter-PLM...";
+        var articleTitles = "Android：一篇就够！全面&amp;详细解析APN（涉及内容：GGSN，authtype，MVNO，pdp，Apns-conf，supl,hipri,dun）_GentelmanTsao的博客-CSDN博客_apn类型";
+        var nickName = "GentlemanTsao";
+        var articleDetailUrl = "https://blog.csdn.net/GentelmanTsao/article/details/103234535";
+        if(window.location.host.split('.').length == 3) {
+            blog_address = blogUrl + username;
+        }
+        var skinStatus = "White";
+        var blogStaticHost = "https://csdnimg.cn/release/blogv2/"
+    </script>
+    <script src="https://g.csdnimg.cn/??fixed-sidebar/1.1.6/fixed-sidebar.js" type="text/javascript"></script>
+    <script src='//g.csdnimg.cn/common/csdn-report/report.js' type='text/javascript'></script>
+    <link rel="stylesheet" type="text/css" href="https://csdnimg.cn/public/sandalstrap/1.4/css/sandalstrap.min.css">
+    <style>
+        .MathJax, .MathJax_Message, .MathJax_Preview{
+            display: none
+        }
+    </style>
+    <script src="https://dup.baidustatic.com/js/ds.js"></script>
+</head>
+<body class="nodata " style="">
+        <script>
+            var toolbarSearchExt = '{"landingWord":["apn类型"],"queryWord":"","tag":["android","APN","pdp","dataconnection","mvno"],"title":"Android：一篇就够！全面&amp;详细解析APN（涉及内容：GGSN，authtype，MVNO，pdp，Apns-conf，supl,hipri,dun）"}';
+        </script>
+    <script src="https://g.csdnimg.cn/common/csdn-toolbar/csdn-toolbar.js" type="text/javascript"></script>
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+<link rel="stylesheet" href="https://csdnimg.cn/release/blogv2/dist/pc/css/blog_code-01256533b5.min.css">
+<link rel="stylesheet" href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/chart-3456820cac.css" />
+<div class="main_father clearfix d-flex justify-content-center" style="height:100%;"> 
+    <div class="container clearfix" id="mainBox">
+        <main>
+<script type="text/javascript">
+    var blogSensitiveWords = "";
+    function getQueryString(name) {   
+      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象  
+      var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+      if( r != null ) return decodeURIComponent( r[2] ); return '';   
+    }
+    function stripscript(s){ 
+      var pattern = new RegExp("[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？%]") 
+      var rs = ""; 
+      for (var i = 0; i < s.length; i++) { 
+        rs = rs+s.substr(i, 1).replace(pattern, ''); 
+      } 
+      return rs; 
+    }
+    var blogHotWords = stripscript(getQueryString('utm_term')).length > 1 ? stripscript(getQueryString('utm_term')) : ''
+</script>
+<div class="blog-content-box">
+    <div class="article-header-box">
+        <div class="article-header">
+            <div class="article-title-box">
+                <h1 class="title-article" id="articleContentId">Android：一篇就够！全面&amp;详细解析APN（涉及内容：GGSN，authtype，MVNO，pdp，Apns-conf，supl,hipri,dun）</h1>
+            </div>
+            <div class="article-info-box">
+                <div class="article-bar-top">
+                    <img class="article-type-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/original.png" alt="">
+                    <div class="bar-content">
+                        <span class="c-gray">置顶</span>
+                    <a class="follow-nickName " href="https://blog.csdn.net/GentelmanTsao" target="_blank" rel="noopener">GentlemanTsao</a>
+                    <span class="time">2019-11-25 16:25:47</span>
+                    <img class="article-read-img article-heard-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/articleReadEyes.png" alt="">
+                    <span class="read-count">3102</span>
+                    <a id="blog_detail_zk_collection" class="un-collection" data-report-click='{"mod":"popu_823","spm":"1001.2101.3001.4232","ab":"new"}'>
+                        <img class="article-collect-img article-heard-img un-collect-status isdefault" style="display:inline-block" src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarCollect.png" alt="">
+                        <img class="article-collect-img article-heard-img collect-status isactive" style="display:none" src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarCollectionActive.png" alt="">
+                        <span class="name">收藏</span>
+                        <span class="get-collection">
+                            17
+                        </span>
+                    </a>
+                    </div>
+                </div>
+                <div class="blog-tags-box">
+                    <div class="tags-box artic-tag-box">
+                            <span class="label">分类专栏：</span>
+                                <a class="tag-link" href="https://blog.csdn.net/gentelmantsao/category_9541159.html" target="_blank" rel="noopener">Android</a>
+                            <span class="label">文章标签：</span>
+                                <a data-report-click='{"mod":"popu_626","spm":"1001.2101.3001.4223","strategy":"android","ab":"new"}' class="tag-link" href="https://www.csdn.net/tags/MtTakg2sNjM0Ni1ibG9n.html" target="_blank" rel="noopener">android</a>
+                                <a data-report-click='{"mod":"popu_626","spm":"1001.2101.3001.4223","strategy":"APN","ab":"new"}' class="tag-link" href="https://so.csdn.net/so/search/s.do?q=APN&amp;t=blog&amp;o=vip&amp;s=&amp;l=&amp;f=&amp;viparticle=" target="_blank" rel="noopener">APN</a>
+                                <a data-report-click='{"mod":"popu_626","spm":"1001.2101.3001.4223","strategy":"pdp","ab":"new"}' class="tag-link" href="https://so.csdn.net/so/search/s.do?q=pdp&amp;t=blog&amp;o=vip&amp;s=&amp;l=&amp;f=&amp;viparticle=" target="_blank" rel="noopener">pdp</a>
+                                <a data-report-click='{"mod":"popu_626","spm":"1001.2101.3001.4223","strategy":"dataconnection","ab":"new"}' class="tag-link" href="https://so.csdn.net/so/search/s.do?q=dataconnection&amp;t=blog&amp;o=vip&amp;s=&amp;l=&amp;f=&amp;viparticle=" target="_blank" rel="noopener">dataconnection</a>
+                                <a data-report-click='{"mod":"popu_626","spm":"1001.2101.3001.4223","strategy":"mvno","ab":"new"}' class="tag-link" href="https://so.csdn.net/so/search/s.do?q=mvno&amp;t=blog&amp;o=vip&amp;s=&amp;l=&amp;f=&amp;viparticle=" target="_blank" rel="noopener">mvno</a>
+                    </div>
+                </div>
+                <div class="slide-content-box">
+                    <div class="article-copyright">
+                        <div class="creativecommons">
+                            版权声明：本文为博主原创文章，遵循<a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener"> CC 4.0 BY-SA </a>版权协议，转载请附上原文出处链接和本声明。
+                        </div>
+                        <div class="article-source-link">
+                            本文链接：<a href="https://blog.csdn.net/GentelmanTsao/article/details/103234535" target="_blank">https://blog.csdn.net/GentelmanTsao/article/details/103234535</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="operating">
+                    <a class="href-article-edit slide-toggle">版权</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <article class="baidu_pl">
+        <div id="article_content" class="article_content clearfix">
+        <link rel="stylesheet" href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/ck_htmledit_views-b5506197d8.css">
+                <div id="content_views" class="markdown_views prism-atom-one-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                        <path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                    </svg>
+                    <p>每篇一格言&#xff1a;<br /> <strong>人生就像滚雪球,关键是要找到足够湿的雪,和足够长的坡。</strong><br /> ——沃伦巴菲特<br /> </p>
+<div class="toc">
+ <h3>目录</h3>
+ <ul><li><a href="#1_APN_4">1. APN&#xff1a;从概念说起</a></li><li><ul><li><a href="#11_3GPPAPN_5">1.1 从3GPP看APN的定义和角色</a></li><li><a href="#12_APN_19">1.2 APN包含哪些参数</a></li><li><ul><li><a href="#APN_37">APN的类型&#xff1a;</a></li></ul>
+   </li><li><a href="#13_APN_40">1.3 APN的存储位置与加载位置</a></li><li><ul><li><a href="#131_APN_41">1.3.1 APN的存储位置</a></li><li><a href="#132_APN_59">1.3.2 APN的加载位置</a></li></ul>
+   </li><li><a href="#14APN_70">1.4虚拟运营商的APN</a></li></ul>
+  </li><li><a href="#2_APN_79">2. APN的实现机制</a></li><li><ul><li><a href="#21%09APN_XMLdatabase_80">2.1 APN的创建&#xff1a; 从XML到database</a></li><li><a href="#22_APNSIM_126">2.2 APN匹配SIM卡与菜单显示</a></li><li><a href="#23_PDPAPN_141">2.3 PDP时APN的选择</a></li><li><a href="#24_modemAPN_161">2.4 modem中的APN</a></li></ul>
+  </li><li><a href="#1__xmldatabase_166">附录1 从xml加载到database</a></li><li><a href="#2APN_277">附录2。APN的读取与菜单显示</a></li><li><a href="#3_PDPAPN_402">附录3 PDP中的APN</a></li></ul>
+</div>
+<p></p> 
+<h1><a id="1_APN_4"></a>1. APN&#xff1a;从概念说起</h1> 
+<h2><a id="11_3GPPAPN_5"></a>1.1 从3GPP看APN的定义和角色</h2> 
+<p><strong>Definition of Access Point Name</strong><br /> In the GPRS backbone, an Access Point Name (APN) is a reference to a GGSN. To support inter-PLMN roaming, the internal GPRS DNS functionality is used to translate the APN into the IP address of the GGSN.<br /> ——3gpp 23.003</p> 
+<p>从定义可看出&#xff0c;APN是GGSN的引用&#xff0c;被internal GPRS DNS转换为GGSN的IP地址。<br /> <img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20191125111141196.png" /><br /> 那么GGSN是什么&#xff0c;又是做什么的呢&#xff1f;<br /> <strong>GGSN全称Gateway GPRS Support Node, 网关GPRS支持节点</strong></p> 
+<p>GGSN主要起网关作用&#xff0c;所扮演的角色&#xff1a;<br /> 对内&#xff1a;网络传输&#xff1b; &#xff08;网络接入控制&#xff0c;分组数据的过滤&#xff09;<br /> 对外&#xff1a;路由器&#xff08;路由选择和分组的转发&#xff0c;IP地址分配&#xff09;</p> 
+<h2><a id="12_APN_19"></a>1.2 APN包含哪些参数</h2> 
+<p>一个典型的APN包含的参数有名称、MCCMNC、接入点、类型。</p> 
+<p><strong>下面以CMCC APN为例&#xff0c;它包含下面一些参数&#xff1a;</strong><br /> &lt;apn carrier&#61;“连接互联网” //名称<br /> mcc&#61;“460” //MCC<br /> mnc&#61;“07” //MNC<br /> apn&#61;“cmnet” //接入点<br /> type&#61;“default,supl,net” //类型<br /> /&gt;</p> 
+<p>APN还可以包含其他更多的参数&#xff0c;主要有下面这些&#xff1a;</p> 
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20191221163721155.PNG?x-oss-process&#61;image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0dlbnRlbG1hblRzYW8&#61;,size_16,color_FFFFFF,t_70" /></p> 
+<p><strong>Note &#xff1a;每个有数据业务的运营商都会设定自己的APN&#xff0c;同一个运营商的APN可能有多条&#xff0c;包括分别用于3G或4G&#xff0c;NET和WAP&#xff0c;不同APN的使用范围和收费会有差别。</strong></p> 
+<h3><a id="APN_37"></a>APN的类型&#xff1a;</h3> 
+<p>常见的APN类型有下面几种&#xff0c;用途和优先级各有不同。<br /> <img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20191223102429888.png?x-oss-process&#61;image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0dlbnRlbG1hblRzYW8&#61;,size_16,color_FFFFFF,t_70" /></p> 
+<h2><a id="13_APN_40"></a>1.3 APN的存储位置与加载位置</h2> 
+<h3><a id="131_APN_41"></a>1.3.1 APN的存储位置</h3> 
+<p>APN以XML的格式存储。<br /> <strong>文件名</strong>&#xff1a;<br /> Apns-conf.xml</p> 
+<p><strong>源码文件路径</strong>&#xff1a;<br /> MTK平台&#xff08;通常&#xff09;&#xff1a;alps\mediatek\frameworks\base\telephony\etc<br /> 高通平台&#xff08;通常&#xff09;&#xff1a;android\vendor\qcom\proprietary\telephony-apps\etc</p> 
+<p><strong>UE文件路径</strong>&#xff1a;<br /> system/etc/ Apns-conf.xml</p> 
+<p>当UE开机后&#xff0c;读取XML中的APN并写入到database中。</p> 
+<p><strong>database中APN 的table名称</strong>&#xff1a;<br /> content://telephony/carriers<br /> 注&#xff1a;有些平台为了适配dual SIM&#xff0c;可能会加上sub1/sub2等。</p> 
+<h3><a id="132_APN_59"></a>1.3.2 APN的加载位置</h3> 
+<p><strong>加载到database&#xff1a;</strong><br /> TelephonyProvider读取XML并在database中插入apn的table。</p> 
+<p><strong>加载到UI菜单&#xff1a;</strong><br /> 根据SIM卡的MCCMNC&#xff0c;去匹配database中同样MCCMNC的APN项&#xff0c;并将匹配到的APN填写到菜单列表。</p> 
+<p><strong>加载到PDP请求&#xff1a;</strong><br /> 由DCtracker负责创建/更新waiting APN list&#xff0c;供PDP选用。</p> 
+<h2><a id="14APN_70"></a>1.4虚拟运营商的APN</h2> 
+<p>虚拟运营商&#xff08;MVNO&#xff09;没有自营网段&#xff0c;使用了主运营商的网段&#xff0c;因而和主运营商有相同的MCCMNC。为了能够与主运营商区分&#xff0c;虚拟运营商的APN还包含了MVNO参数。MVNO参数分为SPN/PNN/IMSI/GID1&#xff0c;是从SIM卡对应栏位读取的值&#xff0c;目的是从该值中判断该SIM卡是否属于MVNO。</p> 
+<p>在加载MVNO SIM卡的APN时&#xff0c;会同时去匹配MCCMNC和MVNO参数。</p> 
+<p><strong>APN的概念部分到此告一段落&#xff0c;下面做个总结&#xff1a;</strong><br /> <img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20191221163036743.png?x-oss-process&#61;image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0dlbnRlbG1hblRzYW8&#61;,size_16,color_FFFFFF,t_70" /></p> 
+<h1><a id="2_APN_79"></a>2. APN的实现机制</h1> 
+<h2><a id="21%09APN_XMLdatabase_80"></a>2.1 APN的创建&#xff1a; 从XML到database</h2> 
+<p>在上一章中我们讲到&#xff0c;APN的原始参数存放在XML中;<br /> 而UE是通过query database的方式使用APN;<br /> 因而必然需要将APN从XML录入到database,这一步在telephonyprovider中实现。</p> 
+<p>为了更清晰的理解实现思路&#xff0c;避免过多的源码干扰阅读节奏&#xff0c;接下来的分析中涉及到的源码部分&#xff0c;都以伪代码的形式给出&#xff0c;详细的代码以附录形式给出。</p> 
+<p><strong>telephonyprovider中的initDatabase方法的逻辑&#xff08;伪代码&#xff09;&#xff1a;</strong></p> 
+<pre><code>private void initDatabase(SQLiteDatabase db) {
+ 1.打开APN xml文件etc/apns-conf.xml
+ 2. 获得文件句柄后&#xff0c;使用FileReader得到文件字符流
+ 3. 检查APN version一致性
+ 4.加载XMl中的数据到database&#xff0c;具体见loadApns方法
+}
+</code></pre> 
+<p><a href="https://blog.csdn.net/GentelmanTsao/article/details/103234535#t12">源码点这里</a><br /> 对第3点&#xff1a;“检查APN version一致性” 的说明&#xff1a;<br /> 随着OS升级&#xff0c;APN字段也在更新&#xff0c;因此检查APN version的目的是为了避免XML与OS不兼容。若version不一致&#xff0c;抛出异常&#xff1a;</p> 
+<pre><code>// Sanity check. Force internal version and confidential versions to agree
+                int confversion &#61; Integer.parseInt(confparser.getAttributeValue(null, &#34;version&#34;));
+                if (publicversion !&#61; confversion) {
+                    throw new IllegalStateException(&#34;Internal APNS file version doesn&#39;t match &#34;
+                            &#43; confFile.getAbsolutePath());
+                }
+
+</code></pre> 
+<p><strong>loadApns的逻辑&#xff08;伪代码&#xff09;</strong></p> 
+<pre><code>private void loadApns(SQLiteDatabase db, XmlPullParser parser) {
+1。每次读取parser中的一个element&#xff0c;也就是一条APN数据
+2.通过getrow方法将APN转换为Contentvalues&#xff1b;
+3.最后通过insertAddingDefaults将键值写入database&#xff1a;
+}
+</code></pre> 
+<p>写入的table名是CARRIERS_TABLE&#xff0c;该table由createCarriersTable方法创建。<br /> 该table url是&#xff1a;content://telephony/carriers/</p> 
+<p><strong>table 创建时机&#xff1a;</strong><br /> telephonyprovider的内部类DatabaseHelper在oncreate时创建APN table。<br /> DatabaseHelper类负责APN database的增删改查工作。</p> 
+<h2><a id="22_APNSIM_126"></a>2.2 APN匹配SIM卡与菜单显示</h2> 
+<p>设备插入SIM后&#xff0c;设置菜单中会显示该SIM卡对应的APN菜单。<br /> 这部分在ApnSettings.java (android\packages\apps\settings\src\com\android\settings) 中的fillList方法实现的。该方法主要根据SIM卡的mccmnc去query db并将APN填入菜单中。感兴趣可自行查看&#xff0c;不再具体讨论。</p> 
+<p>对于MVNO SIM卡&#xff0c;除了mccmnc还需根据MVNO type和MVNO value过滤。详细见mvnoMatches方法。</p> 
+<p><strong>备注1.</strong><br /> SIM卡的mccmnc获取的是PROPERTY_ICC_OPERATOR_NUMERIC的值&#xff0c;而PROPERTY_ICC_OPERATOR_NUMERIC是在SIM loaded后根据IMSI得到。&#xff08;取前5位or前6位&#xff09;</p> 
+<p><strong>备注2.</strong><br /> mvno type举例&#xff1a;SPN类型&#xff0c;通过getServiceProviderName获取&#xff0c;其值来自SIM卡中的EF_SPN:分为SIM (EF_SPN&#61;0x6F46)或 RUIM (EF_RUIM_SPN&#61;0x6F41)。</p> 
+<p>有关SIM卡加载的更多内容&#xff0c;请移步这里:<br /> <strong><a href="https://blog.csdn.net/GentelmanTsao/article/details/103089474">Android:USIM软件架构与加载流程</a></strong></p> 
+<h2><a id="23_PDPAPN_141"></a>2.3 PDP时APN的选择</h2> 
+<p>UE插入SIM卡后&#xff0c;telephony根据SIM卡的mccmnc&#xff0c;先创建一个包含该SIM卡所有APN的列表&#xff08;AllApnList&#xff09;。</p> 
+<p>这一步在DcTracker中实现。Call flow见下图&#xff1a;<br /> <img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20191209112032492.png?x-oss-process&#61;image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0dlbnRlbG1hblRzYW8&#61;,size_16,color_FFFFFF,t_70" /><br /> <strong>下面列出了createAllApnList的实现步骤&#xff08;伪代码&#xff09;&#xff1a;</strong></p> 
+<pre><code>protected void createAllApnList() {
+1。根据SIM卡mccmnc&#xff0c;创建APN list
+2。设置preferred APN
+3。Set DataProfile in modem
+}
+</code></pre> 
+<p>有了AllApnList&#xff0c;在setup data时&#xff0c;根据数据业务类型&#xff08;上网/彩信/…&#xff09;&#xff0c;从all apn list中筛选出“waiting apn list”&#xff0c;用于建立PDP.</p> 
+<pre><code>private ArrayList&lt;ApnSetting&gt; buildWaitingApns(String requestedApnType, int radioTech) {
+//根据requestedApnType和radioTech筛选waiting apn
+}
+</code></pre> 
+<h2><a id="24_modemAPN_161"></a>2.4 modem中的APN</h2> 
+<p>modem中同样存储了APN&#xff0c;详细内容可参考我的另一篇文章&#xff1a;<br /> <strong><a href="https://blog.csdn.net/GentelmanTsao/article/details/106897639">Modem2G/3G/4G/5G&#xff1a;APN&#xff1a;使用AT&#43;CGDCONT命令设置modem默认APN&#xff08;CID1&#xff09;</a></strong></p> 
+<p><strong>你可能想知道更多详细内容&#xff0c;下面源码以附录形式给出。</strong></p> 
+<h1><a id="1__xmldatabase_166"></a>附录1 从xml加载到database</h1> 
+<p>TelephonyProvider.java (amss\linux\android\packages\providers\telephonyprovider\src\com\android\providers\telephony)</p> 
+<pre><code>        private void initDatabase(SQLiteDatabase db) {
+            if (VDBG) log(&#34;dbh.initDatabase:&#43; db&#61;&#34; &#43; db);
+            // Read internal APNS data
+            Resources r &#61; mContext.getResources();
+            XmlResourceParser parser &#61; r.getXml(com.android.internal.R.xml.apns);
+            int publicversion &#61; -1;
+            try {
+                XmlUtils.beginDocument(parser, &#34;apns&#34;);
+                publicversion &#61; Integer.parseInt(parser.getAttributeValue(null, &#34;version&#34;));
+                loadApns(db, parser);
+            } catch (Exception e) {
+                loge(&#34;Got exception while loading APN database.&#34; &#43; e);
+            } finally {
+                parser.close();
+            }
+
+            // Read external APNS data (partner-provided)
+            XmlPullParser confparser &#61; null;
+            File confFile &#61; getApnConfFile();
+
+            FileReader confreader &#61; null;
+            if (DBG) log(&#34;confFile &#61; &#34; &#43; confFile);
+            try {
+                confreader &#61; new FileReader(confFile);
+                confparser &#61; Xml.newPullParser();
+                confparser.setInput(confreader);
+                XmlUtils.beginDocument(confparser, &#34;apns&#34;);
+
+                // Sanity check. Force internal version and confidential versions to agree
+                int confversion &#61; Integer.parseInt(confparser.getAttributeValue(null, &#34;version&#34;));
+                if (publicversion !&#61; confversion) {
+                    log(&#34;initDatabase: throwing exception due to version mismatch&#34;);
+                    throw new IllegalStateException(&#34;Internal APNS file version doesn&#39;t match &#34;
+                            &#43; confFile.getAbsolutePath());
+                }
+
+                loadApns(db, confparser);
+            } catch (FileNotFoundException e) {
+                // It&#39;s ok if the file isn&#39;t found. It means there isn&#39;t a confidential file
+                // Log.e(TAG, &#34;File not found: &#39;&#34; &#43; confFile.getAbsolutePath() &#43; &#34;&#39;&#34;);
+            } catch (Exception e) {
+                loge(&#34;initDatabase: Exception while parsing &#39;&#34; &#43; confFile.getAbsolutePath() &#43; &#34;&#39;&#34; &#43;
+                        e);
+            } finally {
+                // Get rid of user/carrier deleted entries that are not present in apn xml file.
+                // Those entries have edited value USER_DELETED/CARRIER_DELETED.
+                if (VDBG) {
+                    log(&#34;initDatabase: deleting USER_DELETED and replacing &#34;
+                            &#43; &#34;DELETED_BUT_PRESENT_IN_XML with DELETED&#34;);
+                }
+
+                // Delete USER_DELETED
+                db.delete(CARRIERS_TABLE, IS_USER_DELETED &#43; &#34; or &#34; &#43; IS_CARRIER_DELETED, null);
+
+                // Change USER_DELETED_BUT_PRESENT_IN_XML to USER_DELETED
+                ContentValues cv &#61; new ContentValues();
+                cv.put(EDITED, USER_DELETED);
+                db.update(CARRIERS_TABLE, cv, IS_USER_DELETED_BUT_PRESENT_IN_XML, null);
+
+                // Change CARRIER_DELETED_BUT_PRESENT_IN_XML to CARRIER_DELETED
+                cv &#61; new ContentValues();
+                cv.put(EDITED, CARRIER_DELETED);
+                db.update(CARRIERS_TABLE, cv, IS_CARRIER_DELETED_BUT_PRESENT_IN_XML, null);
+
+                if (confreader !&#61; null) {
+                    try {
+                        confreader.close();
+                    } catch (IOException e) {
+                        // do nothing
+                    }
+                }
+
+                // Update the stored checksum
+                setApnConfChecksum(getChecksum(confFile));
+            }
+            if (VDBG) log(&#34;dbh.initDatabase:- db&#61;&#34; &#43; db);
+
+        }
+</code></pre> 
+<pre><code>private void loadApns(SQLiteDatabase db, XmlPullParser parser) {
+            if (parser !&#61; null) {
+                try {
+                    db.beginTransaction();
+                    XmlUtils.nextElement(parser);
+                    while (parser.getEventType() !&#61; XmlPullParser.END_DOCUMENT) {
+                        ContentValues row &#61; getRow(parser);
+                        if (row &#61;&#61; null) {
+                            throw new XmlPullParserException(&#34;Expected &#39;apn&#39; tag&#34;, parser, null);
+                        }
+                        insertAddingDefaults(db, row);
+                        XmlUtils.nextElement(parser);
+                    }
+                    db.setTransactionSuccessful();
+                } catch (XmlPullParserException e) {
+                    loge(&#34;Got XmlPullParserException while loading apns.&#34; &#43; e);
+                } catch (IOException e) {
+                    loge(&#34;Got IOException while loading apns.&#34; &#43; e);
+                } catch (SQLException e) {
+                    loge(&#34;Got SQLException while loading apns.&#34; &#43; e);
+                } finally {
+                    db.endTransaction();
+                }
+            }
+        }
+</code></pre> 
+<h1><a id="2APN_277"></a>附录2。APN的读取与菜单显示</h1> 
+<p>ApnSettings.java (amss\linux\android\packages\apps\settings\src\com\android\settings)</p> 
+<pre><code>private void fillList() {
+        final TelephonyManager tm &#61; (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+        final int subId &#61; mSubscriptionInfo !&#61; null ? mSubscriptionInfo.getSubscriptionId()
+                : SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+        final String mccmnc &#61; mSubscriptionInfo &#61;&#61; null ? &#34;&#34; : tm.getSimOperator(subId);
+        Log.d(TAG, &#34;mccmnc &#61; &#34; &#43; mccmnc);
+        StringBuilder where &#61; new StringBuilder(&#34;numeric&#61;\&#34;&#34; &#43; mccmnc &#43;
+                &#34;\&#34; AND NOT (type&#61;&#39;ia&#39; AND (apn&#61;\&#34;\&#34; OR apn IS NULL)) AND user_visible!&#61;0&#34;);
+
+        if (mHideImsApn) {
+            where.append(&#34; AND NOT (type&#61;&#39;ims&#39;)&#34;);
+        }
+
+        appendFilter(where);
+
+        Log.d(TAG, &#34;where &#61; &#34; &#43; where.toString());
+
+        Cursor cursor &#61; getContentResolver().query(Telephony.Carriers.CONTENT_URI, new String[] {
+                &#34;_id&#34;, &#34;name&#34;, &#34;apn&#34;, &#34;type&#34;, &#34;mvno_type&#34;, &#34;mvno_match_data&#34;, &#34;bearer&#34;, &#34;bearer_bitmask&#34;}, where.toString(),
+                null, Telephony.Carriers.DEFAULT_SORT_ORDER);
+
+        if (cursor !&#61; null) {
+            IccRecords r &#61; null;
+            if (mUiccController !&#61; null &amp;&amp; mSubscriptionInfo !&#61; null) {
+                r &#61; mUiccController.getIccRecords(
+                        SubscriptionManager.getPhoneId(subId), UiccController.APP_FAM_3GPP);
+            }
+            PreferenceGroup apnList &#61; (PreferenceGroup) findPreference(&#34;apn_list&#34;);
+            apnList.removeAll();
+
+            ArrayList&lt;ApnPreference&gt; mnoApnList &#61; new ArrayList&lt;ApnPreference&gt;();
+            ArrayList&lt;ApnPreference&gt; mvnoApnList &#61; new ArrayList&lt;ApnPreference&gt;();
+            ArrayList&lt;ApnPreference&gt; mnoMmsApnList &#61; new ArrayList&lt;ApnPreference&gt;();
+            ArrayList&lt;ApnPreference&gt; mvnoMmsApnList &#61; new ArrayList&lt;ApnPreference&gt;();
+
+            mSelectedKey &#61; getSelectedApnKey();
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                String name &#61; cursor.getString(NAME_INDEX);
+                String apn &#61; cursor.getString(APN_INDEX);
+                String key &#61; cursor.getString(ID_INDEX);
+                String type &#61; cursor.getString(TYPES_INDEX);
+                String mvnoType &#61; cursor.getString(MVNO_TYPE_INDEX);
+                String mvnoMatchData &#61; cursor.getString(MVNO_MATCH_DATA_INDEX);
+
+                //Special requirement of some operators, need change APN name follow language.
+                String localizedName &#61; Utils.getLocalizedName(getActivity(), cursor, NAME_INDEX);
+
+                if (!TextUtils.isEmpty(localizedName)) {
+                    name &#61; localizedName;
+                }
+                int bearer &#61; cursor.getInt(BEARER_INDEX);
+                int bearerBitMask &#61; cursor.getInt(BEARER_BITMASK_INDEX);
+                int fullBearer &#61; ServiceState.getBitmaskForTech(bearer) | bearerBitMask;
+                int radioTech &#61; networkTypeToRilRidioTechnology(TelephonyManager.getDefault()
+                        .getDataNetworkType(subId));
+                if (!ServiceState.bitmaskHasTech(fullBearer, radioTech)
+                        &amp;&amp; (bearer !&#61; 0 || bearerBitMask !&#61; 0)) {
+                    // In OOS, show APN with bearer as default
+                    if ((radioTech !&#61; ServiceState.RIL_RADIO_TECHNOLOGY_UNKNOWN) || (bearer &#61;&#61; 0
+                            &amp;&amp; radioTech &#61;&#61; ServiceState.RIL_RADIO_TECHNOLOGY_UNKNOWN)) {
+                        cursor.moveToNext();
+                        continue;
+                    }
+                }
+                ApnPreference pref &#61; new ApnPreference(getPrefContext());
+
+                pref.setKey(key);
+                pref.setTitle(name);
+                pref.setSummary(apn);
+                pref.setPersistent(false);
+                pref.setOnPreferenceChangeListener(this);
+                pref.setSubId(subId);
+
+                boolean selectable &#61; ((type &#61;&#61; null) || !type.equals(&#34;mms&#34;));
+                pref.setSelectable(selectable);
+                if (selectable) {
+                    if ((mSelectedKey !&#61; null) &amp;&amp; mSelectedKey.equals(key)) {
+                        pref.setChecked();
+                    }
+                    addApnToList(pref, mnoApnList, mvnoApnList, r, mvnoType, mvnoMatchData);
+                } else {
+                    addApnToList(pref, mnoMmsApnList, mvnoMmsApnList, r, mvnoType, mvnoMatchData);
+                }
+                cursor.moveToNext();
+            }
+            cursor.close();
+
+            if (!mvnoApnList.isEmpty()) {
+                mnoApnList &#61; mvnoApnList;
+                mnoMmsApnList &#61; mvnoMmsApnList;
+
+                // Also save the mvno info
+            }
+
+            for (Preference preference : mnoApnList) {
+                apnList.addPreference(preference);
+            }
+            for (Preference preference : mnoMmsApnList) {
+                apnList.addPreference(preference);
+            }
+        }
+    }
+</code></pre> 
+<p>MVNO的处理&#xff1a;</p> 
+<pre><code>private void addApnToList(ApnPreference pref, ArrayList&lt;ApnPreference&gt; mnoList,
+                              ArrayList&lt;ApnPreference&gt; mvnoList, IccRecords r, String mvnoType,
+                              String mvnoMatchData) {
+        if (r !&#61; null &amp;&amp; !TextUtils.isEmpty(mvnoType) &amp;&amp; !TextUtils.isEmpty(mvnoMatchData)) {
+            if (ApnSetting.mvnoMatches(r, mvnoType, mvnoMatchData)) {
+                mvnoList.add(pref);
+                // Since adding to mvno list, save mvno info
+                mMvnoType &#61; mvnoType;
+                mMvnoMatchData &#61; mvnoMatchData;
+            }
+        } else {
+            mnoList.add(pref);
+        }
+    }
+</code></pre> 
+<h1><a id="3_PDPAPN_402"></a>附录3 PDP中的APN</h1> 
+<p>DcTracker.java<br /> createAllApn:</p> 
+<pre><code>protected void createAllApnList() {
+        mMvnoMatched &#61; false;
+        mAllApnSettings &#61; new ArrayList&lt;&gt;();
+        IccRecords r &#61; mIccRecords.get();
+        String operator &#61; mPhone.getOperatorNumeric();
+        if (operator !&#61; null) {
+            String selection &#61; Telephony.Carriers.NUMERIC &#43; &#34; &#61; &#39;&#34; &#43; operator &#43; &#34;&#39;&#34;;
+            // query only enabled apn.
+            // carrier_enabled : 1 means enabled apn, 0 disabled apn.
+            // selection &#43;&#61; &#34; and carrier_enabled &#61; 1&#34;;
+            if (DBG) log(&#34;createAllApnList: selection&#61;&#34; &#43; selection);
+
+            // ORDER BY Telephony.Carriers._ID (&#34;_id&#34;)
+            Cursor cursor &#61; mPhone.getContext().getContentResolver().query(
+                    Telephony.Carriers.CONTENT_URI, null, selection, null, Telephony.Carriers._ID);
+
+            if (cursor !&#61; null) {
+                if (cursor.getCount() &gt; 0) {
+                    mAllApnSettings &#61; createApnList(cursor);
+                }
+                cursor.close();
+            }
+        }
+
+        addEmergencyApnSetting();
+
+        dedupeApnSettings();
+
+        if (mAllApnSettings.isEmpty()) {
+            if (DBG) log(&#34;createAllApnList: No APN found for carrier: &#34; &#43; operator);
+            mPreferredApn &#61; null;
+            // TODO: What is the right behavior?
+            //notifyNoData(DataConnection.FailCause.MISSING_UNKNOWN_APN);
+        } else {
+            mPreferredApn &#61; getPreferredApn();
+            if (mPreferredApn !&#61; null &amp;&amp; !mPreferredApn.numeric.equals(operator)) {
+                mPreferredApn &#61; null;
+                setPreferredApn(-1);
+            }
+            if (DBG) log(&#34;createAllApnList: mPreferredApn&#61;&#34; &#43; mPreferredApn);
+        }
+        if (DBG) log(&#34;createAllApnList: X mAllApnSettings&#61;&#34; &#43; mAllApnSettings);
+
+        setDataProfilesAsNeeded();
+    }
+</code></pre> 
+<p>筛选候选apn用于PDP</p> 
+<pre><code>private ArrayList&lt;ApnSetting&gt; buildWaitingApns(String requestedApnType, int radioTech) {
+        if (DBG) log(&#34;buildWaitingApns: E requestedApnType&#61;&#34; &#43; requestedApnType);
+        ArrayList&lt;ApnSetting&gt; apnList &#61; new ArrayList&lt;ApnSetting&gt;();
+
+        if (requestedApnType.equals(PhoneConstants.APN_TYPE_DUN)) {
+            ApnSetting dun &#61; fetchDunApn();
+            if (dun !&#61; null) {
+                apnList.add(dun);
+                if (DBG) log(&#34;buildWaitingApns: X added APN_TYPE_DUN apnList&#61;&#34; &#43; apnList);
+                return apnList;
+            }
+        }
+
+        String operator &#61; mPhone.getOperatorNumeric();
+
+        // This is a workaround for a bug (7305641) where we don&#39;t failover to other
+        // suitable APNs if our preferred APN fails.  On prepaid ATT sims we need to
+        // failover to a provisioning APN, but once we&#39;ve used their default data
+        // connection we are locked to it for life.  This change allows ATT devices
+        // to say they don&#39;t want to use preferred at all.
+        boolean usePreferred &#61; true;
+        try {
+            usePreferred &#61; ! mPhone.getContext().getResources().getBoolean(com.android.
+                    internal.R.bool.config_dontPreferApn);
+        } catch (Resources.NotFoundException e) {
+            if (DBG) log(&#34;buildWaitingApns: usePreferred NotFoundException set to true&#34;);
+            usePreferred &#61; true;
+        }
+        if (usePreferred) {
+            mPreferredApn &#61; getPreferredApn();
+        }
+        if (DBG) {
+            log(&#34;buildWaitingApns: usePreferred&#61;&#34; &#43; usePreferred
+                    &#43; &#34; canSetPreferApn&#61;&#34; &#43; mCanSetPreferApn
+                    &#43; &#34; mPreferredApn&#61;&#34; &#43; mPreferredApn
+                    &#43; &#34; operator&#61;&#34; &#43; operator &#43; &#34; radioTech&#61;&#34; &#43; radioTech
+                    &#43; &#34; IccRecords r&#61;&#34; &#43; mIccRecords);
+        }
+
+        if (usePreferred &amp;&amp; mCanSetPreferApn &amp;&amp; mPreferredApn !&#61; null &amp;&amp;
+                mPreferredApn.canHandleType(requestedApnType)) {
+            if (DBG) {
+                log(&#34;buildWaitingApns: Preferred APN:&#34; &#43; operator &#43; &#34;:&#34;
+                        &#43; mPreferredApn.numeric &#43; &#34;:&#34; &#43; mPreferredApn);
+            }
+            if (mPreferredApn.numeric.equals(operator)) {
+                if (ServiceState.bitmaskHasTech(mPreferredApn.bearerBitmask, radioTech)) {
+                    apnList.add(mPreferredApn);
+                    if (DBG) log(&#34;buildWaitingApns: X added preferred apnList&#61;&#34; &#43; apnList);
+                    return apnList;
+                } else {
+                    if (DBG) log(&#34;buildWaitingApns: no preferred APN&#34;);
+                    setPreferredApn(-1);
+                    mPreferredApn &#61; null;
+                }
+            } else {
+                if (DBG) log(&#34;buildWaitingApns: no preferred APN&#34;);
+                setPreferredApn(-1);
+                mPreferredApn &#61; null;
+            }
+        }
+        if (mAllApnSettings !&#61; null) {
+            if (DBG) log(&#34;buildWaitingApns: mAllApnSettings&#61;&#34; &#43; mAllApnSettings);
+            for (ApnSetting apn : mAllApnSettings) {
+                if (apn.canHandleType(requestedApnType)) {
+                    if (ServiceState.bitmaskHasTech(apn.bearerBitmask, radioTech)) {
+                        if (DBG) log(&#34;buildWaitingApns: adding apn&#61;&#34; &#43; apn);
+                        apnList.add(apn);
+                    } else {
+                        if (DBG) {
+                            log(&#34;buildWaitingApns: bearerBitmask:&#34; &#43; apn.bearerBitmask &#43; &#34; does &#34; &#43;
+                                    &#34;not include radioTech:&#34; &#43; radioTech);
+                        }
+                    }
+                } else if (DBG) {
+                    log(&#34;buildWaitingApns: couldn&#39;t handle requested ApnType&#61;&#34;
+                            &#43; requestedApnType);
+                }
+            }
+        } else {
+            loge(&#34;mAllApnSettings is null!&#34;);
+        }
+        if (DBG) log(&#34;buildWaitingApns: &#34; &#43; apnList.size() &#43; &#34; APNs in the list: &#34; &#43; apnList);
+        return apnList;
+    }
+</code></pre> 
+<p>相关章节&#xff1a;<br /> <strong><a href="https://blog.csdn.net/GentelmanTsao/article/details/103868891">全面&amp;系统的解析android RSSI信号显示与刷新&#xff0c;总篇</a></strong></p> 
+<p><strong>本文为原创文章。看完点赞&#xff0c;每天进步一点点&#xff5e;</strong></p>
+                </div>
+                <link href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/markdown_views-d7a94ec6ab.css" rel="stylesheet">
+                <link href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/style-f1c5feb645.css" rel="stylesheet">
+        </div>
+    </article>
+</div>
+<div class="more-toolbox" id="toolBarBox">
+    <span id="fixedBar"></span>
+    <div class="left-toolbox">
+        <ul class="toolbox-list">
+            <li class="tool-item tool-item-size tool-active is-like" id="is-like"><a>
+            <img style="display:none;" id="is-like-imgactive-animation-like" class="animation-dom active-animation" src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarThumbUpactive.png" alt="">
+            <img class="isactive" style="display:none" id="is-like-imgactive" src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarThumbUpactive.png" alt="">
+            <img class="isdefault" style="display:block" id="is-like-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarThumbUp.png" alt="">   
+            <span class="name" id="is-like-span">点赞</span>
+            <span id="spanCount" class="count">
+                    5
+            </span>
+            </a></li>
+            <li class="tool-item tool-item-size tool-active tool-item-comment">
+                <a href="#commentBox">
+                    <img class="isdefault" src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarComment.png" alt="">
+                    <img class="isactive" src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarCommentactive.png" style="display:none;" alt="">
+                    <span class="name">评论</span>
+                    <span class="count">
+                    </span>
+                </a>
+            </li>
+            <li class="tool-item tool-item-size tool-active tool-QRcode" id="tool-share">
+                <a href="javascript:;" data-report-click='{"mod":"1582594662_002","spm":"1001.2101.3001.4129","ab":"new"}'>
+                    <img class="isdefault" src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarShare.png" alt="">
+                    <img class="isactive" src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarShareactive.png" style="display:none;" alt="">
+                    <span class="name">分享</span>
+                </a>
+                <div class="QRcode" id="tool-QRcode" style="left:-92%;">
+                    <span id="QRcode-close">x</span>
+                    <p class="title">
+                    海报分享
+                    </p>
+                    <div id='shareCode'></div>
+                    <p>
+                    扫一扫，分享海报
+                    </p>
+                </div>
+            </li>
+            <li class="tool-item tool-item-size tool-active is-collection ">
+                <a href="javascript:;" data-report-click='{"mod":"popu_824","spm":"1001.2101.3001.4130","ab":"new"}'>
+                    <img style="display:none" id="is-collection-img-collection" class="animation-dom active-animation" src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarCollectionActive.png" alt="">
+                    <img class="isdefault" id="is-collection-img" style="display:block" src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarCollect.png" alt="">
+                    <img class="isactive" id="is-collection-imgactive" style="display:none" src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarCollectionActive.png" alt="">
+                    <span class="name" id="is-collection">收藏</span>
+                    <span class="count get-collection" id="get-collection">
+                        17
+                    </span>
+                </a>
+            </li>
+            <li class="tool-item tool-item-size tool-active tool-reward">
+                <a  id="toolreward" data-report-click='{"mod":"popu_830","spm":"1001.2101.3001.4237","dest":"","ab":"new"}'>
+                    <img class="isdefault" src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarReward.png" alt="">
+                    <img class="isactive" src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarRewardactive.png" style="display:none;" alt="">
+                    <span class="name">打赏</span>
+                </a>
+<div id="reward" class="reward-box">
+	<p class="rewad-title">打赏<span class="reward-close"><svg t="1567152543821" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="10924" xmlns:xlink="http://www.w3.org/1999/xlink" width="12" height="12"><defs><style type="text/css"></style></defs><path d="M512 438.378667L806.506667 143.893333a52.032 52.032 0 1 1 73.6 73.621334L585.621333 512l294.485334 294.485333a52.074667 52.074667 0 0 1-73.6 73.642667L512 585.621333 217.514667 880.128a52.053333 52.053333 0 1 1-73.621334-73.642667L438.378667 512 143.893333 217.514667a52.053333 52.053333 0 1 1 73.621334-73.621334L512 438.378667z" fill="" p-id="10925"></path></svg></span></p>
+	<dl>
+		<dd>
+		<a href="https://blog.csdn.net/GentelmanTsao" data-report-click='{"mod":"popu_379","dest":"https://blog.csdn.net/GentelmanTsao","ab":"new"}'>
+			<img src="https://profile.csdnimg.cn/A/8/C/3_gentelmantsao" class="avatar_pic">
+		</a>
+		</dd>
+		<dt>
+			<p class="blog-name">GentlemanTsao</p>
+			<p class="blog-discript">你的鼓励将是我创作的最大动力</p>
+		</dt>
+	</dl>
+	<div class="change-bt-box">
+		<span class="reward-bt reward-bt-coin">C币</span>
+		<span class="reward-bt-space"></span>
+		<span class="reward-bt reward-bt-money reward-bt-active">余额</span>
+	</div>
+	<div class="money-box">
+			<span class="choose_money choosed" data-id="2">2C币</span>
+			<span class="choose_money " data-id="4">4C币</span>
+			<span class="choose_money " data-id="6">6C币</span>
+			<span class="choose_money " data-id="10">10C币</span>
+			<span class="choose_money " data-id="20">20C币</span>
+			<span class="choose_money " data-id="50">50C币</span>
+	</div>
+	<div class="sure-box">
+		<p class="is-have-money"><a class="reward-sure">确定</a></p>
+	</div>
+</div>
+            </li>
+            <li class="tool-item tool-item-size tool-active tool-more">
+              <a class="article-report">
+                <img class="isdefault" src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarReport.png" alt="">
+                <img class="isactive" src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarReportactive.png" style="display:none;" alt="">
+                <span class="name">举报</span>
+              </a>
+            </li>
+            <li class="tool-item">
+                    <a class="tool-attend tool-bt-button tool-bt-attend" href="javascript:;" data-report-view='{"mod":"1592215036_002","spm":"1001.2101.3001.4232","extend1":"关注"}'>关注</a>
+                <a class="tool-item-follow active-animation" style="display:none;">关注</a>
+            </li>
+            <li class="tool-item">
+                    <p class="company active" id="health-companies" href="javascript:;" >一键三连</p>
+                <span class="triplet-prompt">点赞Mark关注该博主, 随时了解TA的最新博文<img class="close-prompt" src="https://csdnimg.cn/release/blogv2/dist/pc/img/closePrompt.png"></span>
+            </li>
+        </ul>
+        <div style="display:flex">
+         </div>
+         <div class="hot-word-tip-box">
+          <span class="hot-word-text">已标记关键词</span>
+          <span class="hot-word-count"></span> 
+          <span class="hot-word-bar"></span>
+          <span class="hot-word-clear">清除标记</span>
+        </div>
+    </div>  
+</div>
+<script type=text/javascript crossorigin src="https://csdnimg.cn/release/phoenix/production/qrcode-7c90a92189.min.js"></script>
+<script src="//g.csdnimg.cn/??sharewx/1.2.1/sharewx.js" type="text/javascript"></script>
+<script type="text/javascript" crossorigin src="https://g.csdnimg.cn/collection-box/2.0.3/collection-box.js"></script>
+                <div id="dmp_ad_58" style="width:100%;overflow-x:hidden"><div id="kp_box_58" data-pid="58"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="fluid"
+     data-ad-layout-key="-gi-21+3s-18+2p"
+     data-ad-client="ca-pub-1076724771190722"
+     data-ad-slot="5869798804"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script><img class="pre-img-lasy" data-src="https://kunyu.csdn.net/1.png?p=58&a=3778&c=0&k=&spm=1001.2101.3001.5002&d=1&t=3&u=b323d3c00b554e618693a1293ee1e4c8" style="display: block;width: 0px;height: 0px;"></div></div>
+            <div class="second-recommend-box recommend-box">
+<div class="recommend-item-box type_blog clearfix" data-url="https://blog.csdn.net/weicaihui2008/article/details/51219694"  data-report-view='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"1","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/weicaihui2008/article/details/51219694"}'>
+	<div class="content-box">
+		<div class="content-blog display-flex">
+			<div class="title-box">
+				<a href="https://blog.csdn.net/weicaihui2008/article/details/51219694" class="tit ellipsis-online ellipsis-online-1" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"1","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/weicaihui2008/article/details/51219694"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control'>
+					<em>Android</em> 虚拟运营商<em>apn</em>与spn配置
+				</a>
+			</div>
+			<div class="info-box display-flex">
+				<div class="info">
+					<a href="https://blog.csdn.net/weicaihui2008" target="_blank"><span class="blog-title">weicaihui2008的博客</span></a>
+				</div>
+				<div class="info display-flex">
+					<span class="info-block time">04-22</span>
+					<span class="info-block read"><img class="read-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/readCountWhite.png" alt="">
+					5894
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="desc-box">
+			<a href="https://blog.csdn.net/weicaihui2008/article/details/51219694" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"1","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/weicaihui2008/article/details/51219694"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control'>
+				<div class="desc ellipsis-online ellipsis-online-1">可以通过EF_SPN、EF_IMSI、EF_PNN、EF_GID1区分</div>
+			</a>
+		</div>
+	</div>
+</div>
+            </div>
+<a id="commentBox" name="commentBox"></a>
+<div class="comment-box">
+	<div class="comment-edit-box d-flex">
+		<a id="commentsedit"></a>
+		<div class="user-img">
+			<a href="javascript:void(0);" >
+				<img class="show_loginbox" src="https://g.csdnimg.cn/static/user-img/anonymous-User-img.png">
+			</a>
+		</div>
+		<form id="commentform">
+			<img class="comment-sofa-flag" src="https://csdnimg.cn/release/blogv2/dist/pc/img/commentFlag@2x.png">
+      <textarea class="comment-content" name="comment_content" id="comment_content" placeholder="优质评论可以帮助作者获得更高权重" maxlength="1000"></textarea>
+			<div class="comment-emoticon"><img class="comment-emoticon-img" data-url="https://csdnimg.cn/release/blogv2/dist/pc/img/" src="https://csdnimg.cn/release/blogv2/dist/pc/img/emoticon.png" alt="表情包"></div> 
+      <span class="comment-emoticon-tip">插入表情</span>
+      <div class="comment-emoticon-box">
+        <div class="comment-emoticon-img-box">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:001.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/001.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:002.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/002.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:003.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/003.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:004.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/004.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:005.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/005.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:006.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/006.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:007.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/007.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:008.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/008.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:009.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/009.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:010.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/010.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:011.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/011.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:012.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/012.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:013.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/013.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:014.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/014.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:015.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/015.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:016.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/016.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:017.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/017.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:018.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/018.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:019.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/019.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:020.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/020.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:021.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/021.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:022.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/022.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:023.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/023.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:024.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/024.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:025.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/025.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:026.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/026.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:027.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/027.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:028.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/028.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:029.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/029.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:030.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/030.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:031.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/031.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:032.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/032.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:033.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/033.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:034.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/034.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:035.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/035.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:036.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/036.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:037.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/037.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:038.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/038.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:039.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/039.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:040.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/040.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:041.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/041.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:042.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/042.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:043.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/043.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:044.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/044.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:045.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/045.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:046.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/046.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:047.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/047.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:048.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/048.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:049.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/049.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:050.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/050.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:051.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/051.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:052.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/052.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:053.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/053.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:054.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/054.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:055.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/055.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:056.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/056.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:057.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/057.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:058.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/058.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:059.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/059.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:060.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/060.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:061.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/061.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:062.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/062.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:063.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/063.png">
+            <img class="emoticon-monkey-img" data-emoticon="[face]monkey2:064.png[/face]" src="https://g.csdnimg.cn/static/face/monkey2/064.png">
+        </div>
+      </div>
+      <div class="opt-box">
+				<div id="ubbtools" class="add_code">
+					<a href="#insertcode" code="code" target="_self"><i class="icon iconfont icon-daima"></i></a>
+				</div>
+				<input type="hidden" id="comment_replyId" name="comment_replyId">
+				<input type="hidden" id="article_id" name="article_id" value="103234535">
+				<input type="hidden" id="comment_userId" name="comment_userId" value="">
+				<input type="hidden" id="commentId" name="commentId" value="">
+				<div class="dropdown" id="myDrap">
+					<a class="dropdown-face d-flex align-items-center" data-toggle="dropdown" role="button"
+						aria-haspopup="true" aria-expanded="false">
+						<div class="txt-selected text-truncate">添加代码片</div>
+						<svg class="icon d-block" width="200px" height="100.00px" viewBox="0 0 2048 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path  d="M597.33333292 298.666667h853.333334L1023.99999992 725.333333 597.33333292 298.666667z"  /></svg>
+					</a>
+					<ul class="dropdown-menu" id="commentCode" aria-labelledby="drop4">
+						<li><a data-code="html">HTML/XML</a></li>
+						<li><a data-code="objc">objective-c</a></li>
+						<li><a data-code="ruby">Ruby</a></li>
+						<li><a data-code="php">PHP</a></li>
+						<li><a data-code="csharp">C</a></li>
+						<li><a data-code="cpp">C++</a></li>
+						<li><a data-code="javascript">JavaScript</a></li>
+						<li><a data-code="python">Python</a></li>
+						<li><a data-code="java">Java</a></li>
+						<li><a data-code="css">CSS</a></li>
+						<li><a data-code="sql">SQL</a></li>
+						<li><a data-code="plain">其它</a></li>
+					</ul>
+				</div>
+				<div class="right-box" id="rightBox" data-type="2">
+							<span id="tip_comment" class="tip">还能输入<em>1000</em>个字符</span>
+							<a data-report-click='{"mod":"1582594662_003","spm":"1001.2101.3001.4227","ab":"new"}'><input type="submit"
+									class="btn btn-sm btn-comment" value="发表评论"></a>
+				</div>
+			</div>
+		</form>
+		<input type="button" class="bt-comment-show" value="评论">
+	</div>
+	<div class="comment-list-container">
+		<a id="comments"></a>
+		<div class="comment-list-box">
+		</div>
+		<div id="commentPage" class="pagination-box d-none"></div>
+		<div class="opt-box text-center">
+			<div class="btn btn-sm btn-link-blue" id="btnMoreComment"></div>
+		</div>
+	</div>
+</div>            <div class="recommend-tit-mod">相关推荐</div>
+            <div class="recommend-box insert-baidu-box">
+                <div class="recommend-item-box clearfix" style="display:none"></div>
+<div class="recommend-item-box type_blog clearfix" data-url="https://blog.csdn.net/hanyr1208/article/details/68483077"  data-report-view='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"2","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/hanyr1208/article/details/68483077"}'>
+	<div class="content-box">
+		<div class="content-blog display-flex">
+			<div class="title-box">
+				<a href="https://blog.csdn.net/hanyr1208/article/details/68483077" class="tit ellipsis-online ellipsis-online-1" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"2","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/hanyr1208/article/details/68483077"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control'>
+					<em>Android</em>手机上网实现机制
+				</a>
+			</div>
+			<div class="info-box display-flex">
+				<div class="info">
+					<a href="https://blog.csdn.net/hanyr1208" target="_blank"><span class="blog-title">hanyr1208的博客</span></a>
+				</div>
+				<div class="info display-flex">
+					<span class="info-block time">08-01</span>
+					<span class="info-block read"><img class="read-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/readCountWhite.png" alt="">
+					3546
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="desc-box">
+			<a href="https://blog.csdn.net/hanyr1208/article/details/68483077" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"2","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/hanyr1208/article/details/68483077"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control'>
+				<div class="desc ellipsis-online ellipsis-online-1">本章介绍DataConnectionTracker对DataConnection手机上网数据连接的管理机制和流程。一、<em>Android</em>网络整体结构<em>&</em>nbsp;<em>&</em>nbsp;<em>&</em>nbsp;<em>&</em>nbsp;<em>&</em>nbsp;<em>&</em>nbsp;<em>&</em>nbsp; 流程结构图如下：<em>&</em>nbsp;<em>&</em>nbsp;<em>&</em>nbsp;<em>&</em>nbsp;<em>&</em>nbsp;<em>&</em>nbsp;<em>&</em>nbsp; <em>Android</em>网络中，在底层实现了两个虚拟串口：Command命令通道：建立或断开网络连接Data数据通道：基于TCP/IP网络通信协议的数据传输<em>&</em>nbsp;[可分析下基于TCP/IP网络通信协议的数据传输实现机制]二...</div>
+			</a>
+		</div>
+	</div>
+</div>
+<div class="recommend-item-box type_blog clearfix" data-url="https://blog.csdn.net/u013582995/article/details/52036444"  data-report-view='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"3","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/u013582995/article/details/52036444"}'>
+	<div class="content-box">
+		<div class="content-blog display-flex">
+			<div class="title-box">
+				<a href="https://blog.csdn.net/u013582995/article/details/52036444" class="tit ellipsis-online ellipsis-online-1" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"3","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/u013582995/article/details/52036444"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.control'>
+					<em>Android</em>手机<em>APN</em>简介
+				</a>
+			</div>
+			<div class="info-box display-flex">
+				<div class="info">
+					<a href="https://blog.csdn.net/u013582995" target="_blank"><span class="blog-title">u013582995的博客</span></a>
+				</div>
+				<div class="info display-flex">
+					<span class="info-block time">07-26</span>
+					<span class="info-block read"><img class="read-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/readCountWhite.png" alt="">
+					7194
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="desc-box">
+			<a href="https://blog.csdn.net/u013582995/article/details/52036444" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"3","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/u013582995/article/details/52036444"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.control'>
+				<div class="desc ellipsis-online ellipsis-online-1">1.简介
+<em>APN</em>（Access Point Name）是通过手机上网必须配置的一个参数，用来决定手机通过哪种接入方式来访问网络。只要我们的手机插上sim卡之后就可以在手机的设置中查看当前sim卡内置的默认<em>apn</em>参数，一般的安卓智能机都可以在sim卡设置中找到<em>&</em>ldquo;接入点名称（<em>APN</em>）<em>&</em>rdquo;并可以查看和新增<em>apn</em>。
+下面我们看看<em>apn</em>到底是怎么使用的，在启动<em>Android</em>手机或者启动<em>Android</em>虚拟设</div>
+			</a>
+		</div>
+	</div>
+</div>
+		<dl id="recommend-item-box-tow" class="recommend-item-box type_blog clearfix">
+			
+		</dl>
+<div class="recommend-item-box type_blog clearfix" data-url="https://blog.csdn.net/alex_nuaa01/article/details/7344699"  data-report-view='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"4","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/alex_nuaa01/article/details/7344699"}'>
+	<div class="content-box">
+		<div class="content-blog display-flex">
+			<div class="title-box">
+				<a href="https://blog.csdn.net/alex_nuaa01/article/details/7344699" class="tit ellipsis-online ellipsis-online-1" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"4","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/alex_nuaa01/article/details/7344699"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.control'>
+					default、mms、<em>supl</em>、<em>dun</em>、<em>hipri</em>接入点类型的区别
+				</a>
+			</div>
+			<div class="info-box display-flex">
+				<div class="info">
+					<a href="https://blog.csdn.net/alex_nuaa01" target="_blank"><span class="blog-title">alex_nuaa01的专栏</span></a>
+				</div>
+				<div class="info display-flex">
+					<span class="info-block time">03-12</span>
+					<span class="info-block read"><img class="read-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/readCountWhite.png" alt="">
+					9901
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="desc-box">
+			<a href="https://blog.csdn.net/alex_nuaa01/article/details/7344699" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"4","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/alex_nuaa01/article/details/7344699"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.control'>
+				<div class="desc ellipsis-online ellipsis-online-1">default、mms、<em>supl</em>、<em>dun</em>、<em>hipri</em>接入点类型的区别
+设置<em>APN</em>上网时，大家可能经常遇到这个问题：
+为什么有时要填写default有时要填写<em>supl</em>，而彩信又偏偏要mms？
+这个问题留到最后，让我们看看每个接入点类型的含义：
+英文原文来自于Google <em>Android</em> Developers
+原文连接:http://developer.<em>android</em>.com/referen</div>
+			</a>
+		</div>
+	</div>
+</div>
+<div class="recommend-item-box type_blog clearfix" data-url="https://fuhanghang.blog.csdn.net/article/details/83903578"  data-report-view='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-5.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"5","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://fuhanghang.blog.csdn.net/article/details/83903578"}'>
+	<div class="content-box">
+		<div class="content-blog display-flex">
+			<div class="title-box">
+				<a href="https://fuhanghang.blog.csdn.net/article/details/83903578" class="tit ellipsis-online ellipsis-online-1" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-5.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"5","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://fuhanghang.blog.csdn.net/article/details/83903578"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-5.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-5.control'>
+					什么是<em>APN</em>
+				</a>
+			</div>
+			<div class="info-box display-flex">
+				<div class="info">
+					<a href="https://blog.csdn.net/fuhanghang" target="_blank"><span class="blog-title">顺其自然~专栏</span></a>
+				</div>
+				<div class="info display-flex">
+					<span class="info-block time">11-09</span>
+					<span class="info-block read"><img class="read-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/readCountWhite.png" alt="">
+					2万+
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="desc-box">
+			<a href="https://fuhanghang.blog.csdn.net/article/details/83903578" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-5.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"5","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://fuhanghang.blog.csdn.net/article/details/83903578"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-5.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-5.control'>
+				<div class="desc ellipsis-online ellipsis-online-1"><em>&</em>nbsp; <em>&</em>nbsp; <em>&</em>nbsp; <em>&</em>nbsp;<em>APN</em>（Access Point Name）指一种网络接入技术，是通过手机上网时必须配置的一个参数，它决定了手机通过哪种接入方式来访问网络。
+
+<em>&</em>nbsp; <em>&</em>nbsp; <em>&</em>nbsp; <em>&</em>nbsp;对于手机用户来说，可以访问的外部网络类型有很多，例如：Internet、WAP网站、集团企业内部网络、行业内部专用网络。而不同的接入点所能访问的范围以及接入的方式是不同的，网络侧如何知道手机激活以后要访问哪个网络从而分配哪个网段...</div>
+			</a>
+		</div>
+	</div>
+</div>
+<div class="recommend-item-box type_blog clearfix" data-url="https://blog.csdn.net/yinzhijia/article/details/84439858"  data-report-view='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-6.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"6","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/yinzhijia/article/details/84439858"}'>
+	<div class="content-box">
+		<div class="content-blog display-flex">
+			<div class="title-box">
+				<a href="https://blog.csdn.net/yinzhijia/article/details/84439858" class="tit ellipsis-online ellipsis-online-1" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-6.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"6","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/yinzhijia/article/details/84439858"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-6.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-6.control'>
+					<em>Android</em>开发：<em>APN</em>、VPDN网络设置
+				</a>
+			</div>
+			<div class="info-box display-flex">
+				<div class="info">
+					<a href="https://blog.csdn.net/yinzhijia" target="_blank"><span class="blog-title">yinzhijia的博客</span></a>
+				</div>
+				<div class="info display-flex">
+					<span class="info-block time">06-06</span>
+					<span class="info-block read"><img class="read-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/readCountWhite.png" alt="">
+					1017
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="desc-box">
+			<a href="https://blog.csdn.net/yinzhijia/article/details/84439858" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-6.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"6","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/yinzhijia/article/details/84439858"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-6.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-6.control'>
+				<div class="desc ellipsis-online ellipsis-online-1">
+写了一个关于网络设置的Demo程序，供学习参考。
+package com.vpdn;
+import <em>android</em>.content.ContentResolver;
+import <em>android</em>.content.ContentValues;
+import <em>android</em>.content.Context;
+
+import <em>android</em>.database.Cursor;
+import...</div>
+			</a>
+		</div>
+	</div>
+</div>
+<div class="recommend-item-box type_blog clearfix" data-url="https://blog.csdn.net/weixin_30824599/article/details/97839993"  data-report-view='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-7.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"7","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/weixin_30824599/article/details/97839993"}'>
+	<div class="content-box">
+		<div class="content-blog display-flex">
+			<div class="title-box">
+				<a href="https://blog.csdn.net/weixin_30824599/article/details/97839993" class="tit ellipsis-online ellipsis-online-1" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-7.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"7","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/weixin_30824599/article/details/97839993"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-7.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-7.control'>
+					<em>APN</em>    <em>APN</em>指一种网络接入技术，是通过手机上网时必须配置的一个参数，它决定了手机通过哪种接入方式来访问网络。...
+				</a>
+			</div>
+			<div class="info-box display-flex">
+				<div class="info">
+					<a href="https://blog.csdn.net/weixin_30824599" target="_blank"><span class="blog-title">weixin_30824599的博客</span></a>
+				</div>
+				<div class="info display-flex">
+					<span class="info-block time">07-04</span>
+					<span class="info-block read"><img class="read-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/readCountWhite.png" alt="">
+					783
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="desc-box">
+			<a href="https://blog.csdn.net/weixin_30824599/article/details/97839993" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-7.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"7","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/weixin_30824599/article/details/97839993"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-7.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-7.control'>
+				<div class="desc ellipsis-online ellipsis-online-1"><em>apn</em>
+锁定
+
+本词条由<em>&</em>ldquo;科普中国<em>&</em>rdquo;百科科学词条编写与应用工作项目审核 。
+
+
+<em>APN</em>指一种网络接入技术，是通过手机上网时必须配置的一个参数，它决定了手机通过哪种接入方式来访问网络。
+对于手机用户来说，可以访问的外部网络类型有很多，例如：Internet、WAP网站、集团企业内部网络、行业内部专用网络。而不同的接入点所能访问的范围以及接入的方式是不同的，网络侧如何知道手机激活...</div>
+			</a>
+		</div>
+	</div>
+</div>
+<div class="recommend-item-box type_blog clearfix" data-url="https://blog.csdn.net/liutao5757124/article/details/6291714"  data-report-view='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-8.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"8","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/liutao5757124/article/details/6291714"}'>
+	<div class="content-box">
+		<div class="content-blog display-flex">
+			<div class="title-box">
+				<a href="https://blog.csdn.net/liutao5757124/article/details/6291714" class="tit ellipsis-online ellipsis-online-1" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-8.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"8","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/liutao5757124/article/details/6291714"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-8.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-8.control'>
+					移动 电信 联通 <em>APN</em> cmwap cmnet ctwap ctnet 3gwap uniwap 3gnet uninet是...
+				</a>
+			</div>
+			<div class="info-box display-flex">
+				<div class="info">
+					<a href="https://blog.csdn.net/liutao5757124" target="_blank"><span class="blog-title">blair</span></a>
+				</div>
+				<div class="info display-flex">
+					<span class="info-block time">03-31</span>
+					<span class="info-block read"><img class="read-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/readCountWhite.png" alt="">
+					1万+
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="desc-box">
+			<a href="https://blog.csdn.net/liutao5757124/article/details/6291714" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-8.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"8","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/liutao5757124/article/details/6291714"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-8.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-8.control'>
+				<div class="desc ellipsis-online ellipsis-online-1"><em>&</em>lt;br /<em>&</em>gt;<em>&</em>lt;br /<em>&</em>gt;移动 电信 联通 <em>APN</em> cmwap cmnet ctwap ctnet 3gwap uniwap 3gnet uninet是什么 怎么设置<em>&</em>lt;br /<em>&</em>gt;　<em>APN</em>(Access Point Name)，即<em>&</em>ldquo;接入点名称<em>&</em>rdquo;，用来标识GPRS的业务种类，目前分为两大类：CMWAP(通过GPRS访问WAP业务)、CMNET（除了WAP以外的服务目前都用CMNET,比如连接因特网等）。<em>&</em>lt;br /<em>&</em>gt;中国移动<em>APN</em>: cmwap (2G) cmnet (3G)<em>&</em>lt;br /<em>&</em>gt;中国电信<em>APN</em>: ctwap</div>
+			</a>
+		</div>
+	</div>
+</div>
+<div class="recommend-item-box type_blog clearfix" data-url="https://blog.csdn.net/lancelots/article/details/82261023"  data-report-view='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-9.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"9","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/lancelots/article/details/82261023"}'>
+	<div class="content-box">
+		<div class="content-blog display-flex">
+			<div class="title-box">
+				<a href="https://blog.csdn.net/lancelots/article/details/82261023" class="tit ellipsis-online ellipsis-online-1" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-9.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"9","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/lancelots/article/details/82261023"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-9.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-9.control'>
+					<em>Android</em>  <em>APN</em>设置接口
+				</a>
+			</div>
+			<div class="info-box display-flex">
+				<div class="info">
+					<a href="https://blog.csdn.net/lancelots" target="_blank"><span class="blog-title">lancelots的博客</span></a>
+				</div>
+				<div class="info display-flex">
+					<span class="info-block time">08-31</span>
+					<span class="info-block read"><img class="read-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/readCountWhite.png" alt="">
+					1913
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="desc-box">
+			<a href="https://blog.csdn.net/lancelots/article/details/82261023" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-9.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"9","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/lancelots/article/details/82261023"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-9.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-9.control'>
+				<div class="desc ellipsis-online ellipsis-online-1"><em>APN</em>(Access Point Name)，即<em>&</em>ldquo;接入点名称<em>&</em>rdquo;，用来标识GPRS的业务种类，目前分为两大类：CMWAP(通过GPRS访问WAP业务)、CMNET（除了WAP以外的服务目前都用CMNET,比如连接因特网等）。在做项目的时候,客户会要求更换<em>APN</em>,我在frameworks/base/services/core/java/com/<em>android</em>/server/customized/Cus...</div>
+			</a>
+		</div>
+	</div>
+</div>
+<div class="recommend-item-box type_blog clearfix" data-url="https://blog.csdn.net/u0fly/article/details/6154753"  data-report-view='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-10.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"10","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/u0fly/article/details/6154753"}'>
+	<div class="content-box">
+		<div class="content-blog display-flex">
+			<div class="title-box">
+				<a href="https://blog.csdn.net/u0fly/article/details/6154753" class="tit ellipsis-online ellipsis-online-1" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-10.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"10","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/u0fly/article/details/6154753"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-10.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-10.control'>
+					<em>Android</em>手机<em>APN</em>设置（中国移动 联通3G 电信天翼），解决不能上网的问题
+				</a>
+			</div>
+			<div class="info-box display-flex">
+				<div class="info">
+					<a href="https://blog.csdn.net/u0fly" target="_blank"><span class="blog-title"></span></a>
+				</div>
+				<div class="info display-flex">
+					<span class="info-block time">01-20</span>
+					<span class="info-block read"><img class="read-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/readCountWhite.png" alt="">
+					12万+
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="desc-box">
+			<a href="https://blog.csdn.net/u0fly/article/details/6154753" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-10.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"10","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/u0fly/article/details/6154753"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-10.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-10.control'>
+				<div class="desc ellipsis-online ellipsis-online-1"><em>&</em>lt;br /<em>&</em>gt;<em>&</em>lt;br /<em>&</em>gt;<em>&</em>nbsp;<em>&</em>lt;br /<em>&</em>gt;中国移动<em>&</em>lt;br /<em>&</em>gt;<em>&</em>nbsp;<em>&</em>lt;br /<em>&</em>gt;第一步，设置CMNET上网<em>&</em>lt;br /<em>&</em>gt;<em>&</em>nbsp;<em>&</em>lt;br /<em>&</em>gt;新建<em>APN</em><em>&</em>lt;br /<em>&</em>gt;1.名称：cmnet<em>&</em>lt;br /<em>&</em>gt;2.<em>APN</em>：cmnet<em>&</em>lt;br /<em>&</em>gt;3.<em>APN</em>类型：default<em>&</em>lt;br /<em>&</em>gt;就只填写上面3个选项，其他都是默认，不用填写。<em>&</em>lt;br /<em>&</em>gt;<em>&</em>nbsp;<em>&</em>lt;br /<em>&</em>gt;第二步，设置彩信<em>&</em>lt;br /<em>&</em>gt;<em>&</em>nbsp;<em>&</em>lt;br /<em>&</em>gt;新建<em>APN</em><em>&</em>lt;br /<em>&</em>gt;1.名称：cmmms<em>&</em>lt;br /<em>&</em>gt;2.<em>APN</em>：cmwap<em>&</em>lt;br /<em>&</em>gt;3.代理：10.0.0.172<em>&</em>lt;br /<em>&</em>gt;4.端口：80</div>
+			</a>
+		</div>
+	</div>
+</div>
+<div class="recommend-item-box type_blog clearfix" data-url="https://loongembedded.blog.csdn.net/article/details/78018838"  data-report-view='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-11.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"11","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://loongembedded.blog.csdn.net/article/details/78018838"}'>
+	<div class="content-box">
+		<div class="content-blog display-flex">
+			<div class="title-box">
+				<a href="https://loongembedded.blog.csdn.net/article/details/78018838" class="tit ellipsis-online ellipsis-online-1" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-11.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"11","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://loongembedded.blog.csdn.net/article/details/78018838"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-11.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-11.control'>
+					<em>Android</em>7.1下修改<em>apn</em>s_conf.xml如何替换
+				</a>
+			</div>
+			<div class="info-box display-flex">
+				<div class="info">
+					<a href="https://blog.csdn.net/LoongEmbedded" target="_blank"><span class="blog-title">LoongEmbedded的专栏</span></a>
+				</div>
+				<div class="info display-flex">
+					<span class="info-block time">09-18</span>
+					<span class="info-block read"><img class="read-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/readCountWhite.png" alt="">
+					7120
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="desc-box">
+			<a href="https://loongembedded.blog.csdn.net/article/details/78018838" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-11.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"11","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://loongembedded.blog.csdn.net/article/details/78018838"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-11.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-11.control'>
+				<div class="desc ellipsis-online ellipsis-online-1"><em>Android</em>7.1下修改<em>apn</em>s_conf.xml如何替换<em>&</em>nbsp;最近遇到一个问题，4G联通卡ifconfig找不到，也无法上网vendor/qcom/proprietary/telephony-apps/etc/<em>apn</em>s-conf.xml增加下面的<em>内容</em>就可以了 <em>&</em>lt;<em>apn</em> carrier=<em>&</em>quot;China Mobile<em>&</em>quot;
+     <em>apn</em>=<em>&</em>quot;<em>&</em>quot;
+     mcc=<em>&</em>quot;460<em>&</em>quot;
+     mnc=<em>&</em>quot;04<em>&</em>quot;
+ </div>
+			</a>
+		</div>
+	</div>
+</div>
+<div class="recommend-item-box type_blog clearfix" data-url="https://blog.csdn.net/u010961631/article/details/50682373"  data-report-view='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-12.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"12","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/u010961631/article/details/50682373"}'>
+	<div class="content-box">
+		<div class="content-blog display-flex">
+			<div class="title-box">
+				<a href="https://blog.csdn.net/u010961631/article/details/50682373" class="tit ellipsis-online ellipsis-online-1" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-12.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"12","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/u010961631/article/details/50682373"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-12.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-12.control'>
+					<em>Android</em>运营商名称显示之SPN的读取（原）
+				</a>
+			</div>
+			<div class="info-box display-flex">
+				<div class="info">
+					<a href="https://blog.csdn.net/u010961631" target="_blank"><span class="blog-title">阿杜的专栏</span></a>
+				</div>
+				<div class="info display-flex">
+					<span class="info-block time">02-17</span>
+					<span class="info-block read"><img class="read-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/readCountWhite.png" alt="">
+					1万+
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="desc-box">
+			<a href="https://blog.csdn.net/u010961631/article/details/50682373" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-12.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"12","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/u010961631/article/details/50682373"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-12.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-12.control'>
+				<div class="desc ellipsis-online ellipsis-online-1">SPN(Service Provider Name)就是当前发行SIM卡的运营商的名称，可以从以下两个路径获取：
+<em>&</em>nbsp; <em>&</em>nbsp; <em>&</em>nbsp; <em>&</em>nbsp; 1、从SIM文件系统读取
+<em>&</em>nbsp; <em>&</em>nbsp; <em>&</em>nbsp; <em>&</em>nbsp; 2、从配置文件读取
+<em>&</em>nbsp; <em>&</em>nbsp; <em>&</em>nbsp; <em>&</em>nbsp; 我们本节就来分析该字串的读取过程。
+
+
+一、从SIM读取SPN过程
+
+
+<em>&</em>nbsp; <em>&</em>nbsp; <em>&</em>nbsp; <em>&</em>nbsp; 一般来说，SIM上保存有当前SIM的发行运营商名称，也就是SPN，该字串可以存储在SI</div>
+			</a>
+		</div>
+	</div>
+</div>
+<div class="recommend-item-box type_blog clearfix" data-url="https://zhangjian.blog.csdn.net/article/details/52325196"  data-report-view='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-13.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"13","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://zhangjian.blog.csdn.net/article/details/52325196"}'>
+	<div class="content-box">
+		<div class="content-blog display-flex">
+			<div class="title-box">
+				<a href="https://zhangjian.blog.csdn.net/article/details/52325196" class="tit ellipsis-online ellipsis-online-1" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-13.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"13","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://zhangjian.blog.csdn.net/article/details/52325196"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-13.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-13.control'>
+					<em>Android</em>7.0 数据拨号前的准备工作
+				</a>
+			</div>
+			<div class="info-box display-flex">
+				<div class="info">
+					<a href="https://blog.csdn.net/Gaugamela" target="_blank"><span class="blog-title">ZhangJian的博客</span></a>
+				</div>
+				<div class="info display-flex">
+					<span class="info-block time">08-28</span>
+					<span class="info-block read"><img class="read-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/readCountWhite.png" alt="">
+					7312
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="desc-box">
+			<a href="https://zhangjian.blog.csdn.net/article/details/52325196" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-13.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"13","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://zhangjian.blog.csdn.net/article/details/52325196"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-13.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-13.control'>
+				<div class="desc ellipsis-online ellipsis-online-1">背景 
+在介绍PhoneApp的创建过程时，我们知道为了支持双卡手机，PhoneFactory创建了两个Phone对象。 
+然而由于通信制式、功耗等的限制，目前底层的芯片厂商规定modem工作于DSDS模式下，于是同一时间内只有一个Phone具有上网的能力。 
+本文旨在揭示激活Phone拨号能力的过程，即讲述数据拨号前的准备工作。</div>
+			</a>
+		</div>
+	</div>
+</div>
+<div class="recommend-item-box type_blog clearfix" data-url="https://blog.csdn.net/wlsfling/article/details/8574513"  data-report-view='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-14.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"14","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/wlsfling/article/details/8574513"}'>
+	<div class="content-box">
+		<div class="content-blog display-flex">
+			<div class="title-box">
+				<a href="https://blog.csdn.net/wlsfling/article/details/8574513" class="tit ellipsis-online ellipsis-online-1" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-14.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"14","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/wlsfling/article/details/8574513"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-14.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-14.control'>
+					移动 联通 电信  GPRS <em>APN</em> 设置汇总
+				</a>
+			</div>
+			<div class="info-box display-flex">
+				<div class="info">
+					<a href="https://blog.csdn.net/wlsfling" target="_blank"><span class="blog-title">子夜的专栏</span></a>
+				</div>
+				<div class="info display-flex">
+					<span class="info-block time">02-06</span>
+					<span class="info-block read"><img class="read-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/readCountWhite.png" alt="">
+					3万+
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="desc-box">
+			<a href="https://blog.csdn.net/wlsfling/article/details/8574513" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-14.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"14","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/wlsfling/article/details/8574513"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-14.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-14.control'>
+				<div class="desc ellipsis-online ellipsis-online-1">中国移动
+<em>&</em>nbsp;
+第一步，设置CMNET上网
+<em>&</em>nbsp;
+新建<em>APN</em>
+1.名称：cmnet
+2.<em>APN</em>：cmnet
+3.<em>APN</em>类型：default
+就只填写上面3个选项，其他都是默认，不用填写。
+<em>&</em>nbsp;
+第二步，设置彩信
+<em>&</em>nbsp;
+新建<em>APN</em>
+1.名称：cmmms
+2.<em>APN</em>：cmwap
+3.代理：10.0.0.172
+4.端口：80
+5.用户名：（空着）
+6.密码：（空着）
+7.</div>
+			</a>
+		</div>
+	</div>
+</div>
+<div class="recommend-item-box type_download clearfix" data-url="https://download.csdn.net/download/u013491658/8430193"  data-report-view='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-download-BlogCommendFromMachineLearnPai2-15.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"15","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://download.csdn.net/download/u013491658/8430193"}'>
+	<div class="content-box">
+		<div class="content-blog display-flex">
+			<div class="title-box">
+				<a href="https://download.csdn.net/download/u013491658/8430193" class="tit ellipsis-online ellipsis-online-1" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-download-BlogCommendFromMachineLearnPai2-15.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"15","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://download.csdn.net/download/u013491658/8430193"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-download-BlogCommendFromMachineLearnPai2-15.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-download-BlogCommendFromMachineLearnPai2-15.control'>
+					安卓<em>APN</em>设置
+				</a>
+			</div>
+			<div class="info-box display-flex">
+				<div class="info display-flex">
+					<span class="info-block">02-06</span>
+				</div>
+			</div>
+		</div>
+		<div class="desc-box">
+			<a href="https://download.csdn.net/download/u013491658/8430193" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-download-BlogCommendFromMachineLearnPai2-15.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"15","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://download.csdn.net/download/u013491658/8430193"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-download-BlogCommendFromMachineLearnPai2-15.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-download-BlogCommendFromMachineLearnPai2-15.control'>
+				<div class="desc ellipsis-online ellipsis-online-1"><em>APN</em>的英文全称是Access Point Name，中文全称叫接入点，是您在通过手机上网时必须配置的一个参数，它决定了您的手机通过哪种接入方式来访问网络。而这软件可以一键进入<em>apn</em>设置。</div>
+			</a>
+		</div>
+	</div>
+</div>
+<div class="recommend-item-box type_blog clearfix" data-url="https://blog.csdn.net/Clear_ws/article/details/78186190"  data-report-view='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-16.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"16","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/Clear_ws/article/details/78186190"}'>
+	<div class="content-box">
+		<div class="content-blog display-flex">
+			<div class="title-box">
+				<a href="https://blog.csdn.net/Clear_ws/article/details/78186190" class="tit ellipsis-online ellipsis-online-1" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-16.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"16","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/Clear_ws/article/details/78186190"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-16.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-16.control'>
+					<em>Android</em> Data Analyse(3)--<em>APN</em> <em>&</em>amp; <em>Apn</em>Setting <em>&</em>amp; <em>Apn</em>Context
+				</a>
+			</div>
+			<div class="info-box display-flex">
+				<div class="info">
+					<a href="https://blog.csdn.net/Clear_ws" target="_blank"><span class="blog-title">Clear_ws的博客</span></a>
+				</div>
+				<div class="info display-flex">
+					<span class="info-block time">10-09</span>
+					<span class="info-block read"><img class="read-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/readCountWhite.png" alt="">
+					987
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="desc-box">
+			<a href="https://blog.csdn.net/Clear_ws/article/details/78186190" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-16.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"16","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/Clear_ws/article/details/78186190"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-16.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-16.control'>
+				<div class="desc ellipsis-online ellipsis-online-1"><em>APN</em>定义： 
+   <em>APN</em> (access point name) 简单的可以理解为数据上网的接入点名称，是访问数据的必须要配置的参数。该参数的配置直接决定了访问数据的接入方式。参数：  <em>&</em>lt;<em>apn</em> carrier=<em>&</em>quot;中国移动 (China Mobile) WAP<em>&</em>quot;
+      mcc=<em>&</em>quot;460<em>&</em>quot;
+      mnc=<em>&</em>quot;00<em>&</em>quot;
+      <em>apn</em>=<em>&</em>quot;cmwap<em>&</em>quot;
+      proxy=<em>&</em>quot;10.0.</div>
+			</a>
+		</div>
+	</div>
+</div>
+<div class="recommend-item-box type_blog clearfix" data-url="https://blog.csdn.net/glen1943/article/details/80604775"  data-report-view='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-17.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"17","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/glen1943/article/details/80604775"}'>
+	<div class="content-box">
+		<div class="content-blog display-flex">
+			<div class="title-box">
+				<a href="https://blog.csdn.net/glen1943/article/details/80604775" class="tit ellipsis-online ellipsis-online-1" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-17.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"17","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/glen1943/article/details/80604775"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-17.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-17.control'>
+					<em>Android</em> <em>APN</em>设置
+				</a>
+			</div>
+			<div class="info-box display-flex">
+				<div class="info">
+					<a href="https://blog.csdn.net/glen1943" target="_blank"><span class="blog-title">glen1943的专栏</span></a>
+				</div>
+				<div class="info display-flex">
+					<span class="info-block time">06-07</span>
+					<span class="info-block read"><img class="read-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/readCountWhite.png" alt="">
+					6233
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="desc-box">
+			<a href="https://blog.csdn.net/glen1943/article/details/80604775" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-17.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"17","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/glen1943/article/details/80604775"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-17.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-17.control'>
+				<div class="desc ellipsis-online ellipsis-online-1"><em>Android</em> <em>APN</em>设置
+
+
+
+概述
+
+
+  <em>Apn</em>设置,即<em>&</em>ldquo;接入点名称<em>&</em>rdquo;设置，<em>Apn</em>的全称是Access PointName，是用户在通过手机上网时必须配置的一个参数，它决定了您的手机通过哪种接入方式来访问移动网络。 
+   
+  对于移动终端用户来说，可以访问的外部网络类型有很多，例如：Internet、WAP网站、集团企业内部网络、行业内部专用网络。而不同的接入点所能访问的范围以及入的方式...</div>
+			</a>
+		</div>
+	</div>
+</div>
+<div class="recommend-item-box type_blog clearfix" data-url="https://blog.csdn.net/shadow_dance/article/details/7477957"  data-report-view='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-18.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"18","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/shadow_dance/article/details/7477957"}'>
+	<div class="content-box">
+		<div class="content-blog display-flex">
+			<div class="title-box">
+				<a href="https://blog.csdn.net/shadow_dance/article/details/7477957" class="tit ellipsis-online ellipsis-online-1" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-18.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"18","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/shadow_dance/article/details/7477957"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-18.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-18.control'>
+					<em>android</em>学习笔记2 彩信<em>APN</em>切换流程（framework）
+				</a>
+			</div>
+			<div class="info-box display-flex">
+				<div class="info">
+					<a href="https://blog.csdn.net/shadow_dance" target="_blank"><span class="blog-title">shadow_dance的专栏</span></a>
+				</div>
+				<div class="info display-flex">
+					<span class="info-block time">04-19</span>
+					<span class="info-block read"><img class="read-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/readCountWhite.png" alt="">
+					4901
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="desc-box">
+			<a href="https://blog.csdn.net/shadow_dance/article/details/7477957" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-18.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"18","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/shadow_dance/article/details/7477957"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-18.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-18.control'>
+				<div class="desc ellipsis-online ellipsis-online-1">TransactionService之前的流程比较简单不在赘述，现在主要理清下从TransactionService到framework的流程。
+<em>&</em>nbsp;
+首先会走到TransactionService的onStartCommand，在此函数中会对当前网络状态进行判断，然后调用到launchTransaction，如果此时网络不可用，会弹出toast，否则就向自己的handler发送EVENT_TR</div>
+			</a>
+		</div>
+	</div>
+</div>
+<div class="recommend-item-box type_blog clearfix" data-url="https://blog.csdn.net/Dylan_Sen/article/details/79178742"  data-report-view='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-19.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"19","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/Dylan_Sen/article/details/79178742"}'>
+	<div class="content-box">
+		<div class="content-blog display-flex">
+			<div class="title-box">
+				<a href="https://blog.csdn.net/Dylan_Sen/article/details/79178742" class="tit ellipsis-online ellipsis-online-1" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-19.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"19","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/Dylan_Sen/article/details/79178742"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-19.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-19.control'>
+					<em>APN</em>---Telephony data Part I
+				</a>
+			</div>
+			<div class="info-box display-flex">
+				<div class="info">
+					<a href="https://blog.csdn.net/Dylan_Sen" target="_blank"><span class="blog-title">Dylan_Sen的博客</span></a>
+				</div>
+				<div class="info display-flex">
+					<span class="info-block time">03-09</span>
+					<span class="info-block read"><img class="read-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/readCountWhite.png" alt="">
+					1761
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="desc-box">
+			<a href="https://blog.csdn.net/Dylan_Sen/article/details/79178742" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-19.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"19","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/Dylan_Sen/article/details/79178742"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-19.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-19.control'>
+				<div class="desc ellipsis-online ellipsis-online-1">关于Telephony data 准备写三篇，本文是第一部分<em>APN</em>，根据<em>Android</em> O源码，简单总结了<em>Android</em>上<em>APN</em>相关的知识点。分以下三部分： 
+1. 预置<em>APN</em>数据加载 
+2. <em>APN</em>字段 
+3. <em>APN</em>的显示和编辑
+
+
+
+<em>APN</em>(access point name)决定了我们手机接入网络的方式，一般我们手机都做了默认配置，也可以根据需要进行手动配置。<em>APN</em>存储在手机的<em>&</em>ldquo;/data...</div>
+			</a>
+		</div>
+	</div>
+</div>
+<div class="recommend-item-box type_blog clearfix" data-url="https://blog.csdn.net/u012724237/article/details/74755357"  data-report-view='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-20.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"20","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/u012724237/article/details/74755357"}'>
+	<div class="content-box">
+		<div class="content-blog display-flex">
+			<div class="title-box">
+				<a href="https://blog.csdn.net/u012724237/article/details/74755357" class="tit ellipsis-online ellipsis-online-1" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-20.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"20","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/u012724237/article/details/74755357"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-20.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-20.control'>
+					<em>Android</em> N TelephonyProvider及数据库初始化
+				</a>
+			</div>
+			<div class="info-box display-flex">
+				<div class="info">
+					<a href="https://blog.csdn.net/u012724237" target="_blank"><span class="blog-title">飞翔凡人</span></a>
+				</div>
+				<div class="info display-flex">
+					<span class="info-block time">07-07</span>
+					<span class="info-block read"><img class="read-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/readCountWhite.png" alt="">
+					4332
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="desc-box">
+			<a href="https://blog.csdn.net/u012724237/article/details/74755357" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-20.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"20","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/u012724237/article/details/74755357"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-20.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-20.control'>
+				<div class="desc ellipsis-online ellipsis-online-1">作为 Phone 进程的核心 ContentProvider，TelephonyProvider 主要提供了 siminfo 和 <em>apn</em> 相关信息的数据库操作。</div>
+			</a>
+		</div>
+	</div>
+</div>
+            </div>
+            <div class="template-box">
+                <span>©️2020 CSDN</span>
+                <span>皮肤主题: 精致技术</span>
+                <span> 设计师:CSDN官方博客</span>
+                <span>
+                    <a href="https://blog.csdn.net/" class="back-home c-blue c-blue-hover c-blue-focus">返回首页</a>
+                </span>
+            </div>
+<div class="blog-footer-bottom" style="margin-top:10px;"></div>
+<script src="https://g.csdnimg.cn/common/csdn-footer/csdn-footer.js" data-isfootertrack="false" type="text/javascript"></script>
+<script type="text/javascript">
+    window.csdn.csdnFooter.options = {
+        el: '.blog-footer-bottom',
+        type: 2
+    }
+</script>        </main>
+<aside class="blog_container_aside">
+    <div id="asideProfile" class="aside-box">
+    <div class="profile-intro d-flex">
+        <div class="avatar-box d-flex justify-content-center flex-column">
+            <a href="https://blog.csdn.net/GentelmanTsao" data-report-click='{"mod":"popu_379","spm":"1001.2101.3001.4121","dest":"https://blog.csdn.net/GentelmanTsao","ab":"new"}'>
+                <img src="https://profile.csdnimg.cn/A/8/C/3_gentelmantsao" class="avatar_pic">
+            </a>
+        </div>
+        <div class="user-info d-flex flex-column profile-intro-name-box">
+            <div class="profile-intro-name-boxTop">
+                <a href="https://blog.csdn.net/GentelmanTsao" class="" id="uid" title="GentlemanTsao" data-report-click='{"mod":"popu_379","spm":"1001.2101.3001.4122","dest":"https://blog.csdn.net/GentelmanTsao","ab":"new"}'>
+                    <span class="name " username="GentelmanTsao">GentlemanTsao</span>
+                </a>
+                <span>
+                </span>
+                <span class="flag expert-blog">
+                <span class="bubble">CSDN认证博客专家</span>
+                </span>
+                <span class="flag company-blog">
+                <span class="bubble">CSDN认证企业博客</span>
+                </span>
+            </div>
+            <div class="profile-intro-name-boxFooter">
+                <span class="personal-home-page personal-home-years">码龄1年</span>
+                    <span class="personal-home-page">
+                    <a class="personal-home-certification" href="https://i.csdn.net/#/uc/profile?utm_source=14998968" target="_blank" title="暂无认证">
+                    <img src="https://csdnimg.cn/identity/nocErtification.png" alt="">
+                    暂无认证
+                    </a>
+                    </span>
+            </div>
+        </div>
+    </div>
+    <div class="data-info d-flex item-tiling">
+        <dl class="text-center" title="55">
+            <a href="https://blog.csdn.net/GentelmanTsao" data-report-click='{"mod":"1598321000_001","spm":"1001.2101.3001.4310"}' data-report-query="t=1">  
+                <dt><span class="count">55</span></dt>
+                <dd class="font">原创</dd>
+            </a>
+        </dl>
+        <dl class="text-center" data-report-click='{"mod":"1598321000_002","spm":"1001.2101.3001.4311"}' title="暂无排名">
+            <a href="https://blog.csdn.net/rank/list/weekly" target="_blank">
+                <dt><span class="count">-</span></dt>
+                <dd class="font">周排名</dd>
+            </a>
+        </dl>
+        <dl class="text-center" title="65581">
+            <a href="https://blog.csdn.net/rank/list/total" data-report-click='{"mod":"1598321000_003","spm":"1001.2101.3001.4312"}' target="_blank">
+                <dt><span class="count">6万+</span></dt>
+                <dd class="font">总排名</dd>
+            </a>
+        </dl>
+        <dl class="text-center" style="min-width:58px" title="97909">  
+            <dt><span class="count">9万+</span></dt>
+            <dd>访问</dd>
+        </dl>
+        <dl class="text-center" title="4级,点击查看等级说明">
+            <dt><a href="https://blog.csdn.net/blogdevteam/article/details/103478461" target="_blank">
+                <img class="level" src="https://csdnimg.cn/identity/blog4.png">
+            </a>
+            </dt>
+            <dd>等级</dd>
+        </dl>
+    </div>
+    <div class="item-rank"></div>
+    <div class="data-info d-flex item-tiling">
+        <dl class="text-center" title="1514">
+            <dt><span class="count">1514</span></dt>
+            <dd>积分</dd>
+        </dl>
+         <dl class="text-center" id="fanBox" title="630">
+            <dt><span class="count" id="fan">630</span></dt>
+            <dd>粉丝</dd>
+        </dl>
+        <dl class="text-center" title="43">
+            <dt><span class="count">43</span></dt>
+            <dd>获赞</dd>
+        </dl>
+        <dl class="text-center" title="26">
+            <dt><span class="count">26</span></dt>
+            <dd>评论</dd>
+        </dl>
+        <dl class="text-center" title="148">
+            <dt><span class="count">148</span></dt>
+            <dd>收藏</dd>
+        </dl>
+    </div>
+    <div class="aside-box-footer" data-report-view='{"spm":"3001.4296"}'>
+        <div class="badge-box d-flex">
+            <div class="badge d-flex">
+                <div class="icon-badge" title="GitHub">
+                    <div class="mouse-box">
+                        <img class="medal-img" data-report-click='{"spm":"3001.4296"}' src="https://csdnimg.cn/medal/github@240.png" alt="GitHub">
+                    </div>
+                </div>
+                <div class="icon-badge" title="签到王者">
+                    <div class="mouse-box">
+                        <img class="medal-img" data-report-click='{"spm":"3001.4296"}' src="https://csdnimg.cn/medal/qiandao200@240.png" alt="签到王者">
+                    </div>
+                </div>
+                <div class="icon-badge" title="持之以恒">
+                    <div class="mouse-box">
+                        <img class="medal-img" data-report-click='{"spm":"3001.4296"}' src="https://csdnimg.cn/medal/chizhiyiheng@240.png" alt="持之以恒">
+                    </div>
+                </div>
+                <div class="icon-badge" title="勤写标兵Lv2">
+                    <div class="mouse-box">
+                        <img class="medal-img" data-report-click='{"spm":"3001.4296"}' src="https://csdnimg.cn/medal/qixiebiaobing2@240.png" alt="勤写标兵Lv2">
+                    </div>
+                </div>
+                <div class="icon-badge" title="学习力">
+                    <div class="mouse-box">
+                        <img class="medal-img" data-report-click='{"spm":"3001.4296"}' src="https://csdnimg.cn/medal/yuanli_xuexili@240.png" alt="学习力">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="profile-intro-name-boxOpration">
+        <div class="opt-letter-watch-box">
+        <a class="bt-button personal-letter" href="https://im.csdn.net/chat/GentelmanTsao" target="_blank" rel="noopener">私信</a>
+        </div>
+        <div class="opt-letter-watch-box"> 
+            <a class="personal-watch bt-button" id="btnAttent" >关注</a>  
+        </div>
+    </div>
+</div>
+<div id="asideSearchArticle" class="aside-box">
+	<div class="aside-content search-comter">
+    <div class="aside-search aside-search-blog">         
+        <input type="text" class="input-serch-blog" name="" autocomplete="off" value="" id="search-blog-words" placeholder="搜博主文章">
+        <a class="btn-search-blog">
+                    <img src="//csdnimg.cn/cdn/content-toolbar/csdn-sou.png?v=1587021042">
+        </a>
+    </div>
+    </div>
+</div>
+
+
+<div id="asideHotArticle" class="aside-box">
+	<h3 class="aside-title">热门文章</h3>
+	<div class="aside-content">
+		<ul class="hotArticle-list">
+			<li>
+				<a href="https://blog.csdn.net/GentelmanTsao/article/details/104627557" target="_blank"  data-report-click='{"mod":"popu_541","spm":"1001.2101.3001.4139","dest":"https://blog.csdn.net/GentelmanTsao/article/details/104627557","ab":"new"}'>
+				房贷利率要不要转换，选LPR还是固定利率？这样思考就不会再迷茫
+					<img src="https://csdnimg.cn/release/blogv2/dist/pc/img/readCountWhite.png" alt="">
+					<span class="read">38835</span>
+                </a>
+			</li>
+			<li>
+				<a href="https://blog.csdn.net/GentelmanTsao/article/details/105633295" target="_blank"  data-report-click='{"mod":"popu_541","spm":"1001.2101.3001.4139","dest":"https://blog.csdn.net/GentelmanTsao/article/details/105633295","ab":"new"}'>
+				房贷固定利率转换到浮动利率LPR，重定价日该怎么选，是每年1月1日还是贷款日？
+					<img src="https://csdnimg.cn/release/blogv2/dist/pc/img/readCountWhite.png" alt="">
+					<span class="read">17335</span>
+                </a>
+			</li>
+			<li>
+				<a href="https://blog.csdn.net/GentelmanTsao/article/details/103234535" target="_blank"  data-report-click='{"mod":"popu_541","spm":"1001.2101.3001.4139","dest":"https://blog.csdn.net/GentelmanTsao/article/details/103234535","ab":"new"}'>
+				Android：一篇就够！全面&amp;详细解析APN（涉及内容：GGSN，authtype，MVNO，pdp，Apns-conf，supl,hipri,dun）
+					<img src="https://csdnimg.cn/release/blogv2/dist/pc/img/readCountWhite.png" alt="">
+					<span class="read">3072</span>
+                </a>
+			</li>
+			<li>
+				<a href="https://blog.csdn.net/GentelmanTsao/article/details/106802361" target="_blank"  data-report-click='{"mod":"popu_541","spm":"1001.2101.3001.4139","dest":"https://blog.csdn.net/GentelmanTsao/article/details/106802361","ab":"new"}'>
+				Modem2G/3G/4G/5G：完整收录，2020最新MCC、MNC、运营商对照表，全球运营商MCCMNC查询列表
+					<img src="https://csdnimg.cn/release/blogv2/dist/pc/img/readCountWhite.png" alt="">
+					<span class="read">2578</span>
+                </a>
+			</li>
+			<li>
+				<a href="https://blog.csdn.net/GentelmanTsao/article/details/104310425" target="_blank"  data-report-click='{"mod":"popu_541","spm":"1001.2101.3001.4139","dest":"https://blog.csdn.net/GentelmanTsao/article/details/104310425","ab":"new"}'>
+				为什么我支持黄奇帆的建议，赞成取消住房公积金制度
+					<img src="https://csdnimg.cn/release/blogv2/dist/pc/img/readCountWhite.png" alt="">
+					<span class="read">2356</span>
+                </a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div id="asideCategory" class="aside-box flexible-box">
+    <h3 class="aside-title">分类专栏</h3>
+    <div class="aside-content">
+        <ul>
+            <li class="">
+                <a class="clearfix" target="_blank" href="https://blog.csdn.net/gentelmantsao/category_9541159.html" data-report-click='{"mod":"popu_537","spm":"1001.2101.3001.4137","strategy":"pc付费专栏左侧入口","dest":"https://blog.csdn.net/gentelmantsao/category_9541159.html","ab":"new"}'>
+                    <img src="https://img-blog.csdnimg.cn/20200510092926727.jpg?x-oss-process=image/resize,m_fixed,h_64,w_64" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'">
+                    <span class="title oneline">
+                        <span class="text">Android</span>
+                    </span>
+                    <span class="count float-right">16篇</span>
+                </a>
+            </li>
+            <li class="">
+                <a class="clearfix" target="_blank" href="https://blog.csdn.net/gentelmantsao/category_9681742.html" data-report-click='{"mod":"popu_537","spm":"1001.2101.3001.4137","strategy":"pc付费专栏左侧入口","dest":"https://blog.csdn.net/gentelmantsao/category_9681742.html","ab":"new"}'>
+                    <img src="https://img-blog.csdnimg.cn/20200510093620527.jpg?x-oss-process=image/resize,m_fixed,h_64,w_64" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'">
+                    <span class="title oneline">
+                        <span class="text">Java</span>
+                    </span>
+                    <span class="count float-right">6篇</span>
+                </a>
+            </li>
+            <li class="indentation">
+                <a class="clearfix" target="_blank" href="https://blog.csdn.net/gentelmantsao/category_9865558.html" data-report-click='{"mod":"popu_537","spm":"1001.2101.3001.4137","strategy":"pc付费专栏左侧入口","dest":"https://blog.csdn.net/gentelmantsao/category_9865558.html","ab":"new"}'>
+                    <img src="https://img-blog.csdnimg.cn/20200510095602218.jpg?x-oss-process=image/resize,m_fixed,h_64,w_64" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'">
+                    <span class="title oneline">
+                        <span class="text">Java并发教程2020版</span>
+                    </span>
+                    <span class="count float-right">30篇</span>
+                </a>
+            </li>
+            <li class="indentation">
+                <a class="clearfix" target="_blank" href="https://blog.csdn.net/gentelmantsao/category_10129642.html" data-report-click='{"mod":"popu_537","spm":"1001.2101.3001.4137","strategy":"pc付费专栏左侧入口","dest":"https://blog.csdn.net/gentelmantsao/category_10129642.html","ab":"new"}'>
+                    <img src="https://img-blog.csdnimg.cn/20190927151132530.png?x-oss-process=image/resize,m_fixed,h_64,w_64" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'">
+                    <span class="title oneline">
+                        <span class="text">Java函数式编程教程</span>
+                    </span>
+                    <span class="count float-right">5篇</span>
+                </a>
+            </li>
+            <li class="">
+                <a class="clearfix" target="_blank" href="https://blog.csdn.net/gentelmantsao/category_10098184.html" data-report-click='{"mod":"popu_537","spm":"1001.2101.3001.4137","strategy":"pc付费专栏左侧入口","dest":"https://blog.csdn.net/gentelmantsao/category_10098184.html","ab":"new"}'>
+                    <img src="https://img-blog.csdnimg.cn/20201014180756925.png?x-oss-process=image/resize,m_fixed,h_64,w_64" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'">
+                    <span class="title oneline">
+                        <span class="text">Modem2G/3G/4G/5G</span>
+                    </span>
+                    <span class="count float-right">14篇</span>
+                </a>
+            </li>
+            <li class="">
+                <a class="clearfix" target="_blank" href="https://blog.csdn.net/gentelmantsao/category_9551068.html" data-report-click='{"mod":"popu_537","spm":"1001.2101.3001.4137","strategy":"pc付费专栏左侧入口","dest":"https://blog.csdn.net/gentelmantsao/category_9551068.html","ab":"new"}'>
+                    <img src="https://img-blog.csdnimg.cn/20200510095325345.jpg?x-oss-process=image/resize,m_fixed,h_64,w_64" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'">
+                    <span class="title oneline">
+                        <span class="text">头脑风暴</span>
+                    </span>
+                    <span class="count float-right">8篇</span>
+                </a>
+            </li>
+            <li class="">
+                <a class="clearfix" target="_blank" href="https://blog.csdn.net/gentelmantsao/category_9533814.html" data-report-click='{"mod":"popu_537","spm":"1001.2101.3001.4137","strategy":"pc付费专栏左侧入口","dest":"https://blog.csdn.net/gentelmantsao/category_9533814.html","ab":"new"}'>
+                    <img src="https://img-blog.csdnimg.cn/20200510094700518.jpg?x-oss-process=image/resize,m_fixed,h_64,w_64" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'">
+                    <span class="title oneline">
+                        <span class="text">软件工程</span>
+                    </span>
+                    <span class="count float-right">3篇</span>
+                </a>
+            </li>
+            <li class="">
+                <a class="clearfix" target="_blank" href="https://blog.csdn.net/gentelmantsao/category_9739148.html" data-report-click='{"mod":"popu_537","spm":"1001.2101.3001.4137","strategy":"pc付费专栏左侧入口","dest":"https://blog.csdn.net/gentelmantsao/category_9739148.html","ab":"new"}'>
+                    <img src="https://img-blog.csdnimg.cn/20200510095014429.jpg?x-oss-process=image/resize,m_fixed,h_64,w_64" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'">
+                    <span class="title oneline">
+                        <span class="text">机器学习</span>
+                    </span>
+                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+            <li class="">
+                <a class="clearfix" target="_blank" href="https://blog.csdn.net/gentelmantsao/category_9655957.html" data-report-click='{"mod":"popu_537","spm":"1001.2101.3001.4137","strategy":"pc付费专栏左侧入口","dest":"https://blog.csdn.net/gentelmantsao/category_9655957.html","ab":"new"}'>
+                    <img src="https://img-blog.csdnimg.cn/20200510093950988.jpg?x-oss-process=image/resize,m_fixed,h_64,w_64" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'">
+                    <span class="title oneline">
+                        <span class="text">LINUX</span>
+                    </span>
+                    <span class="count float-right">8篇</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <p class="text-center">
+        <a class="flexible-btn" data-fbox="aside-archive"><img class="look-more" src="https://csdnimg.cn/release/blogv2/dist/pc/img/arrowDownWhite.png" alt=""></a>
+    </p>
+</div>
+<div id="asideNewComments" class="aside-box">
+    <h3 class="aside-title">最新评论</h3>
+    <div class="aside-content">
+        <ul class="newcomment-list">
+            <li>
+                <a class="title text-truncate" target="_blank" href="https://blog.csdn.net/GentelmanTsao/article/details/107997839#comments_15261515" data-report-click='{"mod":"popu_542","spm":"1001.2101.3001.4231","dest":"https://blog.csdn.net/GentelmanTsao/article/details/107997839#comments_15261515","ab":"new"}' data-report-view='{"mod":"popu_542","spm":"1001.2101.3001.4231","dest":"https://blog.csdn.net/GentelmanTsao/article/details/107997839#comments_15261515","ab":"new"}'>Modem2G/3G/4G/5G：RFFE Driver(射频前端驱动)：高通平台GRFC配置方法</a>
+                <p class="comment ellipsis">
+                    <a href="https://blog.csdn.net/m0_54001415" class="user-name" target="_blank">m0_54001415: </a>
+                    <span class="code-comments">谢谢您</span>
+                </p>
+            </li>
+            <li>
+                <a class="title text-truncate" target="_blank" href="https://blog.csdn.net/GentelmanTsao/article/details/106861044#comments_14445643" data-report-click='{"mod":"popu_542","spm":"1001.2101.3001.4231","dest":"https://blog.csdn.net/GentelmanTsao/article/details/106861044#comments_14445643","ab":"new"}' data-report-view='{"mod":"popu_542","spm":"1001.2101.3001.4231","dest":"https://blog.csdn.net/GentelmanTsao/article/details/106861044#comments_14445643","ab":"new"}'>Modem2G/3G/4G/5G：解决设备连接高通QPST工具（例如QXDM抓log）没有端口（diag口）问题</a>
+                <p class="comment ellipsis">
+                    <a href="https://blog.csdn.net/bhgv1" class="user-name" target="_blank">5G?4G??????: </a>
+                    <span class="code-comments">怎么打开modem</span>
+                </p>
+            </li>
+            <li>
+                <a class="title text-truncate" target="_blank" href="https://blog.csdn.net/GentelmanTsao/article/details/104445782#comments_13900565" data-report-click='{"mod":"popu_542","spm":"1001.2101.3001.4231","dest":"https://blog.csdn.net/GentelmanTsao/article/details/104445782#comments_13900565","ab":"new"}' data-report-view='{"mod":"popu_542","spm":"1001.2101.3001.4231","dest":"https://blog.csdn.net/GentelmanTsao/article/details/104445782#comments_13900565","ab":"new"}'>Java：作用域与变量的生命周期，这道简单的题你能答对吗？</a>
+                <p class="comment ellipsis">
+                    <a href="https://blog.csdn.net/qq_51576042" class="user-name" target="_blank">「已注销」: </a>
+                    <span class="code-comments">编译过去了吗，result 出没出娱</span>
+                </p>
+            </li>
+            <li>
+                <a class="title text-truncate" target="_blank" href="https://blog.csdn.net/GentelmanTsao/article/details/104445782#comments_13900458" data-report-click='{"mod":"popu_542","spm":"1001.2101.3001.4231","dest":"https://blog.csdn.net/GentelmanTsao/article/details/104445782#comments_13900458","ab":"new"}' data-report-view='{"mod":"popu_542","spm":"1001.2101.3001.4231","dest":"https://blog.csdn.net/GentelmanTsao/article/details/104445782#comments_13900458","ab":"new"}'>Java：作用域与变量的生命周期，这道简单的题你能答对吗？</a>
+                <p class="comment ellipsis">
+                    <a href="https://blog.csdn.net/qq_51576042" class="user-name" target="_blank">「已注销」: </a>
+                    <span class="code-comments">你是不傻</span>
+                </p>
+            </li>
+            <li>
+                <a class="title text-truncate" target="_blank" href="https://blog.csdn.net/GentelmanTsao/article/details/103260348#comments_13406675" data-report-click='{"mod":"popu_542","spm":"1001.2101.3001.4231","dest":"https://blog.csdn.net/GentelmanTsao/article/details/103260348#comments_13406675","ab":"new"}' data-report-view='{"mod":"popu_542","spm":"1001.2101.3001.4231","dest":"https://blog.csdn.net/GentelmanTsao/article/details/103260348#comments_13406675","ab":"new"}'>Android：全面&amp;详细的解析Android数据流量统计流程与分析方法（流量检测、流量监控、流量提示）相关类PhoneStateListener，dcTracker，TrafficStats</a>
+                <p class="comment ellipsis">
+                    <a href="https://blog.csdn.net/qq_20560259" class="user-name" target="_blank">qq_20560259: </a>
+                    <span class="code-comments">最近在学习相关知识，求一份源码690687296@qq.com，谢谢啦！</span>
+                </p>
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="asideArchive" class="aside-box" style="display:block!important; width:300px;">
+    <h3 class="aside-title">最新文章</h3>
+    <div class="aside-content">
+        <ul class="inf_list clearfix">
+            <li class="clearfix">
+            <a href="https://blog.csdn.net/GentelmanTsao/article/details/114891872" target="_blank" data-report-click='{"mod":"popu_382","spm":"1001.2101.3001.4136","dest":"https://blog.csdn.net/GentelmanTsao/article/details/114891872","ab":"new"}' data-report-view='{"mod":"popu_382","dest":"https://blog.csdn.net/GentelmanTsao/article/details/114891872","ab":"new"}'>Ubuntu:已解决：安装18.04后报错：依赖: libc6-armel-cross (＞= 2.27) 但是 2.23-0ubuntu3cross1 已经安装</a>
+            </li>
+            <li class="clearfix">
+            <a href="https://blog.csdn.net/GentelmanTsao/article/details/111578070" target="_blank" data-report-click='{"mod":"popu_382","spm":"1001.2101.3001.4136","dest":"https://blog.csdn.net/GentelmanTsao/article/details/111578070","ab":"new"}' data-report-view='{"mod":"popu_382","dest":"https://blog.csdn.net/GentelmanTsao/article/details/111578070","ab":"new"}'>Linux: C语言使用管道和shell实现自动登录telnet并执行拓扑查询命令</a>
+            </li>
+            <li class="clearfix">
+            <a href="https://blog.csdn.net/GentelmanTsao/article/details/110643199" target="_blank" data-report-click='{"mod":"popu_382","spm":"1001.2101.3001.4136","dest":"https://blog.csdn.net/GentelmanTsao/article/details/110643199","ab":"new"}' data-report-view='{"mod":"popu_382","dest":"https://blog.csdn.net/GentelmanTsao/article/details/110643199","ab":"new"}'>Linux:原因及解法warning: suggest parentheses around assignment used as truth value [-Wparentheses]</a>
+            </li>
+        </ul>
+        <div class="archive-bar"></div>
+        <div class="archive-box">
+                <div class="archive-list-item"><a href="https://blog.csdn.net/GentelmanTsao/article/month/2021/03" target="_blank" data-report-click='{"mod":"popu_538","spm":"1001.2101.3001.4138","ab":"new","dest":""}'><span class="year">2021年</span><span class="num">1篇</span></a></div>
+                <div class="archive-list-item"><a href="https://blog.csdn.net/GentelmanTsao/article/month/2020/12" target="_blank" data-report-click='{"mod":"popu_538","spm":"1001.2101.3001.4138","ab":"new","dest":""}'><span class="year">2020年</span><span class="num">78篇</span></a></div>
+                <div class="archive-list-item"><a href="https://blog.csdn.net/GentelmanTsao/article/month/2019/12" target="_blank" data-report-click='{"mod":"popu_538","spm":"1001.2101.3001.4138","ab":"new","dest":""}'><span class="year">2019年</span><span class="num">11篇</span></a></div>
+        </div>
+    </div>
+</div>
+	<div id="footerRightAds" class="isShowFooterAds">
+		<div class="aside-box">
+			<div id="kp_box_57" data-pid="57"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- PC-博客详情页-左下视窗（300*600） -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1076724771190722"
+     data-ad-slot="1173711872"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script><img class="pre-img-lasy" data-src="https://kunyu.csdn.net/1.png?p=57&a=2488&c=0&k=&spm=1001.2101.3001.5001&d=1&t=3&u=131dc33c2ce3431f9096e088232722c6" style="display: block;width: 0px;height: 0px;"></div>
+		</div>
+	</div>
+    <!-- 详情页显示目录 -->
+<!--文章目录-->
+<div id="asidedirectory" class="aside-box">
+    <div class='groupfile' id="directory">
+        <h3 class="aside-title">目录</h3>
+        <div class="align-items-stretch group_item">
+            <div class="pos-box">
+            <div class="scroll-box">
+                <div class="toc-box"></div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+</aside>
+<script>
+	$("a.flexible-btn").click(function(){
+		$(this).parents('div.aside-box').removeClass('flexible-box');
+		$(this).parents("p.text-center").remove();
+	})
+</script>
+<script type="text/javascript"  src="https://g.csdnimg.cn/user-tooltip/2.4/user-tooltip.js"></script>
+<script type="text/javascript"  src="https://g.csdnimg.cn/user-medal/1.0.6/user-medal.js"></script>    </div>
+<div class="recommend-right  align-items-stretch clearfix" id="rightAside" data-type="recommend">
+    <aside class="recommend-right_aside">
+        <div id="recommend-right" >
+                        <div class='flex-column aside-box groupfile' id="groupfile">
+                <div class="groupfile-div">
+                <h3 class="aside-title">目录</h3>
+                <div class="align-items-stretch group_item">
+                    <div class="pos-box">
+                        <div class="scroll-box">
+                            <div class="toc-box"></div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+                <div id="recommendAdBox">
+                    <div id="kp_box_479" data-pid="479"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- PC-博客详情页-右侧视窗300*600 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1076724771190722"
+     data-ad-slot="8441704093"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script><img class="pre-img-lasy" data-src="https://kunyu.csdn.net/1.png?p=479&a=2487&c=0&k=&spm=1001.2101.3001.4834&d=1&t=3&u=b04d3e1c63314c5e8691d51f4af174a1" style="display: block;width: 0px;height: 0px;"></div>
+                </div>
+            <div class='aside-box kind_person d-flex flex-column'>
+                    <h3 class="aside-title">分类专栏</h3>
+                    <div class="align-items-stretch kindof_item" id="kind_person_column">
+                        <div class="aside-content">
+                            <ul>
+                                <li class="">
+                                    <a class="clearfix" target="_blank" href="https://blog.csdn.net/gentelmantsao/category_9541159.html" data-report-click='{"mod":"popu_537","spm":"1001.2101.3001.4137","strategy":"pc付费专栏左侧入口","dest":"https://blog.csdn.net/gentelmantsao/category_9541159.html","ab":"new"}'>
+                                        <img src="https://img-blog.csdnimg.cn/20200510092926727.jpg?x-oss-process=image/resize,m_fixed,h_64,w_64" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'">
+                                        <span class="title oneline">
+                                            <span class="text">Android</span>
+                                        </span>
+                                        <span class="count float-right">16篇</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a class="clearfix" target="_blank" href="https://blog.csdn.net/gentelmantsao/category_9681742.html" data-report-click='{"mod":"popu_537","spm":"1001.2101.3001.4137","strategy":"pc付费专栏左侧入口","dest":"https://blog.csdn.net/gentelmantsao/category_9681742.html","ab":"new"}'>
+                                        <img src="https://img-blog.csdnimg.cn/20200510093620527.jpg?x-oss-process=image/resize,m_fixed,h_64,w_64" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'">
+                                        <span class="title oneline">
+                                            <span class="text">Java</span>
+                                        </span>
+                                        <span class="count float-right">6篇</span>
+                                    </a>
+                                </li>
+                                <li class="indentation">
+                                    <a class="clearfix" target="_blank" href="https://blog.csdn.net/gentelmantsao/category_9865558.html" data-report-click='{"mod":"popu_537","spm":"1001.2101.3001.4137","strategy":"pc付费专栏左侧入口","dest":"https://blog.csdn.net/gentelmantsao/category_9865558.html","ab":"new"}'>
+                                        <img src="https://img-blog.csdnimg.cn/20200510095602218.jpg?x-oss-process=image/resize,m_fixed,h_64,w_64" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'">
+                                        <span class="title oneline">
+                                            <span class="text">Java并发教程2020版</span>
+                                        </span>
+                                        <span class="count float-right">30篇</span>
+                                    </a>
+                                </li>
+                                <li class="indentation">
+                                    <a class="clearfix" target="_blank" href="https://blog.csdn.net/gentelmantsao/category_10129642.html" data-report-click='{"mod":"popu_537","spm":"1001.2101.3001.4137","strategy":"pc付费专栏左侧入口","dest":"https://blog.csdn.net/gentelmantsao/category_10129642.html","ab":"new"}'>
+                                        <img src="https://img-blog.csdnimg.cn/20190927151132530.png?x-oss-process=image/resize,m_fixed,h_64,w_64" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'">
+                                        <span class="title oneline">
+                                            <span class="text">Java函数式编程教程</span>
+                                        </span>
+                                        <span class="count float-right">5篇</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a class="clearfix" target="_blank" href="https://blog.csdn.net/gentelmantsao/category_10098184.html" data-report-click='{"mod":"popu_537","spm":"1001.2101.3001.4137","strategy":"pc付费专栏左侧入口","dest":"https://blog.csdn.net/gentelmantsao/category_10098184.html","ab":"new"}'>
+                                        <img src="https://img-blog.csdnimg.cn/20201014180756925.png?x-oss-process=image/resize,m_fixed,h_64,w_64" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'">
+                                        <span class="title oneline">
+                                            <span class="text">Modem2G/3G/4G/5G</span>
+                                        </span>
+                                        <span class="count float-right">14篇</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a class="clearfix" target="_blank" href="https://blog.csdn.net/gentelmantsao/category_9551068.html" data-report-click='{"mod":"popu_537","spm":"1001.2101.3001.4137","strategy":"pc付费专栏左侧入口","dest":"https://blog.csdn.net/gentelmantsao/category_9551068.html","ab":"new"}'>
+                                        <img src="https://img-blog.csdnimg.cn/20200510095325345.jpg?x-oss-process=image/resize,m_fixed,h_64,w_64" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'">
+                                        <span class="title oneline">
+                                            <span class="text">头脑风暴</span>
+                                        </span>
+                                        <span class="count float-right">8篇</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a class="clearfix" target="_blank" href="https://blog.csdn.net/gentelmantsao/category_9533814.html" data-report-click='{"mod":"popu_537","spm":"1001.2101.3001.4137","strategy":"pc付费专栏左侧入口","dest":"https://blog.csdn.net/gentelmantsao/category_9533814.html","ab":"new"}'>
+                                        <img src="https://img-blog.csdnimg.cn/20200510094700518.jpg?x-oss-process=image/resize,m_fixed,h_64,w_64" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'">
+                                        <span class="title oneline">
+                                            <span class="text">软件工程</span>
+                                        </span>
+                                        <span class="count float-right">3篇</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a class="clearfix" target="_blank" href="https://blog.csdn.net/gentelmantsao/category_9739148.html" data-report-click='{"mod":"popu_537","spm":"1001.2101.3001.4137","strategy":"pc付费专栏左侧入口","dest":"https://blog.csdn.net/gentelmantsao/category_9739148.html","ab":"new"}'>
+                                        <img src="https://img-blog.csdnimg.cn/20200510095014429.jpg?x-oss-process=image/resize,m_fixed,h_64,w_64" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'">
+                                        <span class="title oneline">
+                                            <span class="text">机器学习</span>
+                                        </span>
+                                        <span class="count float-right">1篇</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a class="clearfix" target="_blank" href="https://blog.csdn.net/gentelmantsao/category_9655957.html" data-report-click='{"mod":"popu_537","spm":"1001.2101.3001.4137","strategy":"pc付费专栏左侧入口","dest":"https://blog.csdn.net/gentelmantsao/category_9655957.html","ab":"new"}'>
+                                        <img src="https://img-blog.csdnimg.cn/20200510093950988.jpg?x-oss-process=image/resize,m_fixed,h_64,w_64" alt="" onerror="this.src='https://img-blog.csdnimg.cn/20201014180756922.png?x-oss-process=image/resize,m_fixed,h_64,w_64'">
+                                        <span class="title oneline">
+                                            <span class="text">LINUX</span>
+                                        </span>
+                                        <span class="count float-right">8篇</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </aside>
+</div>
+
+</div>
+<div class="mask-dark"></div>
+<script type="text/javascript">
+    var timert = setInterval(function(){
+      sideToolbar = $(".csdn-side-toolbar");
+      if (sideToolbar.length > 0) {
+        sideToolbar.css('cssText','bottom:64px !important;')
+        clearInterval(timert);
+      }
+    }, 200);
+</script>
+<script>
+    var articleId = 103234535;
+    var commentscount = 0;
+    var curentUrl = "https://blog.csdn.net/GentelmanTsao/article/details/103234535";
+    var myUrl = "https://my.csdn.net/";
+    var highlight = ["Android","够","全面","&","详细","解析","APN","涉及","内容","GGSN","authtype","MVNO","pdp","Apns-conf","supl","hipri","dun"];//高亮数组
+    var isRecommendModule = true;
+    var isBaiduPre = true;
+    var baiduCount = 2;
+    var share_card_url = "https://blog.csdn.net/GentelmanTsao/article/shareArticleCardPage?article_id=103234535"
+	var articleType = 1;
+    var baiduKey = "apn类型";
+    var needInsertBaidu = true;
+    var recommendRegularDomainArr = ["blog.csdn.net/.+/article/details/","download.csdn.net/download/","edu.csdn.net/course/detail/","ask.csdn.net/questions/","bbs.csdn.net/topics/","www.csdn.net/gather_.+/"]
+    var codeStyle = "atom-one-light";
+    var baiduSearchType = "baidulandingword";
+    var canRead = true;
+    var blogMoveHomeArticle = false;
+    var showPcWindowAd = false;
+    var showSearchText = "";
+    var linkPage = true;
+    var articleSource = 1;
+    var articleReport = '{"pid": "blog", "spm":"1001.2101"}';
+</script>
+<script src="https://csdnimg.cn/public/sandalstrap/1.4/js/sandalstrap.min.js"></script>
+<div class="skin-boxshadow"></div>
+<div style="display:none;">
+	<img src="" onerror='setTimeout(function(){if(!/(csdn.net|iteye.com|baiducontent.com|googleusercontent.com|360webcache.com|sogoucdn.com|bingj.com|baidu.com)$/.test(window.location.hostname)){window.location.href="\x68\x74\x74\x70\x73\x3a\x2f\x2f\x77\x77\x77\x2e\x63\x73\x64\x6e\x2e\x6e\x65\x74"}},3000);'>
+</div>
+</body>
+<script src="https://csdnimg.cn/release/blogv2/dist/components/js/pc_wap_highlight-db1e81323a.min.js" type="text/javascript"></script>
+<script src="https://csdnimg.cn/release/blogv2/dist/components/js/pc_wap_common-906586e915.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="https://csdnimg.cn/release/blog_editor_html/release1.6.12/ckeditor/plugins/codesnippet/lib/highlight/styles/atom-one-light.css">
+<script>
+ // 全局声明
+ if (window.csdn === undefined) {
+      window.csdn = {};
+    }
+    window.csdn.sideToolbar = {
+        options: {
+            report:{
+                isShow: true,
+            },
+            qr: {
+                isShow: false,
+            },
+            guide: {
+                isShow: true
+            }
+        }
+    }
+    $(function(){
+        $(document).on('click',"a.option-box[data-type='report']",function() {
+            window.csdn.userLogin.loadAjax(function(res){
+                showReport(false,articleTitles);
+            })
+        });
+    })
+</script>
+    <script src="https://g.csdnimg.cn/baidu-search/1.0.9/baidu-search.js"  type="text/javascript"></script>
+<script src="https://csdnimg.cn/release/download/old_static/js/qrcode.js"></script>
+<script src="https://csdnimg.cn/release/blogv2/dist/pc/js/common-b286f966c8.min.js" type="text/javascript"></script>
+<script src="https://csdnimg.cn/release/blogv2/dist/pc/js/detail-6a69ca4c78.min.js" type="text/javascript"></script>
+<script src="https://g.csdnimg.cn/user-ordercart/1.0.6/user-ordercart.js" type="text/javascript"></script>
+<script src="https://csdnimg.cn/release/blogv2/dist/pc/js/column-78261cfea6.min.js" type="text/javascript"></script>
+<script src="https://g.csdnimg.cn/side-toolbar/3.0/side-toolbar.js" type="text/javascript"></script>
+<script src="https://g.csdnimg.cn/copyright/1.0.3/copyright.js" type="text/javascript"></script>
+<script>
+    $(".MathJax").remove();
+    if ($('div.markdown_views pre.prettyprint code.hljs').length > 0) {
+        $('div.markdown_views')[0].className = 'markdown_views';
+    }
+</script>
+<script type="text/javascript" src="https://csdnimg.cn/release/blog_mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            "HTML-CSS": {
+                    linebreaks: { automatic: true, width: "94%container" },
+                    imageFont: null
+            },
+            tex2jax: {
+                preview: "none"
+            },
+            mml2jax: {
+                preview: 'none'
+            }
+    });
+</script>
+<script type="text/javascript" crossorigin src="https://g.csdnimg.cn/user-login/2.3.2/user-login.js"></script>
+<script type="text/javascript" crossorigin src="https://g.csdnimg.cn/login-box/1.1.4/login-box.js"></script></html>
