@@ -1,7 +1,7 @@
 
 ## Overview
 
-<img src="./res/html/RIL structure.PNG" alt="RIL structure" style="zoom:45%;" />
+<img src="https://github.com/tingkts/Android-Telephony/blob/main/res/RIL%20structure.PNG" alt="RIL structure" style="zoom:45%;" />
 
 
 
@@ -51,7 +51,7 @@ drwxr-xr-x 1 ting 1049089      0 Mar 17 13:06 ../
 
 
 
-- [Android：一篇就够！全面&详细解析APN（涉及内容：GGSN，authtype，MVNO，pdp，Apns-conf，supl,hipri,dun）](https://blog.csdn.net/GentelmanTsao/article/details/103234535)
+&nbsp;&nbsp;☛&nbsp;&nbsp;[Android：一篇就够！全面&详细解析APN（涉及内容：GGSN，authtype，MVNO，pdp，Apns-conf，supl,hipri,dun）](https://blog.csdn.net/GentelmanTsao/article/details/103234535)
 
 
 <br>
@@ -214,7 +214,7 @@ drwxr-xr-x 1 ting 1049089      0 Mar 17 13:06 ../
 259
 ```
 
-[frameworks/opt/telephony/src/java/com/android/internal/telephony/RadioConfigResponse.java](http://androidxref.com/9.0.0_r3/xref/frameworks/opt/telephony/src/java/com/android/internal/telephony/RadioConfigResponse.java)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[frameworks/opt/telephony/src/java/com/android/internal/telephony/RadioConfigResponse.java](http://androidxref.com/9.0.0_r3/xref/frameworks/opt/telephony/src/java/com/android/internal/telephony/RadioConfigResponse.java)
 
 ```java
 // frameworks/opt/telephony/src/java/com/android/internal/telephony/RadioConfigResponse.java
@@ -485,7 +485,7 @@ drwxrwxr-x  2 ting ting 4096 Nov 12 21:23 rild/               // RIL Daemon
 
 - [libril.so](http://androidxref.com/9.0.0_r3/xref/hardware/ril/libril/)
 
-   The library of [rild](http://androidxref.com/9.0.0_r3/xref/hardware/ril/rild/) that implement Radio HIDL service, e.g. android::hardware::radio::V1_1::IRadio.
+   The library of [rild](http://androidxref.com/9.0.0_r3/xref/hardware/ril/rild/) that implement Radio HIDL service, e.g. `android::hardware::radio::V1_1::IRadio`.
 
    ```console
    ting@ting-pc:~/aosp/android-9/hardware/ril/libril
@@ -714,6 +714,8 @@ Ref. module of [Quectel EC25-E](https://github.com/tingkts/Android-Telephony/blo
 
 </br>
 </br>
+
+
 
 ----
 
