@@ -17,11 +17,11 @@
     <link  href="https://g.csdnimg.cn/static/logo/favicon32.ico"  rel="shortcut icon" type="image/x-icon" />
     <title>Android：一篇就够！全面&amp;详细解析APN（涉及内容：GGSN，authtype，MVNO，pdp，Apns-conf，supl,hipri,dun）_GentelmanTsao的博客-CSDN博客_apn类型</title>
     <script>
-      (function(){ 
-        var el = document.createElement("script"); 
-        el.src = "https://s3a.pstatp.com/toutiao/push.js?1abfa13dfe74d72d41d83c86d240de427e7cac50c51ead53b2e79d40c7952a23ed7716d05b4a0f683a653eab3e214672511de2457e74e99286eb2c33f4428830"; 
-        el.id = "ttzz"; 
-        var s = document.getElementsByTagName("script")[0]; 
+      (function(){
+        var el = document.createElement("script");
+        el.src = "https://s3a.pstatp.com/toutiao/push.js?1abfa13dfe74d72d41d83c86d240de427e7cac50c51ead53b2e79d40c7952a23ed7716d05b4a0f683a653eab3e214672511de2457e74e99286eb2c33f4428830";
+        el.id = "ttzz";
+        var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(el, s);
       })(window)
     </script>
@@ -85,23 +85,23 @@
     </script>
 <link rel="stylesheet" href="https://csdnimg.cn/release/blogv2/dist/pc/css/blog_code-01256533b5.min.css">
 <link rel="stylesheet" href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/chart-3456820cac.css" />
-<div class="main_father clearfix d-flex justify-content-center" style="height:100%;"> 
+<div class="main_father clearfix d-flex justify-content-center" style="height:100%;">
     <div class="container clearfix" id="mainBox">
         <main>
 <script type="text/javascript">
     var blogSensitiveWords = "";
-    function getQueryString(name) {   
-      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象  
+    function getQueryString(name) {
+      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
       var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-      if( r != null ) return decodeURIComponent( r[2] ); return '';   
+      if( r != null ) return decodeURIComponent( r[2] ); return '';
     }
-    function stripscript(s){ 
-      var pattern = new RegExp("[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？%]") 
-      var rs = ""; 
-      for (var i = 0; i < s.length; i++) { 
-        rs = rs+s.substr(i, 1).replace(pattern, ''); 
-      } 
-      return rs; 
+    function stripscript(s){
+      var pattern = new RegExp("[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？%]")
+      var rs = "";
+      for (var i = 0; i < s.length; i++) {
+        rs = rs+s.substr(i, 1).replace(pattern, '');
+      }
+      return rs;
     }
     var blogHotWords = stripscript(getQueryString('utm_term')).length > 1 ? stripscript(getQueryString('utm_term')) : ''
 </script>
@@ -174,48 +174,48 @@
   </li><li><a href="#2_APN_79">2. APN的实现机制</a></li><li><ul><li><a href="#21%09APN_XMLdatabase_80">2.1 APN的创建&#xff1a; 从XML到database</a></li><li><a href="#22_APNSIM_126">2.2 APN匹配SIM卡与菜单显示</a></li><li><a href="#23_PDPAPN_141">2.3 PDP时APN的选择</a></li><li><a href="#24_modemAPN_161">2.4 modem中的APN</a></li></ul>
   </li><li><a href="#1__xmldatabase_166">附录1 从xml加载到database</a></li><li><a href="#2APN_277">附录2。APN的读取与菜单显示</a></li><li><a href="#3_PDPAPN_402">附录3 PDP中的APN</a></li></ul>
 </div>
-<p></p> 
-<h1><a id="1_APN_4"></a>1. APN&#xff1a;从概念说起</h1> 
-<h2><a id="11_3GPPAPN_5"></a>1.1 从3GPP看APN的定义和角色</h2> 
-<p><strong>Definition of Access Point Name</strong><br /> In the GPRS backbone, an Access Point Name (APN) is a reference to a GGSN. To support inter-PLMN roaming, the internal GPRS DNS functionality is used to translate the APN into the IP address of the GGSN.<br /> ——3gpp 23.003</p> 
-<p>从定义可看出&#xff0c;APN是GGSN的引用&#xff0c;被internal GPRS DNS转换为GGSN的IP地址。<br /> <img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20191125111141196.png" /><br /> 那么GGSN是什么&#xff0c;又是做什么的呢&#xff1f;<br /> <strong>GGSN全称Gateway GPRS Support Node, 网关GPRS支持节点</strong></p> 
-<p>GGSN主要起网关作用&#xff0c;所扮演的角色&#xff1a;<br /> 对内&#xff1a;网络传输&#xff1b; &#xff08;网络接入控制&#xff0c;分组数据的过滤&#xff09;<br /> 对外&#xff1a;路由器&#xff08;路由选择和分组的转发&#xff0c;IP地址分配&#xff09;</p> 
-<h2><a id="12_APN_19"></a>1.2 APN包含哪些参数</h2> 
-<p>一个典型的APN包含的参数有名称、MCCMNC、接入点、类型。</p> 
-<p><strong>下面以CMCC APN为例&#xff0c;它包含下面一些参数&#xff1a;</strong><br /> &lt;apn carrier&#61;“连接互联网” //名称<br /> mcc&#61;“460” //MCC<br /> mnc&#61;“07” //MNC<br /> apn&#61;“cmnet” //接入点<br /> type&#61;“default,supl,net” //类型<br /> /&gt;</p> 
-<p>APN还可以包含其他更多的参数&#xff0c;主要有下面这些&#xff1a;</p> 
-<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20191221163721155.PNG?x-oss-process&#61;image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0dlbnRlbG1hblRzYW8&#61;,size_16,color_FFFFFF,t_70" /></p> 
-<p><strong>Note &#xff1a;每个有数据业务的运营商都会设定自己的APN&#xff0c;同一个运营商的APN可能有多条&#xff0c;包括分别用于3G或4G&#xff0c;NET和WAP&#xff0c;不同APN的使用范围和收费会有差别。</strong></p> 
-<h3><a id="APN_37"></a>APN的类型&#xff1a;</h3> 
-<p>常见的APN类型有下面几种&#xff0c;用途和优先级各有不同。<br /> <img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20191223102429888.png?x-oss-process&#61;image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0dlbnRlbG1hblRzYW8&#61;,size_16,color_FFFFFF,t_70" /></p> 
-<h2><a id="13_APN_40"></a>1.3 APN的存储位置与加载位置</h2> 
-<h3><a id="131_APN_41"></a>1.3.1 APN的存储位置</h3> 
-<p>APN以XML的格式存储。<br /> <strong>文件名</strong>&#xff1a;<br /> Apns-conf.xml</p> 
-<p><strong>源码文件路径</strong>&#xff1a;<br /> MTK平台&#xff08;通常&#xff09;&#xff1a;alps\mediatek\frameworks\base\telephony\etc<br /> 高通平台&#xff08;通常&#xff09;&#xff1a;android\vendor\qcom\proprietary\telephony-apps\etc</p> 
-<p><strong>UE文件路径</strong>&#xff1a;<br /> system/etc/ Apns-conf.xml</p> 
-<p>当UE开机后&#xff0c;读取XML中的APN并写入到database中。</p> 
-<p><strong>database中APN 的table名称</strong>&#xff1a;<br /> content://telephony/carriers<br /> 注&#xff1a;有些平台为了适配dual SIM&#xff0c;可能会加上sub1/sub2等。</p> 
-<h3><a id="132_APN_59"></a>1.3.2 APN的加载位置</h3> 
-<p><strong>加载到database&#xff1a;</strong><br /> TelephonyProvider读取XML并在database中插入apn的table。</p> 
-<p><strong>加载到UI菜单&#xff1a;</strong><br /> 根据SIM卡的MCCMNC&#xff0c;去匹配database中同样MCCMNC的APN项&#xff0c;并将匹配到的APN填写到菜单列表。</p> 
-<p><strong>加载到PDP请求&#xff1a;</strong><br /> 由DCtracker负责创建/更新waiting APN list&#xff0c;供PDP选用。</p> 
-<h2><a id="14APN_70"></a>1.4虚拟运营商的APN</h2> 
-<p>虚拟运营商&#xff08;MVNO&#xff09;没有自营网段&#xff0c;使用了主运营商的网段&#xff0c;因而和主运营商有相同的MCCMNC。为了能够与主运营商区分&#xff0c;虚拟运营商的APN还包含了MVNO参数。MVNO参数分为SPN/PNN/IMSI/GID1&#xff0c;是从SIM卡对应栏位读取的值&#xff0c;目的是从该值中判断该SIM卡是否属于MVNO。</p> 
-<p>在加载MVNO SIM卡的APN时&#xff0c;会同时去匹配MCCMNC和MVNO参数。</p> 
-<p><strong>APN的概念部分到此告一段落&#xff0c;下面做个总结&#xff1a;</strong><br /> <img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20191221163036743.png?x-oss-process&#61;image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0dlbnRlbG1hblRzYW8&#61;,size_16,color_FFFFFF,t_70" /></p> 
-<h1><a id="2_APN_79"></a>2. APN的实现机制</h1> 
-<h2><a id="21%09APN_XMLdatabase_80"></a>2.1 APN的创建&#xff1a; 从XML到database</h2> 
-<p>在上一章中我们讲到&#xff0c;APN的原始参数存放在XML中;<br /> 而UE是通过query database的方式使用APN;<br /> 因而必然需要将APN从XML录入到database,这一步在telephonyprovider中实现。</p> 
-<p>为了更清晰的理解实现思路&#xff0c;避免过多的源码干扰阅读节奏&#xff0c;接下来的分析中涉及到的源码部分&#xff0c;都以伪代码的形式给出&#xff0c;详细的代码以附录形式给出。</p> 
-<p><strong>telephonyprovider中的initDatabase方法的逻辑&#xff08;伪代码&#xff09;&#xff1a;</strong></p> 
+<p></p>
+<h1><a id="1_APN_4"></a>1. APN&#xff1a;从概念说起</h1>
+<h2><a id="11_3GPPAPN_5"></a>1.1 从3GPP看APN的定义和角色</h2>
+<p><strong>Definition of Access Point Name</strong><br /> In the GPRS backbone, an Access Point Name (APN) is a reference to a GGSN. To support inter-PLMN roaming, the internal GPRS DNS functionality is used to translate the APN into the IP address of the GGSN.<br /> ——3gpp 23.003</p>
+<p>从定义可看出&#xff0c;APN是GGSN的引用&#xff0c;被internal GPRS DNS转换为GGSN的IP地址。<br /> <img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20191125111141196.png" /><br /> 那么GGSN是什么&#xff0c;又是做什么的呢&#xff1f;<br /> <strong>GGSN全称Gateway GPRS Support Node, 网关GPRS支持节点</strong></p>
+<p>GGSN主要起网关作用&#xff0c;所扮演的角色&#xff1a;<br /> 对内&#xff1a;网络传输&#xff1b; &#xff08;网络接入控制&#xff0c;分组数据的过滤&#xff09;<br /> 对外&#xff1a;路由器&#xff08;路由选择和分组的转发&#xff0c;IP地址分配&#xff09;</p>
+<h2><a id="12_APN_19"></a>1.2 APN包含哪些参数</h2>
+<p>一个典型的APN包含的参数有名称、MCCMNC、接入点、类型。</p>
+<p><strong>下面以CMCC APN为例&#xff0c;它包含下面一些参数&#xff1a;</strong><br /> &lt;apn carrier&#61;“连接互联网” //名称<br /> mcc&#61;“460” //MCC<br /> mnc&#61;“07” //MNC<br /> apn&#61;“cmnet” //接入点<br /> type&#61;“default,supl,net” //类型<br /> /&gt;</p>
+<p>APN还可以包含其他更多的参数&#xff0c;主要有下面这些&#xff1a;</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20191221163721155.PNG?x-oss-process&#61;image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0dlbnRlbG1hblRzYW8&#61;,size_16,color_FFFFFF,t_70" /></p>
+<p><strong>Note &#xff1a;每个有数据业务的运营商都会设定自己的APN&#xff0c;同一个运营商的APN可能有多条&#xff0c;包括分别用于3G或4G&#xff0c;NET和WAP&#xff0c;不同APN的使用范围和收费会有差别。</strong></p>
+<h3><a id="APN_37"></a>APN的类型&#xff1a;</h3>
+<p>常见的APN类型有下面几种&#xff0c;用途和优先级各有不同。<br /> <img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20191223102429888.png?x-oss-process&#61;image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0dlbnRlbG1hblRzYW8&#61;,size_16,color_FFFFFF,t_70" /></p>
+<h2><a id="13_APN_40"></a>1.3 APN的存储位置与加载位置</h2>
+<h3><a id="131_APN_41"></a>1.3.1 APN的存储位置</h3>
+<p>APN以XML的格式存储。<br /> <strong>文件名</strong>&#xff1a;<br /> Apns-conf.xml</p>
+<p><strong>源码文件路径</strong>&#xff1a;<br /> MTK平台&#xff08;通常&#xff09;&#xff1a;alps\mediatek\frameworks\base\telephony\etc<br /> 高通平台&#xff08;通常&#xff09;&#xff1a;android\vendor\qcom\proprietary\telephony-apps\etc</p>
+<p><strong>UE文件路径</strong>&#xff1a;<br /> system/etc/ Apns-conf.xml</p>
+<p>当UE开机后&#xff0c;读取XML中的APN并写入到database中。</p>
+<p><strong>database中APN 的table名称</strong>&#xff1a;<br /> content://telephony/carriers<br /> 注&#xff1a;有些平台为了适配dual SIM&#xff0c;可能会加上sub1/sub2等。</p>
+<h3><a id="132_APN_59"></a>1.3.2 APN的加载位置</h3>
+<p><strong>加载到database&#xff1a;</strong><br /> TelephonyProvider读取XML并在database中插入apn的table。</p>
+<p><strong>加载到UI菜单&#xff1a;</strong><br /> 根据SIM卡的MCCMNC&#xff0c;去匹配database中同样MCCMNC的APN项&#xff0c;并将匹配到的APN填写到菜单列表。</p>
+<p><strong>加载到PDP请求&#xff1a;</strong><br /> 由DCtracker负责创建/更新waiting APN list&#xff0c;供PDP选用。</p>
+<h2><a id="14APN_70"></a>1.4虚拟运营商的APN</h2>
+<p>虚拟运营商&#xff08;MVNO&#xff09;没有自营网段&#xff0c;使用了主运营商的网段&#xff0c;因而和主运营商有相同的MCCMNC。为了能够与主运营商区分&#xff0c;虚拟运营商的APN还包含了MVNO参数。MVNO参数分为SPN/PNN/IMSI/GID1&#xff0c;是从SIM卡对应栏位读取的值&#xff0c;目的是从该值中判断该SIM卡是否属于MVNO。</p>
+<p>在加载MVNO SIM卡的APN时&#xff0c;会同时去匹配MCCMNC和MVNO参数。</p>
+<p><strong>APN的概念部分到此告一段落&#xff0c;下面做个总结&#xff1a;</strong><br /> <img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20191221163036743.png?x-oss-process&#61;image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0dlbnRlbG1hblRzYW8&#61;,size_16,color_FFFFFF,t_70" /></p>
+<h1><a id="2_APN_79"></a>2. APN的实现机制</h1>
+<h2><a id="21%09APN_XMLdatabase_80"></a>2.1 APN的创建&#xff1a; 从XML到database</h2>
+<p>在上一章中我们讲到&#xff0c;APN的原始参数存放在XML中;<br /> 而UE是通过query database的方式使用APN;<br /> 因而必然需要将APN从XML录入到database,这一步在telephonyprovider中实现。</p>
+<p>为了更清晰的理解实现思路&#xff0c;避免过多的源码干扰阅读节奏&#xff0c;接下来的分析中涉及到的源码部分&#xff0c;都以伪代码的形式给出&#xff0c;详细的代码以附录形式给出。</p>
+<p><strong>telephonyprovider中的initDatabase方法的逻辑&#xff08;伪代码&#xff09;&#xff1a;</strong></p>
 <pre><code>private void initDatabase(SQLiteDatabase db) {
  1.打开APN xml文件etc/apns-conf.xml
  2. 获得文件句柄后&#xff0c;使用FileReader得到文件字符流
  3. 检查APN version一致性
  4.加载XMl中的数据到database&#xff0c;具体见loadApns方法
 }
-</code></pre> 
-<p><a href="https://blog.csdn.net/GentelmanTsao/article/details/103234535#t12">源码点这里</a><br /> 对第3点&#xff1a;“检查APN version一致性” 的说明&#xff1a;<br /> 随着OS升级&#xff0c;APN字段也在更新&#xff0c;因此检查APN version的目的是为了避免XML与OS不兼容。若version不一致&#xff0c;抛出异常&#xff1a;</p> 
+</code></pre>
+<p><a href="https://blog.csdn.net/GentelmanTsao/article/details/103234535#t12">源码点这里</a><br /> 对第3点&#xff1a;“检查APN version一致性” 的说明&#xff1a;<br /> 随着OS升级&#xff0c;APN字段也在更新&#xff0c;因此检查APN version的目的是为了避免XML与OS不兼容。若version不一致&#xff0c;抛出异常&#xff1a;</p>
 <pre><code>// Sanity check. Force internal version and confidential versions to agree
                 int confversion &#61; Integer.parseInt(confparser.getAttributeValue(null, &#34;version&#34;));
                 if (publicversion !&#61; confversion) {
@@ -223,41 +223,41 @@
                             &#43; confFile.getAbsolutePath());
                 }
 
-</code></pre> 
-<p><strong>loadApns的逻辑&#xff08;伪代码&#xff09;</strong></p> 
+</code></pre>
+<p><strong>loadApns的逻辑&#xff08;伪代码&#xff09;</strong></p>
 <pre><code>private void loadApns(SQLiteDatabase db, XmlPullParser parser) {
 1。每次读取parser中的一个element&#xff0c;也就是一条APN数据
 2.通过getrow方法将APN转换为Contentvalues&#xff1b;
 3.最后通过insertAddingDefaults将键值写入database&#xff1a;
 }
-</code></pre> 
-<p>写入的table名是CARRIERS_TABLE&#xff0c;该table由createCarriersTable方法创建。<br /> 该table url是&#xff1a;content://telephony/carriers/</p> 
-<p><strong>table 创建时机&#xff1a;</strong><br /> telephonyprovider的内部类DatabaseHelper在oncreate时创建APN table。<br /> DatabaseHelper类负责APN database的增删改查工作。</p> 
-<h2><a id="22_APNSIM_126"></a>2.2 APN匹配SIM卡与菜单显示</h2> 
-<p>设备插入SIM后&#xff0c;设置菜单中会显示该SIM卡对应的APN菜单。<br /> 这部分在ApnSettings.java (android\packages\apps\settings\src\com\android\settings) 中的fillList方法实现的。该方法主要根据SIM卡的mccmnc去query db并将APN填入菜单中。感兴趣可自行查看&#xff0c;不再具体讨论。</p> 
-<p>对于MVNO SIM卡&#xff0c;除了mccmnc还需根据MVNO type和MVNO value过滤。详细见mvnoMatches方法。</p> 
-<p><strong>备注1.</strong><br /> SIM卡的mccmnc获取的是PROPERTY_ICC_OPERATOR_NUMERIC的值&#xff0c;而PROPERTY_ICC_OPERATOR_NUMERIC是在SIM loaded后根据IMSI得到。&#xff08;取前5位or前6位&#xff09;</p> 
-<p><strong>备注2.</strong><br /> mvno type举例&#xff1a;SPN类型&#xff0c;通过getServiceProviderName获取&#xff0c;其值来自SIM卡中的EF_SPN:分为SIM (EF_SPN&#61;0x6F46)或 RUIM (EF_RUIM_SPN&#61;0x6F41)。</p> 
-<p>有关SIM卡加载的更多内容&#xff0c;请移步这里:<br /> <strong><a href="https://blog.csdn.net/GentelmanTsao/article/details/103089474">Android:USIM软件架构与加载流程</a></strong></p> 
-<h2><a id="23_PDPAPN_141"></a>2.3 PDP时APN的选择</h2> 
-<p>UE插入SIM卡后&#xff0c;telephony根据SIM卡的mccmnc&#xff0c;先创建一个包含该SIM卡所有APN的列表&#xff08;AllApnList&#xff09;。</p> 
-<p>这一步在DcTracker中实现。Call flow见下图&#xff1a;<br /> <img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20191209112032492.png?x-oss-process&#61;image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0dlbnRlbG1hblRzYW8&#61;,size_16,color_FFFFFF,t_70" /><br /> <strong>下面列出了createAllApnList的实现步骤&#xff08;伪代码&#xff09;&#xff1a;</strong></p> 
+</code></pre>
+<p>写入的table名是CARRIERS_TABLE&#xff0c;该table由createCarriersTable方法创建。<br /> 该table url是&#xff1a;content://telephony/carriers/</p>
+<p><strong>table 创建时机&#xff1a;</strong><br /> telephonyprovider的内部类DatabaseHelper在oncreate时创建APN table。<br /> DatabaseHelper类负责APN database的增删改查工作。</p>
+<h2><a id="22_APNSIM_126"></a>2.2 APN匹配SIM卡与菜单显示</h2>
+<p>设备插入SIM后&#xff0c;设置菜单中会显示该SIM卡对应的APN菜单。<br /> 这部分在ApnSettings.java (android\packages\apps\settings\src\com\android\settings) 中的fillList方法实现的。该方法主要根据SIM卡的mccmnc去query db并将APN填入菜单中。感兴趣可自行查看&#xff0c;不再具体讨论。</p>
+<p>对于MVNO SIM卡&#xff0c;除了mccmnc还需根据MVNO type和MVNO value过滤。详细见mvnoMatches方法。</p>
+<p><strong>备注1.</strong><br /> SIM卡的mccmnc获取的是PROPERTY_ICC_OPERATOR_NUMERIC的值&#xff0c;而PROPERTY_ICC_OPERATOR_NUMERIC是在SIM loaded后根据IMSI得到。&#xff08;取前5位or前6位&#xff09;</p>
+<p><strong>备注2.</strong><br /> mvno type举例&#xff1a;SPN类型&#xff0c;通过getServiceProviderName获取&#xff0c;其值来自SIM卡中的EF_SPN:分为SIM (EF_SPN&#61;0x6F46)或 RUIM (EF_RUIM_SPN&#61;0x6F41)。</p>
+<p>有关SIM卡加载的更多内容&#xff0c;请移步这里:<br /> <strong><a href="https://blog.csdn.net/GentelmanTsao/article/details/103089474">Android:USIM软件架构与加载流程</a></strong></p>
+<h2><a id="23_PDPAPN_141"></a>2.3 PDP时APN的选择</h2>
+<p>UE插入SIM卡后&#xff0c;telephony根据SIM卡的mccmnc&#xff0c;先创建一个包含该SIM卡所有APN的列表&#xff08;AllApnList&#xff09;。</p>
+<p>这一步在DcTracker中实现。Call flow见下图&#xff1a;<br /> <img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20191209112032492.png?x-oss-process&#61;image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0dlbnRlbG1hblRzYW8&#61;,size_16,color_FFFFFF,t_70" /><br /> <strong>下面列出了createAllApnList的实现步骤&#xff08;伪代码&#xff09;&#xff1a;</strong></p>
 <pre><code>protected void createAllApnList() {
 1。根据SIM卡mccmnc&#xff0c;创建APN list
 2。设置preferred APN
 3。Set DataProfile in modem
 }
-</code></pre> 
-<p>有了AllApnList&#xff0c;在setup data时&#xff0c;根据数据业务类型&#xff08;上网/彩信/…&#xff09;&#xff0c;从all apn list中筛选出“waiting apn list”&#xff0c;用于建立PDP.</p> 
+</code></pre>
+<p>有了AllApnList&#xff0c;在setup data时&#xff0c;根据数据业务类型&#xff08;上网/彩信/…&#xff09;&#xff0c;从all apn list中筛选出“waiting apn list”&#xff0c;用于建立PDP.</p>
 <pre><code>private ArrayList&lt;ApnSetting&gt; buildWaitingApns(String requestedApnType, int radioTech) {
 //根据requestedApnType和radioTech筛选waiting apn
 }
-</code></pre> 
-<h2><a id="24_modemAPN_161"></a>2.4 modem中的APN</h2> 
-<p>modem中同样存储了APN&#xff0c;详细内容可参考我的另一篇文章&#xff1a;<br /> <strong><a href="https://blog.csdn.net/GentelmanTsao/article/details/106897639">Modem2G/3G/4G/5G&#xff1a;APN&#xff1a;使用AT&#43;CGDCONT命令设置modem默认APN&#xff08;CID1&#xff09;</a></strong></p> 
-<p><strong>你可能想知道更多详细内容&#xff0c;下面源码以附录形式给出。</strong></p> 
-<h1><a id="1__xmldatabase_166"></a>附录1 从xml加载到database</h1> 
-<p>TelephonyProvider.java (amss\linux\android\packages\providers\telephonyprovider\src\com\android\providers\telephony)</p> 
+</code></pre>
+<h2><a id="24_modemAPN_161"></a>2.4 modem中的APN</h2>
+<p>modem中同样存储了APN&#xff0c;详细内容可参考我的另一篇文章&#xff1a;<br /> <strong><a href="https://blog.csdn.net/GentelmanTsao/article/details/106897639">Modem2G/3G/4G/5G&#xff1a;APN&#xff1a;使用AT&#43;CGDCONT命令设置modem默认APN&#xff08;CID1&#xff09;</a></strong></p>
+<p><strong>你可能想知道更多详细内容&#xff0c;下面源码以附录形式给出。</strong></p>
+<h1><a id="1__xmldatabase_166"></a>附录1 从xml加载到database</h1>
+<p>TelephonyProvider.java (amss\linux\android\packages\providers\telephonyprovider\src\com\android\providers\telephony)</p>
 <pre><code>        private void initDatabase(SQLiteDatabase db) {
             if (VDBG) log(&#34;dbh.initDatabase:&#43; db&#61;&#34; &#43; db);
             // Read internal APNS data
@@ -336,7 +336,7 @@
             if (VDBG) log(&#34;dbh.initDatabase:- db&#61;&#34; &#43; db);
 
         }
-</code></pre> 
+</code></pre>
 <pre><code>private void loadApns(SQLiteDatabase db, XmlPullParser parser) {
             if (parser !&#61; null) {
                 try {
@@ -362,9 +362,9 @@
                 }
             }
         }
-</code></pre> 
-<h1><a id="2APN_277"></a>附录2。APN的读取与菜单显示</h1> 
-<p>ApnSettings.java (amss\linux\android\packages\apps\settings\src\com\android\settings)</p> 
+</code></pre>
+<h1><a id="2APN_277"></a>附录2。APN的读取与菜单显示</h1>
+<p>ApnSettings.java (amss\linux\android\packages\apps\settings\src\com\android\settings)</p>
 <pre><code>private void fillList() {
         final TelephonyManager tm &#61; (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
         final int subId &#61; mSubscriptionInfo !&#61; null ? mSubscriptionInfo.getSubscriptionId()
@@ -468,8 +468,8 @@
             }
         }
     }
-</code></pre> 
-<p>MVNO的处理&#xff1a;</p> 
+</code></pre>
+<p>MVNO的处理&#xff1a;</p>
 <pre><code>private void addApnToList(ApnPreference pref, ArrayList&lt;ApnPreference&gt; mnoList,
                               ArrayList&lt;ApnPreference&gt; mvnoList, IccRecords r, String mvnoType,
                               String mvnoMatchData) {
@@ -484,9 +484,9 @@
             mnoList.add(pref);
         }
     }
-</code></pre> 
-<h1><a id="3_PDPAPN_402"></a>附录3 PDP中的APN</h1> 
-<p>DcTracker.java<br /> createAllApn:</p> 
+</code></pre>
+<h1><a id="3_PDPAPN_402"></a>附录3 PDP中的APN</h1>
+<p>DcTracker.java<br /> createAllApn:</p>
 <pre><code>protected void createAllApnList() {
         mMvnoMatched &#61; false;
         mAllApnSettings &#61; new ArrayList&lt;&gt;();
@@ -532,8 +532,8 @@
 
         setDataProfilesAsNeeded();
     }
-</code></pre> 
-<p>筛选候选apn用于PDP</p> 
+</code></pre>
+<p>筛选候选apn用于PDP</p>
 <pre><code>private ArrayList&lt;ApnSetting&gt; buildWaitingApns(String requestedApnType, int radioTech) {
         if (DBG) log(&#34;buildWaitingApns: E requestedApnType&#61;&#34; &#43; requestedApnType);
         ArrayList&lt;ApnSetting&gt; apnList &#61; new ArrayList&lt;ApnSetting&gt;();
@@ -619,8 +619,8 @@
         if (DBG) log(&#34;buildWaitingApns: &#34; &#43; apnList.size() &#43; &#34; APNs in the list: &#34; &#43; apnList);
         return apnList;
     }
-</code></pre> 
-<p>相关章节&#xff1a;<br /> <strong><a href="https://blog.csdn.net/GentelmanTsao/article/details/103868891">全面&amp;系统的解析android RSSI信号显示与刷新&#xff0c;总篇</a></strong></p> 
+</code></pre>
+<p>相关章节&#xff1a;<br /> <strong><a href="https://blog.csdn.net/GentelmanTsao/article/details/103868891">全面&amp;系统的解析android RSSI信号显示与刷新&#xff0c;总篇</a></strong></p>
 <p><strong>本文为原创文章。看完点赞&#xff0c;每天进步一点点&#xff5e;</strong></p>
                 </div>
                 <link href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/markdown_views-d7a94ec6ab.css" rel="stylesheet">
@@ -635,7 +635,7 @@
             <li class="tool-item tool-item-size tool-active is-like" id="is-like"><a>
             <img style="display:none;" id="is-like-imgactive-animation-like" class="animation-dom active-animation" src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarThumbUpactive.png" alt="">
             <img class="isactive" style="display:none" id="is-like-imgactive" src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarThumbUpactive.png" alt="">
-            <img class="isdefault" style="display:block" id="is-like-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarThumbUp.png" alt="">   
+            <img class="isdefault" style="display:block" id="is-like-img" src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarThumbUp.png" alt="">
             <span class="name" id="is-like-span">点赞</span>
             <span id="spanCount" class="count">
                     5
@@ -735,11 +735,11 @@
          </div>
          <div class="hot-word-tip-box">
           <span class="hot-word-text">已标记关键词</span>
-          <span class="hot-word-count"></span> 
+          <span class="hot-word-count"></span>
           <span class="hot-word-bar"></span>
           <span class="hot-word-clear">清除标记</span>
         </div>
-    </div>  
+    </div>
 </div>
 <script type=text/javascript crossorigin src="https://csdnimg.cn/release/phoenix/production/qrcode-7c90a92189.min.js"></script>
 <script src="//g.csdnimg.cn/??sharewx/1.2.1/sharewx.js" type="text/javascript"></script>
@@ -795,7 +795,7 @@
 		<form id="commentform">
 			<img class="comment-sofa-flag" src="https://csdnimg.cn/release/blogv2/dist/pc/img/commentFlag@2x.png">
       <textarea class="comment-content" name="comment_content" id="comment_content" placeholder="优质评论可以帮助作者获得更高权重" maxlength="1000"></textarea>
-			<div class="comment-emoticon"><img class="comment-emoticon-img" data-url="https://csdnimg.cn/release/blogv2/dist/pc/img/" src="https://csdnimg.cn/release/blogv2/dist/pc/img/emoticon.png" alt="表情包"></div> 
+			<div class="comment-emoticon"><img class="comment-emoticon-img" data-url="https://csdnimg.cn/release/blogv2/dist/pc/img/" src="https://csdnimg.cn/release/blogv2/dist/pc/img/emoticon.png" alt="表情包"></div>
       <span class="comment-emoticon-tip">插入表情</span>
       <div class="comment-emoticon-box">
         <div class="comment-emoticon-img-box">
@@ -972,7 +972,7 @@
 	</div>
 </div>
 		<dl id="recommend-item-box-tow" class="recommend-item-box type_blog clearfix">
-			
+
 		</dl>
 <div class="recommend-item-box type_blog clearfix" data-url="https://blog.csdn.net/alex_nuaa01/article/details/7344699"  data-report-view='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"4","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/alex_nuaa01/article/details/7344699"}'>
 	<div class="content-box">
@@ -1274,9 +1274,9 @@ import...</div>
 		</div>
 		<div class="desc-box">
 			<a href="https://zhangjian.blog.csdn.net/article/details/52325196" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-13.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"13","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://zhangjian.blog.csdn.net/article/details/52325196"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-13.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-13.control'>
-				<div class="desc ellipsis-online ellipsis-online-1">背景 
-在介绍PhoneApp的创建过程时，我们知道为了支持双卡手机，PhoneFactory创建了两个Phone对象。 
-然而由于通信制式、功耗等的限制，目前底层的芯片厂商规定modem工作于DSDS模式下，于是同一时间内只有一个Phone具有上网的能力。 
+				<div class="desc ellipsis-online ellipsis-online-1">背景
+在介绍PhoneApp的创建过程时，我们知道为了支持双卡手机，PhoneFactory创建了两个Phone对象。
+然而由于通信制式、功耗等的限制，目前底层的芯片厂商规定modem工作于DSDS模式下，于是同一时间内只有一个Phone具有上网的能力。
 本文旨在揭示激活Phone拨号能力的过程，即讲述数据拨号前的准备工作。</div>
 			</a>
 		</div>
@@ -1371,7 +1371,7 @@ import...</div>
 		</div>
 		<div class="desc-box">
 			<a href="https://blog.csdn.net/Clear_ws/article/details/78186190" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-16.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"16","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/Clear_ws/article/details/78186190"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-16.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-16.control'>
-				<div class="desc ellipsis-online ellipsis-online-1"><em>APN</em>定义： 
+				<div class="desc ellipsis-online ellipsis-online-1"><em>APN</em>定义：
    <em>APN</em> (access point name) 简单的可以理解为数据上网的接入点名称，是访问数据的必须要配置的参数。该参数的配置直接决定了访问数据的接入方式。参数：  <em>&</em>lt;<em>apn</em> carrier=<em>&</em>quot;中国移动 (China Mobile) WAP<em>&</em>quot;
       mcc=<em>&</em>quot;460<em>&</em>quot;
       mnc=<em>&</em>quot;00<em>&</em>quot;
@@ -1410,8 +1410,8 @@ import...</div>
 概述
 
 
-  <em>Apn</em>设置,即<em>&</em>ldquo;接入点名称<em>&</em>rdquo;设置，<em>Apn</em>的全称是Access PointName，是用户在通过手机上网时必须配置的一个参数，它决定了您的手机通过哪种接入方式来访问移动网络。 
-   
+  <em>Apn</em>设置,即<em>&</em>ldquo;接入点名称<em>&</em>rdquo;设置，<em>Apn</em>的全称是Access PointName，是用户在通过手机上网时必须配置的一个参数，它决定了您的手机通过哪种接入方式来访问移动网络。
+
   对于移动终端用户来说，可以访问的外部网络类型有很多，例如：Internet、WAP网站、集团企业内部网络、行业内部专用网络。而不同的接入点所能访问的范围以及入的方式...</div>
 			</a>
 		</div>
@@ -1468,9 +1468,9 @@ import...</div>
 		</div>
 		<div class="desc-box">
 			<a href="https://blog.csdn.net/Dylan_Sen/article/details/79178742" target="_blank"  data-report-click='{"ab":"new","mod":"popu_387","extra":"{\"utm_medium\":\"distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-19.control\"}","dist_request_id":"1328666.10078.16159838269320261","index":"19","strategy":"BlogCommendFromMachineLearnPai2","dest":"https://blog.csdn.net/Dylan_Sen/article/details/79178742"}'  data-report-query='utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-19.control&dist_request_id=1328666.10078.16159838269320261&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-19.control'>
-				<div class="desc ellipsis-online ellipsis-online-1">关于Telephony data 准备写三篇，本文是第一部分<em>APN</em>，根据<em>Android</em> O源码，简单总结了<em>Android</em>上<em>APN</em>相关的知识点。分以下三部分： 
-1. 预置<em>APN</em>数据加载 
-2. <em>APN</em>字段 
+				<div class="desc ellipsis-online ellipsis-online-1">关于Telephony data 准备写三篇，本文是第一部分<em>APN</em>，根据<em>Android</em> O源码，简单总结了<em>Android</em>上<em>APN</em>相关的知识点。分以下三部分：
+1. 预置<em>APN</em>数据加载
+2. <em>APN</em>字段
 3. <em>APN</em>的显示和编辑
 
 
@@ -1559,7 +1559,7 @@ import...</div>
     </div>
     <div class="data-info d-flex item-tiling">
         <dl class="text-center" title="55">
-            <a href="https://blog.csdn.net/GentelmanTsao" data-report-click='{"mod":"1598321000_001","spm":"1001.2101.3001.4310"}' data-report-query="t=1">  
+            <a href="https://blog.csdn.net/GentelmanTsao" data-report-click='{"mod":"1598321000_001","spm":"1001.2101.3001.4310"}' data-report-query="t=1">
                 <dt><span class="count">55</span></dt>
                 <dd class="font">原创</dd>
             </a>
@@ -1576,7 +1576,7 @@ import...</div>
                 <dd class="font">总排名</dd>
             </a>
         </dl>
-        <dl class="text-center" style="min-width:58px" title="97909">  
+        <dl class="text-center" style="min-width:58px" title="97909">
             <dt><span class="count">9万+</span></dt>
             <dd>访问</dd>
         </dl>
@@ -1646,14 +1646,14 @@ import...</div>
         <div class="opt-letter-watch-box">
         <a class="bt-button personal-letter" href="https://im.csdn.net/chat/GentelmanTsao" target="_blank" rel="noopener">私信</a>
         </div>
-        <div class="opt-letter-watch-box"> 
-            <a class="personal-watch bt-button" id="btnAttent" >关注</a>  
+        <div class="opt-letter-watch-box">
+            <a class="personal-watch bt-button" id="btnAttent" >关注</a>
         </div>
     </div>
 </div>
 <div id="asideSearchArticle" class="aside-box">
 	<div class="aside-content search-comter">
-    <div class="aside-search aside-search-blog">         
+    <div class="aside-search aside-search-blog">
         <input type="text" class="input-serch-blog" name="" autocomplete="off" value="" id="search-blog-words" placeholder="搜博主文章">
         <a class="btn-search-blog">
                     <img src="//csdnimg.cn/cdn/content-toolbar/csdn-sou.png?v=1587021042">
@@ -2058,7 +2058,7 @@ import...</div>
 <script src="https://csdnimg.cn/public/sandalstrap/1.4/js/sandalstrap.min.js"></script>
 <div class="skin-boxshadow"></div>
 <div style="display:none;">
-	<img src="" onerror='setTimeout(function(){if(!/(csdn.net|iteye.com|baiducontent.com|googleusercontent.com|360webcache.com|sogoucdn.com|bingj.com|baidu.com)$/.test(window.location.hostname)){window.location.href="\x68\x74\x74\x70\x73\x3a\x2f\x2f\x77\x77\x77\x2e\x63\x73\x64\x6e\x2e\x6e\x65\x74"}},3000);'>
+	<!-- <img src="" onerror='setTimeout(function(){if(!/(csdn.net|iteye.com|baiducontent.com|googleusercontent.com|360webcache.com|sogoucdn.com|bingj.com|baidu.com)$/.test(window.location.hostname)){window.location.href="\x68\x74\x74\x70\x73\x3a\x2f\x2f\x77\x77\x77\x2e\x63\x73\x64\x6e\x2e\x6e\x65\x74"}},3000);'> -->
 </div>
 </body>
 <script src="https://csdnimg.cn/release/blogv2/dist/components/js/pc_wap_highlight-db1e81323a.min.js" type="text/javascript"></script>
