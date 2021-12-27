@@ -172,5 +172,5 @@ OK
 
 
 
-Ref. module of [Fibocom FM150-AE](https://www.fibocom.com/en/products/5G-FM150-AE.html), based on [i.MX 8M Plus](https://www.nxp.com/products/processors-and-microcontrollers/arm-processors/i-mx-applications-processors/i-mx-8-processors/i-mx-8m-plus-arm-cortex-a53-machine-learning-vision-multimedia-and-industrial-iot:IMX8MPLUS) [Android 10](https://cs.android.com/android/platform/superproject/+/android-10.0.0_r41:)
+Ref. &nbsp;5G module [Fibocom FM150-AE](https://www.fibocom.com/en/products/5G-FM150-AE.html), based on [i.MX 8M Plus](https://www.nxp.com/products/processors-and-microcontrollers/arm-processors/i-mx-applications-processors/i-mx-8-processors/i-mx-8m-plus-arm-cortex-a53-machine-learning-vision-multimedia-and-industrial-iot:IMX8MPLUS) [Android 10](https://cs.android.com/android/platform/superproject/+/android-10.0.0_r41:)
 
