@@ -1,0 +1,55 @@
+[ 50% 7/14] Check prebuilt ELF binary: hardware/ril/libril/libril.so/arm64-v8a/libril.so
+FAILED: out/target/product/ms5881/obj/SHARED_LIBRARIES/libril_intermediates/check_elf_files.timestamp
+/bin/bash -c "(rm -f out/target/product/ms5881/obj/SHARED_LIBRARIES/libril_intermediates/check_elf_files.timestamp ) && (build/make/tools/check_elf_file.py 	    --skip-bad-elf-magic 	    --skip-unknown-elf-machine 	    --soname libril.so 	    --shared-lib out/target/product/ms5881/obj/SHARED_LIBRARIES/libc++.vendor_intermediates/libc++.vendor.so --shared-lib out/target/product/ms5881/obj/SHARED_LIBRARIES/libc.vendor_intermediates/libc.vendor.so --shared-lib out/target/product/ms5881/obj/SHARED_LIBRARIES/libm.vendor_intermediates/libm.vendor.so --shared-lib out/target/product/ms5881/obj/SHARED_LIBRARIES/libdl.vendor_intermediates/libdl.vendor.so 	     	    --llvm-readobj=prebuilts/clang/host/linux-x86/clang-r383902b1/bin/llvm-readobj 	    hardware/ril/libril/libril.so/arm64-v8a/libril.so ) && (touch out/target/product/ms5881/obj/SHARED_LIBRARIES/libril_intermediates/check_elf_files.timestamp )"
+hardware/ril/libril/libril.so/arm64-v8a/libril.so: error: DT_NEEDED "liblog.so" is not specified in shared_libs.
+hardware/ril/libril/libril.so/arm64-v8a/libril.so: error: DT_NEEDED "libutils.so" is not specified in shared_libs.
+hardware/ril/libril/libril.so/arm64-v8a/libril.so: error: DT_NEEDED "libcutils.so" is not specified in shared_libs.
+hardware/ril/libril/libril.so/arm64-v8a/libril.so: error: DT_NEEDED "libhardware_legacy.so" is not specified in shared_libs.
+hardware/ril/libril/libril.so/arm64-v8a/libril.so: error: DT_NEEDED "librilutils.so" is not specified in shared_libs.
+hardware/ril/libril/libril.so/arm64-v8a/libril.so: error: DT_NEEDED "android.hardware.radio@1.0.so" is not specified in shared_libs.
+hardware/ril/libril/libril.so/arm64-v8a/libril.so: error: DT_NEEDED "android.hardware.radio@1.1.so" is not specified in shared_libs.
+hardware/ril/libril/libril.so/arm64-v8a/libril.so: error: DT_NEEDED "android.hardware.radio.deprecated@1.0.so" is not specified in shared_libs.
+hardware/ril/libril/libril.so/arm64-v8a/libril.so: error: DT_NEEDED "libhidlbase.so" is not specified in shared_libs.
+hardware/ril/libril/libril.so/arm64-v8a/libril.so: error: DT_NEEDED "libhidltransport.so" is not specified in shared_libs.
+hardware/ril/libril/libril.so/arm64-v8a/libril.so: error: DT_NEEDED "libhwbinder.so" is not specified in shared_libs.
+hardware/ril/libril/libril.so/arm64-v8a/libril.so: error: DT_NEEDED "android.hardware.radio@1.2.so" is not specified in shared_libs.
+hardware/ril/libril/libril.so/arm64-v8a/libril.so: error: DT_NEEDED "android.hardware.radio@1.3.so" is not specified in shared_libs.
+hardware/ril/libril/libril.so/arm64-v8a/libril.so: error: DT_NEEDED "android.hardware.radio@1.4.so" is not specified in shared_libs.
+hardware/ril/libril/libril.so/arm64-v8a/libril.so: note:
+hardware/ril/libril/libril.so/arm64-v8a/libril.so: note: Fix suggestions:
+hardware/ril/libril/libril.so/arm64-v8a/libril.so: note:   Android.bp: shared_libs: ["android.hardware.radio.deprecated@1.0", "android.hardware.radio@1.0", "android.hardware.radio@1.1", "android.hardware.radio@1.2", "android.hardware.radio@1.3", "android.hardware.radio@1.4", "libc++", "libc", "libcutils", "libdl", "libhardware_legacy", "libhidlbase", "libhidltransport", "libhwbinder", "liblog", "libm", "librilutils", "libutils"],
+hardware/ril/libril/libril.so/arm64-v8a/libril.so: note:   Android.mk: LOCAL_SHARED_LIBRARIES := android.hardware.radio.deprecated@1.0 android.hardware.radio@1.0 android.hardware.radio@1.1 android.hardware.radio@1.2 android.hardware.radio@1.3 android.hardware.radio@1.4 libc++ libc libcutils libdl libhardware_legacy libhidlbase libhidltransport libhwbinder liblog libm librilutils libutils
+hardware/ril/libril/libril.so/arm64-v8a/libril.so: note:
+hardware/ril/libril/libril.so/arm64-v8a/libril.so: note: If the fix above doesn't work, bypass this check with:
+hardware/ril/libril/libril.so/arm64-v8a/libril.so: note:   Android.bp: check_elf_files: false,
+hardware/ril/libril/libril.so/arm64-v8a/libril.so: note:   Android.mk: LOCAL_CHECK_ELF_FILES := false
+[ 57% 8/14] Check prebuilt ELF binary: hardware/ril/libril/libril.so/armeabi/libril.so
+FAILED: out/target/product/ms5881/obj_arm/SHARED_LIBRARIES/libril_intermediates/check_elf_files.timestamp
+/bin/bash -c "(rm -f out/target/product/ms5881/obj_arm/SHARED_LIBRARIES/libril_intermediates/check_elf_files.timestamp ) && (build/make/tools/check_elf_file.py 	    --skip-bad-elf-magic 	    --skip-unknown-elf-machine 	    --soname libril.so 	    --shared-lib out/target/product/ms5881/obj_arm/SHARED_LIBRARIES/libc++.vendor_intermediates/libc++.vendor.so --shared-lib out/target/product/ms5881/obj_arm/SHARED_LIBRARIES/libc.vendor_intermediates/libc.vendor.so --shared-lib out/target/product/ms5881/obj_arm/SHARED_LIBRARIES/libm.vendor_intermediates/libm.vendor.so --shared-lib out/target/product/ms5881/obj_arm/SHARED_LIBRARIES/libdl.vendor_intermediates/libdl.vendor.so 	     	    --llvm-readobj=prebuilts/clang/host/linux-x86/clang-r383902b1/bin/llvm-readobj 	    hardware/ril/libril/libril.so/armeabi/libril.so ) && (touch out/target/product/ms5881/obj_arm/SHARED_LIBRARIES/libril_intermediates/check_elf_files.timestamp )"
+hardware/ril/libril/libril.so/armeabi/libril.so: error: DT_NEEDED "liblog.so" is not specified in shared_libs.
+hardware/ril/libril/libril.so/armeabi/libril.so: error: DT_NEEDED "libutils.so" is not specified in shared_libs.
+hardware/ril/libril/libril.so/armeabi/libril.so: error: DT_NEEDED "libcutils.so" is not specified in shared_libs.
+hardware/ril/libril/libril.so/armeabi/libril.so: error: DT_NEEDED "libhardware_legacy.so" is not specified in shared_libs.
+hardware/ril/libril/libril.so/armeabi/libril.so: error: DT_NEEDED "librilutils.so" is not specified in shared_libs.
+hardware/ril/libril/libril.so/armeabi/libril.so: error: DT_NEEDED "android.hardware.radio@1.0.so" is not specified in shared_libs.
+hardware/ril/libril/libril.so/armeabi/libril.so: error: DT_NEEDED "android.hardware.radio@1.1.so" is not specified in shared_libs.
+hardware/ril/libril/libril.so/armeabi/libril.so: error: DT_NEEDED "android.hardware.radio.deprecated@1.0.so" is not specified in shared_libs.
+hardware/ril/libril/libril.so/armeabi/libril.so: error: DT_NEEDED "libhidlbase.so" is not specified in shared_libs.
+hardware/ril/libril/libril.so/armeabi/libril.so: error: DT_NEEDED "libhidltransport.so" is not specified in shared_libs.
+hardware/ril/libril/libril.so/armeabi/libril.so: error: DT_NEEDED "libhwbinder.so" is not specified in shared_libs.
+hardware/ril/libril/libril.so/armeabi/libril.so: error: DT_NEEDED "android.hardware.radio@1.2.so" is not specified in shared_libs.
+hardware/ril/libril/libril.so/armeabi/libril.so: error: DT_NEEDED "android.hardware.radio@1.3.so" is not specified in shared_libs.
+hardware/ril/libril/libril.so/armeabi/libril.so: error: DT_NEEDED "android.hardware.radio@1.4.so" is not specified in shared_libs.
+hardware/ril/libril/libril.so/armeabi/libril.so: note:
+hardware/ril/libril/libril.so/armeabi/libril.so: note: Fix suggestions:
+hardware/ril/libril/libril.so/armeabi/libril.so: note:   Android.bp: shared_libs: ["android.hardware.radio.deprecated@1.0", "android.hardware.radio@1.0", "android.hardware.radio@1.1", "android.hardware.radio@1.2", "android.hardware.radio@1.3", "android.hardware.radio@1.4", "libc++", "libc", "libcutils", "libdl", "libhardware_legacy", "libhidlbase", "libhidltransport", "libhwbinder", "liblog", "libm", "librilutils", "libutils"],
+hardware/ril/libril/libril.so/armeabi/libril.so: note:   Android.mk: LOCAL_SHARED_LIBRARIES := android.hardware.radio.deprecated@1.0 android.hardware.radio@1.0 android.hardware.radio@1.1 android.hardware.radio@1.2 android.hardware.radio@1.3 android.hardware.radio@1.4 libc++ libc libcutils libdl libhardware_legacy libhidlbase libhidltransport libhwbinder liblog libm librilutils libutils
+hardware/ril/libril/libril.so/armeabi/libril.so: note:
+hardware/ril/libril/libril.so/armeabi/libril.so: note: If the fix above doesn't work, bypass this check with:
+hardware/ril/libril/libril.so/armeabi/libril.so: note:   Android.bp: check_elf_files: false,
+hardware/ril/libril/libril.so/armeabi/libril.so: note:   Android.mk: LOCAL_CHECK_ELF_FILES := false
+13:15:48 ninja failed with: exit status 1
+
+#### failed to build some targets (6 seconds) ####
+
+tingsung@acs-thor:~/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp$ 

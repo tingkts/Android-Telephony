@@ -1,0 +1,2127 @@
+make: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp'
+/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/device/nxp/imx8m/imx8mp/UbootKernelBoardConfig.mk:18: "IMX8MP_USES_GKI....."
+rm -rf /home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/UBOOT_OBJ/ubootenv.sh
+mkdir -p /home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/UBOOT_COLLECTION
+if [ -n "0" ]; then \
+	echo 'export ROLLBACK_INDEX_IN_FIT=0' > /home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/UBOOT_OBJ/ubootenv.sh; \
+	echo 'export ROLLBACK_INDEX_IN_CONTAINER=0' >> /home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/UBOOT_OBJ/ubootenv.sh; \
+else \
+	echo 'export ROLLBACK_INDEX_IN_FIT=' > /home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/UBOOT_OBJ/ubootenv.sh; \
+	echo 'export ROLLBACK_INDEX_IN_CONTAINER=' >> /home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/UBOOT_OBJ/ubootenv.sh; \
+fi
+Merging KERNEL config srcs: /home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/kernel_imx/arch/arm64/configs/imx8mp_gki_defconfig /home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/device/nxp/imx8m/imx8mp/android_addition_defconfig /home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/kernel_imx/arch/arm64/configs/imx8mp_imx8mp_gki.fragment
+Building arm64 2021.04 U-Boot ...
+make[1]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/uboot-imx'
+make[2]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/UBOOT_OBJ'
+Using /home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/kernel_imx/arch/arm64/configs/imx8mp_gki_defconfig as base
+Merging /home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/device/nxp/imx8m/imx8mp/android_addition_defconfig
+Merging /home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/kernel_imx/arch/arm64/configs/imx8mp_imx8mp_gki.fragment
+Value of CONFIG_STATIC_USERMODEHELPER_PATH is redefined by fragment /home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/kernel_imx/arch/arm64/configs/imx8mp_imx8mp_gki.fragment:
+Previous value: CONFIG_STATIC_USERMODEHELPER_PATH=""
+New value: CONFIG_STATIC_USERMODEHELPER_PATH="/system/bin/sh"
+
+Value of CONFIG_LTO_CLANG_FULL is redefined by fragment /home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/kernel_imx/arch/arm64/configs/imx8mp_imx8mp_gki.fragment:
+Previous value: CONFIG_LTO_CLANG_FULL=y
+New value: # CONFIG_LTO_CLANG_FULL is not set
+
+Value of CONFIG_CFI_CLANG is redefined by fragment /home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/kernel_imx/arch/arm64/configs/imx8mp_imx8mp_gki.fragment:
+Previous value: CONFIG_CFI_CLANG=y
+New value: # CONFIG_CFI_CLANG is not set
+
+make[1]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/kernel_imx'
+make[1]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[2]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/KERNEL_OBJ'
+  CLEAN   scripts/basic
+  CLEAN   tools
+  CLEAN   scripts/kconfig
+  CLEAN   scripts/dtc
+  CLEAN   dts/../arch/arm/dts
+  CLEAN   tools/lib tools/common
+  CLEAN   dts
+  CLEAN   spl/arch spl/board spl/cmd spl/common spl/disk spl/drivers spl/dts spl/env spl/fs spl/lib spl/spl spl/u-boot-spl spl/u-boot-spl-dtb.bin spl/u-boot-spl-nodtb.bin spl/u-boot-spl.bin spl/u-boot-spl.cfgout spl/u-boot-spl.dtb spl/u-boot-spl.lds spl/u-boot-spl.map spl/u-boot-spl.sym spl/u-boot.cfg
+  CLEAN   include/bmp_logo.h include/bmp_logo_data.h u-boot-nodtb.bin u-boot.lds u-boot.cfg.configs u-boot-dtb.img u-boot.map u-boot.bin u-boot.cfg u-boot-elf.o u-boot.srec u-boot-dtb.bin u-boot u-boot-elf.lds u-boot.dtb u-boot.img u-boot.elf u-boot.sym System.map
+  CLEAN   include/config include/generated spl
+  CLEAN   .config .config.old include/autoconf.mk include/autoconf.mk.dep include/config.h
+make[2]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/UBOOT_OBJ'
+make[1]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/uboot-imx'
+make[1]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/uboot-imx'
+make[2]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/UBOOT_OBJ'
+  HOSTCC  scripts/basic/fixdep
+  GEN     ./Makefile
+  HOSTCC  scripts/kconfig/conf.o
+  YACC    scripts/kconfig/zconf.tab.c
+  LEX     scripts/kconfig/zconf.lex.c
+  HOSTCC  scripts/kconfig/zconf.tab.o
+  GEN     Makefile
+  HOSTLD  scripts/kconfig/conf
+arch/../configs/imx8mp-imx8mp_android_defconfig:24:warning: override: TARGET_IMX8MP_imx8mp changes choice state
+#
+# configuration written to .config
+#
+make[2]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/UBOOT_OBJ'
+make[1]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/uboot-imx'
+===================== WARNING ======================
+This board uses CONFIG_SPL_FIT_GENERATOR. Please migrate
+to binman instead, to avoid the proliferation of
+arch-specific scripts with no tests.
+====================================================
+WARNING 'lpddr4_pmu_train_1d_imem.bin' not found, resulting binary is not-functional
+WARNING 'lpddr4_pmu_train_1d_imem.bin' not found, resulting binary is not-functional
+WARNING 'lpddr4_pmu_train_1d_imem.bin' not found, resulting binary is not-functional
+build post process
+/bin/sh: 10: @: not found
+make[1]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/arm-trusted-firmware'
+  CLEAN
+make[1]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/arm-trusted-firmware'
+./.tmp.config.HpywC1olp2:793:warning: override: INIT_STACK_NONE changes choice state
+
+WARNING: unmet direct dependencies detected for SND_SOC_FSL_DSP_AUDIOMIX
+  Depends on [n]: SOUND [=y] && !UML && SND [=y] && SND_SOC [=y] && MFD_IMX_MIX [=n]
+  Selected by [m]:
+  - SND_SOC_FSL_DSP [=m] && SOUND [=y] && !UML && SND [=y] && SND_SOC [=y]
+#
+# configuration written to .config
+#
+make[2]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/KERNEL_OBJ'
+make[1]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/kernel_imx'
+make[1]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/imx-mkimage'
+include misc.mak
+include m4.mak
+include android.mak
+include test.mak
+include autobuild.mak
+include alias.mak
+imx8qm clean done
+include misc.mak
+include m4.mak
+include android.mak
+include test.mak
+include autobuild.mak
+include alias.mak
+imx8qx clean done
+include misc.mak
+include m4.mak
+include android.mak
+include test.mak
+include autobuild.mak
+imx8dxl clean done
+imx8ulp clean done
+make[1]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/imx-mkimage'
+make[1]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/imx-mkimage'
+Compiling mkimage_imx8
+Value requested for CONFIG_INIT_STACK_ALL_ZERO not in final .config
+Requested value:  CONFIG_INIT_STACK_ALL_ZERO=y
+Actual value:     # CONFIG_INIT_STACK_ALL_ZERO is not set
+
+Value requested for CONFIG_MXC_IMX_DMX_HW not in final .config
+Requested value:  # CONFIG_MXC_IMX_DMX_HW is not set
+Actual value:
+
+Value requested for CONFIG_CFI_CLANG not in final .config
+Requested value:  # CONFIG_CFI_CLANG is not set
+Actual value:
+
+Building arm64 5.10 kernel ...
+make[1]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/kernel_imx'
+make[2]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/KERNEL_OBJ'
+PLAT=imx8mp HDMI=no
+./../scripts/dtb_check.sh imx8mp-evk.dtb evk.dtb
+Compiling mkimage_imx8
+cc -O2 -Wall -std=c99 -static mkimage_imx8.c -o mkimage_imx8 -lz
+Use u-boot DTB: imx8mp-evk.dtb
+./../scripts/pad_image.sh tee.bin
+Pad file tee.bin NOT found
+./../scripts/pad_image.sh bl31.bin
+bl31.bin is padded to 41296
+./../scripts/pad_image.sh u-boot-nodtb.bin evk.dtb
+DEK_BLOB_LOAD_ADDR=0x40400000 TEE_LOAD_ADDR=0x56000000 ATF_LOAD_ADDR=0x00970000 ./mkimage_fit_atf.sh evk.dtb > u-boot.its
+bl31.bin size:
+41296
+u-boot-nodtb.bin size:
+930960
+evk.dtb size:
+48176
+./mkimage_uboot -E -p 0x3000 -f u-boot.its u-boot.itb
+31124+0 records in
+31124+0 records out
+124496 bytes (124 kB, 122 KiB) copied, 0.0323815 s, 3.8 MB/s
+u-boot.itb.tmp: Warning (unit_address_vs_reg): Node /images/uboot@1 has a unit name, but no reg property
+u-boot.itb.tmp: Warning (unit_address_vs_reg): Node /images/fdt@1 has a unit name, but no reg property
+u-boot.itb.tmp: Warning (unit_address_vs_reg): Node /images/atf@1 has a unit name, but no reg property
+u-boot.itb.tmp: Warning (unit_address_vs_reg): Node /configurations/config@1 has a unit name, but no reg property
+FIT description: Configuration to load ATF before U-Boot
+Created:         Wed Jan 12 17:06:50 2022
+ Image 0 (uboot@1)
+  Description:  U-Boot (64-bit)
+  Created:      Wed Jan 12 17:06:50 2022
+  Type:         Standalone Program
+  Compression:  uncompressed
+  Data Size:    930960 Bytes = 909.14 KiB = 0.89 MiB
+  Architecture: AArch64
+  Load Address: 0x40200000
+  Entry Point:  unavailable
+ Image 1 (fdt@1)
+  Description:  evk
+  Created:      Wed Jan 12 17:06:50 2022
+  Type:         Flat Device Tree
+  Compression:  uncompressed
+  Data Size:    48176 Bytes = 47.05 KiB = 0.05 MiB
+  Architecture: Unknown Architecture
+ Image 2 (atf@1)
+  Description:  ARM Trusted Firmware
+  Created:      Wed Jan 12 17:06:50 2022
+  Type:         Firmware
+  Compression:  uncompressed
+  Data Size:    41296 Bytes = 40.33 KiB = 0.04 MiB
+  Architecture: AArch64
+  OS:           Unknown OS
+  Load Address: 0x00970000
+ Default Configuration: 'config@1'
+ Configuration 0 (config@1)
+  Description:  evk
+  Kernel:       unavailable
+  Firmware:     uboot@1
+  FDT:          fdt@1
+  Loadables:    atf@1
+./mkimage_imx8 -version v2 -fit -loader u-boot-spl-ddr.bin 0x920000 -second_loader u-boot.itb 0x40200000 0x60000 -out flash.bin
+Platform:	i.MX8M (mScale)
+ROM VERSION:	v2
+Using FIT image
+LOADER IMAGE:	u-boot-spl-ddr.bin start addr: 0x00920000
+SECOND LOADER IMAGE:	u-boot.itb start addr: 0x40200000 offset: 0x00060000
+Output:		flash.bin
+========= IVT HEADER [HDMI FW] =========
+header.tag: 		0x0
+header.length: 		0x0
+header.version: 	0x0
+entry: 			0x0
+reserved1: 		0x0
+dcd_ptr: 		0x0
+boot_data_ptr: 		0x0
+self: 			0x0
+csf: 			0x0
+reserved2: 		0x0
+boot_data.start: 	0x0
+boot_data.size: 	0x0
+boot_data.plugin: 	0x0
+========= IVT HEADER [PLUGIN] =========
+header.tag: 		0x0
+header.length: 		0x0
+header.version: 	0x0
+entry: 			0x0
+reserved1: 		0x0
+dcd_ptr: 		0x0
+boot_data_ptr: 		0x0
+self: 			0x0
+csf: 			0x0
+reserved2: 		0x0
+boot_data.start: 	0x0
+boot_data.size: 	0x0
+boot_data.plugin: 	0x0
+========= IVT HEADER [LOADER IMAGE] =========
+header.tag: 		0xd1
+header.length: 		0x2000
+header.version: 	0x41
+entry: 			0x920000
+reserved1: 		0x0
+dcd_ptr: 		0x0
+boot_data_ptr: 		0x91ffe0
+self: 			0x91ffc0
+csf: 			0x952dc0
+reserved2: 		0x0
+boot_data.start: 	0x91ffc0
+boot_data.size: 	0x34e60
+boot_data.plugin: 	0x0
+========= OFFSET dump =========
+Loader IMAGE:
+ header_image_off 	0x0
+ dcd_off 		0x0
+ image_off 		0x40
+ csf_off 		0x32e00
+ spl hab block: 	0x91ffc0 0x0 0x32e00
+
+Second Loader IMAGE:
+ sld_header_off 	0x58000
+ sld_csf_off 		0x59020
+ sld hab block: 	0x401fcdc0 0x58000 0x1020
+make[1]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/imx-mkimage'
+make[1]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/imx-mkimage'
+./../scripts/dtb_check.sh imx8mp-evk.dtb evk.dtb
+Use u-boot DTB: imx8mp-evk.dtb
+./../scripts/pad_image.sh tee.bin
+Pad file tee.bin NOT found
+./../scripts/pad_image.sh bl31.bin
+./../scripts/pad_image.sh u-boot-nodtb.bin evk.dtb
+TEE_LOAD_ADDR=0x56000000 ATF_LOAD_ADDR=0x00970000 VERSION=v2 ./print_fit_hab.sh 0x60000 evk.dtb
+0x40200000 0x5B000 0xE3490
+0x402E3490 0x13E490 0xBC30
+0x970000 0x14A0C0 0xA150
+make[1]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/imx-mkimage'
+===================Finish building imx8mp:imx8mp-imx8mp_android_defconfig ===================
+make[1]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/uboot-imx'
+make[2]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/UBOOT_OBJ'
+  GEN     Makefile
+  CLEAN   dts/../arch/arm/dts
+  CLEAN   dts
+  CLEAN   tools
+  CLEAN   scripts/basic
+  CLEAN   tools/lib tools/common
+  CLEAN   scripts/kconfig
+  CLEAN   scripts/dtc
+  CLEAN   spl/arch spl/board spl/cmd spl/common spl/disk spl/drivers spl/dts spl/env spl/fs spl/lib spl/spl spl/u-boot-spl spl/u-boot-spl-dtb.bin spl/u-boot-spl-nodtb.bin spl/u-boot-spl.bin spl/u-boot-spl.cfgout spl/u-boot-spl.dtb spl/u-boot-spl.lds spl/u-boot-spl.map spl/u-boot-spl.sym spl/u-boot.cfg
+  CLEAN   include/bmp_logo.h include/bmp_logo_data.h u-boot-nodtb.bin u-boot.lds u-boot.cfg.configs u-boot-dtb.img u-boot.map u-boot.bin u-boot.cfg u-boot-elf.o u-boot.srec u-boot-dtb.bin u-boot u-boot-elf.lds u-boot.dtb u-boot.img u-boot.elf u-boot.sym System.map
+  CLEAN   include/config include/generated spl
+  CLEAN   .config .config.old include/autoconf.mk include/autoconf.mk.dep include/config.h
+make[2]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/UBOOT_OBJ'
+make[1]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/uboot-imx'
+make[1]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/uboot-imx'
+make[2]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/UBOOT_OBJ'
+  HOSTCC  scripts/basic/fixdep
+  GEN     ./Makefile
+  HOSTCC  scripts/kconfig/conf.o
+  YACC    scripts/kconfig/zconf.tab.c
+  LEX     scripts/kconfig/zconf.lex.c
+  HOSTCC  scripts/kconfig/zconf.tab.o
+  HOSTLD  scripts/kconfig/conf
+arch/../configs/imx8mp-imx8mp_android_uuu_defconfig:24:warning: override: TARGET_IMX8MP_imx8mp changes choice state
+#
+# configuration written to .config
+#
+make[2]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/UBOOT_OBJ'
+make[1]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/uboot-imx'
+===================== WARNING ======================
+This board uses CONFIG_SPL_FIT_GENERATOR. Please migrate
+to binman instead, to avoid the proliferation of
+arch-specific scripts with no tests.
+====================================================
+WARNING 'lpddr4_pmu_train_1d_imem.bin' not found, resulting binary is not-functional
+
+WARNING: unmet direct dependencies detected for SND_SOC_FSL_DSP_AUDIOMIX
+  Depends on [n]: SOUND [=y] && !UML && SND [=y] && SND_SOC [=y] && MFD_IMX_MIX [=n]
+  Selected by [m]:
+  - SND_SOC_FSL_DSP [=m] && SOUND [=y] && !UML && SND [=y] && SND_SOC [=y]
+
+WARNING: unmet direct dependencies detected for SND_SOC_FSL_DSP_AUDIOMIX
+  Depends on [n]: SOUND [=y] && !UML && SND [=y] && SND_SOC [=y] && MFD_IMX_MIX [=n]
+  Selected by [m]:
+  - SND_SOC_FSL_DSP [=m] && SOUND [=y] && !UML && SND [=y] && SND_SOC [=y]
+
+WARNING: unmet direct dependencies detected for SND_SOC_FSL_DSP_AUDIOMIX
+  Depends on [n]: SOUND [=y] && !UML && SND [=y] && SND_SOC [=y] && MFD_IMX_MIX [=n]
+  Selected by [m]:
+  - SND_SOC_FSL_DSP [=m] && SOUND [=y] && !UML && SND [=y] && SND_SOC [=y]
+make[2]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/KERNEL_OBJ'
+make[1]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/kernel_imx'
+make[1]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/kernel_imx'
+make[2]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/KERNEL_OBJ'
+WARNING 'lpddr4_pmu_train_1d_imem.bin' not found, resulting binary is not-functional
+WARNING 'lpddr4_pmu_train_1d_imem.bin' not found, resulting binary is not-functional
+build post process
+  GEN     Makefile
+/bin/sh: 10: @: not found
+make[1]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/arm-trusted-firmware'
+  CLEAN
+make[1]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/arm-trusted-firmware'
+make[1]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/imx-mkimage'
+include misc.mak
+include m4.mak
+include android.mak
+include test.mak
+include autobuild.mak
+include alias.mak
+imx8qm clean done
+include misc.mak
+include m4.mak
+include android.mak
+include test.mak
+include autobuild.mak
+include alias.mak
+imx8qx clean done
+include misc.mak
+include m4.mak
+include android.mak
+include test.mak
+include autobuild.mak
+imx8dxl clean done
+imx8ulp clean done
+make[1]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/imx-mkimage'
+make[1]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/imx-mkimage'
+Compiling mkimage_imx8
+PLAT=imx8mp HDMI=no
+./../scripts/dtb_check.sh imx8mp-evk.dtb evk.dtb
+Compiling mkimage_imx8
+cc -O2 -Wall -std=c99 -static mkimage_imx8.c -o mkimage_imx8 -lz
+Use u-boot DTB: imx8mp-evk.dtb
+./../scripts/pad_image.sh tee.bin
+Pad file tee.bin NOT found
+./../scripts/pad_image.sh bl31.bin
+bl31.bin is padded to 41296
+./../scripts/pad_image.sh u-boot-nodtb.bin evk.dtb
+u-boot-nodtb.bin + evk.dtb are padded to 937984
+DEK_BLOB_LOAD_ADDR=0x40400000 TEE_LOAD_ADDR=0x56000000 ATF_LOAD_ADDR=0x00970000 ./mkimage_fit_atf.sh evk.dtb > u-boot.its
+bl31.bin size:
+41296
+u-boot-nodtb.bin size:
+889800
+evk.dtb size:
+48184
+./mkimage_uboot -E -p 0x3000 -f u-boot.its u-boot.itb
+u-boot.itb.tmp: Warning (unit_address_vs_reg): Node /images/uboot@1 has a unit name, but no reg property
+u-boot.itb.tmp: Warning (unit_address_vs_reg): Node /images/fdt@1 has a unit name, but no reg property
+u-boot.itb.tmp: Warning (unit_address_vs_reg): Node /images/atf@1 has a unit name, but no reg property
+u-boot.itb.tmp: Warning (unit_address_vs_reg): Node /configurations/config@1 has a unit name, but no reg property
+FIT description: Configuration to load ATF before U-Boot
+Created:         Wed Jan 12 17:07:07 2022
+ Image 0 (uboot@1)
+  Description:  U-Boot (64-bit)
+  Created:      Wed Jan 12 17:07:07 2022
+  Type:         Standalone Program
+  Compression:  uncompressed
+  Data Size:    889800 Bytes = 868.95 KiB = 0.85 MiB
+  Architecture: AArch64
+  Load Address: 0x40200000
+  Entry Point:  unavailable
+ Image 1 (fdt@1)
+  Description:  evk
+  Created:      Wed Jan 12 17:07:07 2022
+  Type:         Flat Device Tree
+  Compression:  uncompressed
+  Data Size:    48184 Bytes = 47.05 KiB = 0.05 MiB
+  Architecture: Unknown Architecture
+ Image 2 (atf@1)
+  Description:  ARM Trusted Firmware
+  Created:      Wed Jan 12 17:07:07 2022
+  Type:         Firmware
+  Compression:  uncompressed
+  Data Size:    41296 Bytes = 40.33 KiB = 0.04 MiB
+  Architecture: AArch64
+  OS:           Unknown OS
+  Load Address: 0x00970000
+ Default Configuration: 'config@1'
+ Configuration 0 (config@1)
+  Description:  evk
+  Kernel:       unavailable
+  Firmware:     uboot@1
+  FDT:          fdt@1
+  Loadables:    atf@1
+27668+0 records in
+27668+0 records out
+110672 bytes (111 kB, 108 KiB) copied, 0.0305013 s, 3.6 MB/s
+./mkimage_imx8 -version v2 -fit -loader u-boot-spl-ddr.bin 0x920000 -second_loader u-boot.itb 0x40200000 0x60000 -out flash.bin
+Platform:	i.MX8M (mScale)
+ROM VERSION:	v2
+Using FIT image
+LOADER IMAGE:	u-boot-spl-ddr.bin start addr: 0x00920000
+SECOND LOADER IMAGE:	u-boot.itb start addr: 0x40200000 offset: 0x00060000
+Output:		flash.bin
+========= IVT HEADER [HDMI FW] =========
+header.tag: 		0x0
+header.length: 		0x0
+header.version: 	0x0
+entry: 			0x0
+reserved1: 		0x0
+dcd_ptr: 		0x0
+boot_data_ptr: 		0x0
+self: 			0x0
+csf: 			0x0
+reserved2: 		0x0
+boot_data.start: 	0x0
+boot_data.size: 	0x0
+boot_data.plugin: 	0x0
+========= IVT HEADER [PLUGIN] =========
+header.tag: 		0x0
+header.length: 		0x0
+header.version: 	0x0
+entry: 			0x0
+reserved1: 		0x0
+dcd_ptr: 		0x0
+boot_data_ptr: 		0x0
+self: 			0x0
+csf: 			0x0
+reserved2: 		0x0
+boot_data.start: 	0x0
+boot_data.size: 	0x0
+boot_data.plugin: 	0x0
+========= IVT HEADER [LOADER IMAGE] =========
+header.tag: 		0xd1
+header.length: 		0x2000
+header.version: 	0x41
+entry: 			0x920000
+reserved1: 		0x0
+dcd_ptr: 		0x0
+boot_data_ptr: 		0x91ffe0
+self: 			0x91ffc0
+csf: 			0x94f7c0
+reserved2: 		0x0
+boot_data.start: 	0x91ffc0
+boot_data.size: 	0x31860
+boot_data.plugin: 	0x0
+========= OFFSET dump =========
+Loader IMAGE:
+ header_image_off 	0x0
+ dcd_off 		0x0
+ image_off 		0x40
+ csf_off 		0x2f800
+ spl hab block: 	0x91ffc0 0x0 0x2f800
+
+Second Loader IMAGE:
+ sld_header_off 	0x58000
+ sld_csf_off 		0x59020
+ sld hab block: 	0x401fcdc0 0x58000 0x1020
+make[1]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/imx-mkimage'
+make[1]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/imx-mkimage'
+./../scripts/dtb_check.sh imx8mp-evk.dtb evk.dtb
+Use u-boot DTB: imx8mp-evk.dtb
+./../scripts/pad_image.sh tee.bin
+Pad file tee.bin NOT found
+./../scripts/pad_image.sh bl31.bin
+./../scripts/pad_image.sh u-boot-nodtb.bin evk.dtb
+u-boot-nodtb.bin + evk.dtb are padded to 937984
+TEE_LOAD_ADDR=0x56000000 ATF_LOAD_ADDR=0x00970000 VERSION=v2 ./print_fit_hab.sh 0x60000 evk.dtb
+0x40200000 0x5B000 0xD93C8
+0x402D93C8 0x1343C8 0xBC38
+0x970000 0x140000 0xA150
+make[1]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/imx-mkimage'
+===================Finish building imx8mp-uuu:imx8mp-imx8mp_android_uuu_defconfig ===================
+  CALL    /home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/kernel_imx/scripts/atomic/check-atomics.sh
+  CALL    /home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/kernel_imx/scripts/checksyscalls.sh
+  CHK     include/generated/compile.h
+  CHK     kernel/kheaders_data.tar.xz
+make[2]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/KERNEL_OBJ'
+make[1]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/kernel_imx'
+make[1]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/kernel_imx'
+make[2]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/KERNEL_OBJ'
+  GEN     Makefile
+  CALL    /home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/kernel_imx/scripts/atomic/check-atomics.sh
+  CALL    /home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/kernel_imx/scripts/checksyscalls.sh
+  CHK     include/generated/compile.h
+  CHK     kernel/kheaders_data.tar.xz
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/gc_hal_kernel_device.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/gc_hal_kernel_linux.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/gc_hal_kernel_math.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/gc_hal_kernel_os.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/gc_hal_kernel_debug.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/gc_hal_kernel_debugfs.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/gc_hal_kernel_allocator.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/allocator/default/gc_hal_kernel_allocator_user_memory.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/allocator/default/gc_hal_kernel_allocator_dma.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/allocator/default/gc_hal_kernel_allocator_gfp.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/allocator/default/gc_hal_kernel_allocator_reserved_mem.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/gc_hal_kernel_driver.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/platform/freescale/gc_hal_kernel_platform_imx.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/allocator/default/gc_hal_kernel_allocator_dmabuf.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/gc_hal_kernel_iommu.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/gc_hal_kernel_drm.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/gc_hal_kernel.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/gc_hal_kernel_command.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/gc_hal_kernel_db.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/gc_hal_kernel_event.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/gc_hal_kernel_heap.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/gc_hal_kernel_mmu.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/gc_hal_kernel_video_memory.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/gc_hal_kernel_power.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/gc_hal_kernel_security_v1.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/arch/gc_hal_kernel_context.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/arch/gc_hal_kernel_hardware.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/arch/gc_hal_kernel_hardware_func.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/arch/gc_hal_kernel_hardware_func_flop_reset.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/arch/gc_hal_kernel_hardware_async_fe.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/arch/gc_hal_kernel_hardware_mc_fe.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/arch/gc_hal_kernel_hardware_waitlink_fe.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/arch/gc_hal_kernel_recorder.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/gc_hal_kernel_vg.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/gc_hal_kernel_command_vg.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/gc_hal_kernel_interrupt_vg.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/gc_hal_kernel_mmu_vg.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/archvg/gc_hal_kernel_hardware_command_vg.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/archvg/gc_hal_kernel_hardware_vg.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/gc_hal_kernel_sync.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/allocator/freescale/gc_hal_kernel_allocator_cma.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/gc_hal_kernel_security_channel_emulator.o
+  CC [M]  drivers/mxc/gpu-viv/hal/security_v1/gc_hal_ta.o
+  CC [M]  drivers/mxc/gpu-viv/hal/security_v1/gc_hal_ta_hardware.o
+  CC [M]  drivers/mxc/gpu-viv/hal/security_v1/gc_hal_ta_mmu.o
+  CC [M]  drivers/mxc/gpu-viv/hal/security_v1/os/emulator/gc_hal_ta_emulator.o
+  LD [M]  drivers/mxc/gpu-viv/galcore.o
+  MODPOST modules-only.symvers
+  GEN     Module.symvers
+  LD [M]  drivers/mxc/gpu-viv/galcore.ko
+make[2]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/KERNEL_OBJ'
+make[1]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/kernel_imx'
+make[1]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/kernel_imx'
+make[2]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/KERNEL_OBJ'
+make[2]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/KERNEL_OBJ'
+make[1]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/kernel_imx'
+Installing kernel headers ...
+make[1]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/kernel_imx'
+make[2]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/KERNEL_OBJ'
+  INSTALL ./usr/include
+make[2]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/KERNEL_OBJ'
+make[1]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/kernel_imx'
+make: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp'
+make: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp'
+/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/device/nxp/imx8m/imx8mp/UbootKernelBoardConfig.mk:18: "IMX8MP_USES_GKI....."
+make[1]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/nxp-mwifiex/mxm_wifiex/wlan_src'
+make -C /home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/KERNEL_OBJ M=/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/nxp-mwifiex/mxm_wifiex/wlan_src ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- modules
+make[2]: Entering directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/KERNEL_OBJ'
+  MODPOST /home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/nxp-mwifiex/mxm_wifiex/wlan_src/Module.symvers
+make[2]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/KERNEL_OBJ'
+make[1]: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/vendor/nxp-opensource/nxp-mwifiex/mxm_wifiex/wlan_src'
+cp vendor/nxp-opensource/nxp-mwifiex/mxm_wifiex/wlan_src/moal.ko /home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/MXMWIFI_OBJ;
+make: Leaving directory '/home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp'
+============================================
+PLATFORM_VERSION_CODENAME=REL
+PLATFORM_VERSION=11
+TARGET_PRODUCT=imx8mp
+TARGET_BUILD_VARIANT=userdebug
+TARGET_BUILD_TYPE=release
+TARGET_ARCH=arm64
+TARGET_ARCH_VARIANT=armv8-a
+TARGET_CPU_VARIANT=cortex-a53
+TARGET_2ND_ARCH=arm
+TARGET_2ND_ARCH_VARIANT=armv7-a-neon
+TARGET_2ND_CPU_VARIANT=cortex-a9
+HOST_ARCH=x86_64
+HOST_2ND_ARCH=x86
+HOST_OS=linux
+HOST_OS_EXTRA=Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-Ubuntu-20.04.3-LTS
+HOST_CROSS_OS=windows
+HOST_CROSS_ARCH=x86
+HOST_CROSS_2ND_ARCH=x86_64
+HOST_BUILD_TYPE=release
+BUILD_ID=RQ3A.210805.001.A1
+OUT_DIR=out
+PRODUCT_SOONG_NAMESPACES=device/generic/goldfish device/generic/goldfish-opengl external/mesa3d vendor/nxp-opensource/imx/power hardware/google/pixel hardware/google/camera vendor/nxp-opensource/imx/camera vendor/partner_gms
+============================================
+ninja: no work to do.
+[  0% 1/1376] glob AudioRoute.prof
+[  0% 2/1376] glob AudioTimeStampTest.prof
+[  0% 3/1376] glob AutoVerifyTest3.prof
+[  0% 4/1376] glob AppPredictionService.prof
+[  0% 5/1376] glob AppWidgetHostTest.prof
+[  0% 6/1376] glob AppcompatPhotoViewerSample.prof
+[  0% 7/1376] glob AutoVerifyTest2.prof
+[  0% 8/1376] glob ANGLE.prof
+[  0% 9/1376] glob AdbTest.prof
+[  0% 10/1376] glob AppOpsUserServiceAidlNative-java.prof
+[  0% 11/1376] glob AppWidgetProvider.prof
+[  0% 12/1376] glob AutoVerifyTest4.prof
+[  0% 13/1376] glob AutoVerifyTest.prof
+[  1% 14/1376] glob AutofillKeyboard.prof
+[  1% 15/1376] glob BackupEncryption.prof
+[  1% 16/1376] glob BackupFrameworksServicesLib.prof
+[  1% 17/1376] glob BackupRestoreConfirmation.prof
+[  1% 18/1376] glob BasicDreams.prof
+[  1% 19/1376] glob BasicSmsReceiver.prof
+[  1% 20/1376] glob BlockedNumberProvider.prof
+[  1% 21/1376] glob BluetoothDebug.prof
+[  1% 22/1376] glob BluetoothMidiService.prof
+[  1% 23/1376] glob Bluetooth.prof
+[  1% 24/1376] glob BookmarkProvider.prof
+[  1% 25/1376] glob BrokenKeyDerivation.prof
+[  1% 26/1376] glob Browser2.prof
+[  1% 27/1376] glob BuiltInPrintService.prof
+[  2% 28/1376] glob CaptivePortalLogin.prof
+[  2% 29/1376] glob CarActivityResolver.prof
+[  2% 30/1376] glob CarArchCommon.prof
+[  2% 31/1376] glob CarMediaCommon.prof
+[  2% 32/1376] glob CalendarProvider.prof
+[  2% 33/1376] glob CallLogBackup.prof
+[  2% 34/1376] glob Camera2Basic.prof
+[  2% 35/1376] glob CameraXBasic.prof
+[  2% 36/1376] glob CarService.prof
+[  2% 37/1376] glob CarSetupWizardLib.prof
+[  2% 38/1376] glob CarShell.prof
+[  2% 39/1376] glob CarSystemUI.prof
+[  2% 40/1376] glob CarTelephonyCommonForTesting.prof
+[  2% 41/1376] glob CarUiRobolectricTestApp.prof
+[  3% 42/1376] glob CarrierConfig.prof
+[  3% 43/1376] glob CarrierDefaultApp.prof
+[  3% 44/1376] glob CellBroadcastAppPlatform.prof
+[  3% 45/1376] glob CellBroadcastApp.prof
+[  3% 46/1376] glob CellBroadcastLegacyApp.prof
+[  3% 47/1376] glob CellBroadcastServiceModulePlatform.prof
+[  3% 48/1376] glob CellBroadcastServiceModule.prof
+[  3% 49/1376] glob CertInstaller.prof
+[  3% 50/1376] glob CompanionDeviceManager.prof
+[  3% 51/1376] glob ContactsProvider.prof
+[  3% 52/1376] glob Contacts.prof
+[  3% 53/1376] glob CustomLocale.prof
+[  3% 54/1376] glob DeskClock.prof
+[  3% 55/1376] glob DevCamera.prof
+[  4% 56/1376] glob DirectAudioPlayer.prof
+[  4% 57/1376] glob DirectRenderingCluster.prof
+[  4% 58/1376] glob DocumentsUI.prof
+[  4% 59/1376] glob DownloadProviderUi.prof
+[  4% 60/1376] glob DownloadProvider.prof
+[  4% 61/1376] glob DozeTest.prof
+[  4% 62/1376] glob DynamicSystemInstallationService.prof
+[  4% 63/1376] glob EasterEgg.prof
+[  4% 64/1376] glob EmbmsTestService.prof
+[  4% 65/1376] glob EmergencyInfo.prof
+[  4% 66/1376] glob EncryptedLocalTransport.prof
+[  4% 67/1376] glob ExamplePlugin.prof
+[  4% 68/1376] glob ExperimentalCarService.prof
+[  5% 69/1376] glob ExtServices.prof
+[  5% 70/1376] glob ExtShared.prof
+[  5% 71/1376] glob ExternalStorageProvider.prof
+[  5% 72/1376] glob FSLOta.prof
+[  5% 73/1376] glob FrameworksServicesLib.prof
+[  5% 74/1376] glob FusedLocation.prof
+[  5% 75/1376] glob GL2CameraEye.prof
+[  5% 76/1376] glob GL2JNI.prof
+[  5% 77/1376] glob GL2Java.prof
+[  5% 78/1376] glob FakeOemFeatures.prof
+[  5% 79/1376] glob Fallback.prof
+[  5% 80/1376] glob FixVibrateSetting.prof
+[  5% 81/1376] glob FrameSequenceSample.prof
+[  5% 82/1376] glob GLDual.prof
+[  6% 83/1376] glob GLJNI.prof
+[  6% 84/1376] glob GLPerf.prof
+[  6% 85/1376] glob Gallery2.prof
+[  6% 86/1376] glob Gallery.prof
+[  6% 87/1376] glob HTMLViewer.prof
+[  6% 88/1376] glob HapticAssessment.prof
+[  6% 89/1376] glob HdmiDualPlayback.prof
+[  6% 90/1376] glob HelloSpellChecker.prof
+[  6% 91/1376] glob IBinderNdkUnitTest-java.prof
+[  6% 92/1376] glob IBinderVendorDoubleLoadTest-java.prof
+[  6% 93/1376] glob ImsTestApp.prof
+[  6% 94/1376] glob InProcessNetworkStack.prof
+[  6% 95/1376] glob InProcessTethering.prof
+[  6% 96/1376] glob InlineFillService.prof
+[  7% 97/1376] glob InputDevices.prof
+[  7% 98/1376] glob JobSchedulerTestApp.prof
+[  7% 99/1376] glob KeyChain.prof
+[  7% 100/1376] glob LargeAssetTest.prof
+[  7% 101/1376] glob LatinIME.prof
+[  7% 102/1376] glob LceDemo.prof
+[  7% 103/1376] glob LeanbackIME.prof
+[  7% 104/1376] glob LinkViewer.prof
+[  7% 105/1376] glob LegacyCamera.prof
+[  7% 106/1376] glob LiveTv.prof
+[  7% 107/1376] glob LiveWallpapersPicker.prof
+[  7% 108/1376] glob LocalTransport.prof
+[  7% 109/1376] glob LotsOfApps.prof
+[  7% 110/1376] glob ManagedProvisioning.prof
+[  8% 111/1376] glob MediaDump.prof
+[  8% 112/1376] glob MediaProviderDialogsTool.prof
+[  8% 113/1376] glob MediaProviderLegacy.prof
+[  8% 114/1376] glob MediaProvider.prof
+[  8% 115/1376] glob MissileLauncher.prof
+[  8% 116/1376] glob MmsService.prof
+[  8% 117/1376] glob MtpService.prof
+[  8% 118/1376] glob MultiCamera.prof
+[  8% 119/1376] glob NetworkPermissionConfig.prof
+[  8% 120/1376] glob NetworkStackNext.prof
+[  8% 121/1376] glob NetworkStack.prof
+[  8% 122/1376] glob NfcNci.prof
+[  8% 123/1376] glob NsdChat.prof
+[  9% 124/1376] glob MultiDisplayProvider.prof
+[  9% 125/1376] glob MultiWindow.prof
+[  9% 126/1376] glob MusicFX.prof
+[  9% 127/1376] glob Music.prof
+[  9% 128/1376] glob ONS.prof
+[  9% 129/1376] glob OneMedia.prof
+[  9% 130/1376] glob OneTimeInitializer.prof
+[  9% 131/1376] glob PhotoTable.prof
+[  9% 132/1376] glob PhotoViewerSample.prof
+[  9% 133/1376] glob PlatformCaptivePortalLogin.prof
+[  9% 134/1376] glob PlatformNetworkPermissionConfig.prof
+[  9% 135/1376] glob OsuLogin.prof
+[  9% 136/1376] glob PluginDummyLib.prof
+[  9% 137/1376] glob PacProcessor.prof
+[ 10% 138/1376] glob PackageInstaller.prof
+[ 10% 139/1376] glob PartnerBookmarksProvider.prof
+[ 10% 140/1376] glob PartnerSupportSampleTvInput.prof
+[ 10% 141/1376] glob PermissionController.prof
+[ 10% 142/1376] glob PresencePolling.prof
+[ 10% 143/1376] glob PrintRecommendationService.prof
+[ 10% 144/1376] glob PrintSpooler.prof
+[ 10% 145/1376] glob Protips.prof
+[ 10% 146/1376] glob Provision.prof
+[ 10% 147/1376] glob ProxyHandler.prof
+[ 10% 148/1376] glob QuickAccessWallet.prof
+[ 10% 149/1376] glob SampleSpellCheckerService.prof
+[ 10% 150/1376] glob SdkSetup.prof
+[ 10% 151/1376] glob QuickSearchBox.prof
+[ 11% 152/1376] glob SecondaryHomeApp.prof
+[ 11% 153/1376] glob SecureElement.prof
+[ 11% 154/1376] glob RcsService.prof
+[ 11% 155/1376] glob SettingsProvider.prof
+[ 11% 156/1376] glob SettingsRoboTestStub.prof
+[ 11% 157/1376] glob RotaryIME.prof
+[ 11% 158/1376] glob Settings.prof
+[ 11% 159/1376] glob SharedLibrary.prof
+[ 11% 160/1376] glob RecoveryLocalizer.prof
+[ 11% 161/1376] glob SafetyRegulatoryInfo.prof
+[ 11% 162/1376] glob SampleDvbTuner.prof
+[ 11% 163/1376] glob SampleNetworkTuner.prof
+[ 11% 164/1376] glob SettingsIntelligence.prof
+[ 11% 165/1376] glob SettingsLibShell.prof
+[ 12% 166/1376] glob SharedStorageBackup.prof
+[ 12% 167/1376] glob Shell.prof
+[ 12% 168/1376] glob SimAppDialog.prof
+[ 12% 169/1376] glob SleepAwakeAutoTest.prof
+[ 12% 170/1376] glob SmsManagerTestApp.prof
+[ 12% 171/1376] glob SoundPicker.prof
+[ 12% 172/1376] glob SoundRecorder.prof
+[ 12% 173/1376] glob SoundTriggerTestApp.prof
+[ 12% 174/1376] glob SoftKeyboard.prof
+[ 12% 175/1376] glob SpareParts.prof
+[ 12% 176/1376] glob StatementService.prof
+[ 12% 177/1376] glob Stk.prof
+[ 12% 178/1376] glob SystemUI.prof
+[ 13% 179/1376] glob SystemUpdaterSample.prof
+[ 13% 180/1376] glob Tag.prof
+[ 13% 181/1376] glob TeleService.prof
+[ 13% 182/1376] glob Telecom.prof
+[ 13% 183/1376] glob TelephonyProvider.prof
+[ 13% 184/1376] glob Terminal.prof
+[ 13% 185/1376] glob TestEGL.prof
+[ 13% 186/1376] glob TestFramerate.prof
+[ 13% 187/1376] glob TestLatency.prof
+[ 13% 188/1376] glob TestNetworkStack.prof
+[ 13% 189/1376] glob TestViewport.prof
+[ 13% 190/1376] glob Test_DualPlayback.prof
+[ 13% 191/1376] glob Tethering.prof
+[ 13% 192/1376] glob TextClassifierService.prof
+[ 14% 193/1376] glob ThemePlayground.prof
+[ 14% 194/1376] glob TimeZoneUpdater.prof
+[ 14% 195/1376] glob Traceur.prof
+[ 14% 196/1376] glob TransitionTests.prof
+[ 14% 197/1376] glob TvProvider.prof
+[ 14% 198/1376] glob TvProvision.prof
+[ 14% 199/1376] glob TvSettings.prof
+[ 14% 200/1376] glob UniversalMediaPlayer.prof
+[ 14% 201/1376] glob UsbHostExternalManagementTestApp.prof
+[ 14% 202/1376] glob UserDictionaryProvider.prof
+[ 14% 203/1376] glob UserSwitchMonitorApp.prof
+[ 14% 204/1376] glob VoiceEnrollment.prof
+[ 14% 205/1376] glob VpnDialogs.prof
+[ 14% 206/1376] glob WAPPushManager.prof
+[ 15% 207/1376] glob WallpaperBackup.prof
+[ 15% 208/1376] glob WallpaperTest.prof
+[ 15% 209/1376] glob WallpaperCropper.prof
+[ 15% 210/1376] glob WidgetPreview.prof
+[ 15% 211/1376] glob aidl_test_loggable_interface-java.prof
+[ 15% 212/1376] glob am.prof
+[ 15% 213/1376] glob android.car.prof
+[ 15% 214/1376] glob android.car.userlib.prof
+[ 15% 215/1376] glob android.car.watchdoglib.prof
+[ 15% 216/1376] glob android.frameworks.automotive.display-V1.0-java-shallow.prof
+[ 15% 217/1376] glob android.frameworks.automotive.display-V1.0-java.prof
+[ 15% 218/1376] glob android.frameworks.bufferhub-V1.0-java-shallow.prof
+[ 15% 219/1376] glob android.frameworks.bufferhub-V1.0-java.prof
+[ 15% 220/1376] glob android.frameworks.cameraservice.common-V2.0-java-shallow.prof
+[ 16% 221/1376] glob android.frameworks.cameraservice.common-V2.0-java.prof
+[ 16% 222/1376] glob android.frameworks.displayservice-V1.0-java-shallow.prof
+[ 16% 223/1376] glob android.frameworks.displayservice-V1.0-java.prof
+[ 16% 224/1376] glob android.frameworks.schedulerservice-V1.0-java-shallow.prof
+[ 16% 225/1376] glob android.frameworks.schedulerservice-V1.0-java.prof
+[ 16% 226/1376] glob android.frameworks.stats-V1.0-java-shallow.prof
+[ 16% 227/1376] glob android.frameworks.stats-V1.0-java.prof
+[ 16% 228/1376] glob android.hardware.atrace-V1.0-java-shallow.prof
+[ 16% 229/1376] glob android.hardware.atrace-V1.0-java.prof
+[ 16% 230/1376] glob android.hardware.audio.common-V2.0-java-shallow.prof
+[ 16% 231/1376] glob android.hardware.audio.common-V2.0-java.prof
+[ 16% 232/1376] glob android.hardware.audio.common-V4.0-java-shallow.prof
+[ 16% 233/1376] glob android.hardware.audio.common-V4.0-java.prof
+[ 17% 234/1376] glob android.hardware.audio.common-V5.0-java-shallow.prof
+[ 17% 235/1376] glob android.hardware.audio.common-V5.0-java.prof
+[ 17% 236/1376] glob android.hardware.audio.common-V6.0-java-shallow.prof
+[ 17% 237/1376] glob android.hardware.audio.common-V6.0-java.prof
+[ 17% 238/1376] glob android.hardware.authsecret-V1.0-java-shallow.prof
+[ 17% 239/1376] glob android.hardware.authsecret-V1.0-java.prof
+[ 17% 240/1376] glob android.hardware.automotive.audiocontrol-V1.0-java-shallow.prof
+[ 17% 241/1376] glob android.hardware.automotive.audiocontrol-V1.0-java.prof
+[ 17% 242/1376] glob android.hardware.automotive.audiocontrol-V2.0-java-shallow.prof
+[ 17% 243/1376] glob android.hardware.automotive.audiocontrol-V2.0-java.prof
+[ 17% 244/1376] glob android.hardware.automotive.can-V1.0-java-shallow.prof
+[ 17% 245/1376] glob android.hardware.automotive.can-V1.0-java.prof
+[ 17% 246/1376] glob android.hardware.automotive.evs-V1.0-java-shallow.prof
+[ 17% 247/1376] glob android.hardware.automotive.evs-V1.0-java.prof
+[ 18% 248/1376] glob android.hardware.automotive.occupant_awareness-V1-java.prof
+[ 18% 249/1376] glob android.hardware.automotive.occupant_awareness-java.prof
+[ 18% 250/1376] glob android.hardware.automotive.occupant_awareness-unstable-java.prof
+[ 18% 251/1376] glob android.hardware.automotive.sv-V1.0-java-shallow.prof
+[ 18% 252/1376] glob android.hardware.automotive.sv-V1.0-java.prof
+[ 18% 253/1376] glob android.hardware.automotive.vehicle-V2.0-java-shallow.prof
+[ 18% 254/1376] glob android.hardware.automotive.vehicle-V2.0-java.prof
+[ 18% 255/1376] glob android.hardware.biometrics.face-V1.0-java-shallow.prof
+[ 18% 256/1376] glob android.hardware.biometrics.face-V1.0-java.prof
+[ 18% 257/1376] glob android.hardware.biometrics.fingerprint-V2.1-java-shallow.prof
+[ 18% 258/1376] glob android.hardware.biometrics.fingerprint-V2.1-java.prof
+[ 18% 259/1376] glob android.hardware.biometrics.fingerprint-V2.2-java-shallow.prof
+[ 18% 260/1376] glob android.hardware.biometrics.fingerprint-V2.2-java.prof
+[ 18% 261/1376] glob android.hardware.bluetooth-V1.0-java-shallow.prof
+[ 19% 262/1376] glob android.hardware.bluetooth-V1.0-java.prof
+[ 19% 263/1376] glob android.hardware.bluetooth-V1.1-java-shallow.prof
+[ 19% 264/1376] glob android.hardware.bluetooth-V1.1-java.prof
+[ 19% 265/1376] glob android.hardware.boot-V1.0-java-shallow.prof
+[ 19% 266/1376] glob android.hardware.boot-V1.0-java.prof
+[ 19% 267/1376] glob android.hardware.boot-V1.1-java-shallow.prof
+[ 19% 268/1376] glob android.hardware.boot-V1.1-java.prof
+[ 19% 269/1376] glob android.hardware.broadcastradio-V2.0-java-shallow.prof
+[ 19% 270/1376] glob android.hardware.broadcastradio-V2.0-java.prof
+[ 19% 271/1376] glob android.hardware.camera.common-V1.0-java-shallow.prof
+[ 19% 272/1376] glob android.hardware.camera.common-V1.0-java.prof
+[ 19% 273/1376] glob android.hardware.camera.device-V1.0-java-shallow.prof
+[ 19% 274/1376] glob android.hardware.camera.device-V1.0-java.prof
+[ 19% 275/1376] glob android.hardware.camera.metadata-V3.2-java-shallow.prof
+[ 20% 276/1376] glob android.hardware.camera.metadata-V3.2-java.prof
+[ 20% 277/1376] glob android.hardware.camera.metadata-V3.4-java-shallow.prof
+[ 20% 278/1376] glob android.hardware.camera.metadata-V3.4-java.prof
+[ 20% 279/1376] glob android.hardware.camera.metadata-V3.5-java-shallow.prof
+[ 20% 280/1376] glob android.hardware.cas-V1.0-java-shallow.prof
+[ 20% 281/1376] glob android.hardware.camera.metadata-V3.3-java-shallow.prof
+[ 20% 282/1376] glob android.hardware.camera.metadata-V3.3-java.prof
+[ 20% 283/1376] glob android.hardware.cas-V1.0-java.prof
+[ 20% 284/1376] glob android.hardware.cas-V1.1-java-shallow.prof
+[ 20% 285/1376] glob android.hardware.cas-V1.1-java.prof
+[ 20% 286/1376] glob android.hardware.cas-V1.2-java-shallow.prof
+[ 20% 287/1376] glob android.hardware.camera.metadata-V3.5-java.prof
+[ 20% 288/1376] glob android.hardware.cas-V1.2-java.prof
+[ 21% 289/1376] glob android.hardware.configstore-V1.0-java-shallow.prof
+[ 21% 290/1376] glob android.hardware.configstore-V1.0-java.prof
+[ 21% 291/1376] glob android.hardware.configstore-V1.1-java-shallow.prof
+[ 21% 292/1376] glob android.hardware.configstore-V1.1-java.prof
+[ 21% 293/1376] glob android.hardware.contexthub-V1.0-java-shallow.prof
+[ 21% 294/1376] glob android.hardware.contexthub-V1.0-java.prof
+[ 21% 295/1376] glob android.hardware.contexthub-V1.1-java-shallow.prof
+[ 21% 296/1376] glob android.hardware.contexthub-V1.1-java.prof
+[ 21% 297/1376] glob android.hardware.drm-V1.0-java-shallow.prof
+[ 21% 298/1376] glob android.hardware.drm-V1.0-java.prof
+[ 21% 299/1376] glob android.hardware.dumpstate-V1.0-java-shallow.prof
+[ 21% 300/1376] glob android.hardware.dumpstate-V1.0-java.prof
+[ 21% 301/1376] glob android.hardware.dumpstate-V1.1-java-shallow.prof
+[ 21% 302/1376] glob android.hardware.dumpstate-V1.1-java.prof
+[ 22% 303/1376] glob android.hardware.fastboot-V1.0-java-shallow.prof
+[ 22% 304/1376] glob android.hardware.fastboot-V1.0-java.prof
+[ 22% 305/1376] glob android.hardware.gatekeeper-V1.0-java-shallow.prof
+[ 22% 306/1376] glob android.hardware.gatekeeper-V1.0-java.prof
+[ 22% 307/1376] glob android.hardware.gnss-V1.0-java-shallow.prof
+[ 22% 308/1376] glob android.hardware.gnss-V1.0-java.prof
+[ 22% 309/1376] glob android.hardware.gnss-V1.1-java-shallow.prof
+[ 22% 310/1376] glob android.hardware.gnss-V1.1-java.prof
+[ 22% 311/1376] glob android.hardware.gnss-V2.0-java-shallow.prof
+[ 22% 312/1376] glob android.hardware.gnss-V2.0-java.prof
+[ 22% 313/1376] glob android.hardware.gnss-V2.1-java-shallow.prof
+[ 22% 314/1376] glob android.hardware.gnss-V2.1-java.prof
+[ 22% 315/1376] glob android.hardware.gnss.measurement_corrections-V1.0-java-shallow.prof
+[ 22% 316/1376] glob android.hardware.gnss.measurement_corrections-V1.0-java.prof
+[ 23% 317/1376] glob android.hardware.gnss.measurement_corrections-V1.1-java-shallow.prof
+[ 23% 318/1376] glob android.hardware.gnss.measurement_corrections-V1.1-java.prof
+[ 23% 319/1376] glob android.hardware.gnss.visibility_control-V1.0-java-shallow.prof
+[ 23% 320/1376] glob android.hardware.gnss.visibility_control-V1.0-java.prof
+[ 23% 321/1376] glob android.hardware.graphics.bufferqueue-V1.0-java-shallow.prof
+[ 23% 322/1376] glob android.hardware.graphics.bufferqueue-V1.0-java.prof
+[ 23% 323/1376] glob android.hardware.graphics.bufferqueue-V2.0-java-shallow.prof
+[ 23% 324/1376] glob android.hardware.graphics.bufferqueue-V2.0-java.prof
+[ 23% 325/1376] glob android.hardware.graphics.common-V1.0-java-shallow.prof
+[ 23% 326/1376] glob android.hardware.graphics.common-V1.0-java.prof
+[ 23% 327/1376] glob android.hardware.graphics.common-V1.1-java-shallow.prof
+[ 23% 328/1376] glob android.hardware.graphics.common-V1.1-java.prof
+[ 23% 329/1376] glob android.hardware.graphics.common-V1.2-java-shallow.prof
+[ 23% 330/1376] glob android.hardware.graphics.common-V1.2-java.prof
+[ 24% 331/1376] glob android.hardware.health-V1.0-java-shallow.prof
+[ 24% 332/1376] glob android.hardware.health-V1.0-java.prof
+[ 24% 333/1376] glob android.hardware.health-V2.0-java-shallow.prof
+[ 24% 334/1376] glob android.hardware.health-V2.0-java.prof
+[ 24% 335/1376] glob android.hardware.health-V2.1-java-shallow.prof
+[ 24% 336/1376] glob android.hardware.health-V2.1-java.prof
+[ 24% 337/1376] glob android.hardware.health.storage-V1.0-java-shallow.prof
+[ 24% 338/1376] glob android.hardware.health.storage-V1.0-java.prof
+[ 24% 339/1376] glob android.hardware.identity-V1-java.prof
+[ 24% 340/1376] glob android.hardware.identity-V2-java.prof
+[ 24% 341/1376] glob android.hardware.identity-java.prof
+[ 24% 342/1376] glob android.hardware.identity-unstable-java.prof
+[ 24% 343/1376] glob android.hardware.input.classifier-V1.0-java-shallow.prof
+[ 25% 344/1376] glob android.hardware.input.classifier-V1.0-java.prof
+[ 25% 345/1376] glob android.hardware.input.common-V1.0-java-shallow.prof
+[ 25% 346/1376] glob android.hardware.light-V2.0-java-shallow.prof
+[ 25% 347/1376] glob android.hardware.light-V2.0-java.prof
+[ 25% 348/1376] glob android.hardware.input.common-V1.0-java.prof
+[ 25% 349/1376] glob android.hardware.light-java.prof
+[ 25% 350/1376] glob android.hardware.ir-V1.0-java-shallow.prof
+[ 25% 351/1376] glob android.hardware.keymaster-unstable-java.prof
+[ 25% 352/1376] glob android.hardware.light-V1-java.prof
+[ 25% 353/1376] glob android.hardware.light-unstable-java.prof
+[ 25% 354/1376] glob android.hardware.ir-V1.0-java.prof
+[ 25% 355/1376] glob android.hardware.keymaster-V1-java.prof
+[ 25% 356/1376] glob android.hardware.media-V1.0-java-shallow.prof
+[ 25% 357/1376] glob android.hardware.media-V1.0-java.prof
+[ 26% 358/1376] glob android.hardware.memtrack-V1.0-java-shallow.prof
+[ 26% 359/1376] glob android.hardware.memtrack-V1.0-java.prof
+[ 26% 360/1376] glob android.hardware.keymaster-V2-java.prof
+[ 26% 361/1376] glob android.hardware.keymaster-java.prof
+[ 26% 362/1376] glob android.hardware.nfc-V1.0-java-shallow.prof
+[ 26% 363/1376] glob android.hardware.nfc-V1.0-java.prof
+[ 26% 364/1376] glob android.hardware.power-V1.0-java-shallow.prof
+[ 26% 365/1376] glob android.hardware.power-V1.0-java.prof
+[ 26% 366/1376] glob android.hardware.power-V1.1-java-shallow.prof
+[ 26% 367/1376] glob android.hardware.nfc-V1.1-java-shallow.prof
+[ 26% 368/1376] glob android.hardware.power-V1.1-java.prof
+[ 26% 369/1376] glob android.hardware.nfc-V1.1-java.prof
+[ 26% 370/1376] glob android.hardware.nfc-V1.2-java-shallow.prof
+[ 26% 371/1376] glob android.hardware.nfc-V1.2-java.prof
+[ 27% 372/1376] glob android.hardware.oemlock-V1.0-java-shallow.prof
+[ 27% 373/1376] glob android.hardware.oemlock-V1.0-java.prof
+[ 27% 374/1376] glob android.hardware.power-V1-java.prof
+[ 27% 375/1376] glob android.hardware.power-V1.2-java.prof
+[ 27% 376/1376] glob android.hardware.power-V1.3-java-shallow.prof
+[ 27% 377/1376] glob android.hardware.power-V1.3-java.prof
+[ 27% 378/1376] glob android.hardware.power-java.prof
+[ 27% 379/1376] glob android.hardware.power-V1.2-java-shallow.prof
+[ 27% 380/1376] glob android.hardware.power-unstable-java.prof
+[ 27% 381/1376] glob android.hardware.radio-V1.0-java-shallow.prof
+[ 27% 382/1376] glob android.hardware.radio-V1.0-java.prof
+[ 27% 383/1376] glob android.hardware.radio-V1.1-java-shallow.prof
+[ 27% 384/1376] glob android.hardware.radio-V1.1-java.prof
+[ 27% 385/1376] glob android.hardware.radio-V1.2-java-shallow.prof
+[ 28% 386/1376] glob android.hardware.radio-V1.2-java.prof
+[ 28% 387/1376] glob android.hardware.radio-V1.3-java-shallow.prof
+[ 28% 388/1376] glob android.hardware.radio-V1.3-java.prof
+[ 28% 389/1376] glob android.hardware.radio-V1.4-java-shallow.prof
+[ 28% 390/1376] glob android.hardware.radio-V1.4-java.prof
+[ 28% 391/1376] glob android.hardware.radio-V1.5-java-shallow.prof
+[ 28% 392/1376] glob android.hardware.radio-V1.5-java.prof
+[ 28% 393/1376] glob android.hardware.radio.config-V1.0-java-shallow.prof
+[ 28% 394/1376] glob android.hardware.radio.config-V1.0-java.prof
+[ 28% 395/1376] glob android.hardware.radio.config-V1.1-java-shallow.prof
+[ 28% 396/1376] glob android.hardware.radio.config-V1.1-java.prof
+[ 28% 397/1376] glob android.hardware.radio.config-V1.2-java-shallow.prof
+[ 28% 398/1376] glob android.hardware.radio.config-V1.2-java.prof
+[ 28% 399/1376] glob android.hardware.radio.deprecated-V1.0-java-shallow.prof
+[ 29% 400/1376] glob android.hardware.radio.deprecated-V1.0-java.prof
+[ 29% 401/1376] glob android.hardware.rebootescrow-V1-java.prof
+[ 29% 402/1376] glob android.hardware.rebootescrow-java.prof
+[ 29% 403/1376] glob android.hardware.rebootescrow-unstable-java.prof
+[ 29% 404/1376] glob android.hardware.secure_element-V1.0-java-shallow.prof
+[ 29% 405/1376] glob android.hardware.secure_element-V1.0-java.prof
+[ 29% 406/1376] glob android.hardware.secure_element-V1.1-java-shallow.prof
+[ 29% 407/1376] glob android.hardware.secure_element-V1.1-java.prof
+[ 29% 408/1376] glob android.hardware.secure_element-V1.2-java-shallow.prof
+[ 29% 409/1376] glob android.hardware.soundtrigger-V2.0-java.prof
+[ 29% 410/1376] glob android.hardware.soundtrigger-V2.1-java-shallow.prof
+[ 29% 411/1376] glob android.hardware.soundtrigger-V2.1-java.prof
+[ 29% 412/1376] glob android.hardware.soundtrigger-V2.2-java-shallow.prof
+[ 30% 413/1376] glob android.hardware.soundtrigger-V2.2-java.prof
+[ 30% 414/1376] glob android.hardware.soundtrigger-V2.3-java-shallow.prof
+[ 30% 415/1376] glob android.hardware.soundtrigger-V2.3-java.prof
+[ 30% 416/1376] glob android.hardware.tests.baz-V1.0-java-shallow.prof
+[ 30% 417/1376] glob android.hardware.secure_element-V1.2-java.prof
+[ 30% 418/1376] glob android.hardware.soundtrigger-V2.0-java-shallow.prof
+[ 30% 419/1376] glob android.hardware.tests.baz-V1.0-java.prof
+[ 30% 420/1376] glob android.hardware.tests.expression-V1.0-java-shallow.prof
+[ 30% 421/1376] glob android.hardware.tests.expression-V1.0-java.prof
+[ 30% 422/1376] glob android.hardware.tests.extension.light-V2.0-java-shallow.prof
+[ 30% 423/1376] glob android.hardware.tests.extension.light-V2.0-java.prof
+[ 30% 424/1376] glob android.hardware.tests.inheritance-V1.0-java.prof
+[ 30% 425/1376] glob android.hardware.tests.lazy-V1.0-java-shallow.prof
+[ 30% 426/1376] glob android.hardware.tests.lazy-V1.0-java.prof
+[ 31% 427/1376] glob android.hardware.tests.libhwbinder-V1.0-java-shallow.prof
+[ 31% 428/1376] glob android.hardware.tests.libhwbinder-V1.0-java.prof
+[ 31% 429/1376] glob android.hardware.tests.hash-V1.0-java-shallow.prof
+[ 31% 430/1376] glob android.hardware.tests.hash-V1.0-java.prof
+[ 31% 431/1376] glob android.hardware.tests.inheritance-V1.0-java-shallow.prof
+[ 31% 432/1376] glob android.hardware.tests.memory-V1.0-java-shallow.prof
+[ 31% 433/1376] glob android.hardware.tests.memory-V1.0-java.prof
+[ 31% 434/1376] glob android.hardware.tests.memory-V2.0-java-shallow.prof
+[ 31% 435/1376] glob android.hardware.tests.memory-V2.0-java.prof
+[ 31% 436/1376] glob android.hardware.tests.multithread-V1.0-java-shallow.prof
+[ 31% 437/1376] glob android.hardware.tests.multithread-V1.0-java.prof
+[ 31% 438/1376] glob android.hardware.tests.safeunion-V1.0-java-shallow.prof
+[ 31% 439/1376] glob android.hardware.tests.safeunion-V1.0-java.prof
+[ 31% 440/1376] glob android.hardware.tests.trie-V1.0-java.prof
+[ 32% 441/1376] glob android.hardware.tests.trie-V1.0-java-shallow.prof
+[ 32% 442/1376] glob android.hardware.tetheroffload.config-V1.0-java-shallow.prof
+[ 32% 443/1376] glob android.hardware.tetheroffload.config-V1.0-java.prof
+[ 32% 444/1376] glob android.hardware.tetheroffload.control-V1.0-java-shallow.prof
+[ 32% 445/1376] glob android.hardware.tetheroffload.control-V1.0-java.prof
+[ 32% 446/1376] glob android.hardware.thermal-V1.0-java-shallow.prof
+[ 32% 447/1376] glob android.hardware.thermal-V1.0-java.prof
+[ 32% 448/1376] glob android.hardware.thermal-V1.1-java-shallow.prof
+[ 32% 449/1376] glob android.hardware.tv.input-V1.0-java.prof
+[ 32% 450/1376] glob android.hardware.thermal-V1.1-java.prof
+[ 32% 451/1376] glob android.hardware.usb-V1.0-java-shallow.prof
+[ 32% 452/1376] glob android.hardware.usb-V1.0-java.prof
+[ 32% 453/1376] glob android.hardware.thermal-V2.0-java-shallow.prof
+[ 32% 454/1376] glob android.hardware.usb-V1.1-java.prof
+[ 33% 455/1376] glob android.hardware.usb-V1.2-java-shallow.prof
+[ 33% 456/1376] glob android.hardware.usb-V1.2-java.prof
+[ 33% 457/1376] glob android.hardware.usb.gadget-V1.0-java-shallow.prof
+[ 33% 458/1376] glob android.hardware.thermal-V2.0-java.prof
+[ 33% 459/1376] glob android.hardware.tv.cec-V1.0-java-shallow.prof
+[ 33% 460/1376] glob android.hardware.tv.cec-V1.0-java.prof
+[ 33% 461/1376] glob android.hardware.tv.cec-V2.0-java-shallow.prof
+[ 33% 462/1376] glob android.hardware.tv.cec-V2.0-java.prof
+[ 33% 463/1376] glob android.hardware.tv.input-V1.0-java-shallow.prof
+[ 33% 464/1376] glob android.hardware.usb-V1.1-java-shallow.prof
+[ 33% 465/1376] glob android.hardware.usb.gadget-V1.0-java.prof
+[ 33% 466/1376] glob android.hardware.usb.gadget-V1.1-java-shallow.prof
+[ 33% 467/1376] glob android.hardware.usb.gadget-V1.1-java.prof
+[ 34% 468/1376] glob android.hardware.vibrator-V1-java.prof
+[ 34% 469/1376] glob android.hardware.vibrator-V1.0-java-shallow.prof
+[ 34% 470/1376] glob android.hardware.vibrator-V1.0-java.prof
+[ 34% 471/1376] glob android.hardware.vibrator-V1.1-java-shallow.prof
+[ 34% 472/1376] glob android.hardware.vibrator-unstable-java.prof
+[ 34% 473/1376] glob android.hardware.vr-V1.0-java-shallow.prof
+[ 34% 474/1376] glob android.hardware.vr-V1.0-java.prof
+[ 34% 475/1376] glob android.hardware.vibrator-V1.1-java.prof
+[ 34% 476/1376] glob android.hardware.weaver-V1.0-java-shallow.prof
+[ 34% 477/1376] glob android.hardware.weaver-V1.0-java.prof
+[ 34% 478/1376] glob android.hardware.vibrator-V1.2-java-shallow.prof
+[ 34% 479/1376] glob android.hardware.vibrator-V1.2-java.prof
+[ 34% 480/1376] glob android.hardware.vibrator-V1.3-java.prof
+[ 34% 481/1376] glob android.hardware.vibrator-java.prof
+[ 35% 482/1376] glob android.hardware.wifi-V1.0-java-shallow.prof
+[ 35% 483/1376] glob android.hardware.wifi-V1.0-java.prof
+[ 35% 484/1376] glob android.hardware.wifi-V1.1-java-shallow.prof
+[ 35% 485/1376] glob android.hardware.wifi-V1.1-java.prof
+[ 35% 486/1376] glob android.hardware.wifi-V1.2-java-shallow.prof
+[ 35% 487/1376] glob android.hardware.wifi-V1.2-java.prof
+[ 35% 488/1376] glob android.hardware.wifi-V1.3-java-shallow.prof
+[ 35% 489/1376] glob android.hardware.vibrator-V1.3-java-shallow.prof
+[ 35% 490/1376] glob android.hardware.wifi-V1.3-java.prof
+[ 35% 491/1376] glob android.hardware.wifi-V1.4-java-shallow.prof
+[ 35% 492/1376] glob android.hardware.wifi.hostapd-V1.0-java-shallow.prof
+[ 35% 493/1376] glob android.hardware.wifi-V1.4-java.prof
+[ 35% 494/1376] glob android.hardware.wifi.hostapd-V1.0-java.prof
+[ 35% 495/1376] glob android.hardware.wifi.hostapd-V1.1-java-shallow.prof
+[ 36% 496/1376] glob android.hardware.wifi.hostapd-V1.1-java.prof
+[ 36% 497/1376] glob android.hardware.wifi.hostapd-V1.2-java-shallow.prof
+[ 36% 498/1376] glob android.hardware.wifi.hostapd-V1.2-java.prof
+[ 36% 499/1376] glob android.hardware.wifi.supplicant-V1.0-java-shallow.prof
+[ 36% 500/1376] glob android.hardware.wifi.supplicant-V1.0-java.prof
+[ 36% 501/1376] glob android.hardware.wifi.supplicant-V1.1-java-shallow.prof
+[ 36% 502/1376] glob android.hardware.wifi.supplicant-V1.1-java.prof
+[ 36% 503/1376] glob android.hardware.wifi.supplicant-V1.2-java-shallow.prof
+[ 36% 504/1376] glob android.hardware.wifi.supplicant-V1.2-java.prof
+[ 36% 505/1376] glob android.hardware.wifi.supplicant-V1.3-java.prof
+[ 36% 506/1376] glob android.hardware.wifi.supplicant-V1.3-java-shallow.prof
+[ 36% 507/1376] glob android.hidl.base-V1.0-java-shallow.prof
+[ 36% 508/1376] glob android.hidl.base-V1.0-java.prof
+[ 36% 509/1376] glob android.hidl.manager-V1.0-java-shallow.prof
+[ 37% 510/1376] glob android.hidl.manager-V1.0-java.prof
+[ 37% 511/1376] glob android.hidl.manager-V1.1-java-shallow.prof
+[ 37% 512/1376] glob android.hidl.manager-V1.1-java.prof
+[ 37% 513/1376] glob android.hidl.manager-V1.2-java-shallow.prof
+[ 37% 514/1376] glob android.hidl.manager-V1.2-java.prof
+[ 37% 515/1376] glob android.hidl.memory.block-V1.0-java-shallow.prof
+[ 37% 516/1376] glob android.hidl.memory.block-V1.0-java.prof
+[ 37% 517/1376] glob android.hidl.memory.token-V1.0-java-shallow.prof
+[ 37% 518/1376] glob android.hidl.memory.token-V1.0-java.prof
+[ 37% 519/1376] glob android.hidl.safe_union-V1.0-java-shallow.prof
+[ 37% 520/1376] glob android.hidl.safe_union-V1.0-java.prof
+[ 37% 521/1376] glob android.hidl.token-V1.0-java-shallow.prof
+[ 37% 522/1376] glob android.hidl.token-V1.0-java.prof
+[ 38% 523/1376] glob android.net.ipsec.ike.impl.prof
+[ 38% 524/1376] glob android.net.ipsec.ike.prof
+[ 38% 525/1376] glob android.system.net.netd-V1.0-java-shallow.prof
+[ 38% 526/1376] glob android.system.net.netd-V1.0-java.prof
+[ 38% 527/1376] glob android.system.net.netd-V1.1-java-shallow.prof
+[ 38% 528/1376] glob android.system.net.netd-V1.1-java.prof
+[ 38% 529/1376] glob android.system.suspend-V1.0-java-shallow.prof
+[ 38% 530/1376] glob android.test.runner.prof
+[ 38% 531/1376] glob androidx.window.sidecar.prof
+[ 38% 532/1376] glob android.system.suspend-V1.0-java.prof
+[ 38% 533/1376] glob apache-xml.prof
+[ 38% 534/1376] glob android.system.wifi.keystore-V1.0-java-shallow.prof
+[ 38% 535/1376] glob binderStabilityTestIface-java.prof
+[ 38% 536/1376] glob binderthreadstateutilstest-V1.0-java-shallow.prof
+[ 39% 537/1376] glob android.system.wifi.keystore-V1.0-java.prof
+[ 39% 538/1376] glob binderthreadstateutilstest-V1.0-java.prof
+[ 39% 539/1376] glob android.test.base.impl.prof
+[ 39% 540/1376] glob android.test.base.prof
+[ 39% 541/1376] glob android.test.mock.impl.prof
+[ 39% 542/1376] glob android.test.mock.prof
+[ 39% 543/1376] glob android.test.runner.impl.prof
+[ 39% 544/1376] glob apex_aidl_interface-java.prof
+[ 39% 545/1376] glob appwidget.prof
+[ 39% 546/1376] glob binderthreadstateutilstest.aidl-java.prof
+[ 39% 547/1376] glob bitmapcache-sample.prof
+[ 39% 548/1376] glob bmgr.prof
+[ 39% 549/1376] glob bttraffic.prof
+[ 39% 550/1376] glob bu.prof
+[ 40% 551/1376] glob build/soong/NOTICE
+[ 40% 552/1376] glob caliper-api-target.prof
+[ 40% 553/1376] glob capture_state_listener-aidl-java.prof
+[ 40% 554/1376] glob car-frameworks-service.prof
+[ 40% 555/1376] glob carwatchdog_aidl_interface-V2-java.prof
+[ 40% 556/1376] glob carwatchdog_aidl_interface-java.prof
+[ 40% 557/1376] glob com.android.future.usb.accessory.impl.prof
+[ 40% 558/1376] glob com.android.future.usb.accessory.prof
+[ 40% 559/1376] glob bouncycastle.prof
+[ 40% 560/1376] glob carwatchdog_aidl_interface-unstable-java.prof
+[ 40% 561/1376] glob com.android.location.provider.impl.prof
+[ 40% 562/1376] glob com.android.location.provider.prof
+[ 40% 563/1376] glob com.android.media.remotedisplay.impl.prof
+[ 40% 564/1376] glob com.android.media.remotedisplay.prof
+[ 41% 565/1376] glob com.android.mediadrm.signer.impl.prof
+[ 41% 566/1376] glob com.android.mediadrm.signer.prof
+[ 41% 567/1376] glob com.android.nfc_extras.impl.prof
+[ 41% 568/1376] glob com.android.nfc_extras.prof
+[ 41% 569/1376] glob com.android.phone.common.prof
+[ 41% 570/1376] glob com.android.test.libs.product.prof
+[ 41% 571/1376] glob com.android.test.libs.system_ext.prof
+[ 41% 572/1376] glob com.google.hardware.pixel.display-V1-java.prof
+[ 41% 573/1376] glob com.google.hardware.pixel.display-java.prof
+[ 41% 574/1376] glob com.google.hardware.pixel.display-unstable-java.prof
+[ 41% 575/1376] glob core-icu4j.prof
+[ 41% 576/1376] glob core-libart.prof
+[ 41% 577/1376] glob core-oj.prof
+[ 42% 578/1376] glob cts/NOTICE
+[ 42% 579/1376] glob device/google/cuttlefish/src
+[ 42% 580/1376] glob conscrypt.prof
+[ 42% 581/1376] glob device/google/cuttlefish_kernel/NOTICE
+[ 42% 582/1376] glob device/google/cuttlefish_vmm/NOTICE
+[ 42% 583/1376] glob content.prof
+[ 42% 584/1376] glob dnsresolver_aidl_interface-V1-java.prof
+[ 42% 585/1376] glob dnsresolver_aidl_interface-V2-java.prof
+[ 42% 586/1376] glob dnsresolver_aidl_interface-V3-java.prof
+[ 42% 587/1376] glob dnsresolver_aidl_interface-V4-java.prof
+[ 42% 588/1376] glob dnsresolver_aidl_interface-V5-java.prof
+[ 42% 589/1376] glob dnsresolver_aidl_interface-V6-java.prof
+[ 42% 590/1376] glob dnsresolver_aidl_interface-java.prof
+[ 42% 591/1376] glob dnsresolver_aidl_interface-unstable-java.prof
+[ 43% 592/1376] glob dpm.prof
+[ 43% 593/1376] glob ethernet-service.prof
+[ 43% 594/1376] glob device/google/cuttlefish/NOTICE
+[ 43% 595/1376] glob ethernet.prof
+[ 43% 596/1376] glob ext.prof
+[ 43% 597/1376] glob external/FP16/AndroidTest.xml
+[ 43% 598/1376] glob external/FXdiv/AndroidTest.xml
+[ 43% 599/1376] glob external/Reactive-Extensions/RxCpp/AndroidTest.xml
+[ 43% 600/1376] glob external/XNNPACK/AndroidTest.xml
+[ 43% 601/1376] glob external/angle/NOTICE
+[ 43% 602/1376] glob external/angle/assets
+[ 43% 603/1376] glob external/angle/res
+[ 43% 604/1376] glob external/antlr/src
+[ 43% 605/1376] glob external/apache-commons-compress/NOTICE
+[ 44% 606/1376] glob external/apache-harmony/src
+[ 44% 607/1376] glob external/androidplot/assets
+[ 44% 608/1376] glob external/androidplot/src
+[ 44% 609/1376] glob external/apache-harmony/AndroidTest.xml
+[ 44% 610/1376] glob bootable/recovery/res-*/images/*_text.png
+[ 44% 611/1376] glob external/androidplot/AndroidTest.xml
+[ 44% 612/1376] glob external/android-clat/AndroidTest.xml
+[ 44% 613/1376] glob external/apache-http/art-profile-boot
+[ 44% 614/1376] glob external/bzip2/**/*.inc
+[ 44% 615/1376] glob external/arm-neon-tests/AndroidTest.xml
+[ 44% 616/1376] glob external/bouncycastle/src
+[ 44% 617/1376] glob external/brotli/src
+[ 44% 618/1376] glob external/bzip2/**/*.h
+[ 44% 619/1376] glob external/bzip2/**/*.h++
+[ 45% 620/1376] glob external/bzip2/**/*.h.generic
+[ 45% 621/1376] glob external/bzip2/**/*.hh
+[ 45% 622/1376] glob external/bzip2/**/*.hpp
+[ 45% 623/1376] glob external/bzip2/**/*.hxx
+[ 45% 624/1376] glob external/bzip2/**/*.inl
+[ 45% 625/1376] glob external/bzip2/**/*.ipp
+[ 45% 626/1376] glob external/arm-optimized-routines/AndroidTest.xml
+[ 45% 627/1376] glob external/avb/AndroidTest.xml
+[ 45% 628/1376] glob external/caliper/AndroidTest.xml
+[ 45% 629/1376] glob external/caliper/src
+[ 45% 630/1376] glob external/dagger2/src
+[ 45% 631/1376] glob external/deqp-deps/amber/NOTICE
+[ 45% 632/1376] glob external/deqp/AndroidTest.xml
+[ 46% 633/1376] glob external/capstone/NOTICE
+[ 46% 634/1376] glob external/catch2/AndroidTest.xml
+[ 46% 635/1376] glob external/deqp/src
+[ 46% 636/1376] glob external/cn-cbor/AndroidTest.xml
+[ 46% 637/1376] glob external/cn-cbor/NOTICE
+[ 46% 638/1376] glob external/conscrypt/AndroidTest.xml
+[ 46% 639/1376] glob external/conscrypt/src
+[ 46% 640/1376] glob external/cpu_features/AndroidTest.xml
+[ 46% 641/1376] glob external/crosvm/NOTICE
+[ 46% 642/1376] glob external/desugar/src
+[ 46% 643/1376] glob external/dexmaker/AndroidTest.xml
+[ 46% 644/1376] glob external/dexmaker/assets
+[ 46% 645/1376] glob external/dexmaker/res
+[ 46% 646/1376] glob external/dexmaker/src
+[ 47% 647/1376] glob external/dokka/src
+[ 47% 648/1376] glob external/deqp-deps/glslang/NOTICE
+[ 47% 649/1376] glob external/error_prone/NOTICE
+[ 47% 650/1376] glob external/emma/src
+[ 47% 651/1376] glob external/ethtool/NOTICE
+[ 47% 652/1376] glob external/exoplayer/NOTICE
+[ 47% 653/1376] glob external/exoplayer/assets
+[ 47% 654/1376] glob external/exoplayer/res
+[ 47% 655/1376] glob external/exoplayer/src
+[ 47% 656/1376] glob external/flac/**/*.h
+[ 47% 657/1376] glob external/flac/**/*.h++
+[ 47% 658/1376] glob external/flac/**/*.h.generic
+[ 47% 659/1376] glob external/flac/**/*.hh
+[ 47% 660/1376] glob external/flac/**/*.hpp
+[ 48% 661/1376] glob external/flac/**/*.hxx
+[ 48% 662/1376] glob external/flac/**/*.inc
+[ 48% 663/1376] glob external/flac/**/*.inl
+[ 48% 664/1376] glob external/flac/**/*.ipp
+[ 48% 665/1376] glob external/fsverity-utils/*.c
+[ 48% 666/1376] glob external/elfutils/**/*.h
+[ 48% 667/1376] glob external/elfutils/**/*.hh
+[ 48% 668/1376] glob external/elfutils/**/*.hpp
+[ 48% 669/1376] glob external/elfutils/**/*.hxx
+[ 48% 670/1376] glob external/elfutils/**/*.h++
+[ 48% 671/1376] glob external/elfutils/**/*.h.generic
+[ 48% 672/1376] glob external/elfutils/**/*.inc
+[ 48% 673/1376] glob external/elfutils/**/*.inl
+[ 48% 674/1376] glob external/elfutils/**/*.ipp
+[ 49% 675/1376] glob external/glide/assets
+[ 49% 676/1376] glob external/glide/res
+[ 49% 677/1376] glob external/glide/src
+[ 49% 678/1376] glob external/google-benchmark/AndroidTest.xml
+[ 49% 679/1376] glob external/google-breakpad/NOTICE
+[ 49% 680/1376] glob external/google-fruit/AndroidTest.xml
+[ 49% 681/1376] glob external/grpc-grpc-java/NOTICE
+[ 49% 682/1376] glob external/grpc-grpc-java/src
+[ 49% 683/1376] glob external/grpc-grpc/NOTICE
+[ 49% 684/1376] glob external/gemmlowp/**/*.h++
+[ 49% 685/1376] glob external/gemmlowp/**/*.hh
+[ 49% 686/1376] glob external/gemmlowp/**/*.h
+[ 49% 687/1376] glob external/gemmlowp/**/*.h.generic
+[ 50% 688/1376] glob external/gemmlowp/**/*.hpp
+[ 50% 689/1376] glob external/gemmlowp/**/*.hxx
+[ 50% 690/1376] glob external/gemmlowp/**/*.inc
+[ 50% 691/1376] glob external/gemmlowp/**/*.inl
+[ 50% 692/1376] glob external/gemmlowp/**/*.ipp
+[ 50% 693/1376] glob external/guava/src
+[ 50% 694/1376] glob external/guice/src
+[ 50% 695/1376] glob external/gwp_asan/AndroidTest.xml
+[ 50% 696/1376] glob external/gwp_asan/**/*.h++
+[ 50% 697/1376] glob external/gwp_asan/**/*.h.generic
+[ 50% 698/1376] glob external/gwp_asan/**/*.h
+[ 50% 699/1376] glob external/gwp_asan/**/*.hh
+[ 50% 700/1376] glob external/gwp_asan/**/*.hpp
+[ 50% 701/1376] glob external/gwp_asan/**/*.hxx
+[ 51% 702/1376] glob external/gwp_asan/**/*.inc
+[ 51% 703/1376] glob external/gwp_asan/**/*.inl
+[ 51% 704/1376] glob external/gwp_asan/**/*.ipp
+[ 51% 705/1376] glob external/honggfuzz/*.c
+[ 51% 706/1376] glob external/igt-gpu-tools/AndroidTest.xml
+[ 51% 707/1376] glob external/jacoco/src
+[ 51% 708/1376] glob external/javaparser/NOTICE
+[ 51% 709/1376] glob external/javaparser/src
+[ 51% 710/1376] glob external/jemalloc/AndroidTest.xml
+[ 51% 711/1376] glob external/jemalloc_new/AndroidTest.xml
+[ 51% 712/1376] glob external/jdiff/**/*.java
+[ 51% 713/1376] glob external/jsmn/**/*.h
+[ 51% 714/1376] glob external/jsmn/**/*.h++
+[ 51% 715/1376] glob external/jsmn/**/*.h.generic
+[ 52% 716/1376] glob external/jsmn/**/*.hh
+[ 52% 717/1376] glob external/jsmn/**/*.hpp
+[ 52% 718/1376] glob external/jsmn/**/*.hxx
+[ 52% 719/1376] glob external/jsmn/**/*.inc
+[ 52% 720/1376] glob external/jsmn/**/*.inl
+[ 52% 721/1376] glob external/jsmn/**/*.ipp
+[ 52% 722/1376] glob external/jsr305/src
+[ 52% 723/1376] glob external/jsoncpp/NOTICE
+[ 52% 724/1376] glob external/junit-params/AndroidTest.xml
+[ 52% 725/1376] glob external/junit-params/NOTICE
+[ 52% 726/1376] glob external/junit/NOTICE
+[ 52% 727/1376] glob external/ksoap2/src
+[ 52% 728/1376] glob external/libaom/NOTICE
+[ 52% 729/1376] glob external/libbackup/assets
+[ 53% 730/1376] glob external/libbackup/res
+[ 53% 731/1376] glob external/libbrillo/AndroidTest.xml
+[ 53% 732/1376] glob external/libchrome/AndroidTest.xml
+[ 53% 733/1376] glob external/ksoap2/**/*.java
+[ 53% 734/1376] glob external/libchrome/**/*.h.generic
+[ 53% 735/1376] glob external/libchrome/**/*.h++
+[ 53% 736/1376] glob external/libchrome/**/*.h
+[ 53% 737/1376] glob external/libchrome/**/*.hh
+[ 53% 738/1376] glob external/libchrome/**/*.hpp
+[ 53% 739/1376] glob external/libchrome/**/*.hxx
+[ 53% 740/1376] glob external/libchrome/**/*.inc
+[ 53% 741/1376] glob external/libchrome/**/*.inl
+[ 53% 742/1376] glob external/libchrome/src
+[ 53% 743/1376] glob external/libcxx/AndroidTest.xml
+[ 54% 744/1376] glob external/libdrm/NOTICE
+[ 54% 745/1376] glob external/libchrome/**/*.ipp
+[ 54% 746/1376] glob external/libdrm/**/*.h++
+[ 54% 747/1376] glob external/libdrm/**/*.h
+[ 54% 748/1376] glob external/libdrm/**/*.h.generic
+[ 54% 749/1376] glob external/libdrm/**/*.hh
+[ 54% 750/1376] glob external/libdrm/**/*.hpp
+[ 54% 751/1376] glob external/libdrm/**/*.hxx
+[ 54% 752/1376] glob external/libdrm/**/*.inc
+[ 54% 753/1376] glob external/libdrm/**/*.inl
+[ 54% 754/1376] glob external/libdrm/**/*.ipp
+[ 54% 755/1376] glob external/libgav1/**/*.h
+[ 54% 756/1376] glob external/libgav1/**/*.h++
+[ 55% 757/1376] glob external/libgav1/**/*.h.generic
+[ 55% 758/1376] glob external/libgav1/**/*.hh
+[ 55% 759/1376] glob external/libgav1/**/*.hpp
+[ 55% 760/1376] glob external/libgav1/**/*.hxx
+[ 55% 761/1376] glob external/libgav1/**/*.inc
+[ 55% 762/1376] glob external/libgav1/**/*.inl
+[ 55% 763/1376] glob external/libgav1/**/*.ipp
+[ 55% 764/1376] glob external/libhevc/AndroidTest.xml
+[ 55% 765/1376] glob external/libjpeg-turbo/**/*.h
+[ 55% 766/1376] glob external/libjpeg-turbo/**/*.h++
+[ 55% 767/1376] glob external/libjpeg-turbo/**/*.h.generic
+[ 55% 768/1376] glob external/libjpeg-turbo/**/*.hh
+[ 55% 769/1376] glob external/libjpeg-turbo/**/*.hpp
+[ 55% 770/1376] glob external/libjpeg-turbo/**/*.hxx
+[ 56% 771/1376] glob external/libjpeg-turbo/**/*.inc
+[ 56% 772/1376] glob external/libjpeg-turbo/**/*.inl
+[ 56% 773/1376] glob external/libjpeg-turbo/**/*.ipp
+[ 56% 774/1376] glob external/libpcap/AndroidTest.xml
+[ 56% 775/1376] glob external/libpcap/**/*.h
+[ 56% 776/1376] glob external/libpcap/**/*.h++
+[ 56% 777/1376] glob external/libpcap/**/*.h.generic
+[ 56% 778/1376] glob external/libpcap/**/*.hh
+[ 56% 779/1376] glob external/libpcap/**/*.hpp
+[ 56% 780/1376] glob external/libpcap/**/*.hxx
+[ 56% 781/1376] glob external/libpcap/**/*.inc
+[ 56% 782/1376] glob external/libpcap/**/*.inl
+[ 56% 783/1376] glob external/libpcap/**/*.ipp
+[ 56% 784/1376] glob external/libphonenumber/src
+[ 57% 785/1376] glob external/libpng/AndroidTest.xml
+[ 57% 786/1376] glob external/libpng/**/*.h
+[ 57% 787/1376] glob external/libpng/**/*.h++
+[ 57% 788/1376] glob external/libpng/**/*.h.generic
+[ 57% 789/1376] glob external/grpc-grpc/**/*.h
+[ 57% 790/1376] glob external/grpc-grpc/**/*.hxx
+[ 57% 791/1376] glob external/grpc-grpc/**/*.inc
+[ 57% 792/1376] glob external/grpc-grpc/**/*.inl
+[ 57% 793/1376] glob external/grpc-grpc/**/*.ipp
+[ 57% 794/1376] glob external/grpc-grpc/**/*.h++
+[ 57% 795/1376] glob external/grpc-grpc/**/*.h.generic
+[ 57% 796/1376] glob external/grpc-grpc/**/*.hh
+[ 57% 797/1376] glob external/grpc-grpc/**/*.hpp
+[ 57% 798/1376] glob external/libpng/**/*.hh
+[ 58% 799/1376] glob external/libpng/**/*.hpp
+[ 58% 800/1376] glob external/libpng/**/*.hxx
+[ 58% 801/1376] glob external/libpng/**/*.inc
+[ 58% 802/1376] glob external/libpng/**/*.inl
+[ 58% 803/1376] glob external/libpng/**/*.ipp
+[ 58% 804/1376] glob external/libpng/*.c
+[ 58% 805/1376] glob external/libsrtp2/NOTICE
+[ 58% 806/1376] glob external/libunwind/AndroidTest.xml
+[ 58% 807/1376] glob external/linux-kselftest/AndroidTest.xml
+[ 58% 808/1376] glob external/ltp/AndroidTest.xml
+[ 58% 809/1376] glob external/minigbm/NOTICE
+[ 58% 810/1376] glob external/libprotobuf-mutator/**/*.h
+[ 58% 811/1376] glob external/libprotobuf-mutator/**/*.h++
+[ 59% 812/1376] glob external/libprotobuf-mutator/**/*.inc
+[ 59% 813/1376] glob external/libprotobuf-mutator/**/*.inl
+[ 59% 814/1376] glob external/libprotobuf-mutator/**/*.ipp
+[ 59% 815/1376] glob external/libprotobuf-mutator/**/*.h.generic
+[ 59% 816/1376] glob external/libprotobuf-mutator/**/*.hh
+[ 59% 817/1376] glob external/libprotobuf-mutator/**/*.hpp
+[ 59% 818/1376] glob external/libprotobuf-mutator/**/*.hxx
+[ 59% 819/1376] glob external/minigbm/**/*.h
+[ 59% 820/1376] glob external/minigbm/**/*.h++
+[ 59% 821/1376] glob external/minigbm/**/*.h.generic
+[ 59% 822/1376] glob external/minigbm/**/*.hh
+[ 59% 823/1376] glob external/minigbm/**/*.hpp
+[ 59% 824/1376] glob external/minigbm/**/*.hxx
+[ 59% 825/1376] glob external/minigbm/**/*.inc
+[ 60% 826/1376] glob external/minigbm/**/*.inl
+[ 60% 827/1376] glob external/minigbm/**/*.ipp
+[ 60% 828/1376] glob external/minijail/AndroidTest.xml
+[ 60% 829/1376] glob external/minijail/**/*.h
+[ 60% 830/1376] glob external/minijail/**/*.h++
+[ 60% 831/1376] glob external/minijail/**/*.h.generic
+[ 60% 832/1376] glob external/minijail/**/*.hh
+[ 60% 833/1376] glob external/minijail/**/*.hpp
+[ 60% 834/1376] glob external/minijail/**/*.hxx
+[ 60% 835/1376] glob external/minijail/**/*.inc
+[ 60% 836/1376] glob external/minijail/**/*.inl
+[ 60% 837/1376] glob external/minijail/**/*.ipp
+[ 60% 838/1376] glob external/mockftpserver/src
+[ 60% 839/1376] glob external/mockwebserver/NOTICE
+[ 61% 840/1376] glob external/mp4parser/src
+[ 61% 841/1376] glob external/modp_b64/**/*.hxx
+[ 61% 842/1376] glob external/modp_b64/**/*.h
+[ 61% 843/1376] glob external/modp_b64/**/*.h++
+[ 61% 844/1376] glob external/modp_b64/**/*.h.generic
+[ 61% 845/1376] glob external/modp_b64/**/*.hh
+[ 61% 846/1376] glob external/modp_b64/**/*.hpp
+[ 61% 847/1376] glob external/modp_b64/**/*.inc
+[ 61% 848/1376] glob external/modp_b64/**/*.inl
+[ 61% 849/1376] glob external/modp_b64/**/*.ipp
+[ 61% 850/1376] glob external/nist-pkits/AndroidTest.xml
+[ 61% 851/1376] glob external/nist-sip/src
+[ 61% 852/1376] glob external/noto-fonts/NOTICE
+[ 61% 853/1376] glob external/okhttp/NOTICE
+[ 62% 854/1376] glob external/objenesis/src
+[ 62% 855/1376] glob external/okhttp/src
+[ 62% 856/1376] glob external/perfetto/AndroidTest.xml
+[ 62% 857/1376] glob external/perfetto/NOTICE
+[ 62% 858/1376] glob external/nanopb-c/**/*.h.generic
+[ 62% 859/1376] glob external/nanopb-c/**/*.hxx
+[ 62% 860/1376] glob external/nanopb-c/**/*.h
+[ 62% 861/1376] glob external/nanopb-c/**/*.h++
+[ 62% 862/1376] glob external/nanopb-c/**/*.hh
+[ 62% 863/1376] glob external/nanopb-c/**/*.hpp
+[ 62% 864/1376] glob external/nanopb-c/**/*.inc
+[ 62% 865/1376] glob external/nanopb-c/**/*.inl
+[ 62% 866/1376] glob external/nanopb-c/**/*.ipp
+[ 63% 867/1376] glob external/protobuf/AndroidTest.xml
+[ 63% 868/1376] glob external/protobuf/assets
+[ 63% 869/1376] glob external/protobuf/res
+[ 63% 870/1376] glob external/piex/**/*.hxx
+[ 63% 871/1376] glob external/piex/**/*.h
+[ 63% 872/1376] glob external/piex/**/*.h++
+[ 63% 873/1376] glob external/piex/**/*.h.generic
+[ 63% 874/1376] glob external/piex/**/*.hh
+[ 63% 875/1376] glob external/piex/**/*.hpp
+[ 63% 876/1376] glob external/piex/**/*.inc
+[ 63% 877/1376] glob external/piex/**/*.inl
+[ 63% 878/1376] glob external/piex/**/*.ipp
+[ 63% 879/1376] glob external/pthreadpool/AndroidTest.xml
+[ 63% 880/1376] glob external/puffin/AndroidTest.xml
+[ 64% 881/1376] glob external/puffin/NOTICE
+[ 64% 882/1376] glob external/python/cpython2/NOTICE
+[ 64% 883/1376] glob external/python/funcsigs/AndroidTest.xml
+[ 64% 884/1376] glob external/rappor/src
+[ 64% 885/1376] glob external/replicaisland/assets
+[ 64% 886/1376] glob external/robolectric-shadows/NOTICE
+[ 64% 887/1376] glob external/roboto-fonts/*.otf
+[ 64% 888/1376] glob external/roboto-fonts/*.ttf
+[ 64% 889/1376] glob external/rust/crates/byteorder/NOTICE
+[ 64% 890/1376] glob external/rust/crates/libc/NOTICE
+[ 64% 891/1376] glob external/rust/crates/proc-macro2/AndroidTest.xml
+[ 64% 892/1376] glob external/rust/crates/proc-macro2/NOTICE
+[ 64% 893/1376] glob external/rust/crates/quote/NOTICE
+[ 64% 894/1376] glob external/rust/crates/remain/NOTICE
+[ 65% 895/1376] glob external/rust/crates/unicode-xid/AndroidTest.xml
+[ 65% 896/1376] glob external/rust/crates/unicode-xid/NOTICE
+[ 65% 897/1376] glob external/scapy/NOTICE
+[ 65% 898/1376] glob external/scrypt/AndroidTest.xml
+[ 65% 899/1376] glob external/scudo/AndroidTest.xml
+[ 65% 900/1376] glob external/setupcompat/assets
+[ 65% 901/1376] glob external/setupcompat/src
+[ 65% 902/1376] glob external/setupdesign/assets
+[ 65% 903/1376] glob external/setupdesign/src
+[ 65% 904/1376] glob external/shaderc/spirv-headers/NOTICE
+[ 65% 905/1376] glob external/skia/AndroidTest.xml
+[ 65% 906/1376] glob external/skqp/NOTICE
+[ 65% 907/1376] glob external/swiftshader/NOTICE
+[ 65% 908/1376] glob external/tinyxml2/AndroidTest.xml
+[ 66% 909/1376] glob external/tinyxml2/**/*.h
+[ 66% 910/1376] glob external/tinyxml2/**/*.h++
+[ 66% 911/1376] glob external/tinyxml2/**/*.h.generic
+[ 66% 912/1376] glob external/tinyxml2/**/*.hh
+[ 66% 913/1376] glob external/tinyxml2/**/*.hpp
+[ 66% 914/1376] glob external/tinyxml2/**/*.hxx
+[ 66% 915/1376] glob external/tinyxml2/**/*.inc
+[ 66% 916/1376] glob external/tinyxml2/**/*.inl
+[ 66% 917/1376] glob external/tinyxml2/**/*.ipp
+[ 66% 918/1376] glob external/tremolo/**/*.h
+[ 66% 919/1376] glob external/tremolo/**/*.h++
+[ 66% 920/1376] glob external/tremolo/**/*.h.generic
+[ 66% 921/1376] glob external/tremolo/**/*.hh
+[ 67% 922/1376] glob external/tremolo/**/*.hpp
+[ 67% 923/1376] glob external/tremolo/**/*.hxx
+[ 67% 924/1376] glob external/tremolo/**/*.inc
+[ 67% 925/1376] glob external/tremolo/**/*.inl
+[ 67% 926/1376] glob external/tremolo/**/*.ipp
+[ 67% 927/1376] glob external/turbine/src
+[ 67% 928/1376] glob external/universal-tween-engine/src
+[ 67% 929/1376] glob external/vixl/AndroidTest.xml
+[ 67% 930/1376] glob external/vixl/NOTICE
+[ 67% 931/1376] glob external/ukey2/**/*.proto
+[ 67% 932/1376] glob external/ukey2/**/*.java
+[ 67% 933/1376] glob external/wayland-protocols/NOTICE
+[ 67% 934/1376] glob external/webrtc/**/*.h++
+[ 67% 935/1376] glob external/webrtc/**/*.h.generic
+[ 68% 936/1376] glob external/webrtc/**/*.h
+[ 68% 937/1376] glob external/webrtc/**/*.hh
+[ 68% 938/1376] glob external/webrtc/**/*.hpp
+[ 68% 939/1376] glob external/webrtc/**/*.hxx
+[ 68% 940/1376] glob external/webrtc/**/*.inc
+[ 68% 941/1376] glob external/webrtc/**/*.inl
+[ 68% 942/1376] glob external/webrtc/**/*.ipp
+[ 68% 943/1376] glob external/wycheproof/src
+[ 68% 944/1376] glob external/zlib/**/*.h
+[ 68% 945/1376] glob external/zlib/**/*.h++
+[ 68% 946/1376] glob external/zlib/**/*.h.generic
+[ 68% 947/1376] glob external/zlib/**/*.hh
+[ 68% 948/1376] glob external/zlib/**/*.hpp
+[ 68% 949/1376] glob external/zlib/**/*.hxx
+[ 69% 950/1376] glob external/zlib/**/*.inc
+[ 69% 951/1376] glob external/zlib/**/*.inl
+[ 69% 952/1376] glob external/zlib/**/*.ipp
+[ 69% 953/1376] glob framework-atb-backward-compatibility.prof
+[ 69% 954/1376] glob framework-media-tv-trm-sources.prof
+[ 69% 955/1376] glob framework-mediaprovider.impl.prof
+[ 69% 956/1376] glob framework-mediaprovider.prof
+[ 69% 957/1376] glob framework-minus-apex.prof
+[ 69% 958/1376] glob framework-permission.impl.prof
+[ 69% 959/1376] glob framework-permission.prof
+[ 69% 960/1376] glob framework-sdkextensions.impl.prof
+[ 69% 961/1376] glob framework-sdkextensions.prof
+[ 69% 962/1376] glob framework-statsd.impl.prof
+[ 69% 963/1376] glob framework-statsd.prof
+[ 70% 964/1376] glob framework-tethering.impl.prof
+[ 70% 965/1376] glob framework-tethering.prof
+[ 70% 966/1376] glob framework-wifi.impl.prof
+[ 70% 967/1376] glob framework-wifi.prof
+[ 70% 968/1376] glob frameworks-base-core-benchmarks.prof
+[ 70% 969/1376] glob frameworks/base
+[ 70% 970/1376] glob frameworks/base/aidl_api/libdataloader_aidl/**/*.aidl
+[ 70% 971/1376] glob frameworks/base/aidl_api/libincremental_aidl/**/*.aidl
+[ 70% 972/1376] glob frameworks/base/aidl_api/libincremental_manager_aidl/**/*.aidl
+[ 70% 973/1376] glob frameworks/base/src
+[ 70% 974/1376] glob frameworks/compile/mclinker/NOTICE
+[ 70% 975/1376] glob frameworks/compile/slang/**/*.h++
+[ 70% 976/1376] glob frameworks/compile/slang/**/*.h.generic
+[ 71% 977/1376] glob frameworks/compile/slang/**/*.h
+[ 71% 978/1376] glob frameworks/compile/slang/**/*.hpp
+[ 71% 979/1376] glob frameworks/compile/slang/**/*.hh
+[ 71% 980/1376] glob frameworks/compile/slang/**/*.hxx
+[ 71% 981/1376] glob frameworks/compile/slang/**/*.inc
+[ 71% 982/1376] glob frameworks/compile/slang/**/*.inl
+[ 71% 983/1376] glob frameworks/compile/slang/**/*.ipp
+[ 71% 984/1376] glob frameworks/hardware/interfaces/NOTICE
+[ 71% 985/1376] glob frameworks/layoutlib/NOTICE
+[ 71% 986/1376] glob frameworks/libs/native_bridge_support/NOTICE
+[ 71% 987/1376] glob frameworks/minikin/NOTICE
+[ 71% 988/1376] glob frameworks/opt/bitmap/NOTICE
+[ 71% 989/1376] glob frameworks/opt/bitmap/assets
+[ 71% 990/1376] glob frameworks/opt/calendar/NOTICE
+[ 72% 991/1376] glob frameworks/opt/car/services/NOTICE
+[ 72% 992/1376] glob frameworks/opt/chips/NOTICE
+[ 72% 993/1376] glob frameworks/opt/chips/assets
+[ 72% 994/1376] glob frameworks/opt/colorpicker/NOTICE
+[ 72% 995/1376] glob frameworks/opt/colorpicker/assets
+[ 72% 996/1376] glob frameworks/opt/localepicker/NOTICE
+[ 72% 997/1376] glob frameworks/opt/localepicker/assets
+[ 72% 998/1376] glob frameworks/opt/net/ethernet/NOTICE
+[ 72% 999/1376] glob frameworks/opt/net/ethernet/src
+[ 72% 1000/1376] glob frameworks/opt/net/ims/NOTICE
+[ 72% 1001/1376] glob frameworks/opt/net/voip/NOTICE
+[ 72% 1002/1376] glob frameworks/opt/photoviewer/NOTICE
+[ 72% 1003/1376] glob frameworks/opt/photoviewer/assets
+[ 72% 1004/1376] glob frameworks/opt/telephony/NOTICE
+[ 73% 1005/1376] glob frameworks/opt/timezonepicker/NOTICE
+[ 73% 1006/1376] glob frameworks/opt/timezonepicker/assets
+[ 73% 1007/1376] glob frameworks/opt/tv/tvsystem/NOTICE
+[ 73% 1008/1376] glob frameworks/opt/tv/tvsystem/src
+[ 73% 1009/1376] glob frameworks/opt/vcard/NOTICE
+[ 73% 1010/1376] glob frameworks/opt/vcard/src
+[ 73% 1011/1376] glob frameworks/rs/NOTICE
+[ 73% 1012/1376] glob frameworks/wilhelm/NOTICE
+[ 73% 1013/1376] glob gsi_aidl_interface-java.prof
+[ 73% 1014/1376] glob hardware/google/interfaces/NOTICE
+[ 73% 1015/1376] glob hardware/libhardware_legacy/AndroidTest.xml
+[ 73% 1016/1376] glob hardware/nxp/nfc/NOTICE
+[ 73% 1017/1376] glob hardware/nxp/secure_element/NOTICE
+[ 73% 1018/1376] glob hardware/qcom/sdm845/display/NOTICE
+[ 74% 1019/1376] glob hardware/qcom/sm7250/display/NOTICE
+[ 74% 1020/1376] glob hardware/ril/NOTICE
+[ 74% 1021/1376] glob hardware.google.light-V1.0-java-shallow.prof
+[ 74% 1022/1376] glob hardware.google.light-V1.0-java.prof
+[ 74% 1023/1376] glob hardware.google.light-V1.1-java-shallow.prof
+[ 74% 1024/1376] glob hardware.google.light-V1.1-java.prof
+[ 74% 1025/1376] glob hid.prof
+[ 74% 1026/1376] glob hardware/google/apf/NOTICE
+[ 74% 1027/1376] glob hidl2aidl_test_gen-java.prof
+[ 74% 1028/1376] glob hidl_test_product-V2.0-java-shallow.prof
+[ 74% 1029/1376] glob hidl_test_product-V2.0-java.prof
+[ 74% 1030/1376] glob hidl_test_system_ext-V1.0-java-shallow.prof
+[ 74% 1031/1376] glob hidl_test_system_ext-V1.0-java.prof
+[ 75% 1032/1376] glob hidl.tests.vendor-V1.0-java-shallow.prof
+[ 75% 1033/1376] glob hidl.tests.vendor-V1.0-java.prof
+[ 75% 1034/1376] glob hidl.tests.vendor-V1.1-java-shallow.prof
+[ 75% 1035/1376] glob hidl.tests.vendor-V1.1-java.prof
+[ 75% 1036/1376] glob hidl.tests.vendor.android-V1.0-java-shallow.prof
+[ 75% 1037/1376] glob hidl.tests.vendor.android-V1.0-java.prof
+[ 75% 1038/1376] glob ims-common.prof
+[ 75% 1039/1376] glob incident-helper-cmd.prof
+[ 75% 1040/1376] glob input.prof
+[ 75% 1041/1376] glob ipmemorystore-aidl-interfaces-V1-java.prof
+[ 75% 1042/1376] glob ipmemorystore-aidl-interfaces-V2-java.prof
+[ 75% 1043/1376] glob ipmemorystore-aidl-interfaces-V3-java.prof
+[ 75% 1044/1376] glob ipmemorystore-aidl-interfaces-V4-java.prof
+[ 75% 1045/1376] glob ipmemorystore-aidl-interfaces-V5-java.prof
+[ 76% 1046/1376] glob ipmemorystore-aidl-interfaces-V6-java.prof
+[ 76% 1047/1376] glob ipmemorystore-aidl-interfaces-V7-java.prof
+[ 76% 1048/1376] glob ipmemorystore-aidl-interfaces-java.prof
+[ 76% 1049/1376] glob ipmemorystore-aidl-interfaces-unstable-java.prof
+[ 76% 1050/1376] glob jacocoagent.prof
+[ 76% 1051/1376] glob javax.obex.impl.prof
+[ 76% 1052/1376] glob javax.obex.prof
+[ 76% 1053/1376] glob kernel/tests/NOTICE
+[ 76% 1054/1376] glob lazy_test_service_aidl-java.prof
+[ 76% 1055/1376] glob libChipsSample.prof
+[ 76% 1056/1376] glob libbinder_ndk_test_interface-V1-java.prof
+[ 76% 1057/1376] glob libbinder_ndk_test_interface-V2-java.prof
+[ 76% 1058/1376] glob libbinder_ndk_test_interface-java.prof
+[ 76% 1059/1376] glob libbinder_ndk_test_interface-unstable-java.prof
+[ 77% 1060/1376] glob libcore/AndroidTest.xml
+[ 77% 1061/1376] glob libcore/*/src/test/java
+[ 77% 1062/1376] glob libcore/*/src/test/resources
+[ 77% 1063/1376] glob libcore/src
+[ 77% 1064/1376] glob libdataloader_aidl-java.prof
+[ 77% 1065/1376] glob libincremental_aidl-java.prof
+[ 77% 1066/1376] glob libincremental_manager_aidl-java.prof
+[ 77% 1067/1376] glob liblpdump_interface-java.prof
+[ 77% 1068/1376] glob locksettings.prof
+[ 77% 1069/1376] glob mediatranscoding_aidl_interface-java.prof
+[ 77% 1070/1376] glob metalava.prof
+[ 77% 1071/1376] glob netd_aidl_interface-V1-java.prof
+[ 77% 1072/1376] glob netd_aidl_interface-V2-java.prof
+[ 77% 1073/1376] glob netd_aidl_interface-V3-java.prof
+[ 78% 1074/1376] glob netd_aidl_interface-V4-java.prof
+[ 78% 1075/1376] glob netd_aidl_interface-java.prof
+[ 78% 1076/1376] glob netd_aidl_interface-unstable-java.prof
+[ 78% 1077/1376] glob netd_event_listener_interface-V1-java.prof
+[ 78% 1078/1376] glob netd_event_listener_interface-java.prof
+[ 78% 1079/1376] glob netd_event_listener_interface-unstable-java.prof
+[ 78% 1080/1376] glob networkStatsFactory-benchmarks.prof
+[ 78% 1081/1376] glob networkstack-aidl-interfaces-V1-java.prof
+[ 78% 1082/1376] glob networkstack-aidl-interfaces-V2-java.prof
+[ 78% 1083/1376] glob networkstack-aidl-interfaces-V3-java.prof
+[ 78% 1084/1376] glob networkstack-aidl-interfaces-V4-java.prof
+[ 78% 1085/1376] glob networkstack-aidl-interfaces-V5-java.prof
+[ 78% 1086/1376] glob networkstack-aidl-interfaces-V6-java.prof
+[ 78% 1087/1376] glob networkstack-aidl-interfaces-V7-java.prof
+[ 79% 1088/1376] glob networkstack-aidl-interfaces-java.prof
+[ 79% 1089/1376] glob networkstack-aidl-interfaces-unstable-java.prof
+[ 79% 1090/1376] glob nxp.hardware.display-V1.0-java-shallow.prof
+[ 79% 1091/1376] glob nxp.hardware.display-V1.0-java.prof
+[ 79% 1092/1376] glob oemnetd_aidl_interface-java.prof
+[ 79% 1093/1376] glob okhttp.prof
+[ 79% 1094/1376] glob overlayable_policy_aidl-java.prof
+[ 79% 1095/1376] glob packages/apps/BasicSmsReceiver/assets
+[ 79% 1096/1376] glob packages/apps/Bluetooth/NOTICE
+[ 79% 1097/1376] glob packages/apps/Bluetooth/assets
+[ 79% 1098/1376] glob packages/apps/Browser2/NOTICE
+[ 79% 1099/1376] glob packages/apps/Browser2/assets
+[ 79% 1100/1376] glob packages/apps/Car/Calendar/NOTICE
+[ 80% 1101/1376] glob packages/apps/Car/Calendar/assets
+[ 80% 1102/1376] glob packages/apps/Car/Cluster/assets
+[ 80% 1103/1376] glob packages/apps/Car/Dialer/NOTICE
+[ 80% 1104/1376] glob packages/apps/Car/Dialer/assets
+[ 80% 1105/1376] glob packages/apps/Car/Hvac/NOTICE
+[ 80% 1106/1376] glob packages/apps/Car/Hvac/assets
+[ 80% 1107/1376] glob packages/apps/Car/LatinIME/NOTICE
+[ 80% 1108/1376] glob packages/apps/Car/LatinIME/assets
+[ 80% 1109/1376] glob packages/apps/Car/Launcher/NOTICE
+[ 80% 1110/1376] glob packages/apps/Car/Launcher/assets
+[ 80% 1111/1376] glob packages/apps/Car/LinkViewer/NOTICE
+[ 80% 1112/1376] glob packages/apps/Car/LinkViewer/assets
+[ 80% 1113/1376] glob packages/apps/Car/LocalMediaPlayer/NOTICE
+[ 80% 1114/1376] glob packages/apps/Car/LocalMediaPlayer/assets
+[ 81% 1115/1376] glob packages/apps/Car/Media/NOTICE
+[ 81% 1116/1376] glob packages/apps/Car/Media/assets
+[ 81% 1117/1376] glob packages/apps/Car/Messenger/NOTICE
+[ 81% 1118/1376] glob packages/apps/Car/Messenger/assets
+[ 81% 1119/1376] glob packages/apps/Car/Notification/NOTICE
+[ 81% 1120/1376] glob packages/apps/Car/Notification/assets
+[ 81% 1121/1376] glob packages/apps/Car/Radio/NOTICE
+[ 81% 1122/1376] glob packages/apps/Car/Radio/assets
+[ 81% 1123/1376] glob packages/apps/Car/RotaryController/NOTICE
+[ 81% 1124/1376] glob packages/apps/Car/RotaryController/assets
+[ 81% 1125/1376] glob packages/apps/Car/Settings/NOTICE
+[ 81% 1126/1376] glob packages/apps/Car/Settings/assets
+[ 81% 1127/1376] glob packages/apps/Car/SystemUpdater/NOTICE
+[ 81% 1128/1376] glob packages/apps/Car/SystemUpdater/assets
+[ 82% 1129/1376] glob packages/apps/CarrierConfig/NOTICE
+[ 82% 1130/1376] glob packages/apps/CellBroadcastReceiver/assets
+[ 82% 1131/1376] glob packages/apps/DevCamera/NOTICE
+[ 82% 1132/1376] glob packages/apps/DevCamera/assets
+[ 82% 1133/1376] glob packages/apps/DocumentsUI/NOTICE
+[ 82% 1134/1376] glob packages/apps/DocumentsUI/assets
+[ 82% 1135/1376] glob packages/apps/CertInstaller/assets
+[ 82% 1136/1376] glob packages/apps/EmergencyInfo/assets
+[ 82% 1137/1376] glob packages/apps/Gallery/assets
+[ 82% 1138/1376] glob packages/apps/EmergencyInfo/NOTICE
+[ 82% 1139/1376] glob packages/apps/Gallery2/assets
+[ 82% 1140/1376] glob packages/apps/HTMLViewer/assets
+[ 82% 1141/1376] glob packages/apps/KeyChain/NOTICE
+[ 82% 1142/1376] glob packages/apps/KeyChain/assets
+[ 83% 1143/1376] glob packages/apps/Launcher3/assets
+[ 83% 1144/1376] glob packages/apps/LegacyCamera/assets
+[ 83% 1145/1376] glob packages/apps/ManagedProvisioning/NOTICE
+[ 83% 1146/1376] glob packages/apps/ManagedProvisioning/assets
+[ 83% 1147/1376] glob packages/apps/Music/assets
+[ 83% 1148/1376] glob packages/apps/MusicFX/NOTICE
+[ 83% 1149/1376] glob packages/apps/MusicFX/assets
+[ 83% 1150/1376] glob packages/apps/Nfc/NOTICE
+[ 83% 1151/1376] glob packages/apps/OnDeviceAppPrediction/NOTICE
+[ 83% 1152/1376] glob packages/apps/OnDeviceAppPrediction/assets
+[ 83% 1153/1376] glob packages/apps/OneTimeInitializer/NOTICE
+[ 83% 1154/1376] glob packages/apps/OneTimeInitializer/assets
+[ 83% 1155/1376] glob packages/apps/OneTimeInitializer/res
+[ 84% 1156/1376] glob packages/apps/PermissionController/assets
+[ 84% 1157/1376] glob packages/apps/PhoneCommon/NOTICE
+[ 84% 1158/1376] glob packages/apps/PhoneCommon/assets
+[ 84% 1159/1376] glob packages/apps/Protips/NOTICE
+[ 84% 1160/1376] glob packages/apps/Protips/assets
+[ 84% 1161/1376] glob packages/apps/HTMLViewer/**/*.java
+[ 84% 1162/1376] glob packages/apps/Provision/assets
+[ 84% 1163/1376] glob packages/apps/Provision/res
+[ 84% 1164/1376] glob packages/apps/QuickAccessWallet/NOTICE
+[ 84% 1165/1376] glob packages/apps/QuickAccessWallet/assets
+[ 84% 1166/1376] glob packages/apps/QuickSearchBox/assets
+[ 84% 1167/1376] glob packages/apps/SafetyRegulatoryInfo/assets
+[ 84% 1168/1376] glob packages/apps/Provision/**/*.java
+[ 84% 1169/1376] glob packages/apps/SecureElement/assets
+[ 85% 1170/1376] glob packages/apps/Settings/assets
+[ 85% 1171/1376] glob packages/apps/SettingsIntelligence/assets
+[ 85% 1172/1376] glob packages/apps/SoundRecorder/assets
+[ 85% 1173/1376] glob packages/apps/SpareParts/**/*.java
+[ 85% 1174/1376] glob packages/apps/SpareParts/assets
+[ 85% 1175/1376] glob packages/apps/SoundRecorder/**/*.java
+[ 85% 1176/1376] glob packages/apps/Stk/assets
+[ 85% 1177/1376] glob packages/apps/TV/NOTICE
+[ 85% 1178/1376] glob packages/apps/SafetyRegulatoryInfo/**/*.java
+[ 85% 1179/1376] glob packages/apps/Tag/NOTICE
+[ 85% 1180/1376] glob packages/apps/Tag/assets
+[ 85% 1181/1376] glob packages/apps/Terminal/NOTICE
+[ 85% 1182/1376] glob packages/apps/Terminal/assets
+[ 85% 1183/1376] glob packages/apps/Stk/**/*.java
+[ 86% 1184/1376] glob packages/apps/TimeZoneData/NOTICE
+[ 86% 1185/1376] glob packages/apps/TimeZoneUpdater/assets
+[ 86% 1186/1376] glob packages/apps/Traceur/NOTICE
+[ 86% 1187/1376] glob packages/apps/Traceur/assets
+[ 86% 1188/1376] glob packages/apps/UniversalMediaPlayer/NOTICE
+[ 86% 1189/1376] glob packages/apps/UniversalMediaPlayer/assets
+[ 86% 1190/1376] glob packages/apps/UniversalMediaPlayer/src
+[ 86% 1191/1376] glob packages/inputmethods/LeanbackIME/NOTICE
+[ 86% 1192/1376] glob packages/inputmethods/LeanbackIME/assets
+[ 86% 1193/1376] glob packages/modules/CaptivePortalLogin/NOTICE
+[ 86% 1194/1376] glob packages/modules/CellBroadcastService/NOTICE
+[ 86% 1195/1376] glob packages/modules/CellBroadcastService/assets
+[ 86% 1196/1376] glob packages/modules/DnsResolver/AndroidTest.xml
+[ 86% 1197/1376] glob packages/modules/ExtServices/assets
+[ 87% 1198/1376] glob packages/modules/DnsResolver/src
+[ 87% 1199/1376] glob packages/modules/IPsec/NOTICE
+[ 87% 1200/1376] glob packages/modules/ModuleMetadata/NOTICE
+[ 87% 1201/1376] glob packages/modules/ModuleMetadata/assets
+[ 87% 1202/1376] glob packages/modules/ModuleMetadata/src
+[ 87% 1203/1376] glob packages/modules/NetworkPermissionConfig/NOTICE
+[ 87% 1204/1376] glob packages/modules/NetworkPermissionConfig/assets
+[ 87% 1205/1376] glob packages/modules/NetworkPermissionConfig/res
+[ 87% 1206/1376] glob packages/modules/NetworkStack/assets
+[ 87% 1207/1376] glob packages/modules/SdkExtensions/NOTICE
+[ 87% 1208/1376] glob packages/modules/vndk/NOTICE
+[ 87% 1209/1376] glob packages/providers/BlockedNumberProvider/assets
+[ 87% 1210/1376] glob packages/providers/BookmarkProvider/NOTICE
+[ 88% 1211/1376] glob packages/providers/BookmarkProvider/assets
+[ 88% 1212/1376] glob packages/providers/CalendarProvider/assets
+[ 88% 1213/1376] glob packages/providers/CallLogProvider/assets
+[ 88% 1214/1376] glob packages/providers/ContactsProvider/assets
+[ 88% 1215/1376] glob packages/providers/DownloadProvider/assets
+[ 88% 1216/1376] glob packages/providers/MediaProvider/assets
+[ 88% 1217/1376] glob packages/providers/PartnerBookmarksProvider/NOTICE
+[ 88% 1218/1376] glob packages/providers/PartnerBookmarksProvider/assets
+[ 88% 1219/1376] glob packages/providers/TvProvider/NOTICE
+[ 88% 1220/1376] glob packages/providers/TvProvider/assets
+[ 88% 1221/1376] glob packages/providers/UserDictionaryProvider/assets
+[ 88% 1222/1376] glob packages/screensavers/Basic/NOTICE
+[ 88% 1223/1376] glob packages/screensavers/Basic/assets
+[ 88% 1224/1376] glob packages/screensavers/PhotoTable/NOTICE
+[ 89% 1225/1376] glob packages/screensavers/PhotoTable/assets
+[ 89% 1226/1376] glob packages/services/AlternativeNetworkAccess/NOTICE
+[ 89% 1227/1376] glob packages/services/AlternativeNetworkAccess/assets
+[ 89% 1228/1376] glob packages/services/AlternativeNetworkAccess/res
+[ 89% 1229/1376] glob packages/services/BuiltInPrintService/NOTICE
+[ 89% 1230/1376] glob packages/providers/UserDictionaryProvider/**/*.java
+[ 89% 1231/1376] glob packages/services/BuiltInPrintService/assets
+[ 89% 1232/1376] glob packages/services/Mms/assets
+[ 89% 1233/1376] glob packages/services/Mms/NOTICE
+[ 89% 1234/1376] glob packages/services/Mtp/NOTICE
+[ 89% 1235/1376] glob packages/services/Mtp/assets
+[ 89% 1236/1376] glob packages/services/Telecomm/AndroidTest.xml
+[ 89% 1237/1376] glob packages/services/Telecomm/NOTICE
+[ 89% 1238/1376] glob packages/services/Telecomm/assets
+[ 90% 1239/1376] glob pixel-power-ext-V1-java.prof
+[ 90% 1240/1376] glob packages/wallpapers/LivePicker/assets
+[ 90% 1241/1376] glob pixel-power-ext-java.prof
+[ 90% 1242/1376] glob pixel-power-ext-unstable-java.prof
+[ 90% 1243/1376] glob pixelpowerstats_provider_aidl_interface-java.prof
+[ 90% 1244/1376] glob prebuilts/abi-dumps/vndk/NOTICE
+[ 90% 1245/1376] glob prebuilts/clang/host/darwin-x86/NOTICE
+[ 90% 1246/1376] glob prebuilts/clang/host/linux-x86/NOTICE
+[ 90% 1247/1376] glob prebuilts/gradle-plugin/NOTICE
+[ 90% 1248/1376] glob prebuilts/manifest-merger/NOTICE
+[ 90% 1249/1376] glob prebuilts/manifest-merger/src
+[ 90% 1250/1376] glob prebuilts/r8/src
+[ 90% 1251/1376] glob prebuilts/sdk/*/public/android.jar
+[ 90% 1252/1376] glob prebuilts/sdk/*/module-lib/api/incompatibilities.txt
+[ 91% 1253/1376] glob prebuilts/sdk/*/public/api/android.xml
+[ 91% 1254/1376] glob prebuilts/sdk/*/public/api/android.txt
+[ 91% 1255/1376] glob prebuilts/sdk/*/public/api/incompatibilities.txt
+[ 91% 1256/1376] glob prebuilts/sdk/*/system-server/api/incompatibilities.txt
+[ 91% 1257/1376] glob prebuilts/sdk/*/system/api/incompatibilities.txt
+[ 91% 1258/1376] glob prebuilts/abi-dumps/vndk/**/*.lsdump
+[ 91% 1259/1376] glob prebuilts/tools/NOTICE
+[ 91% 1260/1376] glob prebuilts/vndk/v27/NOTICE
+[ 91% 1261/1376] glob prebuilts/vndk/v28/NOTICE
+[ 91% 1262/1376] glob prebuilts/vndk/v29/NOTICE
+[ 91% 1263/1376] glob requestsync.prof
+[ 91% 1264/1376] glob resourcemanager_aidl_interface-java.prof
+[ 91% 1265/1376] glob sampletunertvinput.prof
+[ 92% 1266/1376] glob sdkextensions_e2e_test_app.prof
+[ 92% 1267/1376] glob service-blobstore.prof
+[ 92% 1268/1376] glob service-jobscheduler.prof
+[ 92% 1269/1376] glob service-permission.impl.prof
+[ 92% 1270/1376] glob service-permission.prof
+[ 92% 1271/1376] glob sm.prof
+[ 92% 1272/1376] glob startop_test_app.prof
+[ 92% 1273/1376] glob suspend_control_aidl_interface-java.prof
+[ 92% 1274/1376] glob svc.prof
+[ 92% 1275/1376] glob svcmonitor.prof
+[ 92% 1276/1376] glob system/bpfprogs/NOTICE
+[ 92% 1277/1376] glob system/ca-certificates/NOTICE
+[ 92% 1278/1376] glob system/chre/AndroidTest.xml
+[ 92% 1279/1376] glob system/gatekeeper/NOTICE
+[ 93% 1280/1376] glob system/gsid/NOTICE
+[ 93% 1281/1376] glob system/gsid/aidl_api/gsi_aidl_interface/**/*.aidl
+[ 93% 1282/1376] glob system/gsid/src
+[ 93% 1283/1376] glob system/hwservicemanager/AndroidTest.xml
+[ 93% 1284/1376] glob system/iorap/AndroidTest.xml
+[ 93% 1285/1376] glob system/iorap/NOTICE
+[ 93% 1286/1376] glob system/libartpalette/NOTICE
+[ 93% 1287/1376] glob system/libfmq/NOTICE
+[ 93% 1288/1376] glob system/libhidl/AndroidTest.xml
+[ 93% 1289/1376] glob system/linkerconfig/AndroidTest.xml
+[ 93% 1290/1376] glob system/linkerconfig/NOTICE
+[ 93% 1291/1376] glob system/memory/libmeminfo/AndroidTest.xml
+[ 93% 1292/1376] glob system/memory/libmeminfo/NOTICE
+[ 93% 1293/1376] glob system/memory/libmemtrack/NOTICE
+[ 94% 1294/1376] glob system/memory/libmemunreachable/AndroidTest.xml
+[ 94% 1295/1376] glob external/tensorflow/**/*.h++
+[ 94% 1296/1376] glob external/tensorflow/**/*.h
+[ 94% 1297/1376] glob system/testing/gtest_extras/AndroidTest.xml
+[ 94% 1298/1376] glob external/tensorflow/**/*.h.generic
+[ 94% 1299/1376] glob external/tensorflow/**/*.inc
+[ 94% 1300/1376] glob external/tensorflow/**/*.inl
+[ 94% 1301/1376] glob external/tensorflow/**/*.ipp
+[ 94% 1302/1376] glob external/tensorflow/**/*.hh
+[ 94% 1303/1376] glob external/tensorflow/**/*.hxx
+[ 94% 1304/1376] glob external/tensorflow/**/*.hpp
+[ 94% 1305/1376] glob system/memory/libmemunreachable/NOTICE
+[ 94% 1306/1376] glob system/testing/gtest_extras/NOTICE
+[ 94% 1307/1376] glob system/tools/aidl/AndroidTest.xml
+[ 95% 1308/1376] glob system/tools/aidl/aidl_api/aidl_test_loggable_interface/**/*.aidl
+[ 95% 1309/1376] glob system/tools/aidl/assets
+[ 95% 1310/1376] glob system/tools/aidl/src
+[ 95% 1311/1376] glob system/tools/xsdc/NOTICE
+[ 95% 1312/1376] glob system/update_engine/AndroidTest.xml
+[ 95% 1313/1376] glob system/vold/NOTICE
+[ 95% 1314/1376] glob telecom.prof
+[ 95% 1315/1376] glob test-piece-1-V1-java.prof
+[ 95% 1316/1376] glob test-piece-1-V2-java.prof
+[ 95% 1317/1376] glob system/tools/mkbootimg/NOTICE
+[ 95% 1318/1376] glob system/tools/sysprop/AndroidTest.xml
+[ 95% 1319/1376] glob system/tools/sysprop/NOTICE
+[ 95% 1320/1376] glob system/tools/sysprop/src
+[ 96% 1321/1376] glob telephony-common.prof
+[ 96% 1322/1376] glob test-piece-1-V3-java.prof
+[ 96% 1323/1376] glob test-piece-1-java.prof
+[ 96% 1324/1376] glob test-piece-1-unstable-java.prof
+[ 96% 1325/1376] glob test-piece-2-V1-java.prof
+[ 96% 1326/1376] glob test-piece-2-java.prof
+[ 96% 1327/1376] glob test-piece-2-unstable-java.prof
+[ 96% 1328/1376] glob test-piece-3-V1-java.prof
+[ 96% 1329/1376] glob test-piece-3-java.prof
+[ 96% 1330/1376] glob test-piece-3-unstable-java.prof
+[ 96% 1331/1376] glob test-piece-4-V1-java.prof
+[ 96% 1332/1376] glob test-piece-4-unstable-java.prof
+[ 96% 1333/1376] glob test-root-package-V1-java.prof
+[ 96% 1334/1376] glob test-piece-4-java.prof
+[ 97% 1335/1376] glob test-root-package-V2-java.prof
+[ 97% 1336/1376] glob test-root-package-java.prof
+[ 97% 1337/1376] glob test-root-package-unstable-java.prof
+[ 97% 1338/1376] glob test-variants-java.prof
+[ 97% 1339/1376] glob test/vts-testcase/vndk/NOTICE
+[ 97% 1340/1376] glob test_framework-sdkextensions.prof
+[ 97% 1341/1376] glob tools/acloud/NOTICE
+[ 97% 1342/1376] glob tools/apifinder/AndroidTest.xml
+[ 97% 1343/1376] glob tools/apifinder/NOTICE
+[ 97% 1344/1376] glob tools/apksig/NOTICE
+[ 97% 1345/1376] glob tools/apkzlib/NOTICE
+[ 97% 1346/1376] glob tools/carrier_settings/NOTICE
+[ 97% 1347/1376] glob tools/carrier_settings/src
+[ 97% 1348/1376] glob test/vts-testcase/hal/NOTICE
+[ 98% 1349/1376] glob tools/doc_generation/NOTICE
+[ 98% 1350/1376] glob test/vts-testcase/nbu/NOTICE
+[ 98% 1351/1376] glob uiautomator.prof
+[ 98% 1352/1376] glob updatable-media.prof
+[ 98% 1353/1376] glob tools/external_updater/NOTICE
+[ 98% 1354/1376] glob tools/loganalysis/NOTICE
+[ 98% 1355/1376] glob tools/metalava/NOTICE
+[ 98% 1356/1376] glob tools/external_updater/AndroidTest.xml
+[ 98% 1357/1376] glob tools/tradefederation/contrib/NOTICE
+[ 98% 1358/1376] glob tools/tradefederation/core/NOTICE
+[ 98% 1359/1376] glob tools/trebuchet/AndroidTest.xml
+[ 98% 1360/1376] glob tools/trebuchet/src
+[ 98% 1361/1376] glob tools/trebuchet/NOTICE
+[ 98% 1362/1376] glob vendor/nxp/fsl-codec/NOTICE
+[ 99% 1363/1376] glob vendor/nxp/imx-vpu-hantro-daemon/NOTICE
+[ 99% 1364/1376] glob vendor/nxp/imx-vpu-hantro/NOTICE
+[ 99% 1365/1376] glob vendor/nxp/vpu_wrapper/NOTICE
+[ 99% 1366/1376] glob vendor.nxp.nxpese-V1.0-java-shallow.prof
+[ 99% 1367/1376] glob vendor.nxp.nxpese-V1.0-java.prof
+[ 99% 1368/1376] glob vendor/nxp-opensource/libdrm-imx/NOTICE
+[ 99% 1369/1376] glob vendor.nxp.nxpnfc-V1.0-java-shallow.prof
+[ 99% 1370/1376] glob vendor.nxp.nxpnfc-V1.0-java.prof
+[ 99% 1371/1376] glob vmtests-mains.prof
+[ 99% 1372/1376] glob voip-common.prof
+[ 99% 1373/1376] glob vr.prof
+[ 99% 1374/1376] glob prebuilts/sdk/**/android.jar
+[ 99% 1375/1376] glob prebuilts/sdk/**/*
+No need to regenerate ninja file
+No need to regenerate ninja file
+No need to regenerate ninja file
+Starting ninja...
+[ 98% 1376/1402] target Prebuilt: media_codecs_c2.xml (out/target/product/imx8mp/obj/ETC/media_codecs_c2.xml_intermediates/media_codecs_c2.xml)
+[ 98% 1377/1402] Install: out/target/product/imx8mp/vendor/etc/media_codecs_c2.xml
+[ 98% 1378/1402] build out/target/product/imx8mp/gen/ETC/vendor_manifest.xml_intermediates/manifest.xml
+[ 98% 1379/1402] build out/target/product/imx8mp/obj/PACKAGING/depmod_vendor_stripped_intermediates/mlan.ko
+[ 98% 1380/1402] build out/target/product/imx8mp/obj/PACKAGING/depmod_vendor_stripped_intermediates/galcore.ko
+[ 98% 1381/1402] build out/target/product/imx8mp/obj/PACKAGING/depmod_vendor_stripped_intermediates/moal.ko
+[ 98% 1382/1402] target Prebuilt: vendor_manifest.xml (out/target/product/imx8mp/obj/ETC/vendor_manifest.xml_intermediates/manifest.xml)
+[ 98% 1383/1402] Copy: out/target/product/imx8mp/vendor/lib/modules/mlan.ko
+[ 98% 1384/1402] Copy: out/target/product/imx8mp/vendor/lib/modules/galcore.ko
+[ 98% 1385/1402] Copy: out/target/product/imx8mp/vendor/lib/modules/moal.ko
+[ 98% 1386/1402] Install: out/target/product/imx8mp/vendor/etc/vintf/manifest.xml
+[ 98% 1387/1402] build out/target/product/imx8mp/obj/PACKAGING/check_vintf_all_intermediates/check_vintf_vendor_log
+[ 99% 1388/1402] build out/target/product/imx8mp/obj/PACKAGING/check_vintf_all_intermediates/check_vintf_compatible_log
+FAILED: out/target/product/imx8mp/obj/PACKAGING/check_vintf_all_intermediates/check_vintf_compatible_log
+/bin/bash -c "(echo -n -e 'Deps: \\n  ' > out/target/product/imx8mp/obj/PACKAGING/check_vintf_all_intermediates/check_vintf_compatible_log ) && (sed 's/ /\\n  /g' <<< \"out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.1.xml out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.2.xml out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.3.xml out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.4.xml out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.5.xml out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.device.xml out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.legacy.xml out/target/product/imx8mp/system/etc/vintf/manifest.xml out/target/product/imx8mp/system/etc/vintf/manifest/android.frameworks.stats@1.0-service.xml out/target/product/imx8mp/system/etc/vintf/manifest/android.hidl.allocator@1.0-service.xml out/target/product/imx8mp/system/etc/vintf/manifest/android.system.suspend@1.0-service.xml out/target/product/imx8mp/system/etc/vintf/manifest/manifest_android.frameworks.cameraservice.service@2.1.xml out/target/product/imx8mp/system/etc/vintf/manifest/manifest_media_c2_software.xml out/target/product/imx8mp/system_ext/etc/vintf/manifest.xml out/target/product/imx8mp/vendor/etc/vintf/compatibility_matrix.xml out/target/product/imx8mp/vendor/etc/vintf/manifest.xml out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.boot@1.1.xml out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.camera.provider@2.6-service-google.xml out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.cas@1.2-service.xml out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.confirmationui@1.0-service.trusty.xml out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.health@2.1.xml out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.neuralnetworks@1.3-service-vsi-npu-server.xml out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.oemlock@1.0-service.imx.xml out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.power-service.imx.xml out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.thermal@2.0-service.imx.xml out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.usb.gadget@1.1-service.imx.xml out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.usb@1.1-service.imx.xml out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.wifi.hostapd.xml out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.wifi@1.0-service.xml out/target/product/imx8mp/vendor/etc/vintf/manifest/manifest.xml out/target/product/imx8mp/vendor/etc/vintf/manifest/manifest_android.hardware.drm@1.3-service.clearkey.xml out/target/product/imx8mp/vendor/etc/vintf/manifest/rebootescrow-default.xml out/target/product/imx8mp/obj/PACKAGING/check_vintf_all_intermediates/kernel_configs.txt out/target/product/imx8mp/obj/PACKAGING/check_vintf_all_intermediates/kernel_version.txt\" >> out/target/product/imx8mp/obj/PACKAGING/check_vintf_all_intermediates/check_vintf_compatible_log ) && (echo -n -e 'Args: \\n  ' >> out/target/product/imx8mp/obj/PACKAGING/check_vintf_all_intermediates/check_vintf_compatible_log ) && (cat <<< \" --kernel \$(cat out/target/product/imx8mp/obj/PACKAGING/check_vintf_all_intermediates/kernel_version.txt):out/target/product/imx8mp/obj/PACKAGING/check_vintf_all_intermediates/kernel_configs.txt --dirmap /system:out/target/product/imx8mp/system --dirmap /vendor:out/target/product/imx8mp/vendor --dirmap /odm:out/target/product/imx8mp/vendor/odm --dirmap /product:out/target/product/imx8mp/product --dirmap /system_ext:out/target/product/imx8mp/system_ext  --property ro.product.first_api_level=30\" >> out/target/product/imx8mp/obj/PACKAGING/check_vintf_all_intermediates/check_vintf_compatible_log ) && (echo \"For ODM SKU = EMPTY_ODM_SKU_PLACEHOLDER, vendor SKU = EMPTY_VENDOR_SKU_PLACEHOLDER\" >> out/target/product/imx8mp/obj/PACKAGING/check_vintf_all_intermediates/check_vintf_compatible_log; ( out/host/linux-x86/bin/checkvintf --check-compat  --kernel \$(cat out/target/product/imx8mp/obj/PACKAGING/check_vintf_all_intermediates/kernel_version.txt):out/target/product/imx8mp/obj/PACKAGING/check_vintf_all_intermediates/kernel_configs.txt --dirmap /system:out/target/product/imx8mp/system --dirmap /vendor:out/target/product/imx8mp/vendor --dirmap /odm:out/target/product/imx8mp/vendor/odm --dirmap /product:out/target/product/imx8mp/product --dirmap /system_ext:out/target/product/imx8mp/system_ext  --property ro.product.first_api_level=30 --property ro.boot.product.hardware.sku= --property ro.boot.product.vendor.sku= >> out/target/product/imx8mp/obj/PACKAGING/check_vintf_all_intermediates/check_vintf_compatible_log 2>&1 ) || (cat out/target/product/imx8mp/obj/PACKAGING/check_vintf_all_intermediates/check_vintf_compatible_log && exit 1) )"
+Deps:
+  out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.1.xml
+  out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.2.xml
+  out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.3.xml
+  out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.4.xml
+  out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.5.xml
+  out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.device.xml
+  out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.legacy.xml
+  out/target/product/imx8mp/system/etc/vintf/manifest.xml
+  out/target/product/imx8mp/system/etc/vintf/manifest/android.frameworks.stats@1.0-service.xml
+  out/target/product/imx8mp/system/etc/vintf/manifest/android.hidl.allocator@1.0-service.xml
+  out/target/product/imx8mp/system/etc/vintf/manifest/android.system.suspend@1.0-service.xml
+  out/target/product/imx8mp/system/etc/vintf/manifest/manifest_android.frameworks.cameraservice.service@2.1.xml
+  out/target/product/imx8mp/system/etc/vintf/manifest/manifest_media_c2_software.xml
+  out/target/product/imx8mp/system_ext/etc/vintf/manifest.xml
+  out/target/product/imx8mp/vendor/etc/vintf/compatibility_matrix.xml
+  out/target/product/imx8mp/vendor/etc/vintf/manifest.xml
+  out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.boot@1.1.xml
+  out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.camera.provider@2.6-service-google.xml
+  out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.cas@1.2-service.xml
+  out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.confirmationui@1.0-service.trusty.xml
+  out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.health@2.1.xml
+  out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.neuralnetworks@1.3-service-vsi-npu-server.xml
+  out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.oemlock@1.0-service.imx.xml
+  out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.power-service.imx.xml
+  out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.thermal@2.0-service.imx.xml
+  out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.usb.gadget@1.1-service.imx.xml
+  out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.usb@1.1-service.imx.xml
+  out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.wifi.hostapd.xml
+  out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.wifi@1.0-service.xml
+  out/target/product/imx8mp/vendor/etc/vintf/manifest/manifest.xml
+  out/target/product/imx8mp/vendor/etc/vintf/manifest/manifest_android.hardware.drm@1.3-service.clearkey.xml
+  out/target/product/imx8mp/vendor/etc/vintf/manifest/rebootescrow-default.xml
+  out/target/product/imx8mp/obj/PACKAGING/check_vintf_all_intermediates/kernel_configs.txt
+  out/target/product/imx8mp/obj/PACKAGING/check_vintf_all_intermediates/kernel_version.txt
+Args:
+   --kernel 5.10.52:out/target/product/imx8mp/obj/PACKAGING/check_vintf_all_intermediates/kernel_configs.txt --dirmap /system:out/target/product/imx8mp/system --dirmap /vendor:out/target/product/imx8mp/vendor --dirmap /odm:out/target/product/imx8mp/vendor/odm --dirmap /product:out/target/product/imx8mp/product --dirmap /system_ext:out/target/product/imx8mp/system_ext  --property ro.product.first_api_level=30
+For ODM SKU = EMPTY_ODM_SKU_PLACEHOLDER, vendor SKU = EMPTY_VENDOR_SKU_PLACEHOLDER
+checkvintf I 01-12 17:12:59   120   120 VintfObject.cpp:55] getFrameworkHalManifest: Reading VINTF information.
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/manifest.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:84] List 'out/target/product/imx8mp/system/etc/vintf/manifest/': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/manifest/android.hidl.allocator@1.0-service.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/manifest/manifest_media_c2_software.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/manifest/android.frameworks.stats@1.0-service.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/manifest/android.system.suspend@1.0-service.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/manifest/manifest_android.frameworks.cameraservice.service@2.1.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/product/etc/vintf/manifest.xml': No such file or directory
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:84] List 'out/target/product/imx8mp/product/etc/vintf/manifest/': No such file or directory
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system_ext/etc/vintf/manifest.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:84] List 'out/target/product/imx8mp/system_ext/etc/vintf/manifest/': No such file or directory
+checkvintf I 01-12 17:12:59   120   120 VintfObject.cpp:61] getFrameworkHalManifest: Successfully processed VINTF information
+checkvintf I 01-12 17:12:59   120   120 VintfObject.cpp:55] getDeviceHalManifest: Reading VINTF information.
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:122] Sysprop ro.boot.product.vendor.sku=
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/vendor/etc/vintf/manifest.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:84] List 'out/target/product/imx8mp/vendor/etc/vintf/manifest/': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/vendor/etc/vintf/manifest/manifest_android.hardware.drm@1.3-service.clearkey.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/vendor/etc/vintf/manifest/manifest.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.confirmationui@1.0-service.trusty.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.camera.provider@2.6-service-google.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.oemlock@1.0-service.imx.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.cas@1.2-service.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.health@2.1.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.neuralnetworks@1.3-service-vsi-npu-server.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.wifi.hostapd.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/vendor/etc/vintf/manifest/rebootescrow-default.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.wifi@1.0-service.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.usb@1.1-service.imx.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.power-service.imx.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.usb.gadget@1.1-service.imx.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.thermal@2.0-service.imx.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/vendor/etc/vintf/manifest/android.hardware.boot@1.1.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:122] Sysprop ro.boot.product.hardware.sku=
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/vendor/odm/etc/vintf/manifest.xml': No such file or directory
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/vendor/odm/etc/manifest.xml': No such file or directory
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:84] List 'out/target/product/imx8mp/vendor/odm/etc/vintf/manifest/': No such file or directory
+checkvintf I 01-12 17:12:59   120   120 VintfObject.cpp:61] getDeviceHalManifest: Successfully processed VINTF information
+checkvintf I 01-12 17:12:59   120   120 VintfObject.cpp:55] getFrameworkCompatibilityMatrix: Reading VINTF information.
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:84] List 'out/target/product/imx8mp/system/etc/vintf/': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.1.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.5.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.2.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/manifest.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.3.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.4.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.device.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.legacy.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:84] List 'out/target/product/imx8mp/system_ext/etc/vintf/': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system_ext/etc/vintf/manifest.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:84] List 'out/target/product/imx8mp/product/etc/vintf/': No such file or directory
+checkvintf I 01-12 17:12:59   120   120 VintfObject.cpp:61] getFrameworkCompatibilityMatrix: Successfully processed VINTF information
+checkvintf I 01-12 17:12:59   120   120 VintfObject.cpp:55] getDeviceCompatibilityMatrix: Reading VINTF information.
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/vendor/etc/vintf/compatibility_matrix.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 VintfObject.cpp:61] getDeviceCompatibilityMatrix: Successfully processed VINTF information
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:154] fetched kernel version 5.10.52
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:168] read kernel configs from out/target/product/imx8mp/obj/PACKAGING/check_vintf_all_intermediates/kernel_configs.txt
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:84] List 'out/target/product/imx8mp/system/etc/vintf/': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.1.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.5.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.2.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/manifest.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.3.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.4.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.device.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.legacy.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:84] List 'out/target/product/imx8mp/system_ext/etc/vintf/': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system_ext/etc/vintf/manifest.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:84] List 'out/target/product/imx8mp/product/etc/vintf/': No such file or directory
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:84] List 'out/target/product/imx8mp/system/etc/vintf/': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.1.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.5.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.2.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/manifest.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.3.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.4.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.device.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system/etc/vintf/compatibility_matrix.legacy.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:84] List 'out/target/product/imx8mp/system_ext/etc/vintf/': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:74] Fetch 'out/target/product/imx8mp/system_ext/etc/vintf/manifest.xml': SUCCESS
+checkvintf I 01-12 17:12:59   120   120 check_vintf.cpp:84] List 'out/target/product/imx8mp/product/etc/vintf/': No such file or directory
+checkvintf E 01-12 17:12:59   120   120 check_vintf.cpp:554] files are incompatible: Cannot open out/target/product/imx8mp/product/etc/vintf/: No such file or directory
+checkvintf E 01-12 17:12:59   120   120 check_vintf.cpp:554] android.hardware.radio@1.0::IRadio/slot1 is deprecated; requires at least 1.4
+checkvintf E 01-12 17:12:59   120   120 check_vintf.cpp:554] android.hardware.radio@1.0::IRadio/slot1 is deprecated; requires at least 1.4
+checkvintf E 01-12 17:12:59   120   120 check_vintf.cpp:554] android.hardware.radio@1.0::IRadio/slot1 is deprecated; requires at least 1.4
+checkvintf E 01-12 17:12:59   120   120 check_vintf.cpp:554] android.hardware.radio@1.0::IRadio/slot1 is deprecated; requires at least 1.4
+checkvintf E 01-12 17:12:59   120   120 check_vintf.cpp:554] android.hardware.radio@1.0::IRadio/slot1 is deprecated; requires at least 1.4
+checkvintf E 01-12 17:12:59   120   120 check_vintf.cpp:554] android.hardware.radio@1.0::IRadio/slot1 is deprecated; requires at least 1.4
+checkvintf E 01-12 17:12:59   120   120 check_vintf.cpp:554] android.hardware.radio@1.0::IRadio/slot1 is deprecated; requires at least 1.4
+checkvintf E 01-12 17:12:59   120   120 check_vintf.cpp:554] android.hardware.radio@1.0::IRadio/slot1 is deprecated; requires at least 1.4: Success
+INCOMPATIBLE
+[ 99% 1389/1402] depmod out/target/product/imx8mp/obj/PACKAGING/depmod_VENDOR_intermediates
+depmod: WARNING: could not open modules.order at /home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/PACKAGING/depmod_VENDOR_intermediates/lib/modules/0.0: No such file or directory
+depmod: WARNING: could not open modules.builtin at /home/ting/imx8mp/android11/nxp-11.0.0_2.4.0/repo/bsp/out/target/product/imx8mp/obj/PACKAGING/depmod_VENDOR_intermediates/lib/modules/0.0: No such file or directory
+ninja: build stopped: subcommand failed.
+17:12:59 ninja failed with: exit status 1
+
+[0;31m#### failed to build some targets (04:38 (mm:ss)) ####[00m
+

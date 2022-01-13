@@ -721,5 +721,7 @@ Ref. &nbsp;LTE 4G module [Quectel EC25-E](https://github.com/tingkts/Android-Tel
 
 </br>
 
-Another porting case : &nbsp;5G module [Fibocom FM150-AE](./Fibocom%20FM150-AE.md) on [Android 10]((https://cs.android.com/android/platform/superproject/+/android-10.0.0_r30:))
+More porting cases :
 
+- 5G module [Fibocom FM150-AE](./Fibocom%20FM150-AE.md) on [Android 10]((https://cs.android.com/android/platform/superproject/+/android-10.0.0_r30:))
+- 5G module [Quectel RM500Q-AE](./Quectel%20RM500Q-AE.md) PCI-E interface on [Android 11](https://cs.android.com/android/platform/superproject/+/android-11.0.0_r40:)
