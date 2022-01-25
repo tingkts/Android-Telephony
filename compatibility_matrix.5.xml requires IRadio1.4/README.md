@@ -1,6 +1,6 @@
 Can't use IRadio 1.0 as usual in Android 11 (Linux kernel 5.10.52) for the matched compatibility_matrix.5.xml, should upgrade to IRado 1.4.
 
-[build break of declare IRadio 1.0 in manifest.xml](./make.log)
+[build break of declare IRadio 1.0 in manifest.xml](https://github.com/tingkts/Android-Telephony/blob/main/compatibility_matrix.5.xml%20requires%20IRadio1.4/make_log_requires_IRadio1.4.txt)
 ``` xml
     <hal format="hidl">
         <name>android.hardware.radio</name>
