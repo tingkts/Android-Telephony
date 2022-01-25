@@ -2,11 +2,9 @@
 
 ### Porting check items
 
-- PCI-E MHI driver
+- PCI-E MHI driver which embedded QMI network interface
 
-- MBIM driver
-
-- Vendor RIL &ensp; - &ensp; [*IRadio 1.4*](./Android%2011%20requires%20IRadio1.4/README.md)
+- Vendor RIL &ensp; - &ensp; [*IRadio 1.4*](https://github.com/tingkts/Android-Telephony/tree/main/compatibility_matrix.5.xml%20requires%20IRadio1.4)
 
 - APN
 
