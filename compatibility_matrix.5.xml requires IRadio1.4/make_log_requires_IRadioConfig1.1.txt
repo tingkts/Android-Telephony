@@ -1,0 +1,943 @@
+Xshell 7 (Build 0073)
+Copyright (c) 2020 NetSarang Computer, Inc. All rights reserved.
+
+Type `help' to learn how to use Xshell prompt.
+[C:\~]$ 
+
+Connecting to 172.16.127.109:22...
+Could not connect to '172.16.127.109' (port 22): Connection failed.
+
+Type `help' to learn how to use Xshell prompt.
+[C:\~]$ 
+
+Connecting to 172.16.127.109:22...
+Connection established.
+To escape to local shell, press Ctrl+Alt+].
+
+Welcome to Ubuntu 18.04.4 LTS (GNU/Linux 4.15.0-166-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Mon Jan 24 10:55:26 CST 2022
+
+  System load:    0.83               Users logged in:        1
+  Usage of /home: 92.1% of 27.18TB   IP address for eno1:    192.168.0.114
+  Memory usage:   1%                 IP address for enp69s0: 172.16.127.109
+  Swap usage:     0%                 IP address for docker0: 172.17.0.1
+  Processes:      1579
+
+  => /home is using 92.1% of 27.18TB
+  => There is 1 zombie process.
+
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+108 packages can be updated.
+1 update is a security update.
+
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+
+Last login: Mon Jan 24 10:55:19 2022 from 172.16.113.149
+tingsung@acs-thor:~$ cd imx8/
+tingsung@acs-thor:~/imx8$ ll
+total 16
+drwxrwxr-x  4 tingsung tingsung 4096 Apr 21  2021  ./
+drwx------ 23 tingsung tingsung 4096 Jan 24 10:55  ../
+drwxrwxr-x  7 tingsung tingsung 4096 Dec 21 16:32  android/
+-rw-r--r--  1 tingsung tingsung    0 Jan 29  2021 'imx8 qm, mp'
+drwxr-xr-x  4 tingsung tingsung 4096 Apr 12  2021  yocto/
+tingsung@acs-thor:~/imx8$ cd android/
+tingsung@acs-thor:~/imx8/android$ ll
+total 28
+drwxrwxr-x 7 tingsung tingsung 4096 Dec 21 16:32 ./
+drwxrwxr-x 4 tingsung tingsung 4096 Apr 21  2021 ../
+drwxrwxr-x 4 tingsung tingsung 4096 Dec  9  2020 msi-10.0.0_1.0.0/
+drwxr-xr-x 9 tingsung tingsung 4096 Dec 23 10:33 msi-10.0.0_2.6.0/
+drwxrwxr-x 3 tingsung tingsung 4096 Dec 27 13:38 msi-11.0.0_2.4.0/
+drwxrwxr-x 5 tingsung tingsung 4096 Aug 19  2020 msi-9/
+drwxrwxr-x 4 tingsung tingsung 4096 Apr 12  2021 nxp/
+tingsung@acs-thor:~/imx8/android$ cd msi-11.0.0_2.4.0/
+tingsung@acs-thor:~/imx8/android/msi-11.0.0_2.4.0$ ll
+total 1020
+drwxrwxr-x 3 tingsung tingsung    4096 Dec 27 13:38 ./
+drwxrwxr-x 7 tingsung tingsung    4096 Dec 21 16:32 ../
+-rwxr-xr-x 1 tingsung tingsung     215 Dec 22 10:05 export-gcc-clang.sh*
+lrwxrwxrwx 1 tingsung tingsung      14 Dec 22 10:09 repo -> repo-ms58810b//
+drwxrwxr-x 4 tingsung tingsung    4096 Jan  4 20:42 repo-ms58810b/
+-rw-r--r-- 1 tingsung tingsung 1024974 Dec 27 13:38 uuu.exe.zip
+tingsung@acs-thor:~/imx8/android/msi-11.0.0_2.4.0$ cd repo-ms58810b/
+tingsung@acs-thor:~/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b$ ll
+total 16
+drwxrwxr-x  4 tingsung tingsung 4096 Jan  4 20:42 ./
+drwxrwxr-x  3 tingsung tingsung 4096 Dec 27 13:38 ../
+drwxrwxr-x 29 tingsung tingsung 4096 Jan 21 14:26 bsp/
+drwxrwxr-x  7 tingsung tingsung 4096 Jan 21 11:34 .repo/
+-rw-rw-r--  1 tingsung tingsung    0 Jan  4 20:42 repo-sync.log
+tingsung@acs-thor:~/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b$ cd bsp/
+tingsung@acs-thor:~/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp$ ll
+total 15456
+drwxrwxr-x  29 tingsung tingsung     4096 Jan 21 14:26 ./
+drwxrwxr-x   4 tingsung tingsung     4096 Jan  4 20:42 ../
+lrwxrwxrwx   1 tingsung tingsung       19 Dec 21 18:32 Android.bp -> build/soong/root.bp
+drwxrwxr-x  34 tingsung tingsung     4096 Jan 14 14:39 art/
+drwxrwxr-x  14 tingsung tingsung     4096 Jan 14 14:39 bionic/
+drwxrwxr-x   3 tingsung tingsung     4096 Dec 21 18:32 bootable/
+lrwxrwxrwx   1 tingsung tingsung       26 Dec 21 18:32 bootstrap.bash -> build/soong/bootstrap.bash*
+drwxrwxr-x   5 tingsung tingsung     4096 Dec 21 18:32 build/
+drwxrwxr-x   3 tingsung tingsung     4096 Dec 21 18:32 compatibility/
+drwxrwxr-x  13 tingsung tingsung     4096 Jan 14 14:39 cts/
+drwxrwxr-x   7 tingsung tingsung     4096 Jan 14 14:39 dalvik/
+drwxrwxr-x   5 tingsung tingsung     4096 Dec 21 18:37 developers/
+drwxrwxr-x  20 tingsung tingsung     4096 Jan 14 14:39 development/
+drwxrwxr-x  12 tingsung tingsung     4096 Dec 21 18:38 device/
+drwxrwxr-x 315 tingsung tingsung    12288 Dec 21 18:38 external/
+drwxrwxr-x  16 tingsung tingsung     4096 Dec 21 18:50 frameworks/
+drwxrwxr-x  14 tingsung tingsung     4096 Dec 21 18:36 hardware/
+-rw-rw-r--   1 tingsung tingsung   101167 Dec 27 13:47 imx-make.log
+lrwxrwxrwx   1 tingsung tingsung       35 Dec 21 18:32 imx-make.sh -> device/nxp/common/tools/imx-make.sh*
+drwxrwxr-x   5 tingsung tingsung     4096 Dec 21 18:36 kernel/
+drwxrwxr-x  19 tingsung tingsung     4096 Jan 14 14:39 libcore/
+drwxrwxr-x   7 tingsung tingsung     4096 Jan 14 14:39 libnativehelper/
+-r--r--r--   1 tingsung tingsung       92 Dec 21 18:32 Makefile
+-rw-rw-r--   1 tingsung tingsung 15586796 Jan 14 15:38 make.log
+drwxrwxr-x  11 tingsung tingsung     4096 Jan 24 10:32 out/
+drwxrwxr-x   9 tingsung tingsung     4096 Dec 21 18:38 packages/
+drwxrwxr-x   5 tingsung tingsung     4096 Jan 14 14:39 pdk/
+drwxrwxr-x   9 tingsung tingsung     4096 Jan 14 14:39 platform_testing/
+drwxrwxr-x  34 tingsung tingsung     4096 Dec 21 18:51 prebuilts/
+drwxrwxr-x  23 tingsung tingsung     4096 Jan 14 14:39 sdk/
+drwxrwxr-x  40 tingsung tingsung     4096 Dec 21 18:52 system/
+drwxrwxr-x  10 tingsung tingsung     4096 Dec 21 18:39 test/
+drwxrwxr-x   4 tingsung tingsung     4096 Dec 21 18:39 toolchain/
+drwxrwxr-x  23 tingsung tingsung     4096 Dec 21 18:39 tools/
+drwxrwxr-x   4 tingsung tingsung     4096 Dec 21 18:39 vendor/
+tingsung@acs-thor:~/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp$ cat ../../export-gcc-clang.sh 
+#!/bin/sh
+
+
+export AARCH64_GCC_CROSS_COMPILE=/opt/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu/bin/aarch64-linux-gnu-
+
+export CLANG_PATH=/opt/prebuilt-android-clang
+
+echo $AARCH64_GCC_CROSS_COMPILE
+
+echo $CLANG_PATHtingsung@acs-thor:~/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp$ export AARCH64_GCC_CROSS_COMPILE=/opt/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu/x-gnu-rch64-linux
+tingsung@acs-thor:~/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp$ export CLANG_PATH=/opt/prebuilt-android-clang
+tingsung@acs-thor:~/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp$ source build/envsetup.sh ; lunch ms5881-userdebug
+
+============================================
+PLATFORM_VERSION_CODENAME=REL
+PLATFORM_VERSION=11
+TARGET_PRODUCT=ms5881
+TARGET_BUILD_VARIANT=userdebug
+TARGET_BUILD_TYPE=release
+TARGET_ARCH=arm64
+TARGET_ARCH_VARIANT=armv8-a
+TARGET_CPU_VARIANT=cortex-a53
+TARGET_2ND_ARCH=arm
+TARGET_2ND_ARCH_VARIANT=armv7-a-neon
+TARGET_2ND_CPU_VARIANT=cortex-a9
+HOST_ARCH=x86_64
+HOST_2ND_ARCH=x86
+HOST_OS=linux
+HOST_OS_EXTRA=Linux-4.15.0-166-generic-x86_64-Ubuntu-18.04.4-LTS
+HOST_CROSS_OS=windows
+HOST_CROSS_ARCH=x86
+HOST_CROSS_2ND_ARCH=x86_64
+HOST_BUILD_TYPE=release
+BUILD_ID=RQ3A.210805.001.A1
+OUT_DIR=out
+PRODUCT_SOONG_NAMESPACES=device/generic/goldfish device/generic/goldfish-opengl external/mesa3d vendor/nxp-opensource/imx/power hardware/google/pixel hardware/google/camera vendor/nxp-opensource/imx/camera vendor/partner_gms
+============================================
+tingsung@acs-thor:~/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp$ ./imx-make.sh -j48
+make: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp'
+/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/device/nxp/imx8m/ms5881/UbootKernelBoardConfig.mk:18: "IMX8MP_USES_GKI....."
+rm -rf /home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/UBOOT_OBJ/ubootenv.sh
+mkdir -p /home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/UBOOT_COLLECTION
+if [ -n "0" ]; then \
+	echo 'export ROLLBACK_INDEX_IN_FIT=0' > /home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/UBOOT_OBJ/ubootenv.sh; \
+	echo 'export ROLLBACK_INDEX_IN_CONTAINER=0' >> /home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/UBOOT_OBJ/ubootenv.sh; \
+else \
+	echo 'export ROLLBACK_INDEX_IN_FIT=' > /home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/UBOOT_OBJ/ubootenv.sh; \
+	echo 'export ROLLBACK_INDEX_IN_CONTAINER=' >> /home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/UBOOT_OBJ/ubootenv.sh; \
+fi
+Merging KERNEL config srcs: /home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/kernel_imx/arch/arm64/configs/ms5881_gki_defconfig /home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/device/nxp/imx8m/ms5881/android_addition_defconfig /home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/kernel_imx/arch/arm64/configs/ms5881_imx8mp_gki.fragment
+Building arm64 2021.04 U-Boot ...
+make[1]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/uboot-imx'
+make[2]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/UBOOT_OBJ'
+Using /home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/kernel_imx/arch/arm64/configs/ms5881_gki_defconfig as base
+Merging /home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/device/nxp/imx8m/ms5881/android_addition_defconfig
+Merging /home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/kernel_imx/arch/arm64/configs/ms5881_imx8mp_gki.fragment
+Value of CONFIG_STATIC_USERMODEHELPER_PATH is redefined by fragment /home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/kernel_imx/arch/arm64/configs/ms5881_imx8mp_gki.fragment:
+Previous value: CONFIG_STATIC_USERMODEHELPER_PATH=""
+New value: CONFIG_STATIC_USERMODEHELPER_PATH="/system/bin/sh"
+
+Value of CONFIG_LTO_CLANG_FULL is redefined by fragment /home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/kernel_imx/arch/arm64/configs/ms5881_imx8mp_gki.fragment:
+Previous value: CONFIG_LTO_CLANG_FULL=y
+New value: # CONFIG_LTO_CLANG_FULL is not set
+
+Value of CONFIG_CFI_CLANG is redefined by fragment /home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/kernel_imx/arch/arm64/configs/ms5881_imx8mp_gki.fragment:
+Previous value: CONFIG_CFI_CLANG=y
+New value: # CONFIG_CFI_CLANG is not set
+
+make[1]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/kernel_imx'
+make[1]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[2]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/KERNEL_OBJ'
+  GEN     Makefile
+  CLEAN   dts/../arch/arm/dts
+  CLEAN   tools
+  CLEAN   scripts/basic
+  CLEAN   scripts/kconfig
+  CLEAN   tools/lib tools/common
+  CLEAN   scripts/dtc
+  CLEAN   dts
+  CLEAN   spl/arch spl/board spl/cmd spl/common spl/disk spl/drivers spl/dts spl/env spl/fs spl/lib spl/spl spl/u-boot-spl spl/u-boot-spl-dtb.bin spl/u-boot-spl-nodtb.bin spl/u-boot-spl.bin spl/u-boot-spl.cfgout spl/u-boot-spl.dtb spl/u-boot-spl.lds spl/u-boot-spl.map spl/u-boot-spl.sym spl/u-boot.cfg
+  CLEAN   include/bmp_logo.h include/bmp_logo_data.h u-boot.elf u-boot-nodtb.bin u-boot.lds u-boot.cfg.configs u-boot-dtb.img u-boot-elf.o u-boot.map u-boot.bin u-boot.cfg u-boot.srec u-boot-dtb.bin u-boot u-boot-elf.lds u-boot.dtb u-boot.img u-boot.sym System.map
+  CLEAN   include/config include/generated spl
+  CLEAN   .config .config.old include/autoconf.mk include/autoconf.mk.dep include/config.h
+make[2]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/UBOOT_OBJ'
+make[1]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/uboot-imx'
+make[1]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/uboot-imx'
+make[2]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/UBOOT_OBJ'
+  HOSTCC  scripts/basic/fixdep
+  GEN     ./Makefile
+  HOSTCC  scripts/kconfig/conf.o
+  YACC    scripts/kconfig/zconf.tab.c
+  LEX     scripts/kconfig/zconf.lex.c
+  HOSTCC  scripts/kconfig/zconf.tab.o
+./.tmp.config.tHgGVxYYMf:796:warning: override: INIT_STACK_NONE changes choice state
+
+WARNING: unmet direct dependencies detected for SND_SOC_FSL_DSP_AUDIOMIX
+  Depends on [n]: SOUND [=y] && !UML && SND [=y] && SND_SOC [=y] && MFD_IMX_MIX [=n]
+  Selected by [m]:
+  - SND_SOC_FSL_DSP [=m] && SOUND [=y] && !UML && SND [=y] && SND_SOC [=y]
+#
+# configuration written to .config
+#
+make[2]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/KERNEL_OBJ'
+make[1]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/kernel_imx'
+  HOSTLD  scripts/kconfig/conf
+arch/../configs/ms5881-imx8mp_android_defconfig:24:warning: override: TARGET_IMX8MP_MS5881 changes choice state
+#
+# configuration written to .config
+#
+make[2]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/UBOOT_OBJ'
+make[1]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/uboot-imx'
+Value requested for CONFIG_INIT_STACK_ALL_ZERO not in final .config
+Requested value:  CONFIG_INIT_STACK_ALL_ZERO=y
+Actual value:     # CONFIG_INIT_STACK_ALL_ZERO is not set
+
+Value requested for CONFIG_SND_SOC_IMX_RT5640 not in final .config
+Requested value:  CONFIG_SND_SOC_IMX_RT5640=m
+Actual value:     
+
+Value requested for CONFIG_MXC_IMX_DMX_HW not in final .config
+Requested value:  # CONFIG_MXC_IMX_DMX_HW is not set
+Actual value:     
+
+Value requested for CONFIG_CFI_CLANG not in final .config
+Requested value:  # CONFIG_CFI_CLANG is not set
+Actual value:     
+
+Building arm64 5.10 kernel ...
+make[1]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/kernel_imx'
+make[2]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/KERNEL_OBJ'
+  GEN     Makefile
+===================== WARNING ======================
+This board uses CONFIG_SPL_FIT_GENERATOR. Please migrate
+to binman instead, to avoid the proliferation of
+arch-specific scripts with no tests.
+====================================================
+
+WARNING: unmet direct dependencies detected for SND_SOC_FSL_DSP_AUDIOMIX
+  Depends on [n]: SOUND [=y] && !UML && SND [=y] && SND_SOC [=y] && MFD_IMX_MIX [=n]
+  Selected by [m]:
+  - SND_SOC_FSL_DSP [=m] && SOUND [=y] && !UML && SND [=y] && SND_SOC [=y]
+
+WARNING: unmet direct dependencies detected for SND_SOC_FSL_DSP_AUDIOMIX
+  Depends on [n]: SOUND [=y] && !UML && SND [=y] && SND_SOC [=y] && MFD_IMX_MIX [=n]
+  Selected by [m]:
+  - SND_SOC_FSL_DSP [=m] && SOUND [=y] && !UML && SND [=y] && SND_SOC [=y]
+
+WARNING: unmet direct dependencies detected for SND_SOC_FSL_DSP_AUDIOMIX
+  Depends on [n]: SOUND [=y] && !UML && SND [=y] && SND_SOC [=y] && MFD_IMX_MIX [=n]
+  Selected by [m]:
+  - SND_SOC_FSL_DSP [=m] && SOUND [=y] && !UML && SND [=y] && SND_SOC [=y]
+make[2]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/KERNEL_OBJ'
+make[1]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/kernel_imx'
+make[1]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/kernel_imx'
+make[2]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/KERNEL_OBJ'
+  GEN     Makefile
+WARNING 'lpddr4_pmu_train_1d_imem.bin' not found, resulting binary is not-functional
+  CALL    /home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/kernel_imx/scripts/atomic/check-atomics.sh
+  CALL    /home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/kernel_imx/scripts/checksyscalls.sh
+  CHK     include/generated/compile.h
+  CHK     kernel/kheaders_data.tar.xz
+make[2]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/KERNEL_OBJ'
+make[1]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/kernel_imx'
+make[1]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/kernel_imx'
+make[2]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/KERNEL_OBJ'
+  GEN     Makefile
+WARNING 'lpddr4_pmu_train_1d_imem.bin' not found, resulting binary is not-functional
+  CALL    /home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/kernel_imx/scripts/atomic/check-atomics.sh
+  CALL    /home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/kernel_imx/scripts/checksyscalls.sh
+  CHK     include/generated/compile.h
+  CHK     kernel/kheaders_data.tar.xz
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/gc_hal_kernel_device.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/gc_hal_kernel_linux.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/gc_hal_kernel_math.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/gc_hal_kernel_os.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/gc_hal_kernel_debug.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/gc_hal_kernel_debugfs.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/gc_hal_kernel_allocator.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/allocator/default/gc_hal_kernel_allocator_user_memory.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/allocator/default/gc_hal_kernel_allocator_dma.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/allocator/default/gc_hal_kernel_allocator_gfp.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/allocator/default/gc_hal_kernel_allocator_reserved_mem.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/gc_hal_kernel_driver.o
+WARNING 'lpddr4_pmu_train_1d_imem.bin' not found, resulting binary is not-functional
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/platform/freescale/gc_hal_kernel_platform_imx.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/allocator/default/gc_hal_kernel_allocator_dmabuf.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/gc_hal_kernel_iommu.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/gc_hal_kernel_drm.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/gc_hal_kernel.o
+build post process
+/bin/sh: 10: @: not found
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/gc_hal_kernel_command.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/gc_hal_kernel_db.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/gc_hal_kernel_event.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/gc_hal_kernel_heap.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/gc_hal_kernel_mmu.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/gc_hal_kernel_video_memory.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/gc_hal_kernel_power.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/gc_hal_kernel_security_v1.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/arch/gc_hal_kernel_context.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/arch/gc_hal_kernel_hardware.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/arch/gc_hal_kernel_hardware_func.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/arch/gc_hal_kernel_hardware_func_flop_reset.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/arch/gc_hal_kernel_hardware_async_fe.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/arch/gc_hal_kernel_hardware_mc_fe.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/arch/gc_hal_kernel_hardware_waitlink_fe.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/arch/gc_hal_kernel_recorder.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/gc_hal_kernel_vg.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/gc_hal_kernel_command_vg.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/gc_hal_kernel_interrupt_vg.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/gc_hal_kernel_mmu_vg.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/archvg/gc_hal_kernel_hardware_command_vg.o
+  CC [M]  drivers/mxc/gpu-viv/hal/kernel/archvg/gc_hal_kernel_hardware_vg.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/gc_hal_kernel_sync.o
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/allocator/freescale/gc_hal_kernel_allocator_cma.o
+make[1]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/arm-trusted-firmware'
+  CC [M]  drivers/mxc/gpu-viv/hal/os/linux/kernel/gc_hal_kernel_security_channel_emulator.o
+  CC [M]  drivers/mxc/gpu-viv/hal/security_v1/gc_hal_ta.o
+  CC [M]  drivers/mxc/gpu-viv/hal/security_v1/gc_hal_ta_hardware.o
+  CC [M]  drivers/mxc/gpu-viv/hal/security_v1/gc_hal_ta_mmu.o
+  CC [M]  drivers/mxc/gpu-viv/hal/security_v1/os/emulator/gc_hal_ta_emulator.o
+  CLEAN
+make[1]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/arm-trusted-firmware'
+make[1]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/imx-mkimage'
+include misc.mak
+include m4.mak
+include android.mak
+include test.mak
+include autobuild.mak
+include alias.mak
+imx8qm clean done
+include misc.mak
+include m4.mak
+include android.mak
+include test.mak
+include autobuild.mak
+include alias.mak
+imx8qx clean done
+  LD [M]  drivers/mxc/gpu-viv/galcore.o
+include misc.mak
+include m4.mak
+include android.mak
+include test.mak
+include autobuild.mak
+imx8dxl clean done
+imx8ulp clean done
+make[1]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/imx-mkimage'
+make[1]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/imx-mkimage'
+Compiling mkimage_imx8
+  MODPOST modules-only.symvers
+PLAT=imx8mp HDMI=no
+./../scripts/dtb_check.sh imx8mp-evk.dtb evk.dtb 
+Compiling mkimage_imx8
+cc -O2 -Wall -std=c99 -static mkimage_imx8.c -o mkimage_imx8 -lz
+Use u-boot DTB: imx8mp-evk.dtb
+./../scripts/pad_image.sh tee.bin
+Pad file tee.bin NOT found
+./../scripts/pad_image.sh bl31.bin
+bl31.bin is padded to 41296
+./../scripts/pad_image.sh u-boot-nodtb.bin evk.dtb
+DEK_BLOB_LOAD_ADDR=0x40400000 TEE_LOAD_ADDR=0x56000000 ATF_LOAD_ADDR=0x00970000 ./mkimage_fit_atf.sh evk.dtb > u-boot.its
+31124+0 records in
+31124+0 records out
+124496 bytes (124 kB, 122 KiB) copied, 0.0320347 s, 3.9 MB/s
+bl31.bin size: 
+41296
+u-boot-nodtb.bin size: 
+930960
+evk.dtb size: 
+48176
+./mkimage_uboot -E -p 0x3000 -f u-boot.its u-boot.itb
+u-boot.itb.tmp: Warning (unit_address_vs_reg): Node /images/uboot@1 has a unit name, but no reg property
+u-boot.itb.tmp: Warning (unit_address_vs_reg): Node /images/fdt@1 has a unit name, but no reg property
+u-boot.itb.tmp: Warning (unit_address_vs_reg): Node /images/atf@1 has a unit name, but no reg property
+u-boot.itb.tmp: Warning (unit_address_vs_reg): Node /configurations/config@1 has a unit name, but no reg property
+FIT description: Configuration to load ATF before U-Boot
+Created:         Mon Jan 24 10:56:45 2022
+ Image 0 (uboot@1)
+  Description:  U-Boot (64-bit)
+  Created:      Mon Jan 24 10:56:45 2022
+  Type:         Standalone Program
+  Compression:  uncompressed
+  Data Size:    930960 Bytes = 909.14 KiB = 0.89 MiB
+  Architecture: AArch64
+  Load Address: 0x40200000
+  Entry Point:  unavailable
+ Image 1 (fdt@1)
+  Description:  evk
+  Created:      Mon Jan 24 10:56:45 2022
+  Type:         Flat Device Tree
+  Compression:  uncompressed
+  Data Size:    48176 Bytes = 47.05 KiB = 0.05 MiB
+  Architecture: Unknown Architecture
+ Image 2 (atf@1)
+  Description:  ARM Trusted Firmware
+  Created:      Mon Jan 24 10:56:45 2022
+  Type:         Firmware
+  Compression:  uncompressed
+  Data Size:    41296 Bytes = 40.33 KiB = 0.04 MiB
+  Architecture: AArch64
+  OS:           Unknown OS
+  Load Address: 0x00970000
+ Default Configuration: 'config@1'
+ Configuration 0 (config@1)
+  Description:  evk
+  Kernel:       unavailable
+  Firmware:     uboot@1
+  FDT:          fdt@1
+  Loadables:    atf@1
+./mkimage_imx8 -version v2 -fit -loader u-boot-spl-ddr.bin 0x920000 -second_loader u-boot.itb 0x40200000 0x60000 -out flash.bin
+Platform:	i.MX8M (mScale)
+ROM VERSION:	v2
+Using FIT image
+LOADER IMAGE:	u-boot-spl-ddr.bin start addr: 0x00920000
+SECOND LOADER IMAGE:	u-boot.itb start addr: 0x40200000 offset: 0x00060000
+Output:		flash.bin
+========= IVT HEADER [HDMI FW] =========
+header.tag: 		0x0
+header.length: 		0x0
+header.version: 	0x0
+entry: 			0x0
+reserved1: 		0x0
+dcd_ptr: 		0x0
+boot_data_ptr: 		0x0
+self: 			0x0
+csf: 			0x0
+reserved2: 		0x0
+boot_data.start: 	0x0
+boot_data.size: 	0x0
+boot_data.plugin: 	0x0
+========= IVT HEADER [PLUGIN] =========
+header.tag: 		0x0
+header.length: 		0x0
+header.version: 	0x0
+entry: 			0x0
+reserved1: 		0x0
+dcd_ptr: 		0x0
+boot_data_ptr: 		0x0
+self: 			0x0
+csf: 			0x0
+reserved2: 		0x0
+boot_data.start: 	0x0
+boot_data.size: 	0x0
+boot_data.plugin: 	0x0
+========= IVT HEADER [LOADER IMAGE] =========
+header.tag: 		0xd1
+header.length: 		0x2000
+header.version: 	0x41
+entry: 			0x920000
+reserved1: 		0x0
+dcd_ptr: 		0x0
+boot_data_ptr: 		0x91ffe0
+self: 			0x91ffc0
+csf: 			0x952dc0
+reserved2: 		0x0
+boot_data.start: 	0x91ffc0
+boot_data.size: 	0x34e60
+boot_data.plugin: 	0x0
+========= OFFSET dump =========
+Loader IMAGE:
+ header_image_off 	0x0
+ dcd_off 		0x0
+ image_off 		0x40
+ csf_off 		0x32e00
+ spl hab block: 	0x91ffc0 0x0 0x32e00
+
+Second Loader IMAGE:
+ sld_header_off 	0x58000
+ sld_csf_off 		0x59020
+ sld hab block: 	0x401fcdc0 0x58000 0x1020
+make[1]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/imx-mkimage'
+make[1]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/imx-mkimage'
+./../scripts/dtb_check.sh imx8mp-evk.dtb evk.dtb 
+Use u-boot DTB: imx8mp-evk.dtb
+./../scripts/pad_image.sh tee.bin
+Pad file tee.bin NOT found
+./../scripts/pad_image.sh bl31.bin
+./../scripts/pad_image.sh u-boot-nodtb.bin evk.dtb
+TEE_LOAD_ADDR=0x56000000 ATF_LOAD_ADDR=0x00970000 VERSION=v2 ./print_fit_hab.sh 0x60000 evk.dtb
+0x40200000 0x5B000 0xE3490
+0x402E3490 0x13E490 0xBC30
+0x970000 0x14A0C0 0xA150
+make[1]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/imx-mkimage'
+===================Finish building imx8mp:ms5881-imx8mp_android_defconfig ===================
+make[1]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/uboot-imx'
+make[2]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/UBOOT_OBJ'
+  CLEAN   dts/../arch/arm/dts
+  CLEAN   dts
+  CLEAN   tools
+  CLEAN   scripts/basic
+  CLEAN   scripts/kconfig
+  CLEAN   tools/lib tools/common
+  CLEAN   scripts/dtc
+  CLEAN   spl/arch spl/board spl/cmd spl/common spl/disk spl/drivers spl/dts spl/env spl/fs spl/lib spl/spl spl/u-boot-spl spl/u-boot-spl-dtb.bin spl/u-boot-spl-nodtb.bin spl/u-boot-spl.bin spl/u-boot-spl.cfgout spl/u-boot-spl.dtb spl/u-boot-spl.lds spl/u-boot-spl.map spl/u-boot-spl.sym spl/u-boot.cfg
+  CLEAN   include/bmp_logo.h include/bmp_logo_data.h u-boot.elf u-boot-nodtb.bin u-boot.lds u-boot.cfg.configs u-boot-dtb.img u-boot-elf.o u-boot.map u-boot.bin u-boot.cfg u-boot.srec u-boot-dtb.bin u-boot u-boot-elf.lds u-boot.dtb u-boot.img u-boot.sym System.map
+  CLEAN   include/config include/generated spl
+  CLEAN   .config .config.old include/autoconf.mk include/autoconf.mk.dep include/config.h
+make[2]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/UBOOT_OBJ'
+make[1]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/uboot-imx'
+make[1]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/uboot-imx'
+make[2]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/UBOOT_OBJ'
+  HOSTCC  scripts/basic/fixdep
+  GEN     ./Makefile
+  HOSTCC  scripts/kconfig/conf.o
+  YACC    scripts/kconfig/zconf.tab.c
+  LEX     scripts/kconfig/zconf.lex.c
+  HOSTCC  scripts/kconfig/zconf.tab.o
+  GEN     Module.symvers
+  HOSTLD  scripts/kconfig/conf
+arch/../configs/ms5881-imx8mp_android_uuu_defconfig:24:warning: override: TARGET_IMX8MP_MS5881 changes choice state
+#
+# configuration written to .config
+#
+make[2]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/UBOOT_OBJ'
+make[1]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/uboot-imx'
+  LD [M]  drivers/mxc/gpu-viv/galcore.ko
+make[2]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/KERNEL_OBJ'
+make[1]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/kernel_imx'
+make[1]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/kernel_imx'
+make[2]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/KERNEL_OBJ'
+make[2]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/KERNEL_OBJ'
+make[1]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/kernel_imx'
+Installing kernel headers ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+make[1]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/kernel_imx'
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+make[2]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/KERNEL_OBJ'
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+Installing kernel modules ...
+===================== WARNING ======================
+This board uses CONFIG_SPL_FIT_GENERATOR. Please migrate
+to binman instead, to avoid the proliferation of
+arch-specific scripts with no tests.
+====================================================
+  INSTALL ./usr/include
+make[2]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/KERNEL_OBJ'
+make[1]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/kernel_imx'
+WARNING 'lpddr4_pmu_train_1d_imem.bin' not found, resulting binary is not-functional
+WARNING 'lpddr4_pmu_train_1d_imem.bin' not found, resulting binary is not-functional
+WARNING 'lpddr4_pmu_train_1d_imem.bin' not found, resulting binary is not-functional
+build post process
+/bin/sh: 10: @: not found
+make[1]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/arm-trusted-firmware'
+  CLEAN
+make[1]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/arm-trusted-firmware'
+make[1]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/imx-mkimage'
+include misc.mak
+include m4.mak
+include android.mak
+include test.mak
+include autobuild.mak
+include alias.mak
+imx8qm clean done
+include misc.mak
+include m4.mak
+include android.mak
+include test.mak
+include autobuild.mak
+include alias.mak
+imx8qx clean done
+include misc.mak
+include m4.mak
+include android.mak
+include test.mak
+include autobuild.mak
+imx8dxl clean done
+imx8ulp clean done
+make[1]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/imx-mkimage'
+make[1]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/imx-mkimage'
+Compiling mkimage_imx8
+PLAT=imx8mp HDMI=no
+./../scripts/dtb_check.sh imx8mp-evk.dtb evk.dtb 
+Compiling mkimage_imx8
+cc -O2 -Wall -std=c99 -static mkimage_imx8.c -o mkimage_imx8 -lz
+Use u-boot DTB: imx8mp-evk.dtb
+./../scripts/pad_image.sh tee.bin
+Pad file tee.bin NOT found
+./../scripts/pad_image.sh bl31.bin
+bl31.bin is padded to 41296
+27668+0 records in
+27668+0 records out
+110672 bytes (111 kB, 108 KiB) copied, 0.0285972 s, 3.9 MB/s
+./../scripts/pad_image.sh u-boot-nodtb.bin evk.dtb
+u-boot-nodtb.bin + evk.dtb are padded to 937984
+DEK_BLOB_LOAD_ADDR=0x40400000 TEE_LOAD_ADDR=0x56000000 ATF_LOAD_ADDR=0x00970000 ./mkimage_fit_atf.sh evk.dtb > u-boot.its
+bl31.bin size: 
+41296
+u-boot-nodtb.bin size: 
+889800
+evk.dtb size: 
+48184
+./mkimage_uboot -E -p 0x3000 -f u-boot.its u-boot.itb
+u-boot.itb.tmp: Warning (unit_address_vs_reg): Node /images/uboot@1 has a unit name, but no reg property
+u-boot.itb.tmp: Warning (unit_address_vs_reg): Node /images/fdt@1 has a unit name, but no reg property
+u-boot.itb.tmp: Warning (unit_address_vs_reg): Node /images/atf@1 has a unit name, but no reg property
+u-boot.itb.tmp: Warning (unit_address_vs_reg): Node /configurations/config@1 has a unit name, but no reg property
+FIT description: Configuration to load ATF before U-Boot
+Created:         Mon Jan 24 10:56:53 2022
+ Image 0 (uboot@1)
+  Description:  U-Boot (64-bit)
+  Created:      Mon Jan 24 10:56:53 2022
+  Type:         Standalone Program
+  Compression:  uncompressed
+  Data Size:    889800 Bytes = 868.95 KiB = 0.85 MiB
+  Architecture: AArch64
+  Load Address: 0x40200000
+  Entry Point:  unavailable
+ Image 1 (fdt@1)
+  Description:  evk
+  Created:      Mon Jan 24 10:56:53 2022
+  Type:         Flat Device Tree
+  Compression:  uncompressed
+  Data Size:    48184 Bytes = 47.05 KiB = 0.05 MiB
+  Architecture: Unknown Architecture
+ Image 2 (atf@1)
+  Description:  ARM Trusted Firmware
+  Created:      Mon Jan 24 10:56:53 2022
+  Type:         Firmware
+  Compression:  uncompressed
+  Data Size:    41296 Bytes = 40.33 KiB = 0.04 MiB
+  Architecture: AArch64
+  OS:           Unknown OS
+  Load Address: 0x00970000
+ Default Configuration: 'config@1'
+ Configuration 0 (config@1)
+  Description:  evk
+  Kernel:       unavailable
+  Firmware:     uboot@1
+  FDT:          fdt@1
+  Loadables:    atf@1
+./mkimage_imx8 -version v2 -fit -loader u-boot-spl-ddr.bin 0x920000 -second_loader u-boot.itb 0x40200000 0x60000 -out flash.bin
+Platform:	i.MX8M (mScale)
+ROM VERSION:	v2
+Using FIT image
+LOADER IMAGE:	u-boot-spl-ddr.bin start addr: 0x00920000
+SECOND LOADER IMAGE:	u-boot.itb start addr: 0x40200000 offset: 0x00060000
+Output:		flash.bin
+========= IVT HEADER [HDMI FW] =========
+header.tag: 		0x0
+header.length: 		0x0
+header.version: 	0x0
+entry: 			0x0
+reserved1: 		0x0
+dcd_ptr: 		0x0
+boot_data_ptr: 		0x0
+self: 			0x0
+csf: 			0x0
+reserved2: 		0x0
+boot_data.start: 	0x0
+boot_data.size: 	0x0
+boot_data.plugin: 	0x0
+========= IVT HEADER [PLUGIN] =========
+header.tag: 		0x0
+header.length: 		0x0
+header.version: 	0x0
+entry: 			0x0
+reserved1: 		0x0
+dcd_ptr: 		0x0
+boot_data_ptr: 		0x0
+self: 			0x0
+csf: 			0x0
+reserved2: 		0x0
+boot_data.start: 	0x0
+boot_data.size: 	0x0
+boot_data.plugin: 	0x0
+========= IVT HEADER [LOADER IMAGE] =========
+header.tag: 		0xd1
+header.length: 		0x2000
+header.version: 	0x41
+entry: 			0x920000
+reserved1: 		0x0
+dcd_ptr: 		0x0
+boot_data_ptr: 		0x91ffe0
+self: 			0x91ffc0
+csf: 			0x94f7c0
+reserved2: 		0x0
+boot_data.start: 	0x91ffc0
+boot_data.size: 	0x31860
+boot_data.plugin: 	0x0
+========= OFFSET dump =========
+Loader IMAGE:
+ header_image_off 	0x0
+ dcd_off 		0x0
+ image_off 		0x40
+ csf_off 		0x2f800
+ spl hab block: 	0x91ffc0 0x0 0x2f800
+
+Second Loader IMAGE:
+ sld_header_off 	0x58000
+ sld_csf_off 		0x59020
+ sld hab block: 	0x401fcdc0 0x58000 0x1020
+make[1]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/imx-mkimage'
+make[1]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/imx-mkimage'
+./../scripts/dtb_check.sh imx8mp-evk.dtb evk.dtb 
+Use u-boot DTB: imx8mp-evk.dtb
+./../scripts/pad_image.sh tee.bin
+Pad file tee.bin NOT found
+./../scripts/pad_image.sh bl31.bin
+./../scripts/pad_image.sh u-boot-nodtb.bin evk.dtb
+u-boot-nodtb.bin + evk.dtb are padded to 937984
+TEE_LOAD_ADDR=0x56000000 ATF_LOAD_ADDR=0x00970000 VERSION=v2 ./print_fit_hab.sh 0x60000 evk.dtb
+0x40200000 0x5B000 0xD93C8
+0x402D93C8 0x1343C8 0xBC38
+0x970000 0x140000 0xA150
+make[1]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/imx-mkimage'
+===================Finish building imx8mp-uuu:ms5881-imx8mp_android_uuu_defconfig ===================
+make: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp'
+make: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp'
+/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/device/nxp/imx8m/ms5881/UbootKernelBoardConfig.mk:18: "IMX8MP_USES_GKI....."
+make[1]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/nxp-mwifiex/mxm_wifiex/wlan_src'
+make -C /home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/KERNEL_OBJ M=/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/nxp-mwifiex/mxm_wifiex/wlan_src ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- modules
+make[2]: Entering directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/KERNEL_OBJ'
+  MODPOST /home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/nxp-mwifiex/mxm_wifiex/wlan_src/Module.symvers
+make[2]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/KERNEL_OBJ'
+make[1]: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/vendor/nxp-opensource/nxp-mwifiex/mxm_wifiex/wlan_src'
+cp vendor/nxp-opensource/nxp-mwifiex/mxm_wifiex/wlan_src/moal.ko /home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/MXMWIFI_OBJ;
+make: Leaving directory '/home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp'
+============================================
+PLATFORM_VERSION_CODENAME=REL
+PLATFORM_VERSION=11
+TARGET_PRODUCT=ms5881
+TARGET_BUILD_VARIANT=userdebug
+TARGET_BUILD_TYPE=release
+TARGET_ARCH=arm64
+TARGET_ARCH_VARIANT=armv8-a
+TARGET_CPU_VARIANT=cortex-a53
+TARGET_2ND_ARCH=arm
+TARGET_2ND_ARCH_VARIANT=armv7-a-neon
+TARGET_2ND_CPU_VARIANT=cortex-a9
+HOST_ARCH=x86_64
+HOST_2ND_ARCH=x86
+HOST_OS=linux
+HOST_OS_EXTRA=Linux-4.15.0-166-generic-x86_64-Ubuntu-18.04.4-LTS
+HOST_CROSS_OS=windows
+HOST_CROSS_ARCH=x86
+HOST_CROSS_2ND_ARCH=x86_64
+HOST_BUILD_TYPE=release
+BUILD_ID=RQ3A.210805.001.A1
+OUT_DIR=out
+PRODUCT_SOONG_NAMESPACES=device/generic/goldfish device/generic/goldfish-opengl external/mesa3d vendor/nxp-opensource/imx/power hardware/google/pixel hardware/google/camera vendor/nxp-opensource/imx/camera vendor/partner_gms
+============================================
+device/nxp/imx8m/ms5881/ms5881.mk was modified, regenerating...
+device/nxp/imx8m/ms5881/ms5881.mk was modified, regenerating...
+[  2% 7/236] including build/make/target/board/Android.mk ...
+
+[ 94% 222/236] including vendor/nxp-opensource/nn-imx/Android.mk ...
+
+-Werror -fexceptions -D'OVXLIB_API=__attribute__((visibility("default")))' -Wno-unused-parameter -Wno-implicit-fallthrough -frtti -DANDROID_SDK_VERSION=30 -DGIT_STRING='9ea9b2e'
+[ 91% 250/273] build out/target/product/ms5881/obj/PACKAGING/check_vintf_all_intermediates/check_vintf_compatible_log
+FAILED: out/target/product/ms5881/obj/PACKAGING/check_vintf_all_intermediates/check_vintf_compatible_log
+/bin/bash -c "(echo -n -e 'Deps: \\n  ' > out/target/product/ms5881/obj/PACKAGING/check_vintf_all_intermediates/check_vintf_compatible_log ) && (sed 's/ /\\n  /g' <<< \"out/target/product/ms5881/system/etc/vintf/compatibility_matrix.1.xml out/target/product/ms5881/system/etc/vintf/compatibility_matrix.2.xml out/target/product/ms5881/system/etc/vintf/compatibility_matrix.3.xml out/target/product/ms5881/system/etc/vintf/compatibility_matrix.4.xml out/target/product/ms5881/system/etc/vintf/compatibility_matrix.5.xml out/target/product/ms5881/system/etc/vintf/compatibility_matrix.device.xml out/target/product/ms5881/system/etc/vintf/compatibility_matrix.legacy.xml out/target/product/ms5881/system/etc/vintf/manifest.xml out/target/product/ms5881/system/etc/vintf/manifest/android.frameworks.stats@1.0-service.xml out/target/product/ms5881/system/etc/vintf/manifest/android.hidl.allocator@1.0-service.xml out/target/product/ms5881/system/etc/vintf/manifest/android.system.suspend@1.0-service.xml out/target/product/ms5881/system/etc/vintf/manifest/manifest_android.frameworks.cameraservice.service@2.1.xml out/target/product/ms5881/system/etc/vintf/manifest/manifest_media_c2_software.xml out/target/product/ms5881/system_ext/etc/vintf/manifest.xml out/target/product/ms5881/vendor/etc/vintf/compatibility_matrix.xml out/target/product/ms5881/vendor/etc/vintf/manifest.xml out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.boot@1.1.xml out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.camera.provider@2.6-service-google.xml out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.cas@1.2-service.xml out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.confirmationui@1.0-service.trusty.xml out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.health@2.1.xml out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.neuralnetworks@1.3-service-vsi-npu-server.xml out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.oemlock@1.0-service.imx.xml out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.power-service.imx.xml out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.thermal@2.0-service.imx.xml out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.usb.gadget@1.1-service.imx.xml out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.usb@1.1-service.imx.xml out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.wifi.hostapd.xml out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.wifi@1.0-service.xml out/target/product/ms5881/vendor/etc/vintf/manifest/manifest.xml out/target/product/ms5881/vendor/etc/vintf/manifest/manifest_android.hardware.drm@1.3-service.clearkey.xml out/target/product/ms5881/vendor/etc/vintf/manifest/rebootescrow-default.xml out/target/product/ms5881/obj/PACKAGING/check_vintf_all_intermediates/kernel_configs.txt out/target/product/ms5881/obj/PACKAGING/check_vintf_all_intermediates/kernel_version.txt\" >> out/target/product/ms5881/obj/PACKAGING/check_vintf_all_intermediates/check_vintf_compatible_log ) && (echo -n -e 'Args: \\n  ' >> out/target/product/ms5881/obj/PACKAGING/check_vintf_all_intermediates/check_vintf_compatible_log ) && (cat <<< \" --kernel \$(cat out/target/product/ms5881/obj/PACKAGING/check_vintf_all_intermediates/kernel_version.txt):out/target/product/ms5881/obj/PACKAGING/check_vintf_all_intermediates/kernel_configs.txt --dirmap /system:out/target/product/ms5881/system --dirmap /vendor:out/target/product/ms5881/vendor --dirmap /odm:out/target/product/ms5881/vendor/odm --dirmap /product:out/target/product/ms5881/product --dirmap /system_ext:out/target/product/ms5881/system_ext  --property ro.product.first_api_level=30\" >> out/target/product/ms5881/obj/PACKAGING/check_vintf_all_intermediates/check_vintf_compatible_log ) && (echo \"For ODM SKU = EMPTY_ODM_SKU_PLACEHOLDER, vendor SKU = EMPTY_VENDOR_SKU_PLACEHOLDER\" >> out/target/product/ms5881/obj/PACKAGING/check_vintf_all_intermediates/check_vintf_compatible_log; ( out/host/linux-x86/bin/checkvintf --check-compat  --kernel \$(cat out/target/product/ms5881/obj/PACKAGING/check_vintf_all_intermediates/kernel_version.txt):out/target/product/ms5881/obj/PACKAGING/check_vintf_all_intermediates/kernel_configs.txt --dirmap /system:out/target/product/ms5881/system --dirmap /vendor:out/target/product/ms5881/vendor --dirmap /odm:out/target/product/ms5881/vendor/odm --dirmap /product:out/target/product/ms5881/product --dirmap /system_ext:out/target/product/ms5881/system_ext  --property ro.product.first_api_level=30 --property ro.boot.product.hardware.sku= --property ro.boot.product.vendor.sku= >> out/target/product/ms5881/obj/PACKAGING/check_vintf_all_intermediates/check_vintf_compatible_log 2>&1 ) || (cat out/target/product/ms5881/obj/PACKAGING/check_vintf_all_intermediates/check_vintf_compatible_log && exit 1) )"
+Deps: 
+  out/target/product/ms5881/system/etc/vintf/compatibility_matrix.1.xml
+  out/target/product/ms5881/system/etc/vintf/compatibility_matrix.2.xml
+  out/target/product/ms5881/system/etc/vintf/compatibility_matrix.3.xml
+  out/target/product/ms5881/system/etc/vintf/compatibility_matrix.4.xml
+  out/target/product/ms5881/system/etc/vintf/compatibility_matrix.5.xml
+  out/target/product/ms5881/system/etc/vintf/compatibility_matrix.device.xml
+  out/target/product/ms5881/system/etc/vintf/compatibility_matrix.legacy.xml
+  out/target/product/ms5881/system/etc/vintf/manifest.xml
+  out/target/product/ms5881/system/etc/vintf/manifest/android.frameworks.stats@1.0-service.xml
+  out/target/product/ms5881/system/etc/vintf/manifest/android.hidl.allocator@1.0-service.xml
+  out/target/product/ms5881/system/etc/vintf/manifest/android.system.suspend@1.0-service.xml
+  out/target/product/ms5881/system/etc/vintf/manifest/manifest_android.frameworks.cameraservice.service@2.1.xml
+  out/target/product/ms5881/system/etc/vintf/manifest/manifest_media_c2_software.xml
+  out/target/product/ms5881/system_ext/etc/vintf/manifest.xml
+  out/target/product/ms5881/vendor/etc/vintf/compatibility_matrix.xml
+  out/target/product/ms5881/vendor/etc/vintf/manifest.xml
+  out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.boot@1.1.xml
+  out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.camera.provider@2.6-service-google.xml
+  out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.cas@1.2-service.xml
+  out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.confirmationui@1.0-service.trusty.xml
+  out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.health@2.1.xml
+  out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.neuralnetworks@1.3-service-vsi-npu-server.xml
+  out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.oemlock@1.0-service.imx.xml
+  out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.power-service.imx.xml
+  out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.thermal@2.0-service.imx.xml
+  out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.usb.gadget@1.1-service.imx.xml
+  out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.usb@1.1-service.imx.xml
+  out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.wifi.hostapd.xml
+  out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.wifi@1.0-service.xml
+  out/target/product/ms5881/vendor/etc/vintf/manifest/manifest.xml
+  out/target/product/ms5881/vendor/etc/vintf/manifest/manifest_android.hardware.drm@1.3-service.clearkey.xml
+  out/target/product/ms5881/vendor/etc/vintf/manifest/rebootescrow-default.xml
+  out/target/product/ms5881/obj/PACKAGING/check_vintf_all_intermediates/kernel_configs.txt
+  out/target/product/ms5881/obj/PACKAGING/check_vintf_all_intermediates/kernel_version.txt
+Args: 
+   --kernel 5.10.52:out/target/product/ms5881/obj/PACKAGING/check_vintf_all_intermediates/kernel_configs.txt --dirmap /system:out/target/product/ms5881/system --dirmap /vendor:out/target/product/ms5881/vendor --dirmap /odm:out/target/product/ms5881/vendor/odm --dirmap /product:out/target/product/ms5881/product --dirmap /system_ext:out/target/product/ms5881/system_ext  --property ro.product.first_api_level=30
+For ODM SKU = EMPTY_ODM_SKU_PLACEHOLDER, vendor SKU = EMPTY_VENDOR_SKU_PLACEHOLDER
+checkvintf I 01-24 11:00:48   597   597 VintfObject.cpp:55] getFrameworkHalManifest: Reading VINTF information.
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/manifest.xml': SUCCESS
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:84] List 'out/target/product/ms5881/system/etc/vintf/manifest/': SUCCESS
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/manifest/android.system.suspend@1.0-service.xml': SUCCESS
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/manifest/android.hidl.allocator@1.0-service.xml': SUCCESS
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/manifest/manifest_android.frameworks.cameraservice.service@2.1.xml': SUCCESS
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/manifest/manifest_media_c2_software.xml': SUCCESS
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/manifest/android.frameworks.stats@1.0-service.xml': SUCCESS
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/product/etc/vintf/manifest.xml': No such file or directory
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:84] List 'out/target/product/ms5881/product/etc/vintf/manifest/': No such file or directory
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system_ext/etc/vintf/manifest.xml': SUCCESS
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:84] List 'out/target/product/ms5881/system_ext/etc/vintf/manifest/': No such file or directory
+checkvintf I 01-24 11:00:48   597   597 VintfObject.cpp:61] getFrameworkHalManifest: Successfully processed VINTF information
+checkvintf I 01-24 11:00:48   597   597 VintfObject.cpp:55] getDeviceHalManifest: Reading VINTF information.
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:122] Sysprop ro.boot.product.vendor.sku=
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/vendor/etc/vintf/manifest.xml': SUCCESS
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:84] List 'out/target/product/ms5881/vendor/etc/vintf/manifest/': SUCCESS
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/vendor/etc/vintf/manifest/manifest_android.hardware.drm@1.3-service.clearkey.xml': SUCCESS
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.usb@1.1-service.imx.xml': SUCCESS
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.health@2.1.xml': SUCCESS
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.boot@1.1.xml': SUCCESS
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.power-service.imx.xml': SUCCESS
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.oemlock@1.0-service.imx.xml': SUCCESS
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.cas@1.2-service.xml': SUCCESS
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.usb.gadget@1.1-service.imx.xml': SUCCESS
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.thermal@2.0-service.imx.xml': SUCCESS
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.neuralnetworks@1.3-service-vsi-npu-server.xml': SUCCESS
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.camera.provider@2.6-service-google.xml': SUCCESS
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.wifi@1.0-service.xml': SUCCESS
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/vendor/etc/vintf/manifest/rebootescrow-default.xml': SUCCESS
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.wifi.hostapd.xml': SUCCESS
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/vendor/etc/vintf/manifest/manifest.xml': SUCCESS
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/vendor/etc/vintf/manifest/android.hardware.confirmationui@1.0-service.trusty.xml': SUCCESS
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:122] Sysprop ro.boot.product.hardware.sku=
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/vendor/odm/etc/vintf/manifest.xml': No such file or directory
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/vendor/odm/etc/manifest.xml': No such file or directory
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:84] List 'out/target/product/ms5881/vendor/odm/etc/vintf/manifest/': No such file or directory
+checkvintf I 01-24 11:00:48   597   597 VintfObject.cpp:61] getDeviceHalManifest: Successfully processed VINTF information
+checkvintf I 01-24 11:00:48   597   597 VintfObject.cpp:55] getFrameworkCompatibilityMatrix: Reading VINTF information.
+checkvintf I 01-24 11:00:48   597   597 check_vintf.cpp:84] List 'out/target/product/ms5881/system/etc/vintf/': SUCCESS
+checkvintf I 01-24 11:00:49   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/compatibility_matrix.4.xml': SUCCESS
+checkvintf I 01-24 11:00:49   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/compatibility_matrix.legacy.xml': SUCCESS
+checkvintf I 01-24 11:00:49   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/compatibility_matrix.3.xml': SUCCESS
+checkvintf I 01-24 11:00:49   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/compatibility_matrix.5.xml': SUCCESS
+checkvintf I 01-24 11:00:49   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/compatibility_matrix.1.xml': SUCCESS
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/compatibility_matrix.device.xml': SUCCESS
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/compatibility_matrix.2.xml': SUCCESS
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/manifest.xml': SUCCESS
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:84] List 'out/target/product/ms5881/system_ext/etc/vintf/': SUCCESS
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system_ext/etc/vintf/manifest.xml': SUCCESS
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:84] List 'out/target/product/ms5881/product/etc/vintf/': No such file or directory
+checkvintf I 01-24 11:00:50   597   597 VintfObject.cpp:61] getFrameworkCompatibilityMatrix: Successfully processed VINTF information
+checkvintf I 01-24 11:00:50   597   597 VintfObject.cpp:55] getDeviceCompatibilityMatrix: Reading VINTF information.
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/vendor/etc/vintf/compatibility_matrix.xml': SUCCESS
+checkvintf I 01-24 11:00:50   597   597 VintfObject.cpp:61] getDeviceCompatibilityMatrix: Successfully processed VINTF information
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:154] fetched kernel version 5.10.52
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:168] read kernel configs from out/target/product/ms5881/obj/PACKAGING/check_vintf_all_intermediates/kernel_configs.txt
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:84] List 'out/target/product/ms5881/system/etc/vintf/': SUCCESS
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/compatibility_matrix.4.xml': SUCCESS
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/compatibility_matrix.legacy.xml': SUCCESS
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/compatibility_matrix.3.xml': SUCCESS
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/compatibility_matrix.5.xml': SUCCESS
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/compatibility_matrix.1.xml': SUCCESS
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/compatibility_matrix.device.xml': SUCCESS
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/compatibility_matrix.2.xml': SUCCESS
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/manifest.xml': SUCCESS
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:84] List 'out/target/product/ms5881/system_ext/etc/vintf/': SUCCESS
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system_ext/etc/vintf/manifest.xml': SUCCESS
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:84] List 'out/target/product/ms5881/product/etc/vintf/': No such file or directory
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:84] List 'out/target/product/ms5881/system/etc/vintf/': SUCCESS
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/compatibility_matrix.4.xml': SUCCESS
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/compatibility_matrix.legacy.xml': SUCCESS
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/compatibility_matrix.3.xml': SUCCESS
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/compatibility_matrix.5.xml': SUCCESS
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/compatibility_matrix.1.xml': SUCCESS
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/compatibility_matrix.device.xml': SUCCESS
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/compatibility_matrix.2.xml': SUCCESS
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system/etc/vintf/manifest.xml': SUCCESS
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:84] List 'out/target/product/ms5881/system_ext/etc/vintf/': SUCCESS
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:74] Fetch 'out/target/product/ms5881/system_ext/etc/vintf/manifest.xml': SUCCESS
+checkvintf I 01-24 11:00:50   597   597 check_vintf.cpp:84] List 'out/target/product/ms5881/product/etc/vintf/': No such file or directory
+checkvintf E 01-24 11:00:50   597   597 check_vintf.cpp:554] files are incompatible: Cannot open out/target/product/ms5881/product/etc/vintf/: No such file or directory
+checkvintf E 01-24 11:00:50   597   597 check_vintf.cpp:554] android.hardware.radio.config@1.0::IRadioConfig/default is deprecated; requires at least 1.1
+checkvintf E 01-24 11:00:50   597   597 check_vintf.cpp:554] android.hardware.radio.config@1.0::IRadioConfig/default is deprecated; requires at least 1.1: Success
+INCOMPATIBLE
+[ 91% 251/273] depmod out/target/product/ms5881/obj/PACKAGING/depmod_VENDOR_intermediates
+depmod: WARNING: could not open modules.order at /home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/PACKAGING/depmod_VENDOR_intermediates/lib/modules/0.0: No such file or directory
+depmod: WARNING: could not open modules.builtin at /home/tingsung/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp/out/target/product/ms5881/obj/PACKAGING/depmod_VENDOR_intermediates/lib/modules/0.0: No such file or directory
+11:00:59 ninja failed with: exit status 1
+
+#### failed to build some targets (04:04 (mm:ss)) ####
+
+tingsung@acs-thor:~/imx8/android/msi-11.0.0_2.4.0/repo-ms58810b/bsp$ 

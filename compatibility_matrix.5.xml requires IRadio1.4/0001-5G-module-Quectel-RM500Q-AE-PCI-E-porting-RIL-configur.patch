@@ -1,25 +1,28 @@
-From 679dc08927d24bc0cc12366c48f005aad3f4dab5 Mon Sep 17 00:00:00 2001
+From 947c0711e1e29b28bfdc2f5e82c23c09cfdb0cbf Mon Sep 17 00:00:00 2001
 From: ting <ting@gmail.com>
 Date: Thu, 23 Dec 2021 14:45:59 +0800
-Subject: [PATCH] 5G module, Quectel RM500Q-AE/PCI-E porting, RIL configuration
+Subject: [PATCH] 5G module, Quectel RM500Q-AE via PCIE porting, RIL configuration
 
 ---
  imx8m/ProductConfigCommon.mk                  |     4 +-
- imx8m/imx8mp/init.rc                          |     6 +
+ imx8m/evk_8mp/init.rc                          |     7 +
  .../arm64-v8a/libreference-ril.so             |   Bin 0 -> 1791768 bytes
  .../armeabi/libreference-ril.so               |   Bin 0 -> 1503000 bytes
- imx8m/imx8mp/libquectel-ril/ql-ril.conf       |    32 +
- imx8m/imx8mp/manifest.xml                     |     8 +-
- imx8m/imx8mp/imx8mp.mk                        |     9 +
+ imx8m/evk_8mp/libquectel-ril/ql-ril.conf       |    32 +
+ imx8m/evk_8mp/manifest.xml                     |    15 +
+ imx8m/evk_8mp/evk_8mp.mk                        |    10 +
  .../base/core/res/res/values/config.xml       |    21 +-
- imx8m/imx8mp/required_hardware.xml            |     3 +
- imx8m/imx8mp/telephony/apns-conf.xml          | 30246 ++++++++++++++++
- imx8m/imx8mp/ueventd.nxp.rc                   |     3 +
- 11 files changed, 30328 insertions(+), 4 deletions(-)
- create mode 100644 imx8m/imx8mp/libquectel-ril/arm64-v8a/libreference-ril.so
- create mode 100644 imx8m/imx8mp/libquectel-ril/armeabi/libreference-ril.so
- create mode 100644 imx8m/imx8mp/libquectel-ril/ql-ril.conf
- create mode 100644 imx8m/imx8mp/telephony/apns-conf.xml
+ imx8m/evk_8mp/required_hardware.xml            |     3 +
+ imx8m/evk_8mp/sepolicy/file_contexts           |     9 +
+ imx8m/evk_8mp/sepolicy/rild.te                 |     1 +
+ imx8m/evk_8mp/telephony/apns-conf.xml          | 30246 ++++++++++++++++
+ imx8m/evk_8mp/ueventd.nxp.rc                   |     8 +
+ 13 files changed, 30353 insertions(+), 3 deletions(-)
+ create mode 100644 imx8m/evk_8mp/libquectel-ril/arm64-v8a/libreference-ril.so
+ create mode 100644 imx8m/evk_8mp/libquectel-ril/armeabi/libreference-ril.so
+ create mode 100644 imx8m/evk_8mp/libquectel-ril/ql-ril.conf
+ create mode 100644 imx8m/evk_8mp/sepolicy/rild.te
+ create mode 100644 imx8m/evk_8mp/telephony/apns-conf.xml
 
 diff --git a/imx8m/ProductConfigCommon.mk b/imx8m/ProductConfigCommon.mk
 index 9d24e06c..bb282d9d 100644
@@ -36,21 +39,22 @@ index 9d24e06c..bb282d9d 100644
 
 
  # -------@block_bluetooth-------
-diff --git a/imx8m/imx8mp/init.rc b/imx8m/imx8mp/init.rc
-index 0cd03536..128236a6 100644
---- a/imx8m/imx8mp/init.rc
-+++ b/imx8m/imx8mp/init.rc
-@@ -32,6 +32,9 @@ on early-init
+diff --git a/imx8m/evk_8mp/init.rc b/imx8m/evk_8mp/init.rc
+index 0cd03536..01ec084d 100644
+--- a/imx8m/evk_8mp/init.rc
++++ b/imx8m/evk_8mp/init.rc
+@@ -32,6 +32,10 @@ on early-init
      # Use ro.boot.lcd_density to override ro.sf.lcd_density
      setprop ro.sf.lcd_density ${ro.boot.lcd_density}
 
 +    setprop rild.libargs "-d /dev/mhi_DUN"
-+    setprop ro.telephony.default_network "22,20
++    setprop vendor.rild.libargs "-d /dev/mhi_DUN"
++    setprop ro.telephony.default_network "22,20"
 +
  on init
      # cpuctl hierarchy for devices using utilclamp
      mkdir /dev/cpuctl/foreground
-@@ -195,6 +198,9 @@ on early-boot && property:vendor.skip.charger_not_need=0
+@@ -195,6 +199,9 @@ on early-boot && property:vendor.skip.charger_not_need=0
 
      start vendor.wifi_hal_legacy
 
@@ -60,7 +64,7 @@ index 0cd03536..128236a6 100644
  service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
      -O/data/vendor/wifi/wpa/sockets -puse_p2p_group_interface=1 \
      -g@android:wpa_wlan0
-diff --git a/imx8m/imx8mp/libquectel-ril/arm64-v8a/libreference-ril.so b/imx8m/imx8mp/libquectel-ril/arm64-v8a/libreference-ril.so
+diff --git a/imx8m/evk_8mp/libquectel-ril/arm64-v8a/libreference-ril.so b/imx8m/evk_8mp/libquectel-ril/arm64-v8a/libreference-ril.so
 new file mode 100644
 index 0000000000000000000000000000000000000000..c81795cb3124ddc60d6f0d58d68dbee472123bf1
 GIT binary patch
@@ -13193,7 +13197,7 @@ N|7B8;H9tT7{{x_kA1eR=
 literal 0
 HcmV?d00001
 
-diff --git a/imx8m/imx8mp/libquectel-ril/armeabi/libreference-ril.so b/imx8m/imx8mp/libquectel-ril/armeabi/libreference-ril.so
+diff --git a/imx8m/evk_8mp/libquectel-ril/armeabi/libreference-ril.so b/imx8m/evk_8mp/libquectel-ril/armeabi/libreference-ril.so
 new file mode 100644
 index 0000000000000000000000000000000000000000..1edca424acdfdd3c31d3e6e7338ef0ab7236acbb
 GIT binary patch
@@ -26313,11 +26317,11 @@ u^R_{D3j<N=Cv#*4y117Z_7^<ed!5aMc>8#*L$~_;r+feF;}DpSrTc&KpgI)*
 literal 0
 HcmV?d00001
 
-diff --git a/imx8m/imx8mp/libquectel-ril/ql-ril.conf b/imx8m/imx8mp/libquectel-ril/ql-ril.conf
+diff --git a/imx8m/evk_8mp/libquectel-ril/ql-ril.conf b/imx8m/evk_8mp/libquectel-ril/ql-ril.conf
 new file mode 100644
-index 00000000..fc3f3d00
+index 00000000..0ea7c312
 --- /dev/null
-+++ b/imx8m/imx8mp/libquectel-ril/ql-ril.conf
++++ b/imx8m/evk_8mp/libquectel-ril/ql-ril.conf
 @@ -0,0 +1,32 @@
 +#This file is in a state of unavailability.
 +#In most cases, there is no need to open any option.
@@ -26326,7 +26330,7 @@ index 00000000..fc3f3d00
 +#LTE_SignalStrength=-1
 +#LTE_Is_Report_SignalStrength=1
 +#At_Cmds_For_Customer_Initialize=at+csq;at+cgreg?;at+cops?;at+qcfg="nwscanmodeex"
-+#Icc_Constants=EF_ICCID
++At_Cmds_For_Customer_Initialize=AT+QSIMDET=1,0;AT+QSIMSTAT=1
 +#support_CDMPhone=1
 +#URC_delay_mseconds=2000
 +#Query_Available_Networks=1
@@ -26351,44 +26355,58 @@ index 00000000..fc3f3d00
 +#RM500Voice=1
 +#SetPreferredNetworkType_NR=1
 +#asr_support_gps=1
-diff --git a/imx8m/imx8mp/manifest.xml b/imx8m/imx8mp/manifest.xml
-index aba9b68e..4f67c47d 100644
---- a/imx8m/imx8mp/manifest.xml
-+++ b/imx8m/imx8mp/manifest.xml
-@@ -150,4 +150,10 @@
-        <transport>hwbinder</transport>
-        <fqname>@2.4::ICameraProvider/external/0</fqname>
+diff --git a/imx8m/evk_8mp/manifest.xml b/imx8m/evk_8mp/manifest.xml
+index ff55d0a4..005599b9 100644
+--- a/imx8m/evk_8mp/manifest.xml
++++ b/imx8m/evk_8mp/manifest.xml
+@@ -159,4 +159,19 @@
+             <instance>default</instance>
+         </interface>
      </hal>
--</manifest>
 +    <hal format="hidl">
 +        <name>android.hardware.radio</name>
 +        <transport>hwbinder</transport>
 +        <fqname>@1.4::IRadio/slot1</fqname>
 +        <fqname>@1.2::ISap/slot1</fqname>
 +    </hal>
-+</manifest>
-\ No newline at end of file
-diff --git a/imx8m/imx8mp/imx8mp.mk b/imx8m/imx8mp/imx8mp.mk
-index c8b8c1d0..4f575001 100644
---- a/imx8m/imx8mp/imx8mp.mk
-+++ b/imx8m/imx8mp/imx8mp.mk
-@@ -584,3 +584,12 @@ PRODUCT_PACKAGES += \
-     Sensor0_Entry-4K.cfg \
++    <hal format="hidl">
++       <name>android.hardware.radio.config</name>
++       <transport>hwbinder</transport>
++       <version>1.1</version>
++       <interface>
++           <name>IRadioConfig</name>
++           <instance>default</instance>
++       </interface>
++    </hal>
+ </manifest>
+diff --git a/imx8m/evk_8mp/evk_8mp.mk b/imx8m/evk_8mp/evk_8mp.mk
+index db2d88f0..a488204f 100644
+--- a/imx8m/evk_8mp/evk_8mp.mk
++++ b/imx8m/evk_8mp/evk_8mp.mk
+@@ -585,8 +585,18 @@ PRODUCT_PACKAGES += \
      daA3840_30mc_1080P.json \
      daA3840_30mc_4K.json
+
++
+ # Gyro sensor
+ PRODUCT_COPY_FILES += frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.gyroscope.xml
+ PRODUCT_PACKAGES += android.hardware.sensors@1.0-impl \
+                     android.hardware.sensors@1.0-service \
+                     sensors.imx
 +
 +# Quectel RM500Q-AE
 +PRODUCT_COPY_FILES += \
-+    device/nxp/imx8m/imx8mp/libquectel-ril/arm64-v8a/libreference-ril.so:vendor/lib64/libreference-ril.so \
-+    device/nxp/imx8m/imx8mp/libquectel-ril/ql-ril.conf:vendor/etc/ql-ril.conf \
-+    device/nxp/imx8m/imx8mp/telephony/apns-conf.xml:system/etc/apns-conf.xml
++    device/nxp/imx8m/evk_8mp/libquectel-ril/arm64-v8a/libreference-ril.so:vendor/lib64/libreference-ril.so \
++    device/nxp/imx8m/evk_8mp/libquectel-ril/ql-ril.conf:vendor/etc/ql-ril.conf \
++    device/nxp/imx8m/evk_8mp/telephony/apns-conf.xml:system/etc/apns-conf.xml
 +
 +PRODUCT_PROPERTY_OVERRIDES += rild.libpath=/vendor/lib64/libreference-ril.so
 +PRODUCT_PROPERTY_OVERRIDES += vendor.rild.libpath=/vendor/lib64/libreference-ril.so
-diff --git a/imx8m/imx8mp/overlay/frameworks/base/core/res/res/values/config.xml b/imx8m/imx8mp/overlay/frameworks/base/core/res/res/values/config.xml
+\ No newline at end of file
+diff --git a/imx8m/evk_8mp/overlay/frameworks/base/core/res/res/values/config.xml b/imx8m/evk_8mp/overlay/frameworks/base/core/res/res/values/config.xml
 index be3cd041..d33bfa1b 100644
---- a/imx8m/imx8mp/overlay/frameworks/base/core/res/res/values/config.xml
-+++ b/imx8m/imx8mp/overlay/frameworks/base/core/res/res/values/config.xml
+--- a/imx8m/evk_8mp/overlay/frameworks/base/core/res/res/values/config.xml
++++ b/imx8m/evk_8mp/overlay/frameworks/base/core/res/res/values/config.xml
 @@ -49,12 +49,21 @@
      <!-- Common options are [1, 4] for TYPE_WIFI and TYPE_MOBILE_DUN or
      <!== [0,1,5,7,9] for TYPE_MOBILE, TYPE_WIFI, TYPE_MOBILE_HIPRI, TYPE_BLUETOOTH and TYPE_ETHERNET -->
@@ -26429,23 +26447,51 @@ index be3cd041..d33bfa1b 100644
      </string-array>
 
      <!-- Array of light sensor LUX values to define our levels for auto backlight brightness support.
-diff --git a/imx8m/imx8mp/required_hardware.xml b/imx8m/imx8mp/required_hardware.xml
-index f751b4ae..b19ecc0d 100644
---- a/imx8m/imx8mp/required_hardware.xml
-+++ b/imx8m/imx8mp/required_hardware.xml
-@@ -31,4 +31,7 @@
-     <feature name="android.software.companion_device_setup" />
-     <feature name="android.software.autofill" />
+diff --git a/imx8m/evk_8mp/required_hardware.xml b/imx8m/evk_8mp/required_hardware.xml
+index 6d217360..bd95d472 100644
+--- a/imx8m/evk_8mp/required_hardware.xml
++++ b/imx8m/evk_8mp/required_hardware.xml
+@@ -33,4 +33,7 @@
      <feature name="android.software.secure_lock_screen" />
+     <feature name="android.hardware.sensor.accelerometer" />
+     <feature name="android.hardware.sensor.gyroscope" />
 +    <feature name="android.hardware.telephony" />
 +    <feature name="android.hardware.telephony.gsm" />
 +    <feature name="android.hardware.telephony.cdma" />
  </permissions>
-diff --git a/imx8m/imx8mp/telephony/apns-conf.xml b/imx8m/imx8mp/telephony/apns-conf.xml
+diff --git a/imx8m/evk_8mp/sepolicy/file_contexts b/imx8m/evk_8mp/sepolicy/file_contexts
+index 0d16203f..36f85864 100644
+--- a/imx8m/evk_8mp/sepolicy/file_contexts
++++ b/imx8m/evk_8mp/sepolicy/file_contexts
+@@ -9,6 +9,15 @@
+ /dev/ttymxc[0-9]*               u:object_r:tty_device:s0
+ /dev/sda[0-8]*                  u:object_r:fuse:s0
+
++
++/vendor/bin/hw/rild u:object_r:rild_exec:s0
++/dev/mhi_DUN u:object_r:radio_device:s0
++/dev/mhi_DIAG u:object_r:radio_device:s0
++/dev/mhi_BHI u:object_r:radio_device:s0
++/dev/mhi_LOOPBACK u:object_r:radio_device:s0
++/dev/mhi_QMI0 u:object_r:radio_device:s0
++
++
+ #Thermal HAL service
+ /vendor/bin/hw/android\.hardware\.thermal@2\.0-service.imx         u:object_r:hal_thermal_default_exec:s0
+ #Neural Network HAL service
+diff --git a/imx8m/evk_8mp/sepolicy/rild.te b/imx8m/evk_8mp/sepolicy/rild.te
+new file mode 100644
+index 00000000..03ec17da
+--- /dev/null
++++ b/imx8m/evk_8mp/sepolicy/rild.te
+@@ -0,0 +1 @@
++allow rild self:packet_socket { create bind write read };
+\ No newline at end of file
+diff --git a/imx8m/evk_8mp/telephony/apns-conf.xml b/imx8m/evk_8mp/telephony/apns-conf.xml
 new file mode 100644
 index 00000000..509e251d
 --- /dev/null
-+++ b/imx8m/imx8mp/telephony/apns-conf.xml
++++ b/imx8m/evk_8mp/telephony/apns-conf.xml
 @@ -0,0 +1,30246 @@
 +<?xml version="1.0" encoding="utf-8"?>
 +<!--
@@ -56693,17 +56739,29 @@ index 00000000..509e251d
 +      type="mms"
 +  />
 +</apns>
-diff --git a/imx8m/imx8mp/ueventd.nxp.rc b/imx8m/imx8mp/ueventd.nxp.rc
-index a9b0d081..03344c6e 100644
---- a/imx8m/imx8mp/ueventd.nxp.rc
-+++ b/imx8m/imx8mp/ueventd.nxp.rc
-@@ -26,3 +26,6 @@ subsystem dma_heap
-
+diff --git a/imx8m/evk_8mp/ueventd.nxp.rc b/imx8m/evk_8mp/ueventd.nxp.rc
+index 60141f43..ccdd94b5 100644
+--- a/imx8m/evk_8mp/ueventd.nxp.rc
++++ b/imx8m/evk_8mp/ueventd.nxp.rc
+@@ -27,6 +27,7 @@ subsystem dma_heap
  /sys/devices/virtual/thermal/thermal_zone* trip_point_0_hyst 0660 system system
  /sys/devices/virtual/thermal/thermal_zone* trip_point_1_hyst 0660 system system
+
++
+ /dev/iio:device* 0666 system system
+ /sys/bus/iio/devices/iio:device* buffer/enable 0666 system system
+ /sys/bus/iio/devices/iio:device* buffer/length 0666 system system
+@@ -51,3 +52,10 @@ subsystem dma_heap
+ /sys/bus/iio/devices/iio:device* in_anglvel_x_scale 0666 system system
+ /sys/bus/iio/devices/iio:device* in_anglvel_y_scale 0666 system system
+ /sys/bus/iio/devices/iio:device* in_anglvel_z_scale 0666 system systemw
 +
 +#quectel port
-+/dev/mhi_DUN              0660 radio radio
++/dev/mhi_DUN 0660 radio radio
++/dev/mhi_DIAG 0660 radio radio
++/dev/mhi_BHI 0660 radio radio
++/dev/mhi_LOOPBACK 0660 radio radio
++/dev/mhi_QMI0 0660 radio radio
 --
 2.17.1
 
