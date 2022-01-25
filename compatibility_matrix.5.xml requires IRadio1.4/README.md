@@ -1,4 +1,4 @@
-Can't use IRadio 1.0 as usual in Android 11, should upgrade to IRado 1.4.
+Can't use IRadio 1.0 as usual in Android 11 (Linux kernel 5.10.52) for the matched compatibility_matrix.5.xml, should upgrade to IRado 1.4.
 
 [build break of declare IRadio 1.0 in manifest.xml](./make.log)
 ``` xml
@@ -55,3 +55,6 @@ LOCAL_MODULE_TARGET_ARCHS := arm arm64
 LOCAL_MULTILIB := both
 include $(BUILD_PREBUILT)
 ```
+
+</br></br>
+Ref.&nbsp;:&nbsp;&nbsp;[Compatibility Matrixes  |  Android Open Source Project](https://source.android.google.cn/devices/architecture/vintf/comp-matrices)
