@@ -702,6 +702,12 @@ console:/ #
 
 - 中華電信 mcc/mnc 466/92
 
+- restart zygote
+  ```
+  setprop ctl.stop zygote
+  setprop ctl.start zygote
+  ```
+
 <br>
 <br>
 <br>
